@@ -1,0 +1,721 @@
+<!-- input.header -->
+
+
+<form id="sys_register_google" 
+ style="max-height:65vh;overflow:auto">
+<div id="sys_register_google_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "sys_register_google";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"panels":[{"root":{"gtc":"1fr 1fr ","repeats":{"size":["auto",[1,1]],"location":["next","full"]},"data":[1,2],"size":["auto",[1,1]],"gap":"5px","label":[1,1],"align":"left","gtr":"auto"}}],"fields":[{"dgr":1,"lgr":1,"role":"input","lgc":1,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"label1","type":"label","dgc":2},{"dgr":2,"lgr":2,"role":"input","lgc":1,"id":"userid","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"dgc":2,"type":"text"},{"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"email","type":"email","dgc":2,"lgc":1,"lgr":3,"role":"input","dgr":3},{"type":"button","dgc":1,"id":"b_submit","layout":{"parent":"root","data":[1,1],"label":[1,1]},"lgc":1,"role":"input","lgr":4,"buttontext":"Submit","dgr":4},{"dgc":2,"type":"button","layout":{"data":[0,2],"parent":"root","label":[1,1]},"id":"b_reset","lgc":1,"lgr":5,"role":"input","dgr":4,"buttontext":"Reset to default values"},{"dgr":6,"role":"output","id":"sys_register_google_progress","layout":{"data":[1,[1,3]],"parent":"root","label":"none"},"dgc":"1/3","type":"span"},{"lgc":1,"dgc":"1/3","type":"span","layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"id":"sys_register_google_output_airavata","dgr":7,"lgr":7,"role":"output"},{"lgc":1,"id":"sys_register_google_output_msgs","layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"dgc":"1/3","type":"span","dgr":8,"role":"output","lgr":8},{"layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"id":"sys_register_google_output_textarea","dgc":"1/3","type":"span","lgc":1,"lgr":9,"role":"output","dgr":9},{"lgr":10,"role":"output","dgr":10,"id":"status","layout":{"data":[1,2],"parent":"root","label":[1,1]},"type":"textarea","dgc":2,"lgc":1}]}' );
+ga.layout.module.json = JSON.parse( '{"captcha":"true","executable":"sys_register_google","fields":[{"default":"header3","id":"label1","label":"Register with Google","posthline":"true","role":"input","type":"label"},{"googlelogin":"true","help":"Enter a user id of 3 to 30 characters length, starting with an alpha character and only containing alphanumerics","id":"userid","label":"Enter user id","pattern":".{3,}","readonly":"true","required":"true","role":"input","size":"30","type":"text"},{"googlelogin":"true","help":"Enter a valid email address","id":"email","label":"Email address","readonly":"true","required":"true","role":"input","size":"50","type":"email"},{"cols":50,"id":"status","label":"Status","role":"output","rows":4,"type":"textarea"}],"label":"Register","modal":"true","moduleid":"sys_register_google","nojobcontrol":"true","noreset":"true","reggoogle":"true","resetoutonload":"true","resource":"local","submit_label":"Register","submitpolicy":"all"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'sys_register_google' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+sys_register_google_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#sys_register_google').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label1" ] = {};
+ga.layout.fields[ "label1" ].lhtml = '<label id="label1_label" class="ga-field-input-header3 " style="">Register with Google</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label1"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label1" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label1" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="label1_label" class="header3 ">Register with Google</label>' + 
+'</td>' +
+'<td><div id="label1"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- text.input --
+
+ga.layout.fields[ "userid" ] = {};
+ga.layout.fields[ "userid" ].lhtml = '<label for="userid" class="ga-g-sys_register_google-userid" style="">Enter user id </label>';
+ga.layout.fields[ "userid" ].dhtml = '<input type="text" name="userid" id="userid" required pattern=".{3,}"  size="30" readonly class="ga-g-sys_register_google-userid ga-field-input-control help_link"><span class="help">Enter a user id of 3 to 30 characters length, starting with an alpha character and only containing alphanumerics</span}><span id="userid_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "userid" ].eval  =
+  
+  
+  
+  
+  '$("#userid").val( username_google );' +
+  'ga.value.registerid("sys_register_google","userid","Enter user id","text");'
+  + '$( "#userid" ).blur( function() { ga.valid.checkText( "#userid" ); });'
+  + 
+  'ga.value.setLastValue( "sys_register_google", "#userid" );$( "#userid" ).keypress( function() { $( "#userid_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="userid">Enter user id </label></td><td><input type="text" name="userid" id="userid" required pattern=".{3,}"  size="30" readonly class="help_link"><span class="help">Enter a user id of 3 to 30 characters length, starting with an alpha character and only containing alphanumerics</span><span id="userid_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+'$("#userid").val( username_google );' +
+'ga.value.registerid("sys_register_google","userid","Enter user id","text");'
++ '$( "#userid" ).blur( function() { ga.valid.checkText( "#userid" ); });'
++ 
+'ga.value.setLastValue( "sys_register_google", "#userid" );$( "#userid" ).keypress( function() { $( "#userid_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- email.input --
+
+ga.layout.fields[ "email" ] = {};
+ga.layout.fields[ "email" ].lhtml = '<label for="email">Email address </label>';
+ga.layout.fields[ "email" ].dhtml = '<input type="email" name="email" id="email" required readonly size="50" class="ga-field-input-control help_link"><span class="help">Enter a valid email address</span}><span id="email_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "email" ].eval  =
+  
+  
+  '$("#email").val( email_google );' + 
+  'ga.value.setLastValue( "sys_register_google", "#email" );$( "#email" ).keypress( function() { $( "#email_msg" ).html( "" ); });'
+  ;
+  ;
+
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="email">Email address </label></td><td><input type="email" name="email" id="email" required readonly size="50" class="help_link"><span class="help">Enter a valid email address</span><span id="email_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'$("#email").val( email_google );' + 
+'ga.value.setLastValue( "sys_register_google", "#email" );$( "#email" ).keypress( function() { $( "#email_msg" ).html( "" ); });'
+;
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end email.input --
+// -- textarea.output --
+
+ga.layout.fields[ "status" ] = {};
+ga.layout.fields[ "status" ].lhtml = '<label for="status" class="ga-g-sys_register_google-status">Status </label>';
+ga.layout.fields[ "status" ].dhtml =
+  '<textarea name="status" id="status" rows="4" cols="50" readonly class="ga-g-sys_register_google-status ga-field-output-control"></textarea>'
+  
+  ;
+ga.layout.fields[ "status" ].eval  =
+  '' +
+  'ga.value.setLastValue( "sys_register_google_output", "#status" );'
+  ;
+
+/* old way
+
+<tr><td><label for="status">Status </label></td><td><textarea name="status" id="status" rows="4" cols="50" readonly></textarea>
+</td></tr>
+start script>
+
+ga.value.setLastValue( "sys_register_google_output", "#status" );
+ end script>
+*/
+
+// -- end textarea.output --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#sys_register_google_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="sys_register_google_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="sys_register_google_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 10
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#sys_register_google_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="sys_register_google_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="sys_register_google_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="sys_register_google_progress"></span> -->
+<script>
+$( "#sys_register_google_b_reset_button" ).remove();
+$( "#sys_register_google_b_submit_button .buttontext" ).html( "Register" );
+
+
+
+
+var sys_register_google_output_msgs = $("#sys_register_google_output_msgs");
+sys_register_google_output_msgs.text( "" );
+
+var sys_register_google_timeout_handler = "unset";
+var sys_register_google_timeout_handler_uuid;
+
+function get_results_sys_register_google( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "sys_register_google", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( sys_register_google_timeout_handler != "unset" )
+              {
+                  clearTimeout( sys_register_google_timeout_handler );
+                  sys_register_google_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "sys_register_google" );
+              eval( sys_register_google_done_eval );
+              ga.progress.clear(  "sys_register_google", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               sys_register_google_timeout_handler =  setTimeout( get_results_sys_register_google, last_timeout, id, last_timeout, 0 );
+               sys_register_google_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#sys_register_google_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_register_google.php </span>" );
+           ga.progress.clear( 'sys_register_google', 'input.footer 1' );
+           if ( sys_register_google_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_register_google_timeout_handler );
+               sys_register_google_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "sys_register_google" );
+           eval( sys_register_google_done_eval );
+          } );
+    return false;
+};
+
+function msg_sys_register_google ( id, data )
+{
+   ga.data.update( "sys_register_google", data, get_results_sys_register_google, id );
+};
+
+$( "#sys_register_google_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#sys_register_google" ).find( ".toclear" ).remove();   
+   if ( sys_register_google_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_register_google_timeout_handler );
+       if ( sys_register_google_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_register_google_timeout_handler_uuid, "sys_register_google" );
+       }
+       sys_register_google_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "sys_register_google_output", true );
+
+   ga.captcha( do_sys_register_google_submit, $(this) ); return false;
+   return ga.xsede.select( "local", do_sys_register_google_submit, $(this) );
+   //   return do_sys_register_google_submit( $(this) );
+});
+
+function do_sys_register_google_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+      $ok = 1;
+   
+
+   ga.event( "", "sys_register_google", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "sys_register_google" ) ) {
+       ga.valid.showerrormessage( "sys_register_google" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_sys_register_google_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_sys_register_google_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+ + "&_submitpolicy=all"
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_sys_register_google, do_sys_register_google_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#sys_register_google_results" ).text( "" );
+
+              ga.value.saveLastValues( "sys_register_google" );
+              ga.value.resetDefaultValues( "sys_register_google_output", true );
+
+              var found_errors = 0;
+              $("#sys_register_google").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#sys_register_google " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "sys_register_google" );
+    ga.valuen.addhtml( "sys_register_google" );
+
+    ga.extrahidden( "sys_register_google" );
+
+    ga.ws.sub( vuuid, msg_sys_register_google, "sys_register_google" );
+
+    var formData = new FormData($('#sys_register_google')[0]);
+    
+     
+      formData.append("googleid", "yes"); 
+    
+     
+     
+
+     
+     if ( ga.multistage["sys_register_google"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "sys_register_google", formData, ga.stages["sys_register_google"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'sys_register_google', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "sys_register_google", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["sys_register_google"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/sys_register_google.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'sys_register_google_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["sys_register_google"] )
+      {
+        ga.value.showfields(ga.multistage, "sys_register_google", ga.stages["sys_register_google"], ga.currentstage);
+    	delete ga.stages["sys_register_google"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'sys_register_google', 'input.footer 2' );
+   
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           sys_register_google_output_msgs.text( "" );
+           job_status = ga.data.update( "sys_register_google", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( sys_register_google_timeout_handler != "unset" )
+               {
+                   clearTimeout( sys_register_google_timeout_handler );
+                   sys_register_google_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "sys_register_google" );
+               eval( sys_register_google_done_eval );
+           } else {
+               sys_register_google_timeout_handler = setTimeout( get_results_sys_register_google, 2000, vuuid, 2000, 0 );
+               sys_register_google_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#sys_register_google_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_register_google.php </span>" );
+           ga.progress.clear( 'sys_register_google', 'input.footer 3' );
+           if ( sys_register_google_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_register_google_timeout_handler );
+               sys_register_google_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "sys_register_google" );
+           eval( sys_register_google_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+sys_register_google_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "sys_register_google_output_textarea" ).style.height = 0;
+    }
+
+    if ( sys_register_google_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_register_google_timeout_handler );
+       if ( sys_register_google_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_register_google_timeout_handler_uuid, "sys_register_google" );
+       }
+       sys_register_google_timeout_handler = "unset";
+    }
+    ga.event( "", "sys_register_google", "reset clicked" );
+    ga.valid.clearerrorcounter( "sys_register_google" );
+
+   if ( ga.multistage["sys_register_google"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"sys_register_google");
+       ga.stages["sys_register_google"].length = 0;
+       ga.stages["sys_register_google"] = ga.stagesdefault["sys_register_google"].slice();
+       console.log("Reset: " + ga.stages["sys_register_google"]);
+     }
+
+    //    ga.value.resetDefaultValues( "sys_register_google" );
+    ga.valuen.restore.dflt(  "sys_register_google" );
+    ga.value.resetDefaultValues( "sys_register_google_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#sys_register_google_reset" ).click( function() {
+   return sys_register_google_reset();
+});
+
+
+ga.value.resetDefaultValues( "sys_register_google_output" ); ga.value.resetDefaultValue( "sys_register_google_output", "#sys_register_google_output_msgs" );
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="sys_register_google_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#sys_register_google").append( ga.tmp.html );
+</script>
+
+<form id="sys_register_google_output">
+<!-- moved to layout.js <div id="sys_register_google_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "sys_register_google_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="sys_register_google_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="sys_register_google_output_textarea_label" for="sys_register_google_output_textarea" class=""></label>
+<textarea readonly hidden id="sys_register_google_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_sys_register_google = 1; </script>

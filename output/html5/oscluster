@@ -1,0 +1,291 @@
+#!/usr/bin/env php
+<?php
+
+$debug = false;
+$noudptext = true;
+
+global $debug;
+global $noudptext;
+global $appjson;
+
+$appconfig = "/opt/genapp/mxray/appconfig.json";
+if ( NULL == ( $appjson = json_decode( file_get_contents( $appconfig ) ) ) ) {
+    echo '{"error":"appconfig could not be decoded"}';
+    exit;
+}
+
+if ( isset( $appjson->messaging ) &&
+     isset( $appjson->messaging->udphostip ) &&
+     isset( $appjson->messaging->udpport ) ) {
+    $GLOBALS['udp'] = new stdClass();
+    $GLOBALS['udp']->hostip = $appjson->messaging->udphostip;
+    $GLOBALS['udp']->port   = $appjson->messaging->udpport;
+}
+
+function dashline() {
+    echo str_repeat( "-", 80 ) . "\n";
+}
+
+function jsondump( $title, $obj ) {
+    global $debug;
+    if ( isset( $debug ) && $debug ) {
+        echo "$title:\n";
+        dashline();
+        echo json_encode( $obj, JSON_PRETTY_PRINT ) . "\n";
+        dashline();
+    }
+}
+
+function echo_if_debug( $str ) {
+    global $debug;
+    if ( isset( $debug ) && $debug ) {
+        echo $str;
+    }
+}
+
+function sendudpmsg( $status ) {
+    global $debug;
+    if ( $debug ) {
+        echo "sendudpmsg: $status\n";
+        return;
+    }
+
+    if ( !isset( $GLOBALS['udp'] ) ) {
+        return;
+    }
+
+    unset( $GLOBALS['udp']->msg[ '_textarea' ] );
+    $GLOBALS['udp']->msg[ '_airavata' ] = empty( $status ) ? "" : "OpenStack: $status<hr>";
+
+    $json_msg = json_encode( $GLOBALS[ 'udp' ]->msg );
+
+    socket_sendto( $GLOBALS[ 'udp' ]->socket,
+                   $json_msg,
+                   strlen( $json_msg ),
+                   0,
+                   $GLOBALS[ 'udp' ]->hostip,
+                   $GLOBALS[ 'udp' ]->port );
+}    
+
+function sendudptext( $text ) {
+    global $debug;
+    global $noudptext;
+
+    if ( $noudptext ) {
+        return;
+    }
+
+    if ( $debug ) {
+        echo "sendudp: $text\n";
+        return;
+    }
+
+    if ( !isset( $GLOBALS['udp'] ) ) {
+        return;
+    }
+
+    unset( $GLOBALS['udp']->msg[ '_airavata' ] );
+    $GLOBALS['udp']->msg[ '_textarea' ] = $text;
+
+    $json_msg = json_encode( $GLOBALS[ 'udp' ]->msg );
+
+    socket_sendto( $GLOBALS[ 'udp' ]->socket,
+                   $json_msg,
+                   strlen( $json_msg ),
+                   0,
+                   $GLOBALS[ 'udp' ]->hostip,
+                   $GLOBALS[ 'udp' ]->port );
+}    
+
+require "openstack/os_cluster.php";
+require_once "/var/www/html/mxray/ajax/joblog.php";
+
+if ($argc == 3) {
+    $appId = $argv[1];
+
+    # check for defined resource
+
+    $json_decoded = json_decode( $argv[2] );
+    if ( $json_decoded == null ) {
+        echo '{"error":"oscluster received malformed JSON input."}';
+        exit;
+    }
+
+    jsondump( '$json_decoded', $json_decoded );
+    if ( !isset( $json_decoded->numproc ) || empty( $json_decoded->numproc ) ) {
+        echo '{"error":"Number of processors not defined."}';
+        exit;
+    }
+
+    # figure out number of nodes to boot
+
+    $GLOBALS['NP'] = $json_decoded->numproc;
+
+    if ( 
+        ( isset( $json_decoded->os_ppn ) ||
+          isset( $json_decoded->os_flavor ) ||
+          isset( $json_decoded->os_nodes ) ) &&
+        !( isset( $json_decoded->os_ppn ) &&
+           isset( $json_decoded->os_flavor ) &&
+           isset( $json_decoded->os_nodes ) ) ) {
+        echo '{"error":"module json error: os_ppn, os_flavor & os_nodes must either be set all together or not at all"}';
+        exit;
+    }
+        
+    if ( isset( $json_decoded->os_flavor ) ) {
+        $use_flavor   = str_replace( "_", ".", $json_decoded->os_flavor );
+        $ppn          = $json_decoded->os_ppn;
+        $nc           = $json_decoded->os_nodes;
+    } else {
+        if ( !isset( $appjson->resources->oscluster->properties->flavor ) ) {
+            echo '{"error":"resources:oscluster:properties:flavor not defined in appconfig"}';
+            exit;
+        }
+        $use_flavor = $appjson->resources->oscluster->properties->flavor;
+
+        if ( !isset( $appjson->resources->oscluster->properties->ppn ) ) {
+            echo '{"error":"PPNs not defined in appconfig for this flavor."}';
+            exit;
+        }
+        $ppn = $appjson->resources->oscluster->properties->ppn;
+
+        $nc = ceil( $json_decoded->numproc / $ppn );
+    }
+
+    if ( !isset( $appjson->resources->oscluster->properties->flavors ) ||
+         !isset( $appjson->resources->oscluster->properties->flavors->$use_flavor ) ) {
+        echo '{"error":"selected flavor ' . $use_flavor . ' not in appconfig flavors list"}';
+        exit;
+    }
+
+    $flavor_ppn = $appjson->resources->oscluster->properties->flavors->$use_flavor;
+
+    if ( !isset( $json_decoded->_uuid ) ) {
+        echo '{"error":"no _uuid defined in json input."}';
+        exit;
+    }
+        
+    $uuid = $json_decoded->_uuid;
+
+    $GLOBALS['NC'] = $nc;
+
+    # setup up udp messaging if available
+
+    if ( isset( $GLOBALS['udp'] ) ) {
+        if ( isset( $json_decoded->_uuid ) ) {
+            $GLOBALS['udp']->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+            $GLOBALS['udp']->msg    = Array( "_uuid"    => $json_decoded->_uuid );
+        } else {
+            unset( $GLOBALS['udp'] );
+        }
+    }
+
+    // startup cluster, run job, shutdown cluster
+    // error_log( "globals:\n" . print_r( $GLOBALS, true ) . "\n", 3, "oscluster.log" );
+    // sendudptext( "globals:\n" . print_r( $GLOBALS, true ) . "\n" );
+
+    $json_decoded->_clusternodecount = $GLOBALS[ "NC" ];
+    $json_decoded->_clusterppn = $ppn;
+
+    sendudptext( "json:\n" . json_encode( $json_decoded, JSON_PRETTY_PRINT ) . "\n" );
+
+# -------------------- create virtual cluster, get ip's --------------------
+
+    logrunningresource( $json_decoded->_uuid, "openstack", $GLOBALS[ "NC" ], $flavor_ppn );
+
+    sendudpmsg( "Creating virtual cluster" );
+
+    $xsedeproject = isset( $json_decoded->_xsedeproject ) ? $json_decoded->_xsedeproject : NULL;
+
+    $result = os_cluster_start( $GLOBALS[ "NC" ], $uuid, $xsedeproject, $use_flavor );
+        
+    $result_json = json_decode( $result );
+
+    sendudptext( $result );
+
+    if ( isset( $result_json->error ) ) {
+        echo $result;
+        exit;
+    }
+    sendudptext( json_encode( $result_json, JSON_PRETTY_PRINT ) );
+
+    $json_decoded->_clusterips = $result_json->clusterips;
+    $json_decoded->_clusteripsjoined = implode( ",", $result_json->clusterips );
+
+    $json_decoded->_clusterhostfile = "hostfile-$uuid.txt";
+    $tmp_slots = " slots=$ppn";
+    $hostfiletext = implode( "$tmp_slots\n", $result_json->clusterips ) . "$tmp_slots\n";
+    # $hostfiletext = str_replace( $result_json->clusterips[0], "localhost", $hostfiletext );
+    ob_start();
+    file_put_contents( $json_decoded->_clusterhostfile, $hostfiletext );
+    ob_end_clean();
+
+    sendudptext( "json with clusters:\n" . json_encode( $json_decoded, JSON_PRETTY_PRINT ) . "\n" );
+    sendudptext( "hostfiletext:\n$hostfiletext\n" );
+
+# -------------------- run job on 1st node of virtual cluster --------------------
+
+    sendudpmsg( "Running job" );
+
+    $json_decoded->_base_directory = str_replace( "/var/www/html/mxray", "__docrootactual:html5__", $json_decoded->_base_directory );
+    $json_decoded->_log_directory  = str_replace( "/var/www/html/mxray", "__docrootactual:html5__", $json_decoded->_log_directory );
+    $json_decoded->_osroot         = "__docrootactual:html5__";
+
+    $cmd = 
+        "ssh " 
+        . $result_json->clusterips[0] 
+        . " \"cd " 
+        . $json_decoded->_base_directory
+        . "; /opt/genapp/mxray/bin/$appId '" 
+        . str_replace( '"', '\"', json_encode( $json_decoded ) ) 
+        . "'\""
+        . ' 2> '
+        . $json_decoded->_log_directory
+        . "/_os_stderr_$uuid"
+        ;
+    
+    sendudptext( "$cmd\n" );
+
+    ob_start();
+    file_put_contents( $json_decoded->_log_directory . "/_oscmd_$uuid", $cmd );
+    ob_end_clean();
+
+    $results = `$cmd`;
+    
+#    sendudptext( "results - pre replace:\n" . $results );
+
+    if ( empty( $results ) &&
+         file_exists( $json_decoded->_log_directory . "/_os_stderr_$uuid" ) &&
+         filesize( $json_decoded->_log_directory . "/_os_stderr_$uuid" ) != 0 
+        ) {
+        $tmp_results = [];
+        $tmp_results[ "error" ] = file_get_contents( $json_decoded->_log_directory . "/_os_stderr_$uuid" );
+        $results = json_encode( $tmp_results );
+    }
+
+    $results = str_replace( "__docrootactual:html5__", "/var/www/html/mxray", $results );
+
+    sendudptext( "results - post replace:\n" . $results );
+
+    $cmd = "";
+    foreach ( $result_json->clusterips as $ip ) {
+        $cmd .= "ssh root@$ip 'sync; sudo umount /opt' &\n";
+    }
+    $cmd .= "wait\n";
+    sendudptext( $cmd );
+    $syncres = `$cmd 2>&1`;
+    sendudptext( $syncres );
+
+# -------------------- remove virtual cluster --------------------
+    sendudpmsg( "Remove virtual cluster" );
+
+    isset( $json_decoded->_xsedeproject ) ? os_delete( $GLOBALS[ "NC" ], $uuid, $json_decoded->_xsedeproject ) : os_delete( $GLOBALS[ "NC" ], $uuid );
+
+    sendudpmsg( "" );
+
+    echo $results;
+} else {
+    echo  "{\"error\":\"insufficient arguments\"}";
+}
+    
+?>

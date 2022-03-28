@@ -1,0 +1,722 @@
+<!-- input.header -->
+<div style="height:65vh; overflow:auto">
+
+<form id="rpath" 
+ style="max-height:65vh;overflow:auto">
+<div id="rpath_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "rpath";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"fields":[{"type":"label","dgc":2,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"rpathtext","lgc":1,"role":"input","lgr":1,"dgr":1},{"lgr":2,"role":"input","dgr":2,"dgc":2,"type":"label","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"serverdate","lgc":1},{"dgr":3,"lgr":3,"role":"input","lgc":1,"id":"selpaths","layout":{"label":[1,1],"parent":"root","data":[1,2]},"type":"ftree","dgc":2},{"lgc":1,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"selpath","dgc":2,"type":"label","dgr":4,"lgr":4,"role":"input"},{"lgr":5,"role":"input","dgr":5,"buttontext":"Submit","id":"b_submit","layout":{"data":[1,1],"parent":"root","label":[1,1]},"dgc":1,"type":"button","lgc":1},{"lgr":6,"role":"input","dgr":5,"buttontext":"Reset to default values","dgc":2,"type":"button","layout":{"data":[0,2],"parent":"root","label":[1,1]},"id":"b_reset","lgc":1},{"type":"span","dgc":"1/3","id":"rpath_progress","layout":{"label":"none","data":[1,[1,3]],"parent":"root"},"dgr":7,"role":"output"},{"type":"span","dgc":"1/3","layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"id":"rpath_output_airavata","lgc":1,"role":"output","lgr":8,"dgr":8},{"type":"span","dgc":"1/3","id":"rpath_output_msgs","layout":{"label":[1,1],"parent":"root","data":[1,[1,3]]},"lgc":1,"lgr":9,"role":"output","dgr":9},{"layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"id":"rpath_output_textarea","type":"span","dgc":"1/3","lgc":1,"role":"output","lgr":10,"dgr":10}],"panels":[{"root":{"gtc":"1fr 1fr ","repeats":{"size":["auto",[1,1]],"location":["next","full"]},"data":[1,2],"size":["auto",[1,1]],"gap":"5px","label":[1,1],"align":"left","gtr":"auto"}}]}' );
+ga.layout.module.json = JSON.parse( '{"executable":"rpath","fields":[{"colspan":4,"default":"header3","id":"rpathtext","label":"Choose a path","posthline":"true","role":"input","type":"label"},{"help":"This is the date and time from the file system on the server at the time you opened this window","id":"serverdate","label":"Server date","pull":"datetime","role":"input","type":"label"},{"id":"selpaths","label":"Server paths","reportpath":"selpath","role":"input","singlepath":"true","type":"ftree"},{"id":"selpath","label":"Selected path","role":"input","type":"label"}],"height":"65vh","label":"Rpath","modal":"true","moduleid":"rpath","nojobcontrol":"true","nooutputhr":"true","noreset":"true","resource":"local","submit_cb":"selpaths","submit_label":"OK"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'rpath' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+rpath_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#rpath').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "rpathtext" ] = {};
+ga.layout.fields[ "rpathtext" ].lhtml = '<label id="rpathtext_label" class="ga-field-input-header3 " style="">Choose a path</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="rpathtext"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "rpathtext" ].dhtml = '';
+
+
+
+ga.layout.fields[ "rpathtext" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td colspan="4"><label id="rpathtext_label" class="header3 ">Choose a path</label>' + 
+'</td>' +
+'<td><div id="rpathtext"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- label.input --
+
+ga.layout.fields[ "serverdate" ] = {};
+ga.layout.fields[ "serverdate" ].lhtml = '<label id="serverdate_label" class="ga-field-input-help_link" style="">Server date</label>'
+ + '<span class="help">This is the date and time from the file system on the server at the time you opened this window</span>'
+ '<div id="serverdate" class="help_link"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "serverdate" ].dhtml = '';
+
+
+
+ga.layout.fields[ "serverdate" ].eval  =
+  ''
+  + 'ga.pull.toPull("rpath","#serverdate","label","datetime","#__fields:repeat__" );'
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="serverdate_label" class="help_link">Server date</label>' + 
+'<span class="help">This is the date and time from the file system on the server at the time you opened this window</span></td>' +
+'<td><div id="serverdate" class="help_link"></div>' +
+'__<span class="help">This is the date and time from the file system on the server at the time you opened this window</span></td></tr>';
+this_eval = '';
+this_eval='ga.pull.toPull("rpath","#serverdate","label","datetime","#__fields:repeat__" );';input_eval+=this_eval;
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- ftree.input --
+
+ga.layout.fields[ "selpaths" ] = {};
+ga.layout.fields[ "selpaths" ].lhtml =
+  '<label for="selpaths" class="help_link">Server paths </label>'
+  + '<span class="help">__fields:help__</span>'
+  ;
+
+ga.layout.fields[ "selpaths" ].dhtml = '<div name="selpaths" id="selpaths"></div>';
+ga.layout.fields[ "selpaths" ].eval  =
+'$("#selpaths")' + 
+  
+  '.on("ready.jstree open_node.jstree",function(e){$("#selpaths .jstree-leaf > a").children(".jstree-checkbox").css("display","none");})' + 
+  
+  '.on("changed.jstree",function(){var s=$(this).jstree(true),i=0,t=s.get_top_checked(true),j=t.length,r=[];for(;i<j;i++){if(!s.is_leaf(t[i])){r.push($.base64.decode(t[i].id).substr(2));break;}};$("#selpath").html( j? "<i>Server</i>: " + r : " " );})' + 
+  
+  '.jstree({plugins:["singleselectpath","checkbox","contextmenu"],' +
+  'core:{"multiple":false,data:function(e,c){ga.fc(e.id,c)},check_callback:function(){return 0;}},contextmenu:{items:function(e){return{Refresh:{label:"Refresh",separator_after:!0,action:function(){ga.fc.clear(e.parent)}},Remove:{label:"Remove",action:function(e){var c=$.jstree.reference(e.reference),t=c.get_node(e.reference);console.log("remove");ga.fc.delete_warn_delete(c.is_selected(t)?c.get_selected():[t.id])}}}}}}),$("#selpaths").attr("type","div"),ga.fc.trees["#selpaths"]="file";'
+;
+
+input_trees.push( "selpaths" );
+
+/* old way
+
+this_html = '<tr><td><label for="selpaths" >Server paths </label></td><td><div name="selpaths" id="selpaths"></div></td></tr>';
+this_eval = '$("#selpaths")' + 
+
+'.on("ready.jstree open_node.jstree",function(e){$("#selpaths .jstree-leaf > a").children(".jstree-checkbox").css("display","none");})' + 
+
+'.on("changed.jstree",function(){var s=$(this).jstree(true),i=0,t=s.get_top_checked(true),j=t.length,r=[];for(;i<j;i++){if(!s.is_leaf(t[i])){r.push($.base64.decode(t[i].id).substr(2));break;}};$("#selpath").html( j? "<i>Server</i>: " + r : " " );})' + 
+
+'.jstree({plugins:["singleselectpath","checkbox","contextmenu"],' +
+'core:{"multiple":false,data:function(e,c){ga.fc(e.id,c)},check_callback:function(){return 0;}},contextmenu:{items:function(e){return{Refresh:{label:"Refresh",separator_after:!0,action:function(){ga.fc.clear(e.parent)}},Remove:{label:"Remove",action:function(e){var c=$.jstree.reference(e.reference),t=c.get_node(e.reference);console.log("remove");ga.fc.delete_warn_delete(c.is_selected(t)?c.get_selected():[t.id])}}}}}}),$("#selpaths").attr("type","div"),ga.fc.trees["#selpaths"]="file";';
+input_trees.push( "selpaths" );
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end ftree.input --
+// -- label.input --
+
+ga.layout.fields[ "selpath" ] = {};
+ga.layout.fields[ "selpath" ].lhtml = '<label id="selpath_label" class="ga-field-input-" style="">Selected path</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="selpath"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "selpath" ].dhtml = '';
+
+
+
+ga.layout.fields[ "selpath" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="selpath_label" class="">Selected path</label>' + 
+'</td>' +
+'<td><div id="selpath"></div>' +
+'__</td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#rpath_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="rpath_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="rpath_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#rpath_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="rpath_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="rpath_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="rpath_progress"></span> -->
+<script>
+$( "#rpath_b_reset_button" ).remove();
+$( "#rpath_b_submit_button .buttontext" ).html( "OK" );
+
+
+
+
+var rpath_output_msgs = $("#rpath_output_msgs");
+rpath_output_msgs.text( "" );
+
+var rpath_timeout_handler = "unset";
+var rpath_timeout_handler_uuid;
+
+function get_results_rpath( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "rpath", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( rpath_timeout_handler != "unset" )
+              {
+                  clearTimeout( rpath_timeout_handler );
+                  rpath_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "rpath" );
+              eval( rpath_done_eval );
+              ga.progress.clear(  "rpath", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               rpath_timeout_handler =  setTimeout( get_results_rpath, last_timeout, id, last_timeout, 0 );
+               rpath_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#rpath_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/rpath.php </span>" );
+           ga.progress.clear( 'rpath', 'input.footer 1' );
+           if ( rpath_timeout_handler != "unset" )
+           {
+               clearTimeout( rpath_timeout_handler );
+               rpath_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "rpath" );
+           eval( rpath_done_eval );
+          } );
+    return false;
+};
+
+function msg_rpath ( id, data )
+{
+   ga.data.update( "rpath", data, get_results_rpath, id );
+};
+
+$( "#rpath_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#rpath" ).find( ".toclear" ).remove();   
+   if ( rpath_timeout_handler != "unset" ) {
+       
+       clearTimeout( rpath_timeout_handler );
+       if ( rpath_timeout_handler_uuid ) {
+           ga.ws.unsub( rpath_timeout_handler_uuid, "rpath" );
+       }
+       rpath_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "rpath_output", true );
+
+   
+   return ga.xsede.select( "local", do_rpath_submit, $(this) );
+   //   return do_rpath_submit( $(this) );
+});
+
+function do_rpath_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+      $ok = 1;
+   
+
+   ga.event( "", "rpath", "submit clicked" );
+
+   
+
+   ga.altfile.bdata[ "rpath" ].cb("#selpaths"); ga.altfile.button.cb(); return false;
+
+
+
+   if ( !ga.valid.checksubmit( "rpath" ) ) {
+       ga.valid.showerrormessage( "rpath" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_rpath_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_rpath_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_rpath, do_rpath_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#rpath_results" ).text( "" );
+
+              ga.value.saveLastValues( "rpath" );
+              ga.value.resetDefaultValues( "rpath_output", true );
+
+              var found_errors = 0;
+              $("#rpath").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#rpath " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "rpath" );
+    ga.valuen.addhtml( "rpath" );
+
+    ga.extrahidden( "rpath" );
+
+    ga.ws.sub( vuuid, msg_rpath, "rpath" );
+
+    var formData = new FormData($('#rpath')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["rpath"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "rpath", formData, ga.stages["rpath"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'rpath', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "rpath", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["rpath"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/rpath.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'rpath_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["rpath"] )
+      {
+        ga.value.showfields(ga.multistage, "rpath", ga.stages["rpath"], ga.currentstage);
+    	delete ga.stages["rpath"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'rpath', 'input.footer 2' );
+   
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           rpath_output_msgs.text( "" );
+           job_status = ga.data.update( "rpath", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( rpath_timeout_handler != "unset" )
+               {
+                   clearTimeout( rpath_timeout_handler );
+                   rpath_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "rpath" );
+               eval( rpath_done_eval );
+           } else {
+               rpath_timeout_handler = setTimeout( get_results_rpath, 2000, vuuid, 2000, 0 );
+               rpath_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#rpath_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/rpath.php </span>" );
+           ga.progress.clear( 'rpath', 'input.footer 3' );
+           if ( rpath_timeout_handler != "unset" )
+           {
+               clearTimeout( rpath_timeout_handler );
+               rpath_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "rpath" );
+           eval( rpath_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+rpath_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "rpath_output_textarea" ).style.height = 0;
+    }
+
+    if ( rpath_timeout_handler != "unset" ) {
+       
+       clearTimeout( rpath_timeout_handler );
+       if ( rpath_timeout_handler_uuid ) {
+           ga.ws.unsub( rpath_timeout_handler_uuid, "rpath" );
+       }
+       rpath_timeout_handler = "unset";
+    }
+    ga.event( "", "rpath", "reset clicked" );
+    ga.valid.clearerrorcounter( "rpath" );
+
+   if ( ga.multistage["rpath"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"rpath");
+       ga.stages["rpath"].length = 0;
+       ga.stages["rpath"] = ga.stagesdefault["rpath"].slice();
+       console.log("Reset: " + ga.stages["rpath"]);
+     }
+
+    //    ga.value.resetDefaultValues( "rpath" );
+    ga.valuen.restore.dflt(  "rpath" );
+    ga.value.resetDefaultValues( "rpath_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#rpath_reset" ).click( function() {
+   return rpath_reset();
+});
+
+
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="rpath_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+ga.tmp.html = "";
+$("#rpath").append( ga.tmp.html );
+</script>
+
+<form id="rpath_output">
+<!-- moved to layout.js <div id="rpath_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "rpath_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="rpath_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="rpath_output_textarea_label" for="rpath_output_textarea" class=""></label>
+<textarea readonly hidden id="rpath_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+</div>
+
+<script>loaded_rpath = 1; </script>

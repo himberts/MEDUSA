@@ -1,0 +1,950 @@
+<!-- input.header -->
+
+
+<form id="sys_feedback" 
+ style="max-height:65vh;overflow:auto">
+<div id="sys_feedback_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "sys_feedback";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"fields":[{"lgr":1,"role":"input","dgr":1,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"label1","dgc":2,"type":"label","lgc":1},{"dgr":2,"lgr":2,"role":"input","lgc":1,"id":"serverdate","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgc":2,"type":"label"},{"lgc":1,"type":"email","dgc":2,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"email","dgr":3,"lgr":3,"role":"input"},{"dgr":4,"role":"input","lgr":4,"lgc":1,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"email2","dgc":2,"type":"email"},{"dgr":5,"lgr":5,"role":"input","lgc":1,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"subject","dgc":2,"type":"text"},{"lgr":6,"role":"input","dgr":6,"type":"radio","dgc":2,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"suggestion","lgc":1},{"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"important","dgc":2,"type":"radio","lgc":1,"lgr":7,"role":"input","dgr":7},{"lgr":8,"role":"input","dgr":8,"id":"critical","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgc":2,"type":"radio","lgc":1},{"lgc":1,"dgc":2,"type":"job","layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"job1","dgr":9,"lgr":9,"role":"input"},{"dgr":10,"lgr":10,"role":"input","lgc":1,"id":"text1","layout":{"parent":"root","data":[1,2],"label":[1,1]},"type":"textarea","dgc":2},{"lgc":1,"dgc":1,"type":"button","id":"b_submit","layout":{"parent":"root","data":[1,1],"label":[1,1]},"dgr":11,"buttontext":"Submit","lgr":11,"role":"input"},{"dgr":11,"buttontext":"Reset to default values","role":"input","lgr":12,"lgc":1,"dgc":2,"type":"button","id":"b_reset","layout":{"label":[1,1],"data":[0,2],"parent":"root"}},{"role":"output","dgr":13,"type":"span","dgc":"1/3","id":"sys_feedback_progress","layout":{"label":"none","parent":"root","data":[1,[1,3]]}},{"lgc":1,"layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"id":"sys_feedback_output_airavata","dgc":"1/3","type":"span","dgr":14,"role":"output","lgr":14},{"dgr":15,"lgr":15,"role":"output","lgc":1,"layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"id":"sys_feedback_output_msgs","dgc":"1/3","type":"span"},{"dgr":16,"role":"output","lgr":16,"lgc":1,"dgc":"1/3","type":"span","layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"id":"sys_feedback_output_textarea"}],"panels":[{"root":{"data":[1,2],"size":["auto",[1,1]],"gap":"5px","repeats":{"size":["auto",[1,1]],"location":["next","full"]},"gtc":"1fr 1fr ","gtr":"auto","align":"left","label":[1,1]}}]}' );
+ga.layout.module.json = JSON.parse( '{"eventlog":"true","fields":[{"colspan":4,"default":"header3","id":"label1","label":"Please give your feedback","role":"input","type":"label"},{"id":"serverdate","label":"Server date","pull":"datetime","role":"input","type":"label"},{"help":"Please verify your email address","id":"email","label":"Email address","pull":"email","required":"true","role":"input","size":"50","type":"email"},{"help":"Please repeat your email address","id":"email2","label":"Repeat email address","match":"email","pull":"email","required":"true","role":"input","size":"50","type":"email"},{"help":"Please enter a subject for this message.","id":"subject","label":"Subject","required":"true","role":"input","size":"50","type":"text"},{"checked":"true","help":"Check this if your comment is a suggestion.","id":"suggestion","label":"Suggestion","name":"level","role":"input","type":"radio"},{"help":"Check this if your comment is important to aid your work.","id":"important","label":"Important","name":"level","role":"input","type":"radio"},{"help":"Check this if your comment is critical and you can not proceeed with your work.","id":"critical","label":"Critical","name":"level","role":"input","type":"radio"},{"help":"This will give us more detailed information to better assist you. Only available if you are logged in.","id":"job1","label":"Provide a reference job(s) if available","role":"input","type":"job"},{"cols":60,"help":"Please take as much space as needed.  You can expand the text area at the bottom right.","id":"text1","label":"Your comments","required":"true","role":"input","rows":10,"type":"textarea"}],"label":"feedback","modal":"true","moduleid":"sys_feedback","navigator":"true","nojobcontrol":"true","noreset":"true","resetonload":"true","resource":"local","submitpolicy":"all"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'sys_feedback' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+sys_feedback_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#sys_feedback').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label1" ] = {};
+ga.layout.fields[ "label1" ].lhtml = '<label id="label1_label" class="ga-field-input-header3 " style="">Please give your feedback</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label1"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label1" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label1" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td colspan="4"><label id="label1_label" class="header3 ">Please give your feedback</label>' + 
+'</td>' +
+'<td><div id="label1"></div>' +
+'__</td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- label.input --
+
+ga.layout.fields[ "serverdate" ] = {};
+ga.layout.fields[ "serverdate" ].lhtml = '<label id="serverdate_label" class="ga-field-input-" style="">Server date</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="serverdate"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "serverdate" ].dhtml = '';
+
+
+
+ga.layout.fields[ "serverdate" ].eval  =
+  ''
+  + 'ga.pull.toPull("sys_feedback","#serverdate","label","datetime","#__fields:repeat__" );'
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="serverdate_label" class="">Server date</label>' + 
+'</td>' +
+'<td><div id="serverdate"></div>' +
+'__</td></tr>';
+this_eval = '';
+this_eval='ga.pull.toPull("sys_feedback","#serverdate","label","datetime","#__fields:repeat__" );';input_eval+=this_eval;
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- email.input --
+
+ga.layout.fields[ "email" ] = {};
+ga.layout.fields[ "email" ].lhtml = '<label for="email">Email address </label>';
+ga.layout.fields[ "email" ].dhtml = '<input type="email" name="email" id="email" required size="50" class="ga-field-input-control help_link"><span class="help">Please verify your email address</span}><span id="email_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "email" ].eval  =
+  'ga.pull.toPull( "sys_feedback", "#email", "email", "email", "#__fields:repeat__" );' + 
+  
+  
+  'ga.value.setLastValue( "sys_feedback", "#email" );$( "#email" ).keypress( function() { $( "#email_msg" ).html( "" ); });'
+  ;
+  ;
+
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="email">Email address </label></td><td><input type="email" name="email" id="email" required size="50" class="help_link"><span class="help">Please verify your email address</span><span id="email_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.pull.toPull( "sys_feedback", "#email", "email", "email", "#__fields:repeat__" );' + 
+
+
+'ga.value.setLastValue( "sys_feedback", "#email" );$( "#email" ).keypress( function() { $( "#email_msg" ).html( "" ); });'
+;
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end email.input --
+// -- email.input --
+
+ga.layout.fields[ "email2" ] = {};
+ga.layout.fields[ "email2" ].lhtml = '<label for="email2">Repeat email address </label>';
+ga.layout.fields[ "email2" ].dhtml = '<input type="email" name="email2" id="email2" required size="50" class="ga-field-input-control help_link"><span class="help">Please repeat your email address</span}><span id="email2_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "email2" ].eval  =
+  'ga.pull.toPull( "sys_feedback", "#email2", "email", "email", "#__fields:repeat__" );' + 
+  
+  
+  'ga.value.setLastValue( "sys_feedback", "#email2" );$( "#email2" ).keypress( function() { $( "#email2_msg" ).html( "" ); });'
+   + '$( "#email2" ).blur( function() { ga.valid.checkMatch( "#email2", "#email" ); } );';
+  ;
+
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="email2">Repeat email address </label></td><td><input type="email" name="email2" id="email2" required size="50" class="help_link"><span class="help">Please repeat your email address</span><span id="email2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.pull.toPull( "sys_feedback", "#email2", "email", "email", "#__fields:repeat__" );' + 
+
+
+'ga.value.setLastValue( "sys_feedback", "#email2" );$( "#email2" ).keypress( function() { $( "#email2_msg" ).html( "" ); });'
+ + '$( "#email2" ).blur( function() { ga.valid.checkMatch( "#email2", "#email" ); } );';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end email.input --
+// -- text.input --
+
+ga.layout.fields[ "subject" ] = {};
+ga.layout.fields[ "subject" ].lhtml = '<label for="subject" class="ga-g-sys_feedback-subject" style="">Subject </label>';
+ga.layout.fields[ "subject" ].dhtml = '<input type="text" name="subject" id="subject" required size="50" class="ga-g-sys_feedback-subject ga-field-input-control help_link"><span class="help">Please enter a subject for this message.</span}><span id="subject_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "subject" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("sys_feedback","subject","Subject","text");'
+  + '$( "#subject" ).blur( function() { ga.valid.checkText( "#subject" ); });'
+  + 
+  'ga.value.setLastValue( "sys_feedback", "#subject" );$( "#subject" ).keypress( function() { $( "#subject_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="subject">Subject </label></td><td><input type="text" name="subject" id="subject" required size="50" class="help_link"><span class="help">Please enter a subject for this message.</span><span id="subject_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("sys_feedback","subject","Subject","text");'
++ '$( "#subject" ).blur( function() { ga.valid.checkText( "#subject" ); });'
++ 
+'ga.value.setLastValue( "sys_feedback", "#subject" );$( "#subject" ).keypress( function() { $( "#subject_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- radio.input --
+
+ga.layout.fields[ "suggestion" ] = {};
+ga.layout.fields[ "suggestion" ].lhtml = '<label for="suggestion">Suggestion </label>';
+ga.layout.fields[ "suggestion" ].dhtml =
+  '<input type="radio" name="level" id="suggestion" value="suggestion" checked class="ga-field-input-control-off help_link">'
+  + '<span class="help">Check this if your comment is a suggestion.</span>'
+  ;
+
+
+
+ga.layout.fields[ "suggestion" ].eval  = 'ga.value.setLastValue( "sys_feedback", "#suggestion" );';
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="suggestion" class="highlight">Suggestion </label></td><td><input type="radio" name="level" id="suggestion" value="suggestion" checked class="help_link"><span class="help">Check this if your comment is a suggestion.</span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_feedback", "#suggestion" );';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end radio.input --
+// -- radio.input --
+
+ga.layout.fields[ "important" ] = {};
+ga.layout.fields[ "important" ].lhtml = '<label for="important">Important </label>';
+ga.layout.fields[ "important" ].dhtml =
+  '<input type="radio" name="level" id="important" value="important" class="ga-field-input-control-off help_link">'
+  + '<span class="help">Check this if your comment is important to aid your work.</span>'
+  ;
+
+
+
+ga.layout.fields[ "important" ].eval  = 'ga.value.setLastValue( "sys_feedback", "#important" );';
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="important" class="highlight">Important </label></td><td><input type="radio" name="level" id="important" value="important" class="help_link"><span class="help">Check this if your comment is important to aid your work.</span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_feedback", "#important" );';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end radio.input --
+// -- radio.input --
+
+ga.layout.fields[ "critical" ] = {};
+ga.layout.fields[ "critical" ].lhtml = '<label for="critical">Critical </label>';
+ga.layout.fields[ "critical" ].dhtml =
+  '<input type="radio" name="level" id="critical" value="critical" class="ga-field-input-control-off help_link">'
+  + '<span class="help">Check this if your comment is critical and you can not proceeed with your work.</span>'
+  ;
+
+
+
+ga.layout.fields[ "critical" ].eval  = 'ga.value.setLastValue( "sys_feedback", "#critical" );';
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="critical" class="highlight">Critical </label></td><td><input type="radio" name="level" id="critical" value="critical" class="help_link"><span class="help">Check this if your comment is critical and you can not proceeed with your work.</span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_feedback", "#critical" );';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end radio.input --
+// -- job.input --
+
+ga.layout.fields[ "job1" ] = {};
+ga.layout.fields[ "job1" ].lhtml = '<label for="job1">Provide a reference job(s) if available </label>';
+ga.layout.fields[ "job1" ].dhtml =
+  '<button id="job1" class="ga-button-select help_link"><span class="buttontext">Select a job or jobs</span></button>' +
+  '<span class="help">This will give us more detailed information to better assist you. Only available if you are logged in.</span>' +
+  '<span id="job1_altval"></span>' +
+  '<span id="job1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "job1" ].eval  =
+  'ga.value.setLastValue( "sys_feedback", "#job1" );' +
+  'ga.altfile("sys_feedback","job1","job1_altval");' +
+  'ga.altfile.button("sys_feedback","job1","Provide a reference job(s) if available","job",function(v){ga.altfile.button.job(v,"sys_feedback","job1");});' +
+  '$("#job1").on("click",function(){return ga.altfile.button.call("sys_feedback","job1");});';
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="job1" >Provide a reference job(s) if available </label></td>' +
+'<td><button id="job1"  class="help_link"><span class="buttontext">Select a job or jobs</span></button>' +
+'<span class="help">This will give us more detailed information to better assist you. Only available if you are logged in.</span>' +
+'<span id="job1_altval"></span>' +
+'<span id="job1_msg" class="warning field_msg" > </span></td>';
+
+this_eval = 'ga.value.setLastValue( "sys_feedback", "#job1" );' +
+'ga.altfile("sys_feedback","job1","job1_altval");' +
+'ga.altfile.button("sys_feedback","job1","Provide a reference job(s) if available","job",function(v){ga.altfile.button.job(v,"sys_feedback","job1");});' +
+'$("#job1").on("click",function(){return ga.altfile.button.call("sys_feedback","job1");});';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end job.input --
+// -- textarea.input --
+
+ga.layout.fields[ "text1" ] = {};
+ga.layout.fields[ "text1" ].lhtml = '<label for="text1">Your comments </label>';
+ga.layout.fields[ "text1" ].dhtml =
+  '<textarea name="text1" id="text1" required rows="10" cols="60" class="ga-field-input-control help_link"></textarea>'
+  + '<span class="help">Please take as much space as needed.  You can expand the text area at the bottom right.</span>'
+  + '<span id="text1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "text1" ].eval  =
+  ' ' +
+  'ga.value.setLastValue( "sys_feedback", "#text1" );' +
+  '$( "#text1" ).keypress( function() { $( "#text1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="text1">Your comments </label></td><td><textarea name="text1" id="text1" required rows="10" cols="60" class="help_link"></textarea>'
++ '<span class="help">Please take as much space as needed.  You can expand the text area at the bottom right.</span>'
++ '<span id="text1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = ' ' +
+'ga.value.setLastValue( "sys_feedback", "#text1" );' +
+'$( "#text1" ).keypress( function() { $( "#text1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end textarea.input --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#sys_feedback_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="sys_feedback_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="sys_feedback_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#sys_feedback_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="sys_feedback_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="sys_feedback_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="sys_feedback_progress"></span> -->
+<script>
+$( "#sys_feedback_b_reset_button" ).remove();
+
+
+
+
+
+var sys_feedback_output_msgs = $("#sys_feedback_output_msgs");
+sys_feedback_output_msgs.text( "" );
+
+var sys_feedback_timeout_handler = "unset";
+var sys_feedback_timeout_handler_uuid;
+
+function get_results_sys_feedback( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "sys_feedback", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( sys_feedback_timeout_handler != "unset" )
+              {
+                  clearTimeout( sys_feedback_timeout_handler );
+                  sys_feedback_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "sys_feedback" );
+              eval( sys_feedback_done_eval );
+              ga.progress.clear(  "sys_feedback", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               sys_feedback_timeout_handler =  setTimeout( get_results_sys_feedback, last_timeout, id, last_timeout, 0 );
+               sys_feedback_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#sys_feedback_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_feedback.php </span>" );
+           ga.progress.clear( 'sys_feedback', 'input.footer 1' );
+           if ( sys_feedback_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_feedback_timeout_handler );
+               sys_feedback_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "sys_feedback" );
+           eval( sys_feedback_done_eval );
+          } );
+    return false;
+};
+
+function msg_sys_feedback ( id, data )
+{
+   ga.data.update( "sys_feedback", data, get_results_sys_feedback, id );
+};
+
+$( "#sys_feedback_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#sys_feedback" ).find( ".toclear" ).remove();   
+   if ( sys_feedback_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_feedback_timeout_handler );
+       if ( sys_feedback_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_feedback_timeout_handler_uuid, "sys_feedback" );
+       }
+       sys_feedback_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "sys_feedback_output", true );
+
+   
+   return ga.xsede.select( "local", do_sys_feedback_submit, $(this) );
+   //   return do_sys_feedback_submit( $(this) );
+});
+
+function do_sys_feedback_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+      $ok = 1;
+   
+
+   ga.event( "", "sys_feedback", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "sys_feedback" ) ) {
+       ga.valid.showerrormessage( "sys_feedback" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_sys_feedback_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_sys_feedback_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+ + "&_submitpolicy=all"
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_sys_feedback, do_sys_feedback_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#sys_feedback_results" ).text( "" );
+
+              ga.value.saveLastValues( "sys_feedback" );
+              ga.value.resetDefaultValues( "sys_feedback_output", true );
+
+              var found_errors = 0;
+              $("#sys_feedback").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#sys_feedback " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+       $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_navigator").val( navigator.userAgent ) );
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_eventlog").val( ga.event.list() ) );
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "sys_feedback" );
+    ga.valuen.addhtml( "sys_feedback" );
+
+    ga.extrahidden( "sys_feedback" );
+
+    ga.ws.sub( vuuid, msg_sys_feedback, "sys_feedback" );
+
+    var formData = new FormData($('#sys_feedback')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["sys_feedback"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "sys_feedback", formData, ga.stages["sys_feedback"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'sys_feedback', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "sys_feedback", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["sys_feedback"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/sys_feedback.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'sys_feedback_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["sys_feedback"] )
+      {
+        ga.value.showfields(ga.multistage, "sys_feedback", ga.stages["sys_feedback"], ga.currentstage);
+    	delete ga.stages["sys_feedback"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'sys_feedback', 'input.footer 2' );
+   
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           sys_feedback_output_msgs.text( "" );
+           job_status = ga.data.update( "sys_feedback", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( sys_feedback_timeout_handler != "unset" )
+               {
+                   clearTimeout( sys_feedback_timeout_handler );
+                   sys_feedback_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "sys_feedback" );
+               eval( sys_feedback_done_eval );
+           } else {
+               sys_feedback_timeout_handler = setTimeout( get_results_sys_feedback, 2000, vuuid, 2000, 0 );
+               sys_feedback_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#sys_feedback_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_feedback.php </span>" );
+           ga.progress.clear( 'sys_feedback', 'input.footer 3' );
+           if ( sys_feedback_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_feedback_timeout_handler );
+               sys_feedback_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "sys_feedback" );
+           eval( sys_feedback_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+sys_feedback_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "sys_feedback_output_textarea" ).style.height = 0;
+    }
+
+    if ( sys_feedback_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_feedback_timeout_handler );
+       if ( sys_feedback_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_feedback_timeout_handler_uuid, "sys_feedback" );
+       }
+       sys_feedback_timeout_handler = "unset";
+    }
+    ga.event( "", "sys_feedback", "reset clicked" );
+    ga.valid.clearerrorcounter( "sys_feedback" );
+
+   if ( ga.multistage["sys_feedback"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"sys_feedback");
+       ga.stages["sys_feedback"].length = 0;
+       ga.stages["sys_feedback"] = ga.stagesdefault["sys_feedback"].slice();
+       console.log("Reset: " + ga.stages["sys_feedback"]);
+     }
+
+    //    ga.value.resetDefaultValues( "sys_feedback" );
+    ga.valuen.restore.dflt(  "sys_feedback" );
+    ga.value.resetDefaultValues( "sys_feedback_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#sys_feedback_reset" ).click( function() {
+   return sys_feedback_reset();
+});
+
+ga.value.resetDefaultValues( "sys_feedback" );ga.value.resetDefaultValues( "sys_feedback_output" ); ga.value.resetDefaultValue( "sys_feedback_output", "sys_feedback_output_msgs" );
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="sys_feedback_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#sys_feedback").append( ga.tmp.html );
+</script>
+
+<form id="sys_feedback_output">
+<!-- moved to layout.js <div id="sys_feedback_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "sys_feedback_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="sys_feedback_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="sys_feedback_output_textarea_label" for="sys_feedback_output_textarea" class=""></label>
+<textarea readonly hidden id="sys_feedback_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_sys_feedback = 1; </script>

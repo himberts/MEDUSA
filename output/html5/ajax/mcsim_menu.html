@@ -1,0 +1,42 @@
+<style>
+#panel_mcsim_menu {
+    position: relative;
+    display: block;  
+}
+</style>
+<p>
+<div class="jumbotron" style="padding:0">
+<center>
+
+    <button id="mcsim_menu_mcsim" class="ga-button-menu help_link">McSim</button>
+<script>
+    $( "#mcsim_menu_mcsim" ).click(function() {
+        var d=$( "#tab_docs > a" );
+        if ( d.length ) { d.attr( "href", "__docsbaseurl__/mcsim_menu/mcsim/mcsim.html" ); };
+    
+        if ( ga.valuen.lastload && $( "#" + ga.valuen.lastload ).is( ":visible" ) ) { ga.valuen.save( ga.valuen.lastload ); }
+
+        if ( ga.valuen.lastload != "mcsim" || !$( "#" + ga.valuen.lastload ).is( ":visible" ) ) {
+            ga.loader.show();
+            $( "#panel_mcsim_menu" ).load( "ajax/mcsim_menu/mcsim.html", function() { ga.valuen.save( "mcsim", true ); ga.valuen.restore( "mcsim" ); ga.valuen.lastload = "mcsim"; ga.loader.hide(); ga.hhelp.reset(); });
+        }
+    });
+$( "#mcsim_menu_mcsim" ).trigger( "click" );
+$( "#mcsim_menu_mcsim" ).hide();
+
+</script>
+</center>
+</div>
+</p>
+
+<div id="panel_mcsim_menu" style="margin-left:25px;margin-right:35px">
+</div>
+
+
+<script>
+    $( "#panel_mcsim_menu" ).text("");
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+</script>

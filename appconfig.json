@@ -1,0 +1,26 @@
+{
+   "resourcedefault" : "local",
+   "resources" : {
+      "local" : ""
+   },
+   "submitpolicy" : "all",
+   "lockdir" : "/src/genapp/etc",
+   "hostname" : "mxray-dev.genapp.rocks",
+   "hostip" : "149.165.156.160",
+   "messaging" : {
+      "zmqhostip" : "127.0.0.1",
+      "wssport" : 443,
+      "udphostip" : "127.0.0.1",
+      "tcpport" : 30780,
+      "udpport" : 30779,
+      "zmqport" : 30778,
+      "wsport" : 30777,
+      "tcphostip" : "127.0.0.1"
+   }
+    ,"mail"     : {
+        "admin"    : "emre.brookes@umt.edu"
+        ,"feedback" : "emre.brookes@umt.edu"
+        ,"from"     : "mxray-dev.genapp.rocks"
+    }
+    
+}

@@ -1,0 +1,670 @@
+<!-- input.header -->
+
+
+<form id="jobshistory_1" 
+>
+<div id="jobshistory_1_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "jobshistory_1";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"fields":[{"id":"input1","layout":{"label":[1,1],"parent":"root","data":[1,2]},"dgc":2,"type":"date","lgc":1,"role":"input","lgr":1,"dgr":1},{"type":"date","dgc":2,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"input2","lgc":1,"lgr":2,"role":"input","dgr":2},{"buttontext":"Submit","dgr":3,"lgr":3,"role":"input","lgc":1,"type":"button","dgc":1,"layout":{"parent":"root","data":[1,1],"label":[1,1]},"id":"b_submit"},{"buttontext":"Reset to default values","dgr":3,"lgr":4,"role":"input","lgc":1,"layout":{"parent":"root","data":[0,2],"label":[1,1]},"id":"b_reset","type":"button","dgc":2},{"id":"jobshistory_1_progress","layout":{"parent":"root","data":[1,[1,3]],"label":"none"},"type":"span","dgc":"1/3","dgr":5,"role":"output"},{"lgc":1,"dgc":"1/3","type":"span","id":"jobshistory_1_output_airavata","layout":{"label":[1,1],"parent":"root","data":[1,[1,3]]},"dgr":6,"lgr":6,"role":"output"},{"lgr":7,"role":"output","dgr":7,"dgc":"1/3","type":"span","id":"jobshistory_1_output_msgs","layout":{"label":[1,1],"parent":"root","data":[1,[1,3]]},"lgc":1},{"lgr":8,"role":"output","dgr":8,"dgc":"1/3","type":"span","id":"jobshistory_1_output_textarea","layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"lgc":1},{"lgc":1,"type":"html","dgc":2,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"jobshisreport","dgr":9,"lgr":9,"role":"output"}],"panels":[{"root":{"gap":"5px","size":["auto",[1,1]],"data":[1,2],"repeats":{"size":["auto",[1,1]],"location":["next","full"]},"gtc":"1fr 1fr ","gtr":"auto","align":"left","label":[1,1]}}]}' );
+ga.layout.module.json = JSON.parse( '{"docrootexecutable":"util/jobs_history_web.php","executable":"jobshistory_1","fields":[{"help":"Note: the time for the start date is at 0h (12 am)","id":"input1","label":"Start Date","required":"true","role":"input","type":"date"},{"help":"Note: the time for the end date is at 24h (midnight)","id":"input2","label":"End Date","required":"true","role":"input","type":"date"},{"id":"jobshisreport","label":"","role":"output","type":"html"}],"label":"JobsHistory_1","moduleid":"jobshistory_1","resource":"local","submitpolicy":"all","uniquedir":"on"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'jobshistory_1' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+jobshistory_1_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#jobshistory_1').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- date.input --
+
+ga.layout.fields[ "input1" ] = {};
+ga.layout.fields[ "input1" ].lhtml = '<label class="help_link">Start Date</label>';
+ga.layout.fields[ "input1" ].lhtml += '<span class="help">Note: the time for the start date is at 0h (12 am)</span>';
+ga.layout.fields[ "input1" ].dhtml = '<input type="date" name="input1" id="input1" required pattern="[0-9]{4}-[0-1][0-9]{1}-[0-3][0-9]" placeholder="yyyy-mm-dd" class="ga-field-input-control help_link"><span class="help">Note: the time for the start date is at 0h (12 am)</span}><span id="input1_msg" class="warning field_msg" ></span>';
+ga.layout.fields[ "input1" ].dhtml += '<span class="help">Note: the time for the start date is at 0h (12 am)</span>';
+
+ga.layout.fields[ "input1" ].eval  =
+  
+  
+  
+  'ga.value.setLastValue( "jobshistory_1", "#input1" );$( "#input1" ).keypress( function() { $( "#input1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+/* old way
+this_html = '<tr><td><label for="input1">Start Date </label></td><td><input type="date" name="input1" id="input1" required pattern="[0-9]{4}-[0-1][0-9]{1}-[0-3][0-9]" placeholder="yyyy-mm-dd" class="help_link"><span class="help">Note: the time for the start date is at 0h (12 am)</span><span id="input1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+'ga.value.setLastValue( "jobshistory_1", "#input1" );$( "#input1" ).keypress( function() { $( "#input1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end date.input --// -- date.input --
+
+ga.layout.fields[ "input2" ] = {};
+ga.layout.fields[ "input2" ].lhtml = '<label class="help_link">End Date</label>';
+ga.layout.fields[ "input2" ].lhtml += '<span class="help">Note: the time for the end date is at 24h (midnight)</span>';
+ga.layout.fields[ "input2" ].dhtml = '<input type="date" name="input2" id="input2" required pattern="[0-9]{4}-[0-1][0-9]{1}-[0-3][0-9]" placeholder="yyyy-mm-dd" class="ga-field-input-control help_link"><span class="help">Note: the time for the end date is at 24h (midnight)</span}><span id="input2_msg" class="warning field_msg" ></span>';
+ga.layout.fields[ "input2" ].dhtml += '<span class="help">Note: the time for the end date is at 24h (midnight)</span>';
+
+ga.layout.fields[ "input2" ].eval  =
+  
+  
+  
+  'ga.value.setLastValue( "jobshistory_1", "#input2" );$( "#input2" ).keypress( function() { $( "#input2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+/* old way
+this_html = '<tr><td><label for="input2">End Date </label></td><td><input type="date" name="input2" id="input2" required pattern="[0-9]{4}-[0-1][0-9]{1}-[0-3][0-9]" placeholder="yyyy-mm-dd" class="help_link"><span class="help">Note: the time for the end date is at 24h (midnight)</span><span id="input2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+'ga.value.setLastValue( "jobshistory_1", "#input2" );$( "#input2" ).keypress( function() { $( "#input2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end date.input --// -- html.output --
+
+ga.layout.fields[ "jobshisreport" ] = {};
+ga.layout.fields[ "jobshisreport" ].lhtml = '<label for="jobshisreport" class="ga-g-jobshistory_1-jobshisreport" style=""> </label>';
+ga.layout.fields[ "jobshisreport" ].dhtml =
+  '<div name="jobshisreport" id="jobshisreport" class="ga-g-jobshistory_1-jobshisreport "></div>'
+  
+  ;
+
+ga.layout.fields[ "jobshisreport" ].eval  =
+  '$( "#jobshisreport" ).attr( "type", "div" );'
+  + 'ga.value.setLastValue( "jobshistory_1_output", "#jobshisreport" );'
+  ;
+
+/* old way
+
+<tr><td><label for="jobshisreport"> </label></td><td><div name="jobshisreport" id="jobshisreport"></div></td></tr>
+<script>
+$( "#jobshisreport" ).attr( "type", "div" );
+ga.value.setLastValue( "jobshistory_1_output", "#jobshisreport" );
+end script>
+*/
+
+// -- end html.output --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#jobshistory_1_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="jobshistory_1_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="jobshistory_1_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#jobshistory_1_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="jobshistory_1_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="jobshistory_1_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="jobshistory_1_progress"></span> -->
+<script>
+
+
+
+
+
+
+var jobshistory_1_output_msgs = $("#jobshistory_1_output_msgs");
+jobshistory_1_output_msgs.text( "" );
+
+var jobshistory_1_timeout_handler = "unset";
+var jobshistory_1_timeout_handler_uuid;
+
+function get_results_jobshistory_1( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "jobshistory_1", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( jobshistory_1_timeout_handler != "unset" )
+              {
+                  clearTimeout( jobshistory_1_timeout_handler );
+                  jobshistory_1_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "jobshistory_1" );
+              eval( jobshistory_1_done_eval );
+              ga.progress.clear(  "jobshistory_1", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               jobshistory_1_timeout_handler =  setTimeout( get_results_jobshistory_1, last_timeout, id, last_timeout, 0 );
+               jobshistory_1_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#jobshistory_1_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/admin/jobshistory_1.php </span>" );
+           ga.progress.clear( 'jobshistory_1', 'input.footer 1' );
+           if ( jobshistory_1_timeout_handler != "unset" )
+           {
+               clearTimeout( jobshistory_1_timeout_handler );
+               jobshistory_1_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "jobshistory_1" );
+           eval( jobshistory_1_done_eval );
+          } );
+    return false;
+};
+
+function msg_jobshistory_1 ( id, data )
+{
+   ga.data.update( "jobshistory_1", data, get_results_jobshistory_1, id );
+};
+
+$( "#jobshistory_1_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#jobshistory_1" ).find( ".toclear" ).remove();   
+   if ( jobshistory_1_timeout_handler != "unset" ) {
+       
+       clearTimeout( jobshistory_1_timeout_handler );
+       if ( jobshistory_1_timeout_handler_uuid ) {
+           ga.ws.unsub( jobshistory_1_timeout_handler_uuid, "jobshistory_1" );
+       }
+       jobshistory_1_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "jobshistory_1_output", true );
+
+   
+   return ga.xsede.select( "local", do_jobshistory_1_submit, $(this) );
+   //   return do_jobshistory_1_submit( $(this) );
+});
+
+function do_jobshistory_1_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+   
+   
+
+   ga.event( "", "jobshistory_1", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "jobshistory_1" ) ) {
+       ga.valid.showerrormessage( "jobshistory_1" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_jobshistory_1_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_jobshistory_1_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+ + "&_submitpolicy=all"
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_jobshistory_1, do_jobshistory_1_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#jobshistory_1_results" ).text( "" );
+
+              ga.value.saveLastValues( "jobshistory_1" );
+              ga.value.resetDefaultValues( "jobshistory_1_output", true );
+
+              var found_errors = 0;
+              $("#jobshistory_1").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#jobshistory_1 " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+$( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_docrootexecutable").val( "util/jobs_history_web.php" ) );
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "jobshistory_1" );
+    ga.valuen.addhtml( "jobshistory_1" );
+
+    ga.extrahidden( "jobshistory_1" );
+
+    ga.ws.sub( vuuid, msg_jobshistory_1, "jobshistory_1" );
+
+    var formData = new FormData($('#jobshistory_1')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["jobshistory_1"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "jobshistory_1", formData, ga.stages["jobshistory_1"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'jobshistory_1', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "jobshistory_1", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["jobshistory_1"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/admin/jobshistory_1.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'jobshistory_1_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["jobshistory_1"] )
+      {
+        ga.value.showfields(ga.multistage, "jobshistory_1", ga.stages["jobshistory_1"], ga.currentstage);
+    	delete ga.stages["jobshistory_1"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'jobshistory_1', 'input.footer 2' );
+   
+           var do_refresh = 1;
+
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           jobshistory_1_output_msgs.text( "" );
+           job_status = ga.data.update( "jobshistory_1", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( jobshistory_1_timeout_handler != "unset" )
+               {
+                   clearTimeout( jobshistory_1_timeout_handler );
+                   jobshistory_1_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "jobshistory_1" );
+               eval( jobshistory_1_done_eval );
+           } else {
+               jobshistory_1_timeout_handler = setTimeout( get_results_jobshistory_1, 2000, vuuid, 2000, 0 );
+               jobshistory_1_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#jobshistory_1_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/admin/jobshistory_1.php </span>" );
+           ga.progress.clear( 'jobshistory_1', 'input.footer 3' );
+           if ( jobshistory_1_timeout_handler != "unset" )
+           {
+               clearTimeout( jobshistory_1_timeout_handler );
+               jobshistory_1_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "jobshistory_1" );
+           eval( jobshistory_1_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+jobshistory_1_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "jobshistory_1_output_textarea" ).style.height = 0;
+    }
+
+    if ( jobshistory_1_timeout_handler != "unset" ) {
+       
+       clearTimeout( jobshistory_1_timeout_handler );
+       if ( jobshistory_1_timeout_handler_uuid ) {
+           ga.ws.unsub( jobshistory_1_timeout_handler_uuid, "jobshistory_1" );
+       }
+       jobshistory_1_timeout_handler = "unset";
+    }
+    ga.event( "", "jobshistory_1", "reset clicked" );
+    ga.valid.clearerrorcounter( "jobshistory_1" );
+
+   if ( ga.multistage["jobshistory_1"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"jobshistory_1");
+       ga.stages["jobshistory_1"].length = 0;
+       ga.stages["jobshistory_1"] = ga.stagesdefault["jobshistory_1"].slice();
+       console.log("Reset: " + ga.stages["jobshistory_1"]);
+     }
+
+    //    ga.value.resetDefaultValues( "jobshistory_1" );
+    ga.valuen.restore.dflt(  "jobshistory_1" );
+    ga.value.resetDefaultValues( "jobshistory_1_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#jobshistory_1_reset" ).click( function() {
+   return jobshistory_1_reset();
+});
+
+
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="jobshistory_1_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#jobshistory_1").append( ga.tmp.html );
+</script>
+
+<form id="jobshistory_1_output">
+<!-- moved to layout.js <div id="jobshistory_1_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "jobshistory_1_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="jobshistory_1_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="jobshistory_1_output_textarea_label" for="jobshistory_1_output_textarea" class=""></label>
+<textarea readonly hidden id="jobshistory_1_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_jobshistory_1 = 1; </script>

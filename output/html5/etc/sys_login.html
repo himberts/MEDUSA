@@ -1,0 +1,788 @@
+<!-- input.header -->
+
+
+<form id="sys_login" 
+ style="max-height:65vh;overflow:auto">
+<div id="sys_login_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "sys_login";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"fields":[{"lgr":1,"role":"input","dgr":1,"dgc":2,"type":"label","id":"label1","layout":{"label":[1,1],"parent":"root","data":[1,2]},"lgc":1},{"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"userid","type":"text","dgc":2,"lgc":1,"lgr":2,"role":"input","dgr":2},{"lgr":3,"role":"input","dgr":3,"id":"password","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"type":"password","dgc":2,"lgc":1},{"dgr":4,"lgr":4,"role":"input","lgc":1,"id":"forgotpassword","layout":{"label":[1,1],"parent":"root","data":[1,2]},"type":"checkbox","dgc":2},{"dgc":1,"type":"button","layout":{"parent":"root","data":[1,1],"label":[1,1]},"id":"b_submit","lgc":1,"lgr":5,"role":"input","dgr":5,"buttontext":"Submit"},{"lgr":6,"role":"input","dgr":5,"buttontext":"Reset to default values","dgc":2,"type":"button","layout":{"parent":"root","data":[0,2],"label":[1,1]},"id":"b_reset","lgc":1},{"id":"sys_login_progress","layout":{"label":"none","data":[1,[1,3]],"parent":"root"},"dgc":"1/3","type":"span","role":"output","dgr":7},{"lgr":8,"role":"output","dgr":8,"layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"id":"sys_login_output_airavata","type":"span","dgc":"1/3","lgc":1},{"lgr":9,"role":"output","dgr":9,"dgc":"1/3","type":"span","id":"sys_login_output_msgs","layout":{"label":[1,1],"parent":"root","data":[1,[1,3]]},"lgc":1},{"id":"sys_login_output_textarea","layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"dgc":"1/3","type":"span","lgc":1,"role":"output","lgr":10,"dgr":10},{"lgc":1,"dgc":2,"type":"textarea","id":"status","layout":{"parent":"root","data":[1,2],"label":[1,1]},"dgr":11,"lgr":11,"role":"output"}],"panels":[{"root":{"repeats":{"size":["auto",[1,1]],"location":["next","full"]},"gtc":"1fr 1fr ","gap":"5px","size":["auto",[1,1]],"data":[1,2],"label":[1,1],"gtr":"auto","align":"left"}}]}' );
+ga.layout.module.json = JSON.parse( '{"executable":"sys_login","fields":[{"default":"header3","id":"label1","label":"Login","posthline":"true","role":"input","type":"label"},{"help":"Enter your user id.  If you do not have one, please register","id":"userid","label":"Enter user id","pattern":".{3,}","placeholder":"Enter a user id","required":"true","role":"input","size":"30","type":"text"},{"help":"Enter a password of at least 10 characters","hide":"forgotpassword","id":"password","label":"Password","pattern":".{10,}","placeholder":"Enter your password","required":"true","role":"input","size":"30","type":"password"},{"help":"Check this if you forgot your password","hider":"true","id":"forgotpassword","label":"Forgot password","role":"input","type":"checkbox"},{"cols":50,"id":"status","label":"Status","role":"output","rows":4,"type":"textarea"}],"label":"Login","modal":"true","moduleid":"sys_login","nojobcontrol":"true","noreset":"true","resetonload":"true","resource":"local","submit_label":"Login","submitpolicy":"all"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'sys_login' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+sys_login_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#sys_login').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label1" ] = {};
+ga.layout.fields[ "label1" ].lhtml = '<label id="label1_label" class="ga-field-input-header3 " style="">Login</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label1"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label1" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label1" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="label1_label" class="header3 ">Login</label>' + 
+'</td>' +
+'<td><div id="label1"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- text.input --
+
+ga.layout.fields[ "userid" ] = {};
+ga.layout.fields[ "userid" ].lhtml = '<label for="userid" class="ga-g-sys_login-userid" style="">Enter user id </label>';
+ga.layout.fields[ "userid" ].dhtml = '<input type="text" name="userid" id="userid" required pattern=".{3,}"  size="30" class="ga-g-sys_login-userid ga-field-input-control help_link"><span class="help">Enter your user id.  If you do not have one, please register</span}><span id="userid_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "userid" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("sys_login","userid","Enter user id","text");'
+  + '$( "#userid" ).blur( function() { ga.valid.checkText( "#userid" ); });'
+  + 
+  'ga.value.setLastValue( "sys_login", "#userid" );$( "#userid" ).keypress( function() { $( "#userid_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="userid">Enter user id </label></td><td><input type="text" name="userid" id="userid" required pattern=".{3,}"  size="30" class="help_link"><span class="help">Enter your user id.  If you do not have one, please register</span><span id="userid_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("sys_login","userid","Enter user id","text");'
++ '$( "#userid" ).blur( function() { ga.valid.checkText( "#userid" ); });'
++ 
+'ga.value.setLastValue( "sys_login", "#userid" );$( "#userid" ).keypress( function() { $( "#userid_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- password.input --
+
+ga.layout.fields[ "password" ] = {};
+ga.layout.fields[ "password" ].lhtml = '<label for="password" id="password-div">Password </label>';
+ga.layout.fields[ "password" ].dhtml = '<div id="password-div-itd"><input type="password" name="password" id="password" required pattern=".{10,}"  size="30" class="ga-field-input-control help_link"><span class="help">Enter a password of at least 10 characters</span}><span id="password_msg" class="warning field_msg" > </span></div>';
+
+
+
+ga.layout.fields[ "password" ].eval  =
+  'ga.value.setLastValue( "sys_login", "#password" );$( "#password" ).keypress( function() { $( "#password_msg" ).html( "" ); });'
+  
+   + 'ga.hide.add("sys_login", "#password-div", "#forgotpassword" );'
+  ;
+
+
+
+
+
+/* old way
+
+this_html = '<tr id="password-tr"><td><label for="password">Password </label></td><td id="password-tr-itd"><input type="password" name="password" id="password" required pattern=".{10,}"  size="30" class="help_link"><span class="help">Enter a password of at least 10 characters</span><span id="password_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_login", "#password" );$( "#password" ).keypress( function() { $( "#password_msg" ).html( "" ); });'
+;
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+this_eval = 'ga.hide.add("sys_login", "#password-tr", "#forgotpassword" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end password.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "forgotpassword" ] = {};
+ga.layout.fields[ "forgotpassword" ].lhtml =
+  '<label for="forgotpassword">Forgot password </label>'
+//  + '<span class="help">Check this if you forgot your password</span>'
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="forgotpassword" id="forgotpassword" class="ga-field-input-control-off help_link">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="forgotpassword" id="forgotpassword" class="custom-control-input help_link">'
+  + '<span class="help">Check this if you forgot your password</span>'
+  + '<label class="custom-control-label" for="forgotpassword"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "forgotpassword" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "forgotpassword" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// 
+
+
+
+ga.layout.fields[ "forgotpassword" ].eval  = 
+  'ga.value.setLastValue( "sys_login", "#forgotpassword" );'
+  
+   + 'ga.hide( "sys_login", "#forgotpassword" );$( "#forgotpassword" ).change( function() { ga.hide.update( "sys_login", "#forgotpassword" ); } );'
+  
+  ;
+
+input_repeats += 'ga.hide.update( "sys_login", "#forgotpassword" );';
+
+
+
+;
+
+/* old way
+this_html = '<tr id="forgotpassword_tr"><td><label for="forgotpassword" class="highlight">Forgot password </label></td><td><input type="checkbox" name="forgotpassword" id="forgotpassword" class="help_link"><span class="help">Check this if you forgot your password</span></td></tr>'
+ old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_login", "#forgotpassword" );'
+
+
+
+ + 'ga.hide( "sys_login", "#forgotpassword" );$( "#forgotpassword" ).change( function() { ga.hide.update( "sys_login", "#forgotpassword" ); } );'
+
+
+
+ input_repeats += 'ga.hide.update( "sys_login", "#forgotpassword" );';
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="forgotpassword_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- textarea.output --
+
+ga.layout.fields[ "status" ] = {};
+ga.layout.fields[ "status" ].lhtml = '<label for="status" class="ga-g-sys_login-status">Status </label>';
+ga.layout.fields[ "status" ].dhtml =
+  '<textarea name="status" id="status" rows="4" cols="50" readonly class="ga-g-sys_login-status ga-field-output-control"></textarea>'
+  
+  ;
+ga.layout.fields[ "status" ].eval  =
+  '' +
+  'ga.value.setLastValue( "sys_login_output", "#status" );'
+  ;
+
+/* old way
+
+<tr><td><label for="status">Status </label></td><td><textarea name="status" id="status" rows="4" cols="50" readonly></textarea>
+</td></tr>
+start script>
+
+ga.value.setLastValue( "sys_login_output", "#status" );
+ end script>
+*/
+
+// -- end textarea.output --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#sys_login_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="sys_login_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="sys_login_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#sys_login_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="sys_login_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="sys_login_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="sys_login_progress"></span> -->
+<script>
+$( "#sys_login_b_reset_button" ).remove();
+$( "#sys_login_b_submit_button .buttontext" ).html( "Login" );
+
+
+
+
+var sys_login_output_msgs = $("#sys_login_output_msgs");
+sys_login_output_msgs.text( "" );
+
+var sys_login_timeout_handler = "unset";
+var sys_login_timeout_handler_uuid;
+
+function get_results_sys_login( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "sys_login", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( sys_login_timeout_handler != "unset" )
+              {
+                  clearTimeout( sys_login_timeout_handler );
+                  sys_login_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "sys_login" );
+              eval( sys_login_done_eval );
+              ga.progress.clear(  "sys_login", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               sys_login_timeout_handler =  setTimeout( get_results_sys_login, last_timeout, id, last_timeout, 0 );
+               sys_login_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#sys_login_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_login.php </span>" );
+           ga.progress.clear( 'sys_login', 'input.footer 1' );
+           if ( sys_login_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_login_timeout_handler );
+               sys_login_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "sys_login" );
+           eval( sys_login_done_eval );
+          } );
+    return false;
+};
+
+function msg_sys_login ( id, data )
+{
+   ga.data.update( "sys_login", data, get_results_sys_login, id );
+};
+
+$( "#sys_login_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#sys_login" ).find( ".toclear" ).remove();   
+   if ( sys_login_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_login_timeout_handler );
+       if ( sys_login_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_login_timeout_handler_uuid, "sys_login" );
+       }
+       sys_login_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "sys_login_output", true );
+
+   
+   return ga.xsede.select( "local", do_sys_login_submit, $(this) );
+   //   return do_sys_login_submit( $(this) );
+});
+
+function do_sys_login_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+      $ok = 1;
+   
+
+   ga.event( "", "sys_login", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "sys_login" ) ) {
+       ga.valid.showerrormessage( "sys_login" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_sys_login_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_sys_login_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+ + "&_submitpolicy=all"
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_sys_login, do_sys_login_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#sys_login_results" ).text( "" );
+
+              ga.value.saveLastValues( "sys_login" );
+              ga.value.resetDefaultValues( "sys_login_output", true );
+
+              var found_errors = 0;
+              $("#sys_login").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#sys_login " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "sys_login" );
+    ga.valuen.addhtml( "sys_login" );
+
+    ga.extrahidden( "sys_login" );
+
+    ga.ws.sub( vuuid, msg_sys_login, "sys_login" );
+
+    var formData = new FormData($('#sys_login')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["sys_login"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "sys_login", formData, ga.stages["sys_login"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'sys_login', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "sys_login", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["sys_login"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/sys_login.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'sys_login_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["sys_login"] )
+      {
+        ga.value.showfields(ga.multistage, "sys_login", ga.stages["sys_login"], ga.currentstage);
+    	delete ga.stages["sys_login"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'sys_login', 'input.footer 2' );
+   
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           sys_login_output_msgs.text( "" );
+           job_status = ga.data.update( "sys_login", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( sys_login_timeout_handler != "unset" )
+               {
+                   clearTimeout( sys_login_timeout_handler );
+                   sys_login_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "sys_login" );
+               eval( sys_login_done_eval );
+           } else {
+               sys_login_timeout_handler = setTimeout( get_results_sys_login, 2000, vuuid, 2000, 0 );
+               sys_login_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#sys_login_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_login.php </span>" );
+           ga.progress.clear( 'sys_login', 'input.footer 3' );
+           if ( sys_login_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_login_timeout_handler );
+               sys_login_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "sys_login" );
+           eval( sys_login_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+sys_login_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "sys_login_output_textarea" ).style.height = 0;
+    }
+
+    if ( sys_login_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_login_timeout_handler );
+       if ( sys_login_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_login_timeout_handler_uuid, "sys_login" );
+       }
+       sys_login_timeout_handler = "unset";
+    }
+    ga.event( "", "sys_login", "reset clicked" );
+    ga.valid.clearerrorcounter( "sys_login" );
+
+   if ( ga.multistage["sys_login"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"sys_login");
+       ga.stages["sys_login"].length = 0;
+       ga.stages["sys_login"] = ga.stagesdefault["sys_login"].slice();
+       console.log("Reset: " + ga.stages["sys_login"]);
+     }
+
+    //    ga.value.resetDefaultValues( "sys_login" );
+    ga.valuen.restore.dflt(  "sys_login" );
+    ga.value.resetDefaultValues( "sys_login_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#sys_login_reset" ).click( function() {
+   return sys_login_reset();
+});
+
+ga.value.resetDefaultValues( "sys_login" );ga.value.resetDefaultValues( "sys_login_output" ); ga.value.resetDefaultValue( "sys_login_output", "sys_login_output_msgs" );
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="sys_login_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#sys_login").append( ga.tmp.html );
+</script>
+
+<form id="sys_login_output">
+<!-- moved to layout.js <div id="sys_login_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "sys_login_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="sys_login_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="sys_login_output_textarea_label" for="sys_login_output_textarea" class=""></label>
+<textarea readonly hidden id="sys_login_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_sys_login = 1; </script>

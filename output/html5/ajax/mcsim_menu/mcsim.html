@@ -1,0 +1,3531 @@
+<!-- input.header -->
+
+
+<form id="mcsim" 
+>
+<div id="mcsim_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "mcsim";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"fields":[{"dgc":2,"type":"label","layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"label_0","lgc":1,"lgr":1,"role":"input","dgr":1},{"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"qmin","dgc":2,"type":"float","lgc":1,"lgr":2,"role":"input","dgr":2},{"dgr":3,"lgr":3,"role":"input","lgc":1,"id":"qmax","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgc":2,"type":"float"},{"type":"integer","dgc":2,"id":"qpoints","layout":{"label":[1,1],"parent":"root","data":[1,2]},"lgc":1,"lgr":4,"role":"input","dgr":4},{"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"polydispersity","type":"float","dgc":2,"lgc":1,"role":"input","lgr":5,"dgr":5},{"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"eta","dgc":2,"type":"float","lgc":1,"lgr":6,"role":"input","dgr":6},{"type":"float","dgc":2,"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"sigma_r","lgc":1,"lgr":7,"role":"input","dgr":7},{"lgc":1,"id":"noise","layout":{"label":[1,1],"parent":"root","data":[1,2]},"type":"float","dgc":2,"dgr":8,"lgr":8,"role":"input"},{"lgr":9,"role":"input","dgr":9,"id":"prpoints","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgc":2,"type":"integer","lgc":1},{"dgr":10,"lgr":10,"role":"input","lgc":1,"type":"checkbox","dgc":2,"id":"exclude_overlap","layout":{"label":[1,1],"data":[1,2],"parent":"root"}},{"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"label_model","dgc":2,"type":"text","lgc":1,"role":"input","lgr":11,"dgr":11},{"lgc":1,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"label_a","type":"text","dgc":2,"dgr":12,"lgr":12,"role":"input"},{"dgr":13,"role":"input","lgr":13,"lgc":1,"dgc":2,"type":"text","id":"label_b","layout":{"data":[1,2],"parent":"root","label":[1,1]}},{"dgr":14,"lgr":14,"role":"input","lgc":1,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"label_c","type":"text","dgc":2},{"lgr":15,"role":"input","dgr":15,"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"label_p","dgc":2,"type":"text","lgc":1},{"lgc":1,"dgc":2,"type":"text","id":"label_x","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgr":16,"lgr":16,"role":"input"},{"lgc":1,"dgc":2,"type":"text","layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"label_y","dgr":17,"lgr":17,"role":"input"},{"lgc":1,"type":"text","dgc":2,"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"label_z","dgr":18,"lgr":18,"role":"input"},{"type":"listbox","dgc":2,"id":"model1","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"lgc":1,"lgr":19,"role":"input","dgr":19},{"type":"float","dgc":2,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"a1","lgc":1,"lgr":20,"role":"input","dgr":20},{"dgr":21,"lgr":21,"role":"input","lgc":1,"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"b1","type":"float","dgc":2},{"dgc":2,"type":"float","id":"c1","layout":{"data":[1,2],"parent":"root","label":[1,1]},"lgc":1,"lgr":22,"role":"input","dgr":22},{"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"p1","dgc":2,"type":"float","lgc":1,"lgr":23,"role":"input","dgr":23},{"lgr":24,"role":"input","dgr":24,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"x1","dgc":2,"type":"float","lgc":1},{"id":"y1","layout":{"parent":"root","data":[1,2],"label":[1,1]},"dgc":2,"type":"float","lgc":1,"lgr":25,"role":"input","dgr":25},{"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"z1","type":"float","dgc":2,"lgc":1,"lgr":26,"role":"input","dgr":26},{"lgc":1,"type":"listbox","dgc":2,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"model2","dgr":27,"lgr":27,"role":"input"},{"id":"a2","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"type":"float","dgc":2,"lgc":1,"lgr":28,"role":"input","dgr":28},{"lgc":1,"dgc":2,"type":"float","layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"b2","dgr":29,"lgr":29,"role":"input"},{"dgr":30,"role":"input","lgr":30,"lgc":1,"dgc":2,"type":"float","layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"c2"},{"dgr":31,"role":"input","lgr":31,"lgc":1,"dgc":2,"type":"float","id":"p2","layout":{"label":[1,1],"data":[1,2],"parent":"root"}},{"lgc":1,"dgc":2,"type":"float","id":"x2","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgr":32,"lgr":32,"role":"input"},{"dgr":33,"lgr":33,"role":"input","lgc":1,"dgc":2,"type":"float","id":"y2","layout":{"label":[1,1],"data":[1,2],"parent":"root"}},{"dgr":34,"lgr":34,"role":"input","lgc":1,"id":"z2","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"dgc":2,"type":"float"},{"lgr":35,"role":"input","dgr":35,"dgc":2,"type":"listbox","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"model3","lgc":1},{"dgr":36,"role":"input","lgr":36,"lgc":1,"dgc":2,"type":"float","id":"a3","layout":{"parent":"root","data":[1,2],"label":[1,1]}},{"lgc":1,"id":"b3","layout":{"data":[1,2],"parent":"root","label":[1,1]},"type":"float","dgc":2,"dgr":37,"lgr":37,"role":"input"},{"lgc":1,"type":"float","dgc":2,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"c3","dgr":38,"lgr":38,"role":"input"},{"dgr":39,"role":"input","lgr":39,"lgc":1,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"p3","dgc":2,"type":"float"},{"lgc":1,"type":"float","dgc":2,"id":"x3","layout":{"parent":"root","data":[1,2],"label":[1,1]},"dgr":40,"lgr":40,"role":"input"},{"dgr":41,"lgr":41,"role":"input","lgc":1,"type":"float","dgc":2,"id":"y3","layout":{"label":[1,1],"parent":"root","data":[1,2]}},{"type":"float","dgc":2,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"z3","lgc":1,"role":"input","lgr":42,"dgr":42},{"lgc":1,"id":"model4","layout":{"parent":"root","data":[1,2],"label":[1,1]},"type":"listbox","dgc":2,"dgr":43,"lgr":43,"role":"input"},{"dgr":44,"role":"input","lgr":44,"lgc":1,"dgc":2,"type":"float","id":"a4","layout":{"label":[1,1],"parent":"root","data":[1,2]}},{"dgr":45,"role":"input","lgr":45,"lgc":1,"dgc":2,"type":"float","layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"b4"},{"dgr":46,"role":"input","lgr":46,"lgc":1,"id":"c4","layout":{"parent":"root","data":[1,2],"label":[1,1]},"dgc":2,"type":"float"},{"lgc":1,"dgc":2,"type":"float","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"p4","dgr":47,"lgr":47,"role":"input"},{"dgr":48,"role":"input","lgr":48,"lgc":1,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"x4","dgc":2,"type":"float"},{"lgr":49,"role":"input","dgr":49,"type":"float","dgc":2,"id":"y4","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"lgc":1},{"lgr":50,"role":"input","dgr":50,"id":"z4","layout":{"parent":"root","data":[1,2],"label":[1,1]},"dgc":2,"type":"float","lgc":1},{"lgc":1,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"model5","type":"listbox","dgc":2,"dgr":51,"lgr":51,"role":"input"},{"lgc":1,"type":"float","dgc":2,"id":"a5","layout":{"parent":"root","data":[1,2],"label":[1,1]},"dgr":52,"lgr":52,"role":"input"},{"lgc":1,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"b5","type":"float","dgc":2,"dgr":53,"lgr":53,"role":"input"},{"dgr":54,"role":"input","lgr":54,"lgc":1,"id":"c5","layout":{"parent":"root","data":[1,2],"label":[1,1]},"type":"float","dgc":2},{"lgc":1,"id":"p5","layout":{"label":[1,1],"parent":"root","data":[1,2]},"dgc":2,"type":"float","dgr":55,"lgr":55,"role":"input"},{"dgr":56,"lgr":56,"role":"input","lgc":1,"type":"float","dgc":2,"id":"x5","layout":{"parent":"root","data":[1,2],"label":[1,1]}},{"role":"input","lgr":57,"dgr":57,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"y5","dgc":2,"type":"float","lgc":1},{"lgc":1,"type":"float","dgc":2,"id":"z5","layout":{"label":[1,1],"parent":"root","data":[1,2]},"dgr":58,"lgr":58,"role":"input"},{"buttontext":"Submit","dgr":59,"lgr":59,"role":"input","lgc":1,"layout":{"parent":"root","data":[1,1],"label":[1,1]},"id":"b_submit","dgc":1,"type":"button"},{"dgr":59,"buttontext":"Reset to default values","role":"input","lgr":60,"lgc":1,"type":"button","dgc":2,"id":"b_reset","layout":{"data":[0,2],"parent":"root","label":[1,1]}},{"id":"mcsim_progress","layout":{"data":[1,[1,3]],"parent":"root","label":"none"},"type":"span","dgc":"1/3","role":"output","dgr":61},{"role":"output","lgr":62,"dgr":62,"dgc":"1/3","type":"span","id":"mcsim_output_airavata","layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"lgc":1},{"type":"span","dgc":"1/3","id":"mcsim_output_msgs","layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"lgc":1,"lgr":63,"role":"output","dgr":63},{"lgc":1,"id":"mcsim_output_textarea","layout":{"label":[1,1],"parent":"root","data":[1,[1,3]]},"dgc":"1/3","type":"span","dgr":64,"lgr":64,"role":"output"},{"dgc":2,"type":"label","id":"hroutput","layout":{"parent":"root","data":[1,2],"label":[1,1]},"lgc":1,"lgr":65,"role":"output","dgr":65},{"lgr":66,"role":"output","dgr":66,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"pr","type":"file","dgc":2,"lgc":1},{"dgr":67,"lgr":67,"role":"output","lgc":1,"type":"file","dgc":2,"id":"Iq","layout":{"data":[1,2],"parent":"root","label":[1,1]}},{"dgr":68,"role":"output","lgr":68,"lgc":1,"type":"file","dgc":2,"id":"Isim","layout":{"label":[1,1],"parent":"root","data":[1,2]}},{"lgc":1,"dgc":2,"type":"file","id":"pdb","layout":{"data":[1,2],"parent":"root","label":[1,1]},"dgr":69,"lgr":69,"role":"output"},{"type":"file","dgc":2,"id":"zip","layout":{"data":[1,2],"parent":"root","label":[1,1]},"lgc":1,"lgr":70,"role":"output","dgr":70},{"lgr":71,"role":"output","dgr":71,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"label_parameters","type":"label","dgc":2,"lgc":1},{"lgc":1,"id":"Dmax","layout":{"label":[1,1],"parent":"root","data":[1,2]},"type":"text","dgc":2,"dgr":72,"lgr":72,"role":"output"},{"id":"Rg","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"dgc":2,"type":"text","lgc":1,"lgr":73,"role":"output","dgr":73},{"dgr":74,"lgr":74,"role":"output","lgc":1,"layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"Dmax_poly","type":"text","dgc":2},{"lgr":75,"role":"output","dgr":75,"id":"Rg_poly","layout":{"label":[1,1],"parent":"root","data":[1,2]},"type":"text","dgc":2,"lgc":1},{"lgc":1,"dgc":2,"type":"label","id":"label_fig","layout":{"label":[1,1],"parent":"root","data":[1,2]},"dgr":76,"lgr":76,"role":"output"},{"dgr":77,"lgr":77,"role":"output","lgc":1,"dgc":2,"type":"image","layout":{"data":[1,2],"parent":"root","label":[1,1]},"id":"fig"}],"panels":[{"root":{"label":[1,1],"gtr":"auto","align":"left","repeats":{"location":["next","full"],"size":["auto",[1,1]]},"gtc":"1fr 1fr ","size":["auto",[1,1]],"gap":"5px","data":[1,2]}}]}' );
+ga.layout.module.json = JSON.parse( '{"executable":"mcsim.py","fields":[{"colspan":3,"default":"header3","id":"label_0","label":"McSim [<a target=_blank href=https://doi.org/10.1107/S1600576714013156>1,</a><a target=_blank href=http://scripts.iucr.org/cgi-bin/paper?S0021889890002801>2,</a><a target=_blank href=https://github.com/ehb54/GenApp-McSim>Source code</a>]","posthline":"true","prehline":"true","role":"input","type":"label"},{"default":0.001,"help":"q min, in inverse Angstroms","id":"qmin","label":"q min","role":"input","step":0.01,"type":"float"},{"default":1,"help":"q max, in inverse Angstrom","id":"qmax","label":"q max ","role":"input","step":0.001,"type":"float"},{"default":400,"help":"<p>Number of points in q.</p><p>Default: 100, Minimum 10, Maximum 2000</p>","id":"qpoints","label":"Number of points in q","max":2000,"min":10,"role":"input","type":"integer"},{"default":0,"help":"Relative polydispersity. Min: 0.0 (monodisperse), max: 0.2.","id":"polydispersity","label":"Relative polydispersity","max":0.2,"min":0,"role":"input","step":0.01,"type":"float"},{"default":0,"help":"<p>Volume fraction - for high concentration samples.</p><p> Giving rise to a hard sphere structure factor, S(q)</p><p>Min: 0.0 (no structure factor), max: 0.9.</p>","id":"eta","label":"Volume fraction","max":0.9,"min":0,"role":"input","step":0.01,"type":"float"},{"default":0,"help":"<p>Interface roughness, for non-sharp edges between models. </p> See Skar-Gislinge et al, PhysChemChemPhys 2011: Small-angle scattering from phospholipid nanodiscs: derivation and refinement of a molecular constrained analytical model form factor. </p><p> Decreasing scattering at high q, by I(q) = I(q)*exp(-(q*sigma_r)^2/2)</p><p>Min: 0.0 (no roughness), max: 10, default: none.</p>","id":"sigma_r","label":"Interface roughness, in Aangstrom","max":10,"min":0,"role":"input","step":0.01,"type":"float"},{"default":1,"help":"<p>Relative noise on simulated data.</p><p>Min: 0.0001, max: 10000.</p><p> the error is simulated using: sigma = noise*sqrt[(10000*I)/(0.9*q)], where I,q are calculated from the p(r)</p><p>Sedlak, Bruetzel and Lipfert (2017). J. Appl. Cryst. 50, 621-30. Quantitative evaluation of statistical errors in small- angle X-ray scattering measurements (https://doi.org/10.1107/S1600576717003077)</p>","id":"noise","label":"Relative noise","max":10000,"min":0.0001,"role":"input","step":0.01,"type":"float"},{"default":100,"help":"<p>Number of points in the estimated function p(r).</p><p>Default: 100, Minimum 10, Maximum 200</p>","id":"prpoints","label":"Number of points in p(r)","max":200,"min":10,"role":"input","type":"integer"},{"help":"<p>Exclude overlap regions.</p><p>If there is overlap with models higher up in the list, the points in the overlap region will be omitted.</p>","id":"exclude_overlap","label":"Exclude overlap regions","role":"input","type":"checkbox"},{"default":"Model","help":"<p>Models and parameters (in Angstrom):</p><p>Sphere; a: Radius, b,c: no effect</p><p> Ellipsoid; a, b, c: semiaxes</p><p> Cylinder/Disc; a, b: semiaxes, c: length</p><p>Cube; a: side length, b,c: no effect</p><p>Cuboid; a: width, b: depth, c: height</p><p>Hollow sphere; a: outer radius, b: inner radius, c: no effect</p><p>Hollow square; a: outer side length, b: inner side length, c: no effect </p><p>Cylindrical/discoidal ring; a: outer radius, b: inner radius, c: length </p>","id":"label_model","label":" ","norow":"true","readonly":"true","role":"input","size":17,"type":"text"},{"default":"a","help":"<p>Sphere: radius</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: side length</p><p>Cuboid: width</p><p>Hollow sphere: outer radius</p><p>Hollow square: outer side length</p><p>Cylindrical/discoidal ring: outer radius </p>","id":"label_a","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"b","help":"<p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: no effect</p><p>Cuboid: depth</p><p>Hollow sphere: inner radius</p><p>Hollow square: inner side length</p><p>Cylindrical/discoidal ring: inner radius </p>","id":"label_b","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"c","help":"<p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc*: length</p><p>Cube: no effect</p><p>Cuboid: height</p><p>Hollow sphere: no effect </p><p>Hollow square: no effect</p><p>Cylindrical/discoidal ring*: length </p><p>*Cylinder and disc is the same model. They just differe in default paramters. Same is true for discoidal and cylindrical ring.</p>","id":"label_c","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"Delta SLD","help":"Excess scattering length density of object","id":"label_p","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"x_com","help":"center of mass x position of object","id":"label_x","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"y_com","help":"center of mass y position of object","id":"label_y","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"z_com","help":"center of mass z position of object","id":"label_z","label":" ","norow":"true","readonly":"true","role":"input","size":20,"type":"text"},{"default":"sphere","id":"model1","label":" ","norow":"true","role":"input","size":30,"type":"listbox","values":"Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring"},{"default":100,"id":"a1","label":" ","min":"0","norow":"true","required":"true","role":"input","type":"float"},{"id":"b1","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"id":"c1","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"default":1,"id":"p1","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"x1","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"y1","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"z1","label":" ","norow":"true","role":"input","type":"float"},{"default":"none","id":"model2","label":" ","norow":"true","role":"input","size":30,"type":"listbox","values":"Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring~Choose a model~none"},{"default":100,"id":"a2","label":" ","min":"0","norow":"true","required":"true","role":"input","type":"float"},{"id":"b2","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"id":"c2","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"default":1,"id":"p2","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"x2","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"y2","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"z2","label":" ","norow":"true","role":"input","type":"float"},{"default":"none","id":"model3","label":" ","norow":"true","role":"input","size":30,"type":"listbox","values":"Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring~Choose a model~none"},{"default":100,"id":"a3","label":" ","min":"0","norow":"true","required":"true","role":"input","type":"float"},{"id":"b3","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"id":"c3","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"default":1,"id":"p3","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"x3","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"y3","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"z3","label":" ","norow":"true","role":"input","type":"float"},{"default":"none","id":"model4","label":" ","norow":"true","role":"input","size":30,"type":"listbox","values":"Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring~Choose a model~none"},{"default":100,"id":"a4","label":" ","min":"0","norow":"true","required":"true","role":"input","type":"float"},{"id":"b4","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"id":"c4","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"default":1,"id":"p4","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"x4","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"y4","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"z4","label":" ","norow":"true","role":"input","type":"float"},{"default":"none","id":"model5","label":" ","norow":"true","role":"input","size":30,"type":"listbox","values":"Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring~Choose a model~none"},{"default":100,"id":"a5","label":" ","min":"0","norow":"true","required":"true","role":"input","type":"float"},{"id":"b5","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"id":"c5","label":" ","min":"0","norow":"true","role":"input","type":"float"},{"default":1,"id":"p5","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"x5","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"y5","label":" ","norow":"true","role":"input","type":"float"},{"default":0,"id":"z5","label":" ","norow":"true","role":"input","type":"float"},{"colspan":2,"id":"hroutput","label":"<hr> Output files <hr>","role":"output","type":"label"},{"help":"The calculated p(r)","id":"pr","label":"p(r)","role":"output","type":"file"},{"help":"The calculated intensity, I(q)","id":"Iq","label":"Intensity, calculated (no errors)","role":"output","type":"file"},{"help":"<p>Simulated intensity, format: q, I(q), sigma.</p><p>sigma simulated using Sedlak et al (https://doi.org/10.1107/S1600576717003077)</p>","id":"Isim","label":"Intensity, simulated (with errors)","role":"output","type":"file"},{"help":"<p>PDB file of model, for visualization, e.g. in PyMOL or with online 3Dviewer.</p><p> All points represented as dummy Carbon beads (positive SLD), dummy Oxygen beads (negative SLD) or dummy Hydrogen beads (zero SLD).</p><p> WARNING: The model will not give correct scattering if used as input in, e.g., CRYSOL, PEPSI-SAXS, FOXS, CAPP, etc - it is only for vizualization</p>.","id":"pdb","label":"PDB file with model (open e.g. with PyMOL or <a target=_blank href=https://www.rcsb.org/3d-view>PDB-3Dviewer</a>)","role":"output","type":"file"},{"help":"Results packaged in a zip file","id":"zip","label":"Results zipped","role":"output","type":"file"},{"colspan":2,"id":"label_parameters","label":"<hr> Structural output parameters <hr>","role":"output","type":"label"},{"help":"Maximum distance in monodisperse particle","id":"Dmax","label":"Dmax, monodisperse","role":"output","type":"text"},{"help":"Radius of gyration of monodisperse particle","id":"Rg","label":"Rg, monodisperse","role":"output","type":"text"},{"help":"Maximum distance in polydisperse sample","id":"Dmax_poly","label":"Dmax, polydisperse","role":"output","type":"text"},{"help":"Radius of gyration of polydisperse sample","id":"Rg_poly","label":"Rg, polydisperse","role":"output","type":"text"},{"colspan":2,"help":"<p>Upper panel: Model(s) from different angles (red dots have positive SLD, green have negative SLD and grey have zero SLD). </p><p>Lower panel: p(r), I(q) on log-log and log-lin scale. </p>","id":"label_fig","label":"<p><hr> Plots of model, p(r) and scattering <hr></p><p>Upper panel: Model(s) from different angles (red dots have positive SLD, green have negative SLD and grey have zero SLD). </p><p>Lower panel: p(r), I(q) on log-log and log-lin scale. </p>","role":"output","type":"label"},{"id":"fig","label":"","role":"output","type":"image","width":"80%"}],"label":"McSim","moduleid":"mcsim","submitpolicy":"all"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'mcsim' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+mcsim_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#mcsim').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label_0" ] = {};
+ga.layout.fields[ "label_0" ].lhtml = '<label id="label_0_label" class="ga-field-input-header3 " style="">McSim [<a target=_blank href=https://doi.org/10.1107/S1600576714013156>1,</a><a target=_blank href=http://scripts.iucr.org/cgi-bin/paper?S0021889890002801>2,</a><a target=_blank href=https://github.com/ehb54/GenApp-McSim>Source code</a>]</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label_0"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label_0" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label_0" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><hr></td></tr><tr><td colspan="3"><label id="label_0_label" class="header3 ">McSim [<a target=_blank href=https://doi.org/10.1107/S1600576714013156>1,</a><a target=_blank href=http://scripts.iucr.org/cgi-bin/paper?S0021889890002801>2,</a><a target=_blank href=https://github.com/ehb54/GenApp-McSim>Source code</a>]</label>' + 
+'</td>' +
+'<td><div id="label_0"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- float.input --
+
+ga.layout.fields[ "qmin" ] = {};
+ga.layout.fields[ "qmin" ].lhtml = '<label for="qmin">q min </label>';
+ga.layout.fields[ "qmin" ].dhtml =
+  '<input type="number" name="qmin" id="qmin" value="0.001" data-type="float" step="0.01' +
+  '" class="ga-field-input-control help_link"><span class="help">q min, in inverse Angstroms</span><span id="qmin_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "qmin" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "qmin" );'
+  
+  + 'ga.value.registerid("mcsim","qmin","q min");'
+  + '$( "#qmin" ).blur( function() { ga.valid.checkFloat( "#qmin" ); });'
+  + '$( "#qmin" ).keypress( function() { $( "#qmin_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="qmin">q min </label></td><td><input type="number" name="qmin" id="qmin" value="0.001" data-type="float" step="0.01" class="help_link"><span class="help">q min, in inverse Angstroms</span><span id="qmin_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "qmin" );'
+
+ + 'ga.value.registerid("mcsim","qmin","q min");'
+ + '$( "#qmin" ).blur( function() { ga.valid.checkFloat( "#qmin" ); });'
+ + '$( "#qmin" ).keypress( function() { $( "#qmin_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "qmax" ] = {};
+ga.layout.fields[ "qmax" ].lhtml = '<label for="qmax">q max  </label>';
+ga.layout.fields[ "qmax" ].dhtml =
+  '<input type="number" name="qmax" id="qmax" value="1" data-type="float" step="0.001' +
+  '" class="ga-field-input-control help_link"><span class="help">q max, in inverse Angstrom</span><span id="qmax_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "qmax" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "qmax" );'
+  
+  + 'ga.value.registerid("mcsim","qmax","q max ");'
+  + '$( "#qmax" ).blur( function() { ga.valid.checkFloat( "#qmax" ); });'
+  + '$( "#qmax" ).keypress( function() { $( "#qmax_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="qmax">q max  </label></td><td><input type="number" name="qmax" id="qmax" value="1" data-type="float" step="0.001" class="help_link"><span class="help">q max, in inverse Angstrom</span><span id="qmax_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "qmax" );'
+
+ + 'ga.value.registerid("mcsim","qmax","q max ");'
+ + '$( "#qmax" ).blur( function() { ga.valid.checkFloat( "#qmax" ); });'
+ + '$( "#qmax" ).keypress( function() { $( "#qmax_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- integer.input --
+
+ga.layout.fields[ "qpoints" ] = {};
+ga.layout.fields[ "qpoints" ].lhtml = '<label for="qpoints">Number of points in q </label>';
+ga.layout.fields[ "qpoints" ].dhtml =
+  '<input type="number" name="qpoints" id="qpoints" value="400" min="10" data-type="float" max="2000" class="ga-field-input-control help_link"><span class="help"><p>Number of points in q.</p><p>Default: 100, Minimum 10, Maximum 2000</p></span><span id="qpoints_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "qpoints" ].eval  =
+  
+  'ga.value.setLastValue( "mcsim", "#qpoints" );'
+  
+  
+  + 'ga.value.registerid("mcsim","qpoints","Number of points in q");'
+  + '$( "#qpoints" ).on("change blur", function() { ga.valid.checkInt( "#qpoints" );'
+  
+  
+  + '});'
+  + '$( "#qpoints" ).keypress( function() { $( "#qpoints_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="qpoints">Number of points in q </label></td>' + 
+'<td><input type="number" name="qpoints" id="qpoints" value="400" data-type="integer" min="10" max="2000"' +
+' class="help_link"><span class="help"><p>Number of points in q.</p><p>Default: 100, Minimum 10, Maximum 2000</p></span><span id="qpoints_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "mcsim", "#qpoints" );'
+
+
++ 'ga.value.registerid("mcsim","qpoints","Number of points in q");'
++ '$( "#qpoints" ).on("change blur", function() { ga.valid.checkInt( "#qpoints" );'
+
+
++ '});'
+
++ '$( "#qpoints" ).keypress( function() { $( "#qpoints_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- float.input --
+
+ga.layout.fields[ "polydispersity" ] = {};
+ga.layout.fields[ "polydispersity" ].lhtml = '<label for="polydispersity">Relative polydispersity </label>';
+ga.layout.fields[ "polydispersity" ].dhtml =
+  '<input type="number" name="polydispersity" id="polydispersity" value="0" min="0" data-type="float" max="0.2" step="0.01' +
+  '" class="ga-field-input-control help_link"><span class="help">Relative polydispersity. Min: 0.0 (monodisperse), max: 0.2.</span><span id="polydispersity_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "polydispersity" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "polydispersity" );'
+  
+  + 'ga.value.registerid("mcsim","polydispersity","Relative polydispersity");'
+  + '$( "#polydispersity" ).blur( function() { ga.valid.checkFloat( "#polydispersity" ); });'
+  + '$( "#polydispersity" ).keypress( function() { $( "#polydispersity_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="polydispersity">Relative polydispersity </label></td><td><input type="number" name="polydispersity" id="polydispersity" value="0" min="0" data-type="float" max="0.2" step="0.01" class="help_link"><span class="help">Relative polydispersity. Min: 0.0 (monodisperse), max: 0.2.</span><span id="polydispersity_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "polydispersity" );'
+
+ + 'ga.value.registerid("mcsim","polydispersity","Relative polydispersity");'
+ + '$( "#polydispersity" ).blur( function() { ga.valid.checkFloat( "#polydispersity" ); });'
+ + '$( "#polydispersity" ).keypress( function() { $( "#polydispersity_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "eta" ] = {};
+ga.layout.fields[ "eta" ].lhtml = '<label for="eta">Volume fraction </label>';
+ga.layout.fields[ "eta" ].dhtml =
+  '<input type="number" name="eta" id="eta" value="0" min="0" data-type="float" max="0.9" step="0.01' +
+  '" class="ga-field-input-control help_link"><span class="help"><p>Volume fraction - for high concentration samples.</p><p> Giving rise to a hard sphere structure factor, S(q)</p><p>Min: 0.0 (no structure factor), max: 0.9.</p></span><span id="eta_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "eta" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "eta" );'
+  
+  + 'ga.value.registerid("mcsim","eta","Volume fraction");'
+  + '$( "#eta" ).blur( function() { ga.valid.checkFloat( "#eta" ); });'
+  + '$( "#eta" ).keypress( function() { $( "#eta_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="eta">Volume fraction </label></td><td><input type="number" name="eta" id="eta" value="0" min="0" data-type="float" max="0.9" step="0.01" class="help_link"><span class="help"><p>Volume fraction - for high concentration samples.</p><p> Giving rise to a hard sphere structure factor, S(q)</p><p>Min: 0.0 (no structure factor), max: 0.9.</p></span><span id="eta_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "eta" );'
+
+ + 'ga.value.registerid("mcsim","eta","Volume fraction");'
+ + '$( "#eta" ).blur( function() { ga.valid.checkFloat( "#eta" ); });'
+ + '$( "#eta" ).keypress( function() { $( "#eta_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "sigma_r" ] = {};
+ga.layout.fields[ "sigma_r" ].lhtml = '<label for="sigma_r">Interface roughness, in Aangstrom </label>';
+ga.layout.fields[ "sigma_r" ].dhtml =
+  '<input type="number" name="sigma_r" id="sigma_r" value="0" min="0" data-type="float" max="10" step="0.01' +
+  '" class="ga-field-input-control help_link"><span class="help"><p>Interface roughness, for non-sharp edges between models. </p> See Skar-Gislinge et al, PhysChemChemPhys 2011: Small-angle scattering from phospholipid nanodiscs: derivation and refinement of a molecular constrained analytical model form factor. </p><p> Decreasing scattering at high q, by I(q) = I(q)*exp(-(q*sigma_r)^2/2)</p><p>Min: 0.0 (no roughness), max: 10, default: none.</p></span><span id="sigma_r_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "sigma_r" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "sigma_r" );'
+  
+  + 'ga.value.registerid("mcsim","sigma_r","Interface roughness, in Aangstrom");'
+  + '$( "#sigma_r" ).blur( function() { ga.valid.checkFloat( "#sigma_r" ); });'
+  + '$( "#sigma_r" ).keypress( function() { $( "#sigma_r_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="sigma_r">Interface roughness, in Aangstrom </label></td><td><input type="number" name="sigma_r" id="sigma_r" value="0" min="0" data-type="float" max="10" step="0.01" class="help_link"><span class="help"><p>Interface roughness, for non-sharp edges between models. </p> See Skar-Gislinge et al, PhysChemChemPhys 2011: Small-angle scattering from phospholipid nanodiscs: derivation and refinement of a molecular constrained analytical model form factor. </p><p> Decreasing scattering at high q, by I(q) = I(q)*exp(-(q*sigma_r)^2/2)</p><p>Min: 0.0 (no roughness), max: 10, default: none.</p></span><span id="sigma_r_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "sigma_r" );'
+
+ + 'ga.value.registerid("mcsim","sigma_r","Interface roughness, in Aangstrom");'
+ + '$( "#sigma_r" ).blur( function() { ga.valid.checkFloat( "#sigma_r" ); });'
+ + '$( "#sigma_r" ).keypress( function() { $( "#sigma_r_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "noise" ] = {};
+ga.layout.fields[ "noise" ].lhtml = '<label for="noise">Relative noise </label>';
+ga.layout.fields[ "noise" ].dhtml =
+  '<input type="number" name="noise" id="noise" value="1" min="0.0001" data-type="float" max="10000" step="0.01' +
+  '" class="ga-field-input-control help_link"><span class="help"><p>Relative noise on simulated data.</p><p>Min: 0.0001, max: 10000.</p><p> the error is simulated using: sigma = noise*sqrt[(10000*I)/(0.9*q)], where I,q are calculated from the p(r)</p><p>Sedlak, Bruetzel and Lipfert (2017). J. Appl. Cryst. 50, 621-30. Quantitative evaluation of statistical errors in small- angle X-ray scattering measurements (https://doi.org/10.1107/S1600576717003077)</p></span><span id="noise_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "noise" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "noise" );'
+  
+  + 'ga.value.registerid("mcsim","noise","Relative noise");'
+  + '$( "#noise" ).blur( function() { ga.valid.checkFloat( "#noise" ); });'
+  + '$( "#noise" ).keypress( function() { $( "#noise_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="noise">Relative noise </label></td><td><input type="number" name="noise" id="noise" value="1" min="0.0001" data-type="float" max="10000" step="0.01" class="help_link"><span class="help"><p>Relative noise on simulated data.</p><p>Min: 0.0001, max: 10000.</p><p> the error is simulated using: sigma = noise*sqrt[(10000*I)/(0.9*q)], where I,q are calculated from the p(r)</p><p>Sedlak, Bruetzel and Lipfert (2017). J. Appl. Cryst. 50, 621-30. Quantitative evaluation of statistical errors in small- angle X-ray scattering measurements (https://doi.org/10.1107/S1600576717003077)</p></span><span id="noise_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "noise" );'
+
+ + 'ga.value.registerid("mcsim","noise","Relative noise");'
+ + '$( "#noise" ).blur( function() { ga.valid.checkFloat( "#noise" ); });'
+ + '$( "#noise" ).keypress( function() { $( "#noise_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- integer.input --
+
+ga.layout.fields[ "prpoints" ] = {};
+ga.layout.fields[ "prpoints" ].lhtml = '<label for="prpoints">Number of points in p(r) </label>';
+ga.layout.fields[ "prpoints" ].dhtml =
+  '<input type="number" name="prpoints" id="prpoints" value="100" min="10" data-type="float" max="200" class="ga-field-input-control help_link"><span class="help"><p>Number of points in the estimated function p(r).</p><p>Default: 100, Minimum 10, Maximum 200</p></span><span id="prpoints_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "prpoints" ].eval  =
+  
+  'ga.value.setLastValue( "mcsim", "#prpoints" );'
+  
+  
+  + 'ga.value.registerid("mcsim","prpoints","Number of points in p(r)");'
+  + '$( "#prpoints" ).on("change blur", function() { ga.valid.checkInt( "#prpoints" );'
+  
+  
+  + '});'
+  + '$( "#prpoints" ).keypress( function() { $( "#prpoints_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="prpoints">Number of points in p(r) </label></td>' + 
+'<td><input type="number" name="prpoints" id="prpoints" value="100" data-type="integer" min="10" max="200"' +
+' class="help_link"><span class="help"><p>Number of points in the estimated function p(r).</p><p>Default: 100, Minimum 10, Maximum 200</p></span><span id="prpoints_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "mcsim", "#prpoints" );'
+
+
++ 'ga.value.registerid("mcsim","prpoints","Number of points in p(r)");'
++ '$( "#prpoints" ).on("change blur", function() { ga.valid.checkInt( "#prpoints" );'
+
+
++ '});'
+
++ '$( "#prpoints" ).keypress( function() { $( "#prpoints_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "exclude_overlap" ] = {};
+ga.layout.fields[ "exclude_overlap" ].lhtml =
+  '<label for="exclude_overlap">Exclude overlap regions </label>'
+//  + '<span class="help"><p>Exclude overlap regions.</p><p>If there is overlap with models higher up in the list, the points in the overlap region will be omitted.</p></span>'
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="exclude_overlap" id="exclude_overlap" class="ga-field-input-control-off help_link">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="exclude_overlap" id="exclude_overlap" class="custom-control-input help_link">'
+  + '<span class="help"><p>Exclude overlap regions.</p><p>If there is overlap with models higher up in the list, the points in the overlap region will be omitted.</p></span>'
+  + '<label class="custom-control-label" for="exclude_overlap"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "exclude_overlap" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "exclude_overlap" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// 
+
+
+
+ga.layout.fields[ "exclude_overlap" ].eval  = 
+  'ga.value.setLastValue( "mcsim", "#exclude_overlap" );'
+  
+  
+  
+  ;
+
+
+
+
+
+;
+
+/* old way
+this_html = '<tr id="exclude_overlap_tr"><td><label for="exclude_overlap" class="highlight">Exclude overlap regions </label></td><td><input type="checkbox" name="exclude_overlap" id="exclude_overlap" class="help_link"><span class="help"><p>Exclude overlap regions.</p><p>If there is overlap with models higher up in the list, the points in the overlap region will be omitted.</p></span></td></tr>'
+ old way
+;
+this_eval = 
+'ga.value.setLastValue( "mcsim", "#exclude_overlap" );'
+
+
+
+
+
+
+
+
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="exclude_overlap_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- text.input --
+
+ga.layout.fields[ "label_model" ] = {};
+ga.layout.fields[ "label_model" ].lhtml = '<label for="label_model" class="ga-g-mcsim-label_model" style="">  </label>';
+ga.layout.fields[ "label_model" ].dhtml = '<input type="text" name="label_model" id="label_model" value="Model" size="17" readonly class="ga-g-mcsim-label_model ga-field-input-control help_link"><span class="help"><p>Models and parameters (in Angstrom):</p><p>Sphere; a: Radius, b,c: no effect</p><p> Ellipsoid; a, b, c: semiaxes</p><p> Cylinder/Disc; a, b: semiaxes, c: length</p><p>Cube; a: side length, b,c: no effect</p><p>Cuboid; a: width, b: depth, c: height</p><p>Hollow sphere; a: outer radius, b: inner radius, c: no effect</p><p>Hollow square; a: outer side length, b: inner side length, c: no effect </p><p>Cylindrical/discoidal ring; a: outer radius, b: inner radius, c: length </p></span}><span id="label_model_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_model" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_model"," ");'
+  + '$( "#label_model" ).blur( function() { ga.valid.checkText( "#label_model" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_model" );$( "#label_model" ).keypress( function() { $( "#label_model_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_model">  </label></td><td><input type="text" name="label_model" id="label_model" value="Model" size="17" readonly class="help_link"><span class="help"><p>Models and parameters (in Angstrom):</p><p>Sphere; a: Radius, b,c: no effect</p><p> Ellipsoid; a, b, c: semiaxes</p><p> Cylinder/Disc; a, b: semiaxes, c: length</p><p>Cube; a: side length, b,c: no effect</p><p>Cuboid; a: width, b: depth, c: height</p><p>Hollow sphere; a: outer radius, b: inner radius, c: no effect</p><p>Hollow square; a: outer side length, b: inner side length, c: no effect </p><p>Cylindrical/discoidal ring; a: outer radius, b: inner radius, c: length </p></span><span id="label_model_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_model"," ");'
++ '$( "#label_model" ).blur( function() { ga.valid.checkText( "#label_model" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_model" );$( "#label_model" ).keypress( function() { $( "#label_model_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_a" ] = {};
+ga.layout.fields[ "label_a" ].lhtml = '<label for="label_a" class="ga-g-mcsim-label_a" style="">  </label>';
+ga.layout.fields[ "label_a" ].dhtml = '<input type="text" name="label_a" id="label_a" value="a" size="20" readonly class="ga-g-mcsim-label_a ga-field-input-control help_link"><span class="help"><p>Sphere: radius</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: side length</p><p>Cuboid: width</p><p>Hollow sphere: outer radius</p><p>Hollow square: outer side length</p><p>Cylindrical/discoidal ring: outer radius </p></span}><span id="label_a_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_a" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_a"," ");'
+  + '$( "#label_a" ).blur( function() { ga.valid.checkText( "#label_a" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_a" );$( "#label_a" ).keypress( function() { $( "#label_a_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_a">  </label></td><td><input type="text" name="label_a" id="label_a" value="a" size="20" readonly class="help_link"><span class="help"><p>Sphere: radius</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: side length</p><p>Cuboid: width</p><p>Hollow sphere: outer radius</p><p>Hollow square: outer side length</p><p>Cylindrical/discoidal ring: outer radius </p></span><span id="label_a_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_a"," ");'
++ '$( "#label_a" ).blur( function() { ga.valid.checkText( "#label_a" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_a" );$( "#label_a" ).keypress( function() { $( "#label_a_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_b" ] = {};
+ga.layout.fields[ "label_b" ].lhtml = '<label for="label_b" class="ga-g-mcsim-label_b" style="">  </label>';
+ga.layout.fields[ "label_b" ].dhtml = '<input type="text" name="label_b" id="label_b" value="b" size="20" readonly class="ga-g-mcsim-label_b ga-field-input-control help_link"><span class="help"><p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: no effect</p><p>Cuboid: depth</p><p>Hollow sphere: inner radius</p><p>Hollow square: inner side length</p><p>Cylindrical/discoidal ring: inner radius </p></span}><span id="label_b_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_b" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_b"," ");'
+  + '$( "#label_b" ).blur( function() { ga.valid.checkText( "#label_b" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_b" );$( "#label_b" ).keypress( function() { $( "#label_b_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_b">  </label></td><td><input type="text" name="label_b" id="label_b" value="b" size="20" readonly class="help_link"><span class="help"><p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: no effect</p><p>Cuboid: depth</p><p>Hollow sphere: inner radius</p><p>Hollow square: inner side length</p><p>Cylindrical/discoidal ring: inner radius </p></span><span id="label_b_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_b"," ");'
++ '$( "#label_b" ).blur( function() { ga.valid.checkText( "#label_b" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_b" );$( "#label_b" ).keypress( function() { $( "#label_b_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_c" ] = {};
+ga.layout.fields[ "label_c" ].lhtml = '<label for="label_c" class="ga-g-mcsim-label_c" style="">  </label>';
+ga.layout.fields[ "label_c" ].dhtml = '<input type="text" name="label_c" id="label_c" value="c" size="20" readonly class="ga-g-mcsim-label_c ga-field-input-control help_link"><span class="help"><p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc*: length</p><p>Cube: no effect</p><p>Cuboid: height</p><p>Hollow sphere: no effect </p><p>Hollow square: no effect</p><p>Cylindrical/discoidal ring*: length </p><p>*Cylinder and disc is the same model. They just differe in default paramters. Same is true for discoidal and cylindrical ring.</p></span}><span id="label_c_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_c" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_c"," ");'
+  + '$( "#label_c" ).blur( function() { ga.valid.checkText( "#label_c" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_c" );$( "#label_c" ).keypress( function() { $( "#label_c_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_c">  </label></td><td><input type="text" name="label_c" id="label_c" value="c" size="20" readonly class="help_link"><span class="help"><p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc*: length</p><p>Cube: no effect</p><p>Cuboid: height</p><p>Hollow sphere: no effect </p><p>Hollow square: no effect</p><p>Cylindrical/discoidal ring*: length </p><p>*Cylinder and disc is the same model. They just differe in default paramters. Same is true for discoidal and cylindrical ring.</p></span><span id="label_c_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_c"," ");'
++ '$( "#label_c" ).blur( function() { ga.valid.checkText( "#label_c" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_c" );$( "#label_c" ).keypress( function() { $( "#label_c_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_p" ] = {};
+ga.layout.fields[ "label_p" ].lhtml = '<label for="label_p" class="ga-g-mcsim-label_p" style="">  </label>';
+ga.layout.fields[ "label_p" ].dhtml = '<input type="text" name="label_p" id="label_p" value="Delta SLD" size="20" readonly class="ga-g-mcsim-label_p ga-field-input-control help_link"><span class="help">Excess scattering length density of object</span}><span id="label_p_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_p" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_p"," ");'
+  + '$( "#label_p" ).blur( function() { ga.valid.checkText( "#label_p" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_p" );$( "#label_p" ).keypress( function() { $( "#label_p_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_p">  </label></td><td><input type="text" name="label_p" id="label_p" value="Delta SLD" size="20" readonly class="help_link"><span class="help">Excess scattering length density of object</span><span id="label_p_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_p"," ");'
++ '$( "#label_p" ).blur( function() { ga.valid.checkText( "#label_p" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_p" );$( "#label_p" ).keypress( function() { $( "#label_p_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_x" ] = {};
+ga.layout.fields[ "label_x" ].lhtml = '<label for="label_x" class="ga-g-mcsim-label_x" style="">  </label>';
+ga.layout.fields[ "label_x" ].dhtml = '<input type="text" name="label_x" id="label_x" value="x_com" size="20" readonly class="ga-g-mcsim-label_x ga-field-input-control help_link"><span class="help">center of mass x position of object</span}><span id="label_x_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_x" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_x"," ");'
+  + '$( "#label_x" ).blur( function() { ga.valid.checkText( "#label_x" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_x" );$( "#label_x" ).keypress( function() { $( "#label_x_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_x">  </label></td><td><input type="text" name="label_x" id="label_x" value="x_com" size="20" readonly class="help_link"><span class="help">center of mass x position of object</span><span id="label_x_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_x"," ");'
++ '$( "#label_x" ).blur( function() { ga.valid.checkText( "#label_x" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_x" );$( "#label_x" ).keypress( function() { $( "#label_x_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_y" ] = {};
+ga.layout.fields[ "label_y" ].lhtml = '<label for="label_y" class="ga-g-mcsim-label_y" style="">  </label>';
+ga.layout.fields[ "label_y" ].dhtml = '<input type="text" name="label_y" id="label_y" value="y_com" size="20" readonly class="ga-g-mcsim-label_y ga-field-input-control help_link"><span class="help">center of mass y position of object</span}><span id="label_y_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_y" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_y"," ");'
+  + '$( "#label_y" ).blur( function() { ga.valid.checkText( "#label_y" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_y" );$( "#label_y" ).keypress( function() { $( "#label_y_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_y">  </label></td><td><input type="text" name="label_y" id="label_y" value="y_com" size="20" readonly class="help_link"><span class="help">center of mass y position of object</span><span id="label_y_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_y"," ");'
++ '$( "#label_y" ).blur( function() { ga.valid.checkText( "#label_y" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_y" );$( "#label_y" ).keypress( function() { $( "#label_y_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- text.input --
+
+ga.layout.fields[ "label_z" ] = {};
+ga.layout.fields[ "label_z" ].lhtml = '<label for="label_z" class="ga-g-mcsim-label_z" style="">  </label>';
+ga.layout.fields[ "label_z" ].dhtml = '<input type="text" name="label_z" id="label_z" value="z_com" size="20" readonly class="ga-g-mcsim-label_z ga-field-input-control help_link"><span class="help">center of mass z position of object</span}><span id="label_z_msg" class="warning field_msg" > </span>';
+
+
+ga.layout.fields[ "label_z" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("mcsim","label_z"," ");'
+  + '$( "#label_z" ).blur( function() { ga.valid.checkText( "#label_z" ); });'
+  + 
+  'ga.value.setLastValue( "mcsim", "#label_z" );$( "#label_z" ).keypress( function() { $( "#label_z_msg" ).html( "" ); });'
+;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label for="label_z">  </label></td><td><input type="text" name="label_z" id="label_z" value="z_com" size="20" readonly class="help_link"><span class="help">center of mass z position of object</span><span id="label_z_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("mcsim","label_z"," ");'
++ '$( "#label_z" ).blur( function() { ga.valid.checkText( "#label_z" ); });'
++ 
+'ga.value.setLastValue( "mcsim", "#label_z" );$( "#label_z" ).keypress( function() { $( "#label_z_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- listbox.input --
+
+ga.layout.fields[ "model1" ] = {};
+ga.layout.fields[ "model1" ].lhtml = '<label for="model1">  </label>';
+ga.layout.fields[ "model1" ].dhtml =
+  '<select id="model1" name="model1" class="ga-field-input-control"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "model1" ].eval  =
+  
+  
+  '$("#model1 option[value=\'sphere\']").prop("selected", "true");' +
+  '$( "#model1" ).prop( "value", $( "#model1" ).val() );' +
+  'ga.value.setLastValue( "mcsim", "#model1", "sphere" );'
+  
+  
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="model1_tr"><td><label for="model1">  </label></td><td><select id="model1" name="model1"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 
+
+'$("#model1 option[value=\'sphere\']").prop("selected", "true");' +
+'$( "#model1" ).prop( "value", $( "#model1" ).val() );' +
+'ga.value.setLastValue( "mcsim", "#model1", "sphere" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- float.input --
+
+ga.layout.fields[ "a1" ] = {};
+ga.layout.fields[ "a1" ].lhtml = '<label for="a1">  </label>';
+ga.layout.fields[ "a1" ].dhtml =
+  '<input type="number" name="a1" id="a1" value="100" min="0" data-type="float" required step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="a1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "a1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "a1" );'
+  
+  + 'ga.value.registerid("mcsim","a1"," ","float");'
+  + '$( "#a1" ).blur( function() { ga.valid.checkFloat( "#a1" ); });'
+  + '$( "#a1" ).keypress( function() { $( "#a1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="a1">  </label></td><td><input type="number" name="a1" id="a1" value="100" min="0" data-type="float" required><span id="a1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "a1" );'
+
+ + 'ga.value.registerid("mcsim","a1"," ","float");'
+ + '$( "#a1" ).blur( function() { ga.valid.checkFloat( "#a1" ); });'
+ + '$( "#a1" ).keypress( function() { $( "#a1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "b1" ] = {};
+ga.layout.fields[ "b1" ].lhtml = '<label for="b1">  </label>';
+ga.layout.fields[ "b1" ].dhtml =
+  '<input type="number" name="b1" id="b1" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="b1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "b1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "b1" );'
+  
+  + 'ga.value.registerid("mcsim","b1"," ");'
+  + '$( "#b1" ).blur( function() { ga.valid.checkFloat( "#b1" ); });'
+  + '$( "#b1" ).keypress( function() { $( "#b1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="b1">  </label></td><td><input type="number" name="b1" id="b1" min="0" data-type="float"><span id="b1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "b1" );'
+
+ + 'ga.value.registerid("mcsim","b1"," ");'
+ + '$( "#b1" ).blur( function() { ga.valid.checkFloat( "#b1" ); });'
+ + '$( "#b1" ).keypress( function() { $( "#b1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "c1" ] = {};
+ga.layout.fields[ "c1" ].lhtml = '<label for="c1">  </label>';
+ga.layout.fields[ "c1" ].dhtml =
+  '<input type="number" name="c1" id="c1" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="c1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "c1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "c1" );'
+  
+  + 'ga.value.registerid("mcsim","c1"," ");'
+  + '$( "#c1" ).blur( function() { ga.valid.checkFloat( "#c1" ); });'
+  + '$( "#c1" ).keypress( function() { $( "#c1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="c1">  </label></td><td><input type="number" name="c1" id="c1" min="0" data-type="float"><span id="c1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "c1" );'
+
+ + 'ga.value.registerid("mcsim","c1"," ");'
+ + '$( "#c1" ).blur( function() { ga.valid.checkFloat( "#c1" ); });'
+ + '$( "#c1" ).keypress( function() { $( "#c1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "p1" ] = {};
+ga.layout.fields[ "p1" ].lhtml = '<label for="p1">  </label>';
+ga.layout.fields[ "p1" ].dhtml =
+  '<input type="number" name="p1" id="p1" value="1" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="p1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "p1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "p1" );'
+  
+  + 'ga.value.registerid("mcsim","p1"," ");'
+  + '$( "#p1" ).blur( function() { ga.valid.checkFloat( "#p1" ); });'
+  + '$( "#p1" ).keypress( function() { $( "#p1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="p1">  </label></td><td><input type="number" name="p1" id="p1" value="1" data-type="float"><span id="p1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "p1" );'
+
+ + 'ga.value.registerid("mcsim","p1"," ");'
+ + '$( "#p1" ).blur( function() { ga.valid.checkFloat( "#p1" ); });'
+ + '$( "#p1" ).keypress( function() { $( "#p1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "x1" ] = {};
+ga.layout.fields[ "x1" ].lhtml = '<label for="x1">  </label>';
+ga.layout.fields[ "x1" ].dhtml =
+  '<input type="number" name="x1" id="x1" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="x1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "x1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "x1" );'
+  
+  + 'ga.value.registerid("mcsim","x1"," ");'
+  + '$( "#x1" ).blur( function() { ga.valid.checkFloat( "#x1" ); });'
+  + '$( "#x1" ).keypress( function() { $( "#x1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="x1">  </label></td><td><input type="number" name="x1" id="x1" value="0" data-type="float"><span id="x1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "x1" );'
+
+ + 'ga.value.registerid("mcsim","x1"," ");'
+ + '$( "#x1" ).blur( function() { ga.valid.checkFloat( "#x1" ); });'
+ + '$( "#x1" ).keypress( function() { $( "#x1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "y1" ] = {};
+ga.layout.fields[ "y1" ].lhtml = '<label for="y1">  </label>';
+ga.layout.fields[ "y1" ].dhtml =
+  '<input type="number" name="y1" id="y1" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="y1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "y1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "y1" );'
+  
+  + 'ga.value.registerid("mcsim","y1"," ");'
+  + '$( "#y1" ).blur( function() { ga.valid.checkFloat( "#y1" ); });'
+  + '$( "#y1" ).keypress( function() { $( "#y1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="y1">  </label></td><td><input type="number" name="y1" id="y1" value="0" data-type="float"><span id="y1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "y1" );'
+
+ + 'ga.value.registerid("mcsim","y1"," ");'
+ + '$( "#y1" ).blur( function() { ga.valid.checkFloat( "#y1" ); });'
+ + '$( "#y1" ).keypress( function() { $( "#y1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "z1" ] = {};
+ga.layout.fields[ "z1" ].lhtml = '<label for="z1">  </label>';
+ga.layout.fields[ "z1" ].dhtml =
+  '<input type="number" name="z1" id="z1" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="z1_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "z1" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "z1" );'
+  
+  + 'ga.value.registerid("mcsim","z1"," ");'
+  + '$( "#z1" ).blur( function() { ga.valid.checkFloat( "#z1" ); });'
+  + '$( "#z1" ).keypress( function() { $( "#z1_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="z1">  </label></td><td><input type="number" name="z1" id="z1" value="0" data-type="float"><span id="z1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "z1" );'
+
+ + 'ga.value.registerid("mcsim","z1"," ");'
+ + '$( "#z1" ).blur( function() { ga.valid.checkFloat( "#z1" ); });'
+ + '$( "#z1" ).keypress( function() { $( "#z1_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- listbox.input --
+
+ga.layout.fields[ "model2" ] = {};
+ga.layout.fields[ "model2" ].lhtml = '<label for="model2">  </label>';
+ga.layout.fields[ "model2" ].dhtml =
+  '<select id="model2" name="model2" class="ga-field-input-control"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "model2" ].eval  =
+  
+  
+  '$("#model2 option[value=\'none\']").prop("selected", "true");' +
+  '$( "#model2" ).prop( "value", $( "#model2" ).val() );' +
+  'ga.value.setLastValue( "mcsim", "#model2", "none" );'
+  
+  
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="model2_tr"><td><label for="model2">  </label></td><td><select id="model2" name="model2"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 
+
+'$("#model2 option[value=\'none\']").prop("selected", "true");' +
+'$( "#model2" ).prop( "value", $( "#model2" ).val() );' +
+'ga.value.setLastValue( "mcsim", "#model2", "none" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- float.input --
+
+ga.layout.fields[ "a2" ] = {};
+ga.layout.fields[ "a2" ].lhtml = '<label for="a2">  </label>';
+ga.layout.fields[ "a2" ].dhtml =
+  '<input type="number" name="a2" id="a2" value="100" min="0" data-type="float" required step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="a2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "a2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "a2" );'
+  
+  + 'ga.value.registerid("mcsim","a2"," ","float");'
+  + '$( "#a2" ).blur( function() { ga.valid.checkFloat( "#a2" ); });'
+  + '$( "#a2" ).keypress( function() { $( "#a2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="a2">  </label></td><td><input type="number" name="a2" id="a2" value="100" min="0" data-type="float" required><span id="a2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "a2" );'
+
+ + 'ga.value.registerid("mcsim","a2"," ","float");'
+ + '$( "#a2" ).blur( function() { ga.valid.checkFloat( "#a2" ); });'
+ + '$( "#a2" ).keypress( function() { $( "#a2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "b2" ] = {};
+ga.layout.fields[ "b2" ].lhtml = '<label for="b2">  </label>';
+ga.layout.fields[ "b2" ].dhtml =
+  '<input type="number" name="b2" id="b2" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="b2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "b2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "b2" );'
+  
+  + 'ga.value.registerid("mcsim","b2"," ");'
+  + '$( "#b2" ).blur( function() { ga.valid.checkFloat( "#b2" ); });'
+  + '$( "#b2" ).keypress( function() { $( "#b2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="b2">  </label></td><td><input type="number" name="b2" id="b2" min="0" data-type="float"><span id="b2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "b2" );'
+
+ + 'ga.value.registerid("mcsim","b2"," ");'
+ + '$( "#b2" ).blur( function() { ga.valid.checkFloat( "#b2" ); });'
+ + '$( "#b2" ).keypress( function() { $( "#b2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "c2" ] = {};
+ga.layout.fields[ "c2" ].lhtml = '<label for="c2">  </label>';
+ga.layout.fields[ "c2" ].dhtml =
+  '<input type="number" name="c2" id="c2" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="c2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "c2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "c2" );'
+  
+  + 'ga.value.registerid("mcsim","c2"," ");'
+  + '$( "#c2" ).blur( function() { ga.valid.checkFloat( "#c2" ); });'
+  + '$( "#c2" ).keypress( function() { $( "#c2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="c2">  </label></td><td><input type="number" name="c2" id="c2" min="0" data-type="float"><span id="c2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "c2" );'
+
+ + 'ga.value.registerid("mcsim","c2"," ");'
+ + '$( "#c2" ).blur( function() { ga.valid.checkFloat( "#c2" ); });'
+ + '$( "#c2" ).keypress( function() { $( "#c2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "p2" ] = {};
+ga.layout.fields[ "p2" ].lhtml = '<label for="p2">  </label>';
+ga.layout.fields[ "p2" ].dhtml =
+  '<input type="number" name="p2" id="p2" value="1" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="p2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "p2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "p2" );'
+  
+  + 'ga.value.registerid("mcsim","p2"," ");'
+  + '$( "#p2" ).blur( function() { ga.valid.checkFloat( "#p2" ); });'
+  + '$( "#p2" ).keypress( function() { $( "#p2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="p2">  </label></td><td><input type="number" name="p2" id="p2" value="1" data-type="float"><span id="p2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "p2" );'
+
+ + 'ga.value.registerid("mcsim","p2"," ");'
+ + '$( "#p2" ).blur( function() { ga.valid.checkFloat( "#p2" ); });'
+ + '$( "#p2" ).keypress( function() { $( "#p2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "x2" ] = {};
+ga.layout.fields[ "x2" ].lhtml = '<label for="x2">  </label>';
+ga.layout.fields[ "x2" ].dhtml =
+  '<input type="number" name="x2" id="x2" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="x2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "x2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "x2" );'
+  
+  + 'ga.value.registerid("mcsim","x2"," ");'
+  + '$( "#x2" ).blur( function() { ga.valid.checkFloat( "#x2" ); });'
+  + '$( "#x2" ).keypress( function() { $( "#x2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="x2">  </label></td><td><input type="number" name="x2" id="x2" value="0" data-type="float"><span id="x2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "x2" );'
+
+ + 'ga.value.registerid("mcsim","x2"," ");'
+ + '$( "#x2" ).blur( function() { ga.valid.checkFloat( "#x2" ); });'
+ + '$( "#x2" ).keypress( function() { $( "#x2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "y2" ] = {};
+ga.layout.fields[ "y2" ].lhtml = '<label for="y2">  </label>';
+ga.layout.fields[ "y2" ].dhtml =
+  '<input type="number" name="y2" id="y2" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="y2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "y2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "y2" );'
+  
+  + 'ga.value.registerid("mcsim","y2"," ");'
+  + '$( "#y2" ).blur( function() { ga.valid.checkFloat( "#y2" ); });'
+  + '$( "#y2" ).keypress( function() { $( "#y2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="y2">  </label></td><td><input type="number" name="y2" id="y2" value="0" data-type="float"><span id="y2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "y2" );'
+
+ + 'ga.value.registerid("mcsim","y2"," ");'
+ + '$( "#y2" ).blur( function() { ga.valid.checkFloat( "#y2" ); });'
+ + '$( "#y2" ).keypress( function() { $( "#y2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "z2" ] = {};
+ga.layout.fields[ "z2" ].lhtml = '<label for="z2">  </label>';
+ga.layout.fields[ "z2" ].dhtml =
+  '<input type="number" name="z2" id="z2" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="z2_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "z2" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "z2" );'
+  
+  + 'ga.value.registerid("mcsim","z2"," ");'
+  + '$( "#z2" ).blur( function() { ga.valid.checkFloat( "#z2" ); });'
+  + '$( "#z2" ).keypress( function() { $( "#z2_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="z2">  </label></td><td><input type="number" name="z2" id="z2" value="0" data-type="float"><span id="z2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "z2" );'
+
+ + 'ga.value.registerid("mcsim","z2"," ");'
+ + '$( "#z2" ).blur( function() { ga.valid.checkFloat( "#z2" ); });'
+ + '$( "#z2" ).keypress( function() { $( "#z2_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- listbox.input --
+
+ga.layout.fields[ "model3" ] = {};
+ga.layout.fields[ "model3" ].lhtml = '<label for="model3">  </label>';
+ga.layout.fields[ "model3" ].dhtml =
+  '<select id="model3" name="model3" class="ga-field-input-control"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "model3" ].eval  =
+  
+  
+  '$("#model3 option[value=\'none\']").prop("selected", "true");' +
+  '$( "#model3" ).prop( "value", $( "#model3" ).val() );' +
+  'ga.value.setLastValue( "mcsim", "#model3", "none" );'
+  
+  
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="model3_tr"><td><label for="model3">  </label></td><td><select id="model3" name="model3"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 
+
+'$("#model3 option[value=\'none\']").prop("selected", "true");' +
+'$( "#model3" ).prop( "value", $( "#model3" ).val() );' +
+'ga.value.setLastValue( "mcsim", "#model3", "none" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- float.input --
+
+ga.layout.fields[ "a3" ] = {};
+ga.layout.fields[ "a3" ].lhtml = '<label for="a3">  </label>';
+ga.layout.fields[ "a3" ].dhtml =
+  '<input type="number" name="a3" id="a3" value="100" min="0" data-type="float" required step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="a3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "a3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "a3" );'
+  
+  + 'ga.value.registerid("mcsim","a3"," ","float");'
+  + '$( "#a3" ).blur( function() { ga.valid.checkFloat( "#a3" ); });'
+  + '$( "#a3" ).keypress( function() { $( "#a3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="a3">  </label></td><td><input type="number" name="a3" id="a3" value="100" min="0" data-type="float" required><span id="a3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "a3" );'
+
+ + 'ga.value.registerid("mcsim","a3"," ","float");'
+ + '$( "#a3" ).blur( function() { ga.valid.checkFloat( "#a3" ); });'
+ + '$( "#a3" ).keypress( function() { $( "#a3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "b3" ] = {};
+ga.layout.fields[ "b3" ].lhtml = '<label for="b3">  </label>';
+ga.layout.fields[ "b3" ].dhtml =
+  '<input type="number" name="b3" id="b3" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="b3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "b3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "b3" );'
+  
+  + 'ga.value.registerid("mcsim","b3"," ");'
+  + '$( "#b3" ).blur( function() { ga.valid.checkFloat( "#b3" ); });'
+  + '$( "#b3" ).keypress( function() { $( "#b3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="b3">  </label></td><td><input type="number" name="b3" id="b3" min="0" data-type="float"><span id="b3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "b3" );'
+
+ + 'ga.value.registerid("mcsim","b3"," ");'
+ + '$( "#b3" ).blur( function() { ga.valid.checkFloat( "#b3" ); });'
+ + '$( "#b3" ).keypress( function() { $( "#b3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "c3" ] = {};
+ga.layout.fields[ "c3" ].lhtml = '<label for="c3">  </label>';
+ga.layout.fields[ "c3" ].dhtml =
+  '<input type="number" name="c3" id="c3" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="c3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "c3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "c3" );'
+  
+  + 'ga.value.registerid("mcsim","c3"," ");'
+  + '$( "#c3" ).blur( function() { ga.valid.checkFloat( "#c3" ); });'
+  + '$( "#c3" ).keypress( function() { $( "#c3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="c3">  </label></td><td><input type="number" name="c3" id="c3" min="0" data-type="float"><span id="c3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "c3" );'
+
+ + 'ga.value.registerid("mcsim","c3"," ");'
+ + '$( "#c3" ).blur( function() { ga.valid.checkFloat( "#c3" ); });'
+ + '$( "#c3" ).keypress( function() { $( "#c3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "p3" ] = {};
+ga.layout.fields[ "p3" ].lhtml = '<label for="p3">  </label>';
+ga.layout.fields[ "p3" ].dhtml =
+  '<input type="number" name="p3" id="p3" value="1" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="p3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "p3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "p3" );'
+  
+  + 'ga.value.registerid("mcsim","p3"," ");'
+  + '$( "#p3" ).blur( function() { ga.valid.checkFloat( "#p3" ); });'
+  + '$( "#p3" ).keypress( function() { $( "#p3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="p3">  </label></td><td><input type="number" name="p3" id="p3" value="1" data-type="float"><span id="p3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "p3" );'
+
+ + 'ga.value.registerid("mcsim","p3"," ");'
+ + '$( "#p3" ).blur( function() { ga.valid.checkFloat( "#p3" ); });'
+ + '$( "#p3" ).keypress( function() { $( "#p3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "x3" ] = {};
+ga.layout.fields[ "x3" ].lhtml = '<label for="x3">  </label>';
+ga.layout.fields[ "x3" ].dhtml =
+  '<input type="number" name="x3" id="x3" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="x3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "x3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "x3" );'
+  
+  + 'ga.value.registerid("mcsim","x3"," ");'
+  + '$( "#x3" ).blur( function() { ga.valid.checkFloat( "#x3" ); });'
+  + '$( "#x3" ).keypress( function() { $( "#x3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="x3">  </label></td><td><input type="number" name="x3" id="x3" value="0" data-type="float"><span id="x3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "x3" );'
+
+ + 'ga.value.registerid("mcsim","x3"," ");'
+ + '$( "#x3" ).blur( function() { ga.valid.checkFloat( "#x3" ); });'
+ + '$( "#x3" ).keypress( function() { $( "#x3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "y3" ] = {};
+ga.layout.fields[ "y3" ].lhtml = '<label for="y3">  </label>';
+ga.layout.fields[ "y3" ].dhtml =
+  '<input type="number" name="y3" id="y3" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="y3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "y3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "y3" );'
+  
+  + 'ga.value.registerid("mcsim","y3"," ");'
+  + '$( "#y3" ).blur( function() { ga.valid.checkFloat( "#y3" ); });'
+  + '$( "#y3" ).keypress( function() { $( "#y3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="y3">  </label></td><td><input type="number" name="y3" id="y3" value="0" data-type="float"><span id="y3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "y3" );'
+
+ + 'ga.value.registerid("mcsim","y3"," ");'
+ + '$( "#y3" ).blur( function() { ga.valid.checkFloat( "#y3" ); });'
+ + '$( "#y3" ).keypress( function() { $( "#y3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "z3" ] = {};
+ga.layout.fields[ "z3" ].lhtml = '<label for="z3">  </label>';
+ga.layout.fields[ "z3" ].dhtml =
+  '<input type="number" name="z3" id="z3" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="z3_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "z3" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "z3" );'
+  
+  + 'ga.value.registerid("mcsim","z3"," ");'
+  + '$( "#z3" ).blur( function() { ga.valid.checkFloat( "#z3" ); });'
+  + '$( "#z3" ).keypress( function() { $( "#z3_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="z3">  </label></td><td><input type="number" name="z3" id="z3" value="0" data-type="float"><span id="z3_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "z3" );'
+
+ + 'ga.value.registerid("mcsim","z3"," ");'
+ + '$( "#z3" ).blur( function() { ga.valid.checkFloat( "#z3" ); });'
+ + '$( "#z3" ).keypress( function() { $( "#z3_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- listbox.input --
+
+ga.layout.fields[ "model4" ] = {};
+ga.layout.fields[ "model4" ].lhtml = '<label for="model4">  </label>';
+ga.layout.fields[ "model4" ].dhtml =
+  '<select id="model4" name="model4" class="ga-field-input-control"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "model4" ].eval  =
+  
+  
+  '$("#model4 option[value=\'none\']").prop("selected", "true");' +
+  '$( "#model4" ).prop( "value", $( "#model4" ).val() );' +
+  'ga.value.setLastValue( "mcsim", "#model4", "none" );'
+  
+  
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="model4_tr"><td><label for="model4">  </label></td><td><select id="model4" name="model4"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 
+
+'$("#model4 option[value=\'none\']").prop("selected", "true");' +
+'$( "#model4" ).prop( "value", $( "#model4" ).val() );' +
+'ga.value.setLastValue( "mcsim", "#model4", "none" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- float.input --
+
+ga.layout.fields[ "a4" ] = {};
+ga.layout.fields[ "a4" ].lhtml = '<label for="a4">  </label>';
+ga.layout.fields[ "a4" ].dhtml =
+  '<input type="number" name="a4" id="a4" value="100" min="0" data-type="float" required step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="a4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "a4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "a4" );'
+  
+  + 'ga.value.registerid("mcsim","a4"," ","float");'
+  + '$( "#a4" ).blur( function() { ga.valid.checkFloat( "#a4" ); });'
+  + '$( "#a4" ).keypress( function() { $( "#a4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="a4">  </label></td><td><input type="number" name="a4" id="a4" value="100" min="0" data-type="float" required><span id="a4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "a4" );'
+
+ + 'ga.value.registerid("mcsim","a4"," ","float");'
+ + '$( "#a4" ).blur( function() { ga.valid.checkFloat( "#a4" ); });'
+ + '$( "#a4" ).keypress( function() { $( "#a4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "b4" ] = {};
+ga.layout.fields[ "b4" ].lhtml = '<label for="b4">  </label>';
+ga.layout.fields[ "b4" ].dhtml =
+  '<input type="number" name="b4" id="b4" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="b4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "b4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "b4" );'
+  
+  + 'ga.value.registerid("mcsim","b4"," ");'
+  + '$( "#b4" ).blur( function() { ga.valid.checkFloat( "#b4" ); });'
+  + '$( "#b4" ).keypress( function() { $( "#b4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="b4">  </label></td><td><input type="number" name="b4" id="b4" min="0" data-type="float"><span id="b4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "b4" );'
+
+ + 'ga.value.registerid("mcsim","b4"," ");'
+ + '$( "#b4" ).blur( function() { ga.valid.checkFloat( "#b4" ); });'
+ + '$( "#b4" ).keypress( function() { $( "#b4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "c4" ] = {};
+ga.layout.fields[ "c4" ].lhtml = '<label for="c4">  </label>';
+ga.layout.fields[ "c4" ].dhtml =
+  '<input type="number" name="c4" id="c4" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="c4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "c4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "c4" );'
+  
+  + 'ga.value.registerid("mcsim","c4"," ");'
+  + '$( "#c4" ).blur( function() { ga.valid.checkFloat( "#c4" ); });'
+  + '$( "#c4" ).keypress( function() { $( "#c4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="c4">  </label></td><td><input type="number" name="c4" id="c4" min="0" data-type="float"><span id="c4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "c4" );'
+
+ + 'ga.value.registerid("mcsim","c4"," ");'
+ + '$( "#c4" ).blur( function() { ga.valid.checkFloat( "#c4" ); });'
+ + '$( "#c4" ).keypress( function() { $( "#c4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "p4" ] = {};
+ga.layout.fields[ "p4" ].lhtml = '<label for="p4">  </label>';
+ga.layout.fields[ "p4" ].dhtml =
+  '<input type="number" name="p4" id="p4" value="1" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="p4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "p4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "p4" );'
+  
+  + 'ga.value.registerid("mcsim","p4"," ");'
+  + '$( "#p4" ).blur( function() { ga.valid.checkFloat( "#p4" ); });'
+  + '$( "#p4" ).keypress( function() { $( "#p4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="p4">  </label></td><td><input type="number" name="p4" id="p4" value="1" data-type="float"><span id="p4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "p4" );'
+
+ + 'ga.value.registerid("mcsim","p4"," ");'
+ + '$( "#p4" ).blur( function() { ga.valid.checkFloat( "#p4" ); });'
+ + '$( "#p4" ).keypress( function() { $( "#p4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "x4" ] = {};
+ga.layout.fields[ "x4" ].lhtml = '<label for="x4">  </label>';
+ga.layout.fields[ "x4" ].dhtml =
+  '<input type="number" name="x4" id="x4" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="x4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "x4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "x4" );'
+  
+  + 'ga.value.registerid("mcsim","x4"," ");'
+  + '$( "#x4" ).blur( function() { ga.valid.checkFloat( "#x4" ); });'
+  + '$( "#x4" ).keypress( function() { $( "#x4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="x4">  </label></td><td><input type="number" name="x4" id="x4" value="0" data-type="float"><span id="x4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "x4" );'
+
+ + 'ga.value.registerid("mcsim","x4"," ");'
+ + '$( "#x4" ).blur( function() { ga.valid.checkFloat( "#x4" ); });'
+ + '$( "#x4" ).keypress( function() { $( "#x4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "y4" ] = {};
+ga.layout.fields[ "y4" ].lhtml = '<label for="y4">  </label>';
+ga.layout.fields[ "y4" ].dhtml =
+  '<input type="number" name="y4" id="y4" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="y4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "y4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "y4" );'
+  
+  + 'ga.value.registerid("mcsim","y4"," ");'
+  + '$( "#y4" ).blur( function() { ga.valid.checkFloat( "#y4" ); });'
+  + '$( "#y4" ).keypress( function() { $( "#y4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="y4">  </label></td><td><input type="number" name="y4" id="y4" value="0" data-type="float"><span id="y4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "y4" );'
+
+ + 'ga.value.registerid("mcsim","y4"," ");'
+ + '$( "#y4" ).blur( function() { ga.valid.checkFloat( "#y4" ); });'
+ + '$( "#y4" ).keypress( function() { $( "#y4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "z4" ] = {};
+ga.layout.fields[ "z4" ].lhtml = '<label for="z4">  </label>';
+ga.layout.fields[ "z4" ].dhtml =
+  '<input type="number" name="z4" id="z4" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="z4_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "z4" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "z4" );'
+  
+  + 'ga.value.registerid("mcsim","z4"," ");'
+  + '$( "#z4" ).blur( function() { ga.valid.checkFloat( "#z4" ); });'
+  + '$( "#z4" ).keypress( function() { $( "#z4_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="z4">  </label></td><td><input type="number" name="z4" id="z4" value="0" data-type="float"><span id="z4_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "z4" );'
+
+ + 'ga.value.registerid("mcsim","z4"," ");'
+ + '$( "#z4" ).blur( function() { ga.valid.checkFloat( "#z4" ); });'
+ + '$( "#z4" ).keypress( function() { $( "#z4_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- listbox.input --
+
+ga.layout.fields[ "model5" ] = {};
+ga.layout.fields[ "model5" ].lhtml = '<label for="model5">  </label>';
+ga.layout.fields[ "model5" ].dhtml =
+  '<select id="model5" name="model5" class="ga-field-input-control"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "model5" ].eval  =
+  
+  
+  '$("#model5 option[value=\'none\']").prop("selected", "true");' +
+  '$( "#model5" ).prop( "value", $( "#model5" ).val() );' +
+  'ga.value.setLastValue( "mcsim", "#model5", "none" );'
+  
+  
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="model5_tr"><td><label for="model5">  </label></td><td><select id="model5" name="model5"><option value="sphere">Sphere</option><option value="ellipsoid">Ellipsoid (Tri-axial)</option><option value="cylinder">Cylinder</option><option value="disc">Disc</option><option value="cube">Cube</option><option value="cuboid">Cuboid</option><option value="hollow_sphere">Hollow sphere</option><option value="hollow_cube">Hollow cube</option><option value="cyl_ring">Cylindrical ring</option><option value="disc_ring">Discoidal ring</option><option value="none">Choose a model</option></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 
+
+'$("#model5 option[value=\'none\']").prop("selected", "true");' +
+'$( "#model5" ).prop( "value", $( "#model5" ).val() );' +
+'ga.value.setLastValue( "mcsim", "#model5", "none" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- float.input --
+
+ga.layout.fields[ "a5" ] = {};
+ga.layout.fields[ "a5" ].lhtml = '<label for="a5">  </label>';
+ga.layout.fields[ "a5" ].dhtml =
+  '<input type="number" name="a5" id="a5" value="100" min="0" data-type="float" required step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="a5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "a5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "a5" );'
+  
+  + 'ga.value.registerid("mcsim","a5"," ","float");'
+  + '$( "#a5" ).blur( function() { ga.valid.checkFloat( "#a5" ); });'
+  + '$( "#a5" ).keypress( function() { $( "#a5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="a5">  </label></td><td><input type="number" name="a5" id="a5" value="100" min="0" data-type="float" required><span id="a5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "a5" );'
+
+ + 'ga.value.registerid("mcsim","a5"," ","float");'
+ + '$( "#a5" ).blur( function() { ga.valid.checkFloat( "#a5" ); });'
+ + '$( "#a5" ).keypress( function() { $( "#a5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "b5" ] = {};
+ga.layout.fields[ "b5" ].lhtml = '<label for="b5">  </label>';
+ga.layout.fields[ "b5" ].dhtml =
+  '<input type="number" name="b5" id="b5" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="b5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "b5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "b5" );'
+  
+  + 'ga.value.registerid("mcsim","b5"," ");'
+  + '$( "#b5" ).blur( function() { ga.valid.checkFloat( "#b5" ); });'
+  + '$( "#b5" ).keypress( function() { $( "#b5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="b5">  </label></td><td><input type="number" name="b5" id="b5" min="0" data-type="float"><span id="b5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "b5" );'
+
+ + 'ga.value.registerid("mcsim","b5"," ");'
+ + '$( "#b5" ).blur( function() { ga.valid.checkFloat( "#b5" ); });'
+ + '$( "#b5" ).keypress( function() { $( "#b5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "c5" ] = {};
+ga.layout.fields[ "c5" ].lhtml = '<label for="c5">  </label>';
+ga.layout.fields[ "c5" ].dhtml =
+  '<input type="number" name="c5" id="c5" min="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="c5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "c5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "c5" );'
+  
+  + 'ga.value.registerid("mcsim","c5"," ");'
+  + '$( "#c5" ).blur( function() { ga.valid.checkFloat( "#c5" ); });'
+  + '$( "#c5" ).keypress( function() { $( "#c5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="c5">  </label></td><td><input type="number" name="c5" id="c5" min="0" data-type="float"><span id="c5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "c5" );'
+
+ + 'ga.value.registerid("mcsim","c5"," ");'
+ + '$( "#c5" ).blur( function() { ga.valid.checkFloat( "#c5" ); });'
+ + '$( "#c5" ).keypress( function() { $( "#c5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "p5" ] = {};
+ga.layout.fields[ "p5" ].lhtml = '<label for="p5">  </label>';
+ga.layout.fields[ "p5" ].dhtml =
+  '<input type="number" name="p5" id="p5" value="1" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="p5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "p5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "p5" );'
+  
+  + 'ga.value.registerid("mcsim","p5"," ");'
+  + '$( "#p5" ).blur( function() { ga.valid.checkFloat( "#p5" ); });'
+  + '$( "#p5" ).keypress( function() { $( "#p5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="p5">  </label></td><td><input type="number" name="p5" id="p5" value="1" data-type="float"><span id="p5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "p5" );'
+
+ + 'ga.value.registerid("mcsim","p5"," ");'
+ + '$( "#p5" ).blur( function() { ga.valid.checkFloat( "#p5" ); });'
+ + '$( "#p5" ).keypress( function() { $( "#p5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "x5" ] = {};
+ga.layout.fields[ "x5" ].lhtml = '<label for="x5">  </label>';
+ga.layout.fields[ "x5" ].dhtml =
+  '<input type="number" name="x5" id="x5" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="x5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "x5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "x5" );'
+  
+  + 'ga.value.registerid("mcsim","x5"," ");'
+  + '$( "#x5" ).blur( function() { ga.valid.checkFloat( "#x5" ); });'
+  + '$( "#x5" ).keypress( function() { $( "#x5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="x5">  </label></td><td><input type="number" name="x5" id="x5" value="0" data-type="float"><span id="x5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "x5" );'
+
+ + 'ga.value.registerid("mcsim","x5"," ");'
+ + '$( "#x5" ).blur( function() { ga.valid.checkFloat( "#x5" ); });'
+ + '$( "#x5" ).keypress( function() { $( "#x5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "y5" ] = {};
+ga.layout.fields[ "y5" ].lhtml = '<label for="y5">  </label>';
+ga.layout.fields[ "y5" ].dhtml =
+  '<input type="number" name="y5" id="y5" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="y5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "y5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "y5" );'
+  
+  + 'ga.value.registerid("mcsim","y5"," ");'
+  + '$( "#y5" ).blur( function() { ga.valid.checkFloat( "#y5" ); });'
+  + '$( "#y5" ).keypress( function() { $( "#y5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="y5">  </label></td><td><input type="number" name="y5" id="y5" value="0" data-type="float"><span id="y5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "y5" );'
+
+ + 'ga.value.registerid("mcsim","y5"," ");'
+ + '$( "#y5" ).blur( function() { ga.valid.checkFloat( "#y5" ); });'
+ + '$( "#y5" ).keypress( function() { $( "#y5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- float.input --
+
+ga.layout.fields[ "z5" ] = {};
+ga.layout.fields[ "z5" ].lhtml = '<label for="z5">  </label>';
+ga.layout.fields[ "z5" ].dhtml =
+  '<input type="number" name="z5" id="z5" value="0" data-type="float" step="' +
+  'any" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="z5_msg" class="warning field_msg" > </span>'
+  ;
+
+
+
+ga.layout.fields[ "z5" ].eval  = 
+  
+  'ga.value.setLastValue( "mcsim", "z5" );'
+  
+  + 'ga.value.registerid("mcsim","z5"," ");'
+  + '$( "#z5" ).blur( function() { ga.valid.checkFloat( "#z5" ); });'
+  + '$( "#z5" ).keypress( function() { $( "#z5_msg" ).html( "" ); });'
+  ;
+
+
+
+
+
+/* old way 
+this_html = '<tr><td><label for="z5">  </label></td><td><input type="number" name="z5" id="z5" value="0" data-type="float"><span id="z5_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+'ga.value.setLastValue( "mcsim", "z5" );'
+
+ + 'ga.value.registerid("mcsim","z5"," ");'
+ + '$( "#z5" ).blur( function() { ga.valid.checkFloat( "#z5" ); });'
+ + '$( "#z5" ).keypress( function() { $( "#z5_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+skipped_row=1;this_html = this_html.replace(/<\/tr>$/, "" );
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end float.input --
+// -- label.output --
+
+ga.layout.fields[ "hroutput" ] = {};
+ga.layout.fields[ "hroutput" ].lhtml =
+  '<label for="hroutput" class="help_link __fields:default__"><hr> Output files <hr> </label>'
+  
+  ;
+
+ga.layout.fields[ "hroutput" ].dhtml = '';
+ga.layout.fields[ "hroutput" ].eval  = '';
+
+/* old way
+
+<tr><td colspan="2"><label><hr> Output files <hr></label></td></tr>
+*/
+
+// -- end label.output --
+// -- file.output --
+
+ga.layout.fields[ "pr" ] = {};
+ga.layout.fields[ "pr" ].lhtml =
+  '<label for="pr" class="help_link">p(r) </label>'
+  + '<span class="help">The calculated p(r)</span>'
+  ;
+
+ga.layout.fields[ "pr" ].dhtml =
+  '<div id="pr" type="filelink" readonly class="ga-field-output-control help_link"}><span id="pr_filelink"></span></div>'
+  + '<span class="help">The calculated p(r)</span>'
+  ;
+
+ga.layout.fields[ "pr" ].eval  =
+  'ga.value.setLastValue( "mcsim_output", "#pr" );'
+  + 'ga.value.extra_resets( "pr" );'
+  ;
+
+/* old way
+
+<tr><td><label for="pr" class="help_link">p(r) </label>
+<span class="help">The calculated p(r)</span></td>
+<td><div id="pr" type="filelink" readonly class="help_link"><span id="pr_filelink"></span></div>
+<span class="help">The calculated p(r)</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#pr" );
+ga.value.extra_resets( "pr" );
+end script>
+*/
+
+// -- end file.output --
+// -- file.output --
+
+ga.layout.fields[ "Iq" ] = {};
+ga.layout.fields[ "Iq" ].lhtml =
+  '<label for="Iq" class="help_link">Intensity, calculated (no errors) </label>'
+  + '<span class="help">The calculated intensity, I(q)</span>'
+  ;
+
+ga.layout.fields[ "Iq" ].dhtml =
+  '<div id="Iq" type="filelink" readonly class="ga-field-output-control help_link"}><span id="Iq_filelink"></span></div>'
+  + '<span class="help">The calculated intensity, I(q)</span>'
+  ;
+
+ga.layout.fields[ "Iq" ].eval  =
+  'ga.value.setLastValue( "mcsim_output", "#Iq" );'
+  + 'ga.value.extra_resets( "Iq" );'
+  ;
+
+/* old way
+
+<tr><td><label for="Iq" class="help_link">Intensity, calculated (no errors) </label>
+<span class="help">The calculated intensity, I(q)</span></td>
+<td><div id="Iq" type="filelink" readonly class="help_link"><span id="Iq_filelink"></span></div>
+<span class="help">The calculated intensity, I(q)</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#Iq" );
+ga.value.extra_resets( "Iq" );
+end script>
+*/
+
+// -- end file.output --
+// -- file.output --
+
+ga.layout.fields[ "Isim" ] = {};
+ga.layout.fields[ "Isim" ].lhtml =
+  '<label for="Isim" class="help_link">Intensity, simulated (with errors) </label>'
+  + '<span class="help"><p>Simulated intensity, format: q, I(q), sigma.</p><p>sigma simulated using Sedlak et al (https://doi.org/10.1107/S1600576717003077)</p></span>'
+  ;
+
+ga.layout.fields[ "Isim" ].dhtml =
+  '<div id="Isim" type="filelink" readonly class="ga-field-output-control help_link"}><span id="Isim_filelink"></span></div>'
+  + '<span class="help"><p>Simulated intensity, format: q, I(q), sigma.</p><p>sigma simulated using Sedlak et al (https://doi.org/10.1107/S1600576717003077)</p></span>'
+  ;
+
+ga.layout.fields[ "Isim" ].eval  =
+  'ga.value.setLastValue( "mcsim_output", "#Isim" );'
+  + 'ga.value.extra_resets( "Isim" );'
+  ;
+
+/* old way
+
+<tr><td><label for="Isim" class="help_link">Intensity, simulated (with errors) </label>
+<span class="help"><p>Simulated intensity, format: q, I(q), sigma.</p><p>sigma simulated using Sedlak et al (https://doi.org/10.1107/S1600576717003077)</p></span></td>
+<td><div id="Isim" type="filelink" readonly class="help_link"><span id="Isim_filelink"></span></div>
+<span class="help"><p>Simulated intensity, format: q, I(q), sigma.</p><p>sigma simulated using Sedlak et al (https://doi.org/10.1107/S1600576717003077)</p></span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#Isim" );
+ga.value.extra_resets( "Isim" );
+end script>
+*/
+
+// -- end file.output --
+// -- file.output --
+
+ga.layout.fields[ "pdb" ] = {};
+ga.layout.fields[ "pdb" ].lhtml =
+  '<label for="pdb" class="help_link">PDB file with model (open e.g. with PyMOL or <a target=_blank href=https://www.rcsb.org/3d-view>PDB-3Dviewer</a>) </label>'
+  + '<span class="help"><p>PDB file of model, for visualization, e.g. in PyMOL or with online 3Dviewer.</p><p> All points represented as dummy Carbon beads (positive SLD), dummy Oxygen beads (negative SLD) or dummy Hydrogen beads (zero SLD).</p><p> WARNING: The model will not give correct scattering if used as input in, e.g., CRYSOL, PEPSI-SAXS, FOXS, CAPP, etc - it is only for vizualization</p>.</span>'
+  ;
+
+ga.layout.fields[ "pdb" ].dhtml =
+  '<div id="pdb" type="filelink" readonly class="ga-field-output-control help_link"}><span id="pdb_filelink"></span></div>'
+  + '<span class="help"><p>PDB file of model, for visualization, e.g. in PyMOL or with online 3Dviewer.</p><p> All points represented as dummy Carbon beads (positive SLD), dummy Oxygen beads (negative SLD) or dummy Hydrogen beads (zero SLD).</p><p> WARNING: The model will not give correct scattering if used as input in, e.g., CRYSOL, PEPSI-SAXS, FOXS, CAPP, etc - it is only for vizualization</p>.</span>'
+  ;
+
+ga.layout.fields[ "pdb" ].eval  =
+  'ga.value.setLastValue( "mcsim_output", "#pdb" );'
+  + 'ga.value.extra_resets( "pdb" );'
+  ;
+
+/* old way
+
+<tr><td><label for="pdb" class="help_link">PDB file with model (open e.g. with PyMOL or <a target=_blank href=https://www.rcsb.org/3d-view>PDB-3Dviewer</a>) </label>
+<span class="help"><p>PDB file of model, for visualization, e.g. in PyMOL or with online 3Dviewer.</p><p> All points represented as dummy Carbon beads (positive SLD), dummy Oxygen beads (negative SLD) or dummy Hydrogen beads (zero SLD).</p><p> WARNING: The model will not give correct scattering if used as input in, e.g., CRYSOL, PEPSI-SAXS, FOXS, CAPP, etc - it is only for vizualization</p>.</span></td>
+<td><div id="pdb" type="filelink" readonly class="help_link"><span id="pdb_filelink"></span></div>
+<span class="help"><p>PDB file of model, for visualization, e.g. in PyMOL or with online 3Dviewer.</p><p> All points represented as dummy Carbon beads (positive SLD), dummy Oxygen beads (negative SLD) or dummy Hydrogen beads (zero SLD).</p><p> WARNING: The model will not give correct scattering if used as input in, e.g., CRYSOL, PEPSI-SAXS, FOXS, CAPP, etc - it is only for vizualization</p>.</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#pdb" );
+ga.value.extra_resets( "pdb" );
+end script>
+*/
+
+// -- end file.output --
+// -- file.output --
+
+ga.layout.fields[ "zip" ] = {};
+ga.layout.fields[ "zip" ].lhtml =
+  '<label for="zip" class="help_link">Results zipped </label>'
+  + '<span class="help">Results packaged in a zip file</span>'
+  ;
+
+ga.layout.fields[ "zip" ].dhtml =
+  '<div id="zip" type="filelink" readonly class="ga-field-output-control help_link"}><span id="zip_filelink"></span></div>'
+  + '<span class="help">Results packaged in a zip file</span>'
+  ;
+
+ga.layout.fields[ "zip" ].eval  =
+  'ga.value.setLastValue( "mcsim_output", "#zip" );'
+  + 'ga.value.extra_resets( "zip" );'
+  ;
+
+/* old way
+
+<tr><td><label for="zip" class="help_link">Results zipped </label>
+<span class="help">Results packaged in a zip file</span></td>
+<td><div id="zip" type="filelink" readonly class="help_link"><span id="zip_filelink"></span></div>
+<span class="help">Results packaged in a zip file</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#zip" );
+ga.value.extra_resets( "zip" );
+end script>
+*/
+
+// -- end file.output --
+// -- label.output --
+
+ga.layout.fields[ "label_parameters" ] = {};
+ga.layout.fields[ "label_parameters" ].lhtml =
+  '<label for="label_parameters" class="help_link __fields:default__"><hr> Structural output parameters <hr> </label>'
+  
+  ;
+
+ga.layout.fields[ "label_parameters" ].dhtml = '';
+ga.layout.fields[ "label_parameters" ].eval  = '';
+
+/* old way
+
+<tr><td colspan="2"><label><hr> Structural output parameters <hr></label></td></tr>
+*/
+
+// -- end label.output --
+// -- text.output --
+
+ga.layout.fields[ "Dmax" ] = {};
+ga.layout.fields[ "Dmax" ].lhtml = '<label for="Dmax" class="ga-g-mcsim-Dmax" style="">Dmax, monodisperse </label>';
+ga.layout.fields[ "Dmax" ].dhtml = '<input type="text" name="Dmax" id="Dmax" readonly class="ga-g-mcsim-Dmax ga-field-output-control help_link"><span class="help">Maximum distance in monodisperse particle</span>';
+ga.layout.fields[ "Dmax" ].eval  = 'ga.value.setLastValue( "mcsim_output", "#Dmax" );';
+
+/* old way
+<tr><td><label for="Dmax">Dmax, monodisperse </label></td><td><input type="text" name="Dmax" id="Dmax" readonly class="help_link"><span class="help">Maximum distance in monodisperse particle</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#Dmax" );
+end script>
+*/
+// -- end text.output --
+// -- text.output --
+
+ga.layout.fields[ "Rg" ] = {};
+ga.layout.fields[ "Rg" ].lhtml = '<label for="Rg" class="ga-g-mcsim-Rg" style="">Rg, monodisperse </label>';
+ga.layout.fields[ "Rg" ].dhtml = '<input type="text" name="Rg" id="Rg" readonly class="ga-g-mcsim-Rg ga-field-output-control help_link"><span class="help">Radius of gyration of monodisperse particle</span>';
+ga.layout.fields[ "Rg" ].eval  = 'ga.value.setLastValue( "mcsim_output", "#Rg" );';
+
+/* old way
+<tr><td><label for="Rg">Rg, monodisperse </label></td><td><input type="text" name="Rg" id="Rg" readonly class="help_link"><span class="help">Radius of gyration of monodisperse particle</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#Rg" );
+end script>
+*/
+// -- end text.output --
+// -- text.output --
+
+ga.layout.fields[ "Dmax_poly" ] = {};
+ga.layout.fields[ "Dmax_poly" ].lhtml = '<label for="Dmax_poly" class="ga-g-mcsim-Dmax_poly" style="">Dmax, polydisperse </label>';
+ga.layout.fields[ "Dmax_poly" ].dhtml = '<input type="text" name="Dmax_poly" id="Dmax_poly" readonly class="ga-g-mcsim-Dmax_poly ga-field-output-control help_link"><span class="help">Maximum distance in polydisperse sample</span>';
+ga.layout.fields[ "Dmax_poly" ].eval  = 'ga.value.setLastValue( "mcsim_output", "#Dmax_poly" );';
+
+/* old way
+<tr><td><label for="Dmax_poly">Dmax, polydisperse </label></td><td><input type="text" name="Dmax_poly" id="Dmax_poly" readonly class="help_link"><span class="help">Maximum distance in polydisperse sample</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#Dmax_poly" );
+end script>
+*/
+// -- end text.output --
+// -- text.output --
+
+ga.layout.fields[ "Rg_poly" ] = {};
+ga.layout.fields[ "Rg_poly" ].lhtml = '<label for="Rg_poly" class="ga-g-mcsim-Rg_poly" style="">Rg, polydisperse </label>';
+ga.layout.fields[ "Rg_poly" ].dhtml = '<input type="text" name="Rg_poly" id="Rg_poly" readonly class="ga-g-mcsim-Rg_poly ga-field-output-control help_link"><span class="help">Radius of gyration of polydisperse sample</span>';
+ga.layout.fields[ "Rg_poly" ].eval  = 'ga.value.setLastValue( "mcsim_output", "#Rg_poly" );';
+
+/* old way
+<tr><td><label for="Rg_poly">Rg, polydisperse </label></td><td><input type="text" name="Rg_poly" id="Rg_poly" readonly class="help_link"><span class="help">Radius of gyration of polydisperse sample</span></td></tr>
+<script>
+ga.value.setLastValue( "mcsim_output", "#Rg_poly" );
+end script>
+*/
+// -- end text.output --
+// -- label.output --
+
+ga.layout.fields[ "label_fig" ] = {};
+ga.layout.fields[ "label_fig" ].lhtml =
+  '<label for="label_fig" class="help_link __fields:default__"><p><hr> Plots of model, p(r) and scattering <hr></p><p>Upper panel: Model(s) from different angles (red dots have positive SLD, green have negative SLD and grey have zero SLD). </p><p>Lower panel: p(r), I(q) on log-log and log-lin scale. </p> </label>'
+  + '<span class="help"><p>Upper panel: Model(s) from different angles (red dots have positive SLD, green have negative SLD and grey have zero SLD). </p><p>Lower panel: p(r), I(q) on log-log and log-lin scale. </p></span>'
+  ;
+
+ga.layout.fields[ "label_fig" ].dhtml = '';
+ga.layout.fields[ "label_fig" ].eval  = '';
+
+/* old way
+
+<tr><td colspan="2"><label><p><hr> Plots of model, p(r) and scattering <hr></p><p>Upper panel: Model(s) from different angles (red dots have positive SLD, green have negative SLD and grey have zero SLD). </p><p>Lower panel: p(r), I(q) on log-log and log-lin scale. </p></label></td></tr>
+*/
+
+// -- end label.output --
+// -- image.output --
+
+ga.layout.fields[ "fig" ] = {};
+ga.layout.fields[ "fig" ].lhtml = '<label for="fig"> </label>';
+ga.layout.fields[ "fig" ].dhtml =
+  '<div id="fig" type="image"  data-width="80%" class="help_link"></div>'
+  
+  ;
+
+ga.layout.fields[ "fig" ].eval  =
+  'ga.value.setLastValue( "mcsim_output", "#fig" );'
+  + 'ga.value.extra_resets( "fig" );'
+  ;
+
+/* old way
+
+</table>
+<p><label for="fig">
+<div id="fig" type="image"  data-width="80%">
+</div>
+</label></p>
+<script>
+ga.value.setLastValue( "mcsim_output", "#fig" );
+ga.value.extra_resets( "fig" );
+end script>
+<table>
+*/
+
+// -- end image.output --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#mcsim_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="mcsim_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="mcsim_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "__resource__"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#mcsim_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="mcsim_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="mcsim_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="mcsim_progress"></span> -->
+<script>
+
+
+
+
+
+
+var mcsim_output_msgs = $("#mcsim_output_msgs");
+mcsim_output_msgs.text( "" );
+
+var mcsim_timeout_handler = "unset";
+var mcsim_timeout_handler_uuid;
+
+function get_results_mcsim( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "mcsim", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( mcsim_timeout_handler != "unset" )
+              {
+                  clearTimeout( mcsim_timeout_handler );
+                  mcsim_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "mcsim" );
+              eval( mcsim_done_eval );
+              ga.progress.clear(  "mcsim", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               mcsim_timeout_handler =  setTimeout( get_results_mcsim, last_timeout, id, last_timeout, 0 );
+               mcsim_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#mcsim_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/mcsim_menu/mcsim.php </span>" );
+           ga.progress.clear( 'mcsim', 'input.footer 1' );
+           if ( mcsim_timeout_handler != "unset" )
+           {
+               clearTimeout( mcsim_timeout_handler );
+               mcsim_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "mcsim" );
+           eval( mcsim_done_eval );
+          } );
+    return false;
+};
+
+function msg_mcsim ( id, data )
+{
+   ga.data.update( "mcsim", data, get_results_mcsim, id );
+};
+
+$( "#mcsim_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#mcsim" ).find( ".toclear" ).remove();   
+   if ( mcsim_timeout_handler != "unset" ) {
+       
+       clearTimeout( mcsim_timeout_handler );
+       if ( mcsim_timeout_handler_uuid ) {
+           ga.ws.unsub( mcsim_timeout_handler_uuid, "mcsim" );
+       }
+       mcsim_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "mcsim_output", true );
+
+   
+   return ga.xsede.select( "__resource__", do_mcsim_submit, $(this) );
+   //   return do_mcsim_submit( $(this) );
+});
+
+function do_mcsim_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+   
+   
+
+   ga.event( "", "mcsim", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "mcsim" ) ) {
+       ga.valid.showerrormessage( "mcsim" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "__resource__", do_mcsim_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "__resource__", "__airavataselect__", do_mcsim_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+ + "&_submitpolicy=all"
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_mcsim, do_mcsim_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#mcsim_results" ).text( "" );
+
+              ga.value.saveLastValues( "mcsim" );
+              ga.value.resetDefaultValues( "mcsim_output", true );
+
+              var found_errors = 0;
+              $("#mcsim").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#mcsim " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "mcsim" );
+    ga.valuen.addhtml( "mcsim" );
+
+    ga.extrahidden( "mcsim" );
+
+    ga.ws.sub( vuuid, msg_mcsim, "mcsim" );
+
+    var formData = new FormData($('#mcsim')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["mcsim"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "mcsim", formData, ga.stages["mcsim"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'mcsim', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "mcsim", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["mcsim"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/mcsim_menu/mcsim.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'mcsim_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["mcsim"] )
+      {
+        ga.value.showfields(ga.multistage, "mcsim", ga.stages["mcsim"], ga.currentstage);
+    	delete ga.stages["mcsim"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'mcsim', 'input.footer 2' );
+   
+           var do_refresh = 1;
+
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           mcsim_output_msgs.text( "" );
+           job_status = ga.data.update( "mcsim", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( mcsim_timeout_handler != "unset" )
+               {
+                   clearTimeout( mcsim_timeout_handler );
+                   mcsim_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "mcsim" );
+               eval( mcsim_done_eval );
+           } else {
+               mcsim_timeout_handler = setTimeout( get_results_mcsim, 2000, vuuid, 2000, 0 );
+               mcsim_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#mcsim_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/mcsim_menu/mcsim.php </span>" );
+           ga.progress.clear( 'mcsim', 'input.footer 3' );
+           if ( mcsim_timeout_handler != "unset" )
+           {
+               clearTimeout( mcsim_timeout_handler );
+               mcsim_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "mcsim" );
+           eval( mcsim_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+mcsim_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "mcsim_output_textarea" ).style.height = 0;
+    }
+
+    if ( mcsim_timeout_handler != "unset" ) {
+       
+       clearTimeout( mcsim_timeout_handler );
+       if ( mcsim_timeout_handler_uuid ) {
+           ga.ws.unsub( mcsim_timeout_handler_uuid, "mcsim" );
+       }
+       mcsim_timeout_handler = "unset";
+    }
+    ga.event( "", "mcsim", "reset clicked" );
+    ga.valid.clearerrorcounter( "mcsim" );
+
+   if ( ga.multistage["mcsim"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"mcsim");
+       ga.stages["mcsim"].length = 0;
+       ga.stages["mcsim"] = ga.stagesdefault["mcsim"].slice();
+       console.log("Reset: " + ga.stages["mcsim"]);
+     }
+
+    //    ga.value.resetDefaultValues( "mcsim" );
+    ga.valuen.restore.dflt(  "mcsim" );
+    ga.value.resetDefaultValues( "mcsim_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#mcsim_reset" ).click( function() {
+   return mcsim_reset();
+});
+
+
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="mcsim_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#mcsim").append( ga.tmp.html );
+</script>
+
+<form id="mcsim_output">
+<!-- moved to layout.js <div id="mcsim_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "mcsim_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="mcsim_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="mcsim_output_textarea_label" for="mcsim_output_textarea" class=""></label>
+<textarea readonly hidden id="mcsim_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_mcsim = 1; </script>

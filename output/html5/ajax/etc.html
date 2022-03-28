@@ -1,0 +1,42 @@
+<style>
+#panel_etc {
+    position: relative;
+    display: block;  
+}
+</style>
+<p>
+<div class="jumbotron" style="padding:0">
+<center>
+
+    <button id="etc_sys_file_manager" class="ga-button-menu help_link">File manager</button>
+<script>
+    $( "#etc_sys_file_manager" ).click(function() {
+        var d=$( "#tab_docs > a" );
+        if ( d.length ) { d.attr( "href", "__docsbaseurl__/etc/sys_file_manager/sys_file_manager.html" ); };
+    
+        if ( ga.valuen.lastload && $( "#" + ga.valuen.lastload ).is( ":visible" ) ) { ga.valuen.save( ga.valuen.lastload ); }
+
+        if ( ga.valuen.lastload != "sys_file_manager" || !$( "#" + ga.valuen.lastload ).is( ":visible" ) ) {
+            ga.loader.show();
+            $( "#panel_etc" ).load( "ajax/etc/sys_file_manager.html", function() { ga.valuen.save( "sys_file_manager", true ); ga.valuen.restore( "sys_file_manager" ); ga.valuen.lastload = "sys_file_manager"; ga.loader.hide(); ga.hhelp.reset(); });
+        }
+    });
+
+
+
+</script>
+</center>
+</div>
+</p>
+
+<div id="panel_etc" style="margin-left:25px;margin-right:35px">
+</div>
+
+
+<script>
+    $( "#panel_etc" ).text("");
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+</script>

@@ -1,0 +1,1745 @@
+<!-- input.header -->
+
+
+<form id="sys_user_config" 
+ style="max-height:65vh;overflow:auto">
+<div id="sys_user_config_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "sys_user_config";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"panels":[{"root":{"align":"left","gtr":"auto","label":[1,1],"gap":"5px","size":["auto",[1,1]],"data":[1,2],"gtc":"1fr 1fr ","repeats":{"size":["auto",[1,1]],"location":["next","full"]}}}],"fields":[{"dgr":1,"role":"input","lgr":1,"lgc":1,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"label1","type":"label","dgc":2},{"lgc":1,"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"xsedeproject","type":"listbox","dgc":2,"dgr":2,"lgr":2,"role":"input"},{"repeater":"true","lgr":3,"role":"input","dgr":3,"rgr":4,"rgtr":"auto","layout":{"parent":"root","data":[1,2],"repeats":{"size":["auto",[1,1]],"location":["next","full"]},"label":[1,1]},"id":"newxsedeproject","rgc":"1/-1","type":"checkbox","dgc":2,"lgc":1,"rgtc":"1fr 1fr "},{"lgc":1,"id":"newxsedeprojectid","layout":{"label":[1,1],"data":[1,2],"parent":"r-newxsedeproject"},"type":"text","dgc":2,"dgr":1,"repeat":"newxsedeproject","lgr":1,"role":"input"},{"type":"listbox","dgc":2,"id":"project","layout":{"data":[1,2],"parent":"root","label":[1,1]},"lgc":1,"role":"input","lgr":5,"dgr":5},{"lgr":6,"role":"input","repeater":"true","rgtr":"auto","dgr":6,"rgr":7,"rgc":"1/-1","dgc":2,"type":"checkbox","layout":{"repeats":{"size":["auto",[1,1]],"location":["next","full"]},"label":[1,1],"data":[1,2],"parent":"root"},"id":"newproject","rgtc":"1fr 1fr ","lgc":1},{"dgr":1,"repeat":"newproject","lgr":1,"role":"input","lgc":1,"layout":{"label":[1,1],"data":[1,2],"parent":"r-newproject"},"id":"newprojectname","dgc":2,"type":"text"},{"role":"input","lgr":2,"repeat":"newproject","dgr":2,"type":"textarea","dgc":2,"layout":{"parent":"r-newproject","data":[1,2],"label":[1,1]},"id":"newprojectdesc","lgc":1},{"lgr":8,"role":"input","repeater":"true","rgtr":"auto","rgr":9,"dgr":8,"type":"checkbox","dgc":2,"rgc":"1/-1","layout":{"label":[1,1],"repeats":{"size":["auto",[1,1]],"location":["next","full"]},"data":[1,2],"parent":"root"},"id":"projectshare","rgtc":"1fr 1fr ","lgc":1},{"lgc":1,"dgc":2,"type":"listbox","id":"projectshareproject","layout":{"label":[1,1],"parent":"r-projectshare","data":[1,2]},"repeat":"projectshare","dgr":1,"lgr":1,"role":"input"},{"dgr":2,"repeat":"projectshare","lgr":2,"role":"input","lgc":1,"layout":{"data":[1,2],"parent":"r-projectshare","label":[1,1]},"id":"projectsharewith","dgc":2,"type":"listbox"},{"rgtc":"1fr 1fr ","lgc":1,"rgc":"1/-1","type":"checkbox","dgc":2,"id":"changepassword","layout":{"label":[1,1],"repeats":{"location":["next","full"],"size":["auto",[1,1]]},"parent":"root","data":[1,2]},"rgtr":"auto","dgr":10,"rgr":11,"lgr":10,"role":"input","repeater":"true"},{"id":"password","layout":{"label":[1,1],"data":[1,2],"parent":"r-changepassword"},"type":"password","dgc":2,"lgc":1,"lgr":1,"role":"input","dgr":1,"repeat":"changepassword"},{"repeat":"changepassword","dgr":2,"lgr":2,"role":"input","lgc":1,"dgc":2,"type":"password","layout":{"data":[1,2],"parent":"r-changepassword","label":[1,1]},"id":"password1"},{"id":"password2","layout":{"parent":"r-changepassword","data":[1,2],"label":[1,1]},"type":"password","dgc":2,"lgc":1,"lgr":3,"role":"input","dgr":3,"repeat":"changepassword"},{"lgc":1,"rgtc":"1fr 1fr ","layout":{"data":[1,2],"parent":"root","repeats":{"size":["auto",[1,1]],"location":["next","full"]},"label":[1,1]},"id":"changeemail","dgc":2,"type":"checkbox","rgc":"1/-1","rgr":13,"dgr":12,"rgtr":"auto","repeater":"true","lgr":12,"role":"input"},{"repeat":"changeemail","dgr":1,"role":"input","lgr":1,"lgc":1,"dgc":2,"type":"email","id":"email1","layout":{"label":[1,1],"parent":"r-changeemail","data":[1,2]}},{"dgr":2,"repeat":"changeemail","lgr":2,"role":"input","lgc":1,"id":"email2","layout":{"label":[1,1],"parent":"r-changeemail","data":[1,2]},"type":"email","dgc":2},{"lgc":1,"id":"visible","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"dgc":2,"type":"checkbox","dgr":14,"lgr":14,"role":"input"},{"dgr":15,"lgr":15,"role":"input","lgc":1,"type":"group","dgc":2,"id":"groups","layout":{"label":[1,1],"data":[1,2],"parent":"root"}},{"rgtc":"1fr 1fr ","lgc":1,"rgc":"1/-1","dgc":2,"type":"checkbox","layout":{"label":[1,1],"repeats":{"location":["next","full"],"size":["auto",[1,1]]},"data":[1,2],"parent":"root"},"id":"updatecolors","rgtr":"auto","dgr":16,"rgr":17,"lgr":16,"role":"input","repeater":"true"},{"lgr":1,"role":"input","dgr":1,"repeat":"updatecolors","layout":{"label":[1,1],"parent":"r-updatecolors","data":[1,2]},"id":"colorbg","dgc":2,"type":"color","lgc":1},{"repeat":"updatecolors","dgr":2,"lgr":2,"role":"input","lgc":1,"type":"color","dgc":2,"layout":{"label":[1,1],"parent":"r-updatecolors","data":[1,2]},"id":"colortext"},{"role":"input","lgr":18,"dgr":18,"buttontext":"Submit","type":"button","dgc":1,"layout":{"label":[1,1],"data":[1,1],"parent":"root"},"id":"b_submit","lgc":1},{"dgr":18,"buttontext":"Reset to default values","role":"input","lgr":19,"lgc":1,"id":"b_reset","layout":{"label":[1,1],"parent":"root","data":[0,2]},"dgc":2,"type":"button"},{"type":"span","dgc":"1/3","id":"sys_user_config_progress","layout":{"label":"none","data":[1,[1,3]],"parent":"root"},"role":"output","dgr":20},{"lgc":1,"id":"sys_user_config_output_airavata","layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"type":"span","dgc":"1/3","dgr":21,"lgr":21,"role":"output"},{"lgc":1,"layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"id":"sys_user_config_output_msgs","type":"span","dgc":"1/3","dgr":22,"lgr":22,"role":"output"},{"lgc":1,"id":"sys_user_config_output_textarea","layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]},"type":"span","dgc":"1/3","dgr":23,"lgr":23,"role":"output"},{"lgc":1,"layout":{"parent":"root","data":[1,2],"label":[1,1]},"id":"status","dgc":2,"type":"textarea","dgr":24,"lgr":24,"role":"output"}]}' );
+ga.layout.module.json = JSON.parse( '{"executable":"sys_user_config","fields":[{"default":"header3","id":"label1","label":"User configuration","posthline":"true","role":"input","type":"label"},{"hideifnot":"xsedeproject","id":"xsedeproject","label":"XSEDE project ids","pull":"xsedeproject","required":"false","role":"input","type":"listbox"},{"hideifnot":"xsedeproject","id":"newxsedeproject","label":"New XSEDE project id","repeater":"true","required":"false","role":"input","type":"checkbox"},{"help":"A project name must only contain alphanumeric or dash characters","hideifnot":"xsedeproject","id":"newxsedeprojectid","label":"XSEDE project id","pattern":"^[-a-zA-Z0-9]+$","repeat":"newxsedeproject","required":"true","role":"input","size":"20","type":"text"},{"id":"project","label":"Select project","pull":"project","required":"false","role":"input","type":"listbox"},{"id":"newproject","label":"New project","repeater":"true","required":"false","role":"input","type":"checkbox"},{"help":"A project name must only contain alphanumeric or underscore characters","id":"newprojectname","label":"Project name","pattern":"^[a-zA-Z0-9_]+$","repeat":"newproject","required":"true","role":"input","size":"50","type":"text"},{"cols":50,"id":"newprojectdesc","label":"Description","repeat":"newproject","required":"true","role":"input","rows":4,"type":"textarea"},{"id":"projectshare","label":"Share project","repeater":"true","required":"false","role":"input","type":"checkbox"},{"id":"projectshareproject","label":"Select project to share","pull":"project","repeat":"projectshare","required":"false","role":"input","type":"listbox"},{"id":"projectsharewith","label":"Select user","pull":"_users","repeat":"projectshare","required":"false","role":"input","type":"listbox"},{"id":"changepassword","label":"Change password","repeater":"true","required":"false","role":"input","type":"checkbox"},{"id":"password","label":"Current password","pattern":".{10,}","placeholder":"Enter your password","repeat":"changepassword","required":"true","role":"input","size":"30","type":"password"},{"help":"Enter a password of minimum 10 characters length","id":"password1","label":"New password","pattern":".{10,}","repeat":"changepassword","required":"true","role":"input","size":"30","type":"password"},{"help":"Repeat the password of minimum 10 characters length","id":"password2","label":"Repeat new password","match":"changepassword-password1","pattern":".{10,}","repeat":"changepassword","required":"true","role":"input","size":"30","type":"password"},{"id":"changeemail","label":"Change email address","repeater":"true","required":"false","role":"input","type":"checkbox"},{"help":"Enter a valid email address","id":"email1","label":"Email address","pull":"email","repeat":"changeemail","required":"true","role":"input","size":"50","type":"email"},{"help":"Repeat the valid email address","id":"email2","label":"Repeat email address","match":"changeemail-email1","pull":"email","repeat":"changeemail","required":"true","role":"input","size":"50","type":"email"},{"help":"Setting this flag allows other users to share their projects with you","id":"visible","label":"Allow other users to see your User id","pull":"visible","role":"input","type":"checkbox"},{"id":"groups","role":"input","type":"group"},{"hideifnot":"usercolors","id":"updatecolors","label":"Update colors","repeater":"true","required":"false","role":"input","type":"checkbox"},{"id":"colorbg","label":"Select a background color","pull":"color:body:background","repeat":"updatecolors","role":"input","type":"color"},{"id":"colortext","label":"Select a text color","pull":"color:body:color","repeat":"updatecolors","role":"input","type":"color"},{"cols":50,"id":"status","label":"Status","role":"output","rows":4,"type":"textarea"}],"label":"User configuration","modal":"true","moduleid":"sys_user_config","nojobcontrol":"true","noreset":"true","resetonload":"true","resource":"local"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'sys_user_config' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+sys_user_config_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#sys_user_config').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label1" ] = {};
+ga.layout.fields[ "label1" ].lhtml = '<label id="label1_label" class="ga-field-input-header3 " style="">User configuration</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label1"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label1" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label1" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="label1_label" class="header3 ">User configuration</label>' + 
+'</td>' +
+'<td><div id="label1"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- listbox.input --
+
+ga.layout.fields[ "xsedeproject" ] = {};
+ga.layout.fields[ "xsedeproject" ].lhtml = '<label for="xsedeproject">XSEDE project ids </label>';
+ga.layout.fields[ "xsedeproject" ].dhtml =
+  '<select id="xsedeproject" name="xsedeproject" class="ga-field-input-control"></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "xsedeproject" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#xsedeproject", "listbox", "xsedeproject", "#__fields:repeat__" );' + 
+  
+  
+  '$( "#xsedeproject" ).prop( "value", $( "#xsedeproject" ).val() );' +
+  'ga.value.setLastValue( "sys_user_config", "#xsedeproject" );'
+  
+  + 'ga.hideifnot( "#xsedeproject_tr", "xsedeproject" );'
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="xsedeproject_tr"><td><label for="xsedeproject">XSEDE project ids </label></td><td><select id="xsedeproject" name="xsedeproject"></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 'ga.pull.toPull( "sys_user_config", "#xsedeproject", "listbox", "xsedeproject", "#__fields:repeat__" );' + 
+
+
+'$( "#xsedeproject" ).prop( "value", $( "#xsedeproject" ).val() );' +
+'ga.value.setLastValue( "sys_user_config", "#xsedeproject" );'
+
+
++ 'ga.hideifnot( "#xsedeproject_tr", "xsedeproject" );'
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "newxsedeproject" ] = {};
+ga.layout.fields[ "newxsedeproject" ].lhtml =
+  '<label for="newxsedeproject">New XSEDE project id </label>'
+//  
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="newxsedeproject" id="newxsedeproject" data-repeater="checkbox" class="ga-field-input-control-off">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="newxsedeproject" id="newxsedeproject" data-repeater="checkbox" class="custom-control-input">'
+  
+  + '<label class="custom-control-label" for="newxsedeproject"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "newxsedeproject" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "newxsedeproject" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// ga.layout.fields[ "newxsedeproject" ].rhtml = '<div id=ga-repeater-newxsedeproject></div>';
+ga.layout.fields[ "newxsedeproject" ].rhtml = ga.layout.rhtml( 'newxsedeproject' );
+
+
+ga.layout.fields[ "newxsedeproject" ].eval  = 
+  'ga.value.setLastValue( "sys_user_config", "#newxsedeproject" );'
+  + 'ga.hideifnot( "#newxsedeproject_tr", "xsedeproject" );'
+  
+   + 'ga.repeat.repeater( "sys_user_config", "newxsedeproject", "checkbox" );$( "#newxsedeproject" ).change( function() { ga.repeat.change( "sys_user_config", "newxsedeproject" ); } );'
+  ;
+
+
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "newxsedeproject", 1 );';
+
+/* old way
+this_html = '<tr id="newxsedeproject_tr"><td><label for="newxsedeproject" class="highlight">New XSEDE project id </label></td><td><input type="checkbox" name="newxsedeproject" id="newxsedeproject" data-repeater="checkbox"></td></tr>'
++ '<tr><td></td><td colspan="4"><table id="newxsedeproject-repeater"></table></td></tr>' old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_user_config", "#newxsedeproject" );'
+
++ 'ga.hideifnot( "#newxsedeproject_tr", "xsedeproject" );'
+
+
+
+ + 'ga.repeat.repeater( "sys_user_config", "newxsedeproject", "checkbox" );$( "#newxsedeproject" ).change( function() { ga.repeat.change( "sys_user_config", "newxsedeproject" ); } );'
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "newxsedeproject", 1 );';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="newxsedeproject_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- text.input --
+
+ga.layout.fields[ "newxsedeprojectid" ] = {};
+ga.layout.fields[ "newxsedeprojectid" ].lhtml = '<label for="newxsedeprojectid" class="ga-g-sys_user_config-newxsedeprojectid" style="">XSEDE project id </label>';
+ga.layout.fields[ "newxsedeprojectid" ].dhtml = '<input type="text" name="newxsedeprojectid" id="newxsedeprojectid" required pattern="^[-a-zA-Z0-9]+$"  size="20" class="ga-g-sys_user_config-newxsedeprojectid ga-field-input-control help_link"><span class="help">A project name must only contain alphanumeric or dash characters</span}><span id="newxsedeprojectid_msg" class="warning field_msg" > </span>';
+ga.layout.slayout( 'newxsedeprojectid' );
+
+ga.layout.fields[ "newxsedeprojectid" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("sys_user_config","newxsedeprojectid","XSEDE project id","text");'
+  + '$( "#newxsedeprojectid" ).blur( function() { ga.valid.checkText( "#newxsedeprojectid" ); });'
+  + 
+  'ga.value.setLastValue( "sys_user_config", "#newxsedeprojectid" );$( "#newxsedeprojectid" ).keypress( function() { $( "#newxsedeprojectid_msg" ).html( "" ); });'
+;
+
+[ ga.layout.fields[ "newxsedeprojectid" ].lhtml, ga.layout.fields[ "newxsedeprojectid" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "newxsedeprojectid" );
+ga.layout.fields[ "newxsedeprojectid" ].eval = 'ga.repeat.repeatOn("sys_user_config", "newxsedeprojectid", "newxsedeproject" );';
+
+/* old way
+
+this_html = '<tr><td><label for="newxsedeprojectid">XSEDE project id </label></td><td><input type="text" name="newxsedeprojectid" id="newxsedeprojectid" required pattern="^[-a-zA-Z0-9]+$"  size="20" class="help_link"><span class="help">A project name must only contain alphanumeric or dash characters</span><span id="newxsedeprojectid_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("sys_user_config","newxsedeprojectid","XSEDE project id","text");'
++ '$( "#newxsedeprojectid" ).blur( function() { ga.valid.checkText( "#newxsedeprojectid" ); });'
++ 
+'ga.value.setLastValue( "sys_user_config", "#newxsedeprojectid" );$( "#newxsedeprojectid" ).keypress( function() { $( "#newxsedeprojectid_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "newxsedeprojectid", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "newxsedeprojectid", "newxsedeproject" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- listbox.input --
+
+ga.layout.fields[ "project" ] = {};
+ga.layout.fields[ "project" ].lhtml = '<label for="project">Select project </label>';
+ga.layout.fields[ "project" ].dhtml =
+  '<select id="project" name="project" class="ga-field-input-control"></select>'
+  
+  ;
+
+
+
+
+ga.layout.fields[ "project" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#project", "listbox", "project", "#__fields:repeat__" );' + 
+  
+  
+  '$( "#project" ).prop( "value", $( "#project" ).val() );' +
+  'ga.value.setLastValue( "sys_user_config", "#project" );'
+  
+  
+  ;
+
+
+
+;
+
+/* old way
+
+this_html = '<tr id="project_tr"><td><label for="project">Select project </label></td><td><select id="project" name="project"></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 'ga.pull.toPull( "sys_user_config", "#project", "listbox", "project", "#__fields:repeat__" );' + 
+
+
+'$( "#project" ).prop( "value", $( "#project" ).val() );' +
+'ga.value.setLastValue( "sys_user_config", "#project" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "newproject" ] = {};
+ga.layout.fields[ "newproject" ].lhtml =
+  '<label for="newproject">New project </label>'
+//  
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="newproject" id="newproject" data-repeater="checkbox" class="ga-field-input-control-off">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="newproject" id="newproject" data-repeater="checkbox" class="custom-control-input">'
+  
+  + '<label class="custom-control-label" for="newproject"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "newproject" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "newproject" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// ga.layout.fields[ "newproject" ].rhtml = '<div id=ga-repeater-newproject></div>';
+ga.layout.fields[ "newproject" ].rhtml = ga.layout.rhtml( 'newproject' );
+
+
+ga.layout.fields[ "newproject" ].eval  = 
+  'ga.value.setLastValue( "sys_user_config", "#newproject" );'
+  
+  
+   + 'ga.repeat.repeater( "sys_user_config", "newproject", "checkbox" );$( "#newproject" ).change( function() { ga.repeat.change( "sys_user_config", "newproject" ); } );'
+  ;
+
+
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "newproject", 1 );';
+
+/* old way
+this_html = '<tr id="newproject_tr"><td><label for="newproject" class="highlight">New project </label></td><td><input type="checkbox" name="newproject" id="newproject" data-repeater="checkbox"></td></tr>'
++ '<tr><td></td><td colspan="4"><table id="newproject-repeater"></table></td></tr>' old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_user_config", "#newproject" );'
+
+
+
+
+
+ + 'ga.repeat.repeater( "sys_user_config", "newproject", "checkbox" );$( "#newproject" ).change( function() { ga.repeat.change( "sys_user_config", "newproject" ); } );'
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "newproject", 1 );';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="newproject_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- text.input --
+
+ga.layout.fields[ "newprojectname" ] = {};
+ga.layout.fields[ "newprojectname" ].lhtml = '<label for="newprojectname" class="ga-g-sys_user_config-newprojectname" style="">Project name </label>';
+ga.layout.fields[ "newprojectname" ].dhtml = '<input type="text" name="newprojectname" id="newprojectname" required pattern="^[a-zA-Z0-9_]+$"  size="50" class="ga-g-sys_user_config-newprojectname ga-field-input-control help_link"><span class="help">A project name must only contain alphanumeric or underscore characters</span}><span id="newprojectname_msg" class="warning field_msg" > </span>';
+ga.layout.slayout( 'newprojectname' );
+
+ga.layout.fields[ "newprojectname" ].eval  =
+  
+  
+  
+  
+  
+  'ga.value.registerid("sys_user_config","newprojectname","Project name","text");'
+  + '$( "#newprojectname" ).blur( function() { ga.valid.checkText( "#newprojectname" ); });'
+  + 
+  'ga.value.setLastValue( "sys_user_config", "#newprojectname" );$( "#newprojectname" ).keypress( function() { $( "#newprojectname_msg" ).html( "" ); });'
+;
+
+[ ga.layout.fields[ "newprojectname" ].lhtml, ga.layout.fields[ "newprojectname" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "newprojectname" );
+ga.layout.fields[ "newprojectname" ].eval = 'ga.repeat.repeatOn("sys_user_config", "newprojectname", "newproject" );';
+
+/* old way
+
+this_html = '<tr><td><label for="newprojectname">Project name </label></td><td><input type="text" name="newprojectname" id="newprojectname" required pattern="^[a-zA-Z0-9_]+$"  size="50" class="help_link"><span class="help">A project name must only contain alphanumeric or underscore characters</span><span id="newprojectname_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 
+
+
+
+
+'ga.value.registerid("sys_user_config","newprojectname","Project name","text");'
++ '$( "#newprojectname" ).blur( function() { ga.valid.checkText( "#newprojectname" ); });'
++ 
+'ga.value.setLastValue( "sys_user_config", "#newprojectname" );$( "#newprojectname" ).keypress( function() { $( "#newprojectname_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "newprojectname", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "newprojectname", "newproject" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end text.input --
+// -- textarea.input --
+
+ga.layout.fields[ "newprojectdesc" ] = {};
+ga.layout.fields[ "newprojectdesc" ].lhtml = '<label for="newprojectdesc">Description </label>';
+ga.layout.fields[ "newprojectdesc" ].dhtml =
+  '<textarea name="newprojectdesc" id="newprojectdesc" required rows="4" cols="50" class="ga-field-input-control"></textarea>'
+  
+  + '<span id="newprojectdesc_msg" class="warning field_msg" > </span>'
+  ;
+
+ga.layout.slayout( 'newprojectdesc' );
+
+ga.layout.fields[ "newprojectdesc" ].eval  =
+  ' ' +
+  'ga.value.setLastValue( "sys_user_config", "#newprojectdesc" );' +
+  '$( "#newprojectdesc" ).keypress( function() { $( "#newprojectdesc_msg" ).html( "" ); });'
+  ;
+
+
+[ ga.layout.fields[ "newprojectdesc" ].lhtml, ga.layout.fields[ "newprojectdesc" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "newprojectdesc" );
+ga.layout.fields[ "newprojectdesc" ].eval = 'ga.repeat.repeatOn("sys_user_config", "newprojectdesc", "newproject" );';
+
+/* old way
+
+this_html = '<tr><td><label for="newprojectdesc">Description </label></td><td><textarea name="newprojectdesc" id="newprojectdesc" required rows="4" cols="50"></textarea>'
+
++ '<span id="newprojectdesc_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = ' ' +
+'ga.value.setLastValue( "sys_user_config", "#newprojectdesc" );' +
+'$( "#newprojectdesc" ).keypress( function() { $( "#newprojectdesc_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "newprojectdesc", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "newprojectdesc", "newproject" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end textarea.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "projectshare" ] = {};
+ga.layout.fields[ "projectshare" ].lhtml =
+  '<label for="projectshare">Share project </label>'
+//  
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="projectshare" id="projectshare" data-repeater="checkbox" class="ga-field-input-control-off">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="projectshare" id="projectshare" data-repeater="checkbox" class="custom-control-input">'
+  
+  + '<label class="custom-control-label" for="projectshare"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "projectshare" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "projectshare" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// ga.layout.fields[ "projectshare" ].rhtml = '<div id=ga-repeater-projectshare></div>';
+ga.layout.fields[ "projectshare" ].rhtml = ga.layout.rhtml( 'projectshare' );
+
+
+ga.layout.fields[ "projectshare" ].eval  = 
+  'ga.value.setLastValue( "sys_user_config", "#projectshare" );'
+  
+  
+   + 'ga.repeat.repeater( "sys_user_config", "projectshare", "checkbox" );$( "#projectshare" ).change( function() { ga.repeat.change( "sys_user_config", "projectshare" ); } );'
+  ;
+
+
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "projectshare", 1 );';
+
+/* old way
+this_html = '<tr id="projectshare_tr"><td><label for="projectshare" class="highlight">Share project </label></td><td><input type="checkbox" name="projectshare" id="projectshare" data-repeater="checkbox"></td></tr>'
++ '<tr><td></td><td colspan="4"><table id="projectshare-repeater"></table></td></tr>' old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_user_config", "#projectshare" );'
+
+
+
+
+
+ + 'ga.repeat.repeater( "sys_user_config", "projectshare", "checkbox" );$( "#projectshare" ).change( function() { ga.repeat.change( "sys_user_config", "projectshare" ); } );'
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "projectshare", 1 );';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="projectshare_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- listbox.input --
+
+ga.layout.fields[ "projectshareproject" ] = {};
+ga.layout.fields[ "projectshareproject" ].lhtml = '<label for="projectshareproject">Select project to share </label>';
+ga.layout.fields[ "projectshareproject" ].dhtml =
+  '<select id="projectshareproject" name="projectshareproject" class="ga-field-input-control"></select>'
+  
+  ;
+
+
+ga.layout.slayout( 'projectshareproject' );
+
+ga.layout.fields[ "projectshareproject" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#projectshareproject", "listbox", "project", "#projectshare" );' + 
+  
+  
+  '$( "#projectshareproject" ).prop( "value", $( "#projectshareproject" ).val() );' +
+  'ga.value.setLastValue( "sys_user_config", "#projectshareproject" );'
+  
+  
+  ;
+
+[ ga.layout.fields[ "projectshareproject" ].lhtml, ga.layout.fields[ "projectshareproject" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "projectshareproject" );
+ga.layout.fields[ "projectshareproject" ].eval = 'ga.repeat.repeatOn("sys_user_config", "projectshareproject", "projectshare" );';
+;
+
+/* old way
+
+this_html = '<tr id="projectshareproject_tr"><td><label for="projectshareproject">Select project to share </label></td><td><select id="projectshareproject" name="projectshareproject"></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 'ga.pull.toPull( "sys_user_config", "#projectshareproject", "listbox", "project", "#projectshare" );' + 
+
+
+'$( "#projectshareproject" ).prop( "value", $( "#projectshareproject" ).val() );' +
+'ga.value.setLastValue( "sys_user_config", "#projectshareproject" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "projectshareproject", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "projectshareproject", "projectshare" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- listbox.input --
+
+ga.layout.fields[ "projectsharewith" ] = {};
+ga.layout.fields[ "projectsharewith" ].lhtml = '<label for="projectsharewith">Select user </label>';
+ga.layout.fields[ "projectsharewith" ].dhtml =
+  '<select id="projectsharewith" name="projectsharewith" class="ga-field-input-control"></select>'
+  
+  ;
+
+
+ga.layout.slayout( 'projectsharewith' );
+
+ga.layout.fields[ "projectsharewith" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#projectsharewith", "listbox", "_users", "#projectshare" );' + 
+  
+  
+  '$( "#projectsharewith" ).prop( "value", $( "#projectsharewith" ).val() );' +
+  'ga.value.setLastValue( "sys_user_config", "#projectsharewith" );'
+  
+  
+  ;
+
+[ ga.layout.fields[ "projectsharewith" ].lhtml, ga.layout.fields[ "projectsharewith" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "projectsharewith" );
+ga.layout.fields[ "projectsharewith" ].eval = 'ga.repeat.repeatOn("sys_user_config", "projectsharewith", "projectshare" );';
+;
+
+/* old way
+
+this_html = '<tr id="projectsharewith_tr"><td><label for="projectsharewith">Select user </label></td><td><select id="projectsharewith" name="projectsharewith"></select>'
+
++ '</td></tr>'
+ 
+;
+
+this_eval = 'ga.pull.toPull( "sys_user_config", "#projectsharewith", "listbox", "_users", "#projectshare" );' + 
+
+
+'$( "#projectsharewith" ).prop( "value", $( "#projectsharewith" ).val() );' +
+'ga.value.setLastValue( "sys_user_config", "#projectsharewith" );'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "projectsharewith", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "projectsharewith", "projectshare" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end listbox.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "changepassword" ] = {};
+ga.layout.fields[ "changepassword" ].lhtml =
+  '<label for="changepassword">Change password </label>'
+//  
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="changepassword" id="changepassword" data-repeater="checkbox" class="ga-field-input-control-off">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="changepassword" id="changepassword" data-repeater="checkbox" class="custom-control-input">'
+  
+  + '<label class="custom-control-label" for="changepassword"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "changepassword" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "changepassword" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// ga.layout.fields[ "changepassword" ].rhtml = '<div id=ga-repeater-changepassword></div>';
+ga.layout.fields[ "changepassword" ].rhtml = ga.layout.rhtml( 'changepassword' );
+
+
+ga.layout.fields[ "changepassword" ].eval  = 
+  'ga.value.setLastValue( "sys_user_config", "#changepassword" );'
+  
+  
+   + 'ga.repeat.repeater( "sys_user_config", "changepassword", "checkbox" );$( "#changepassword" ).change( function() { ga.repeat.change( "sys_user_config", "changepassword" ); } );'
+  ;
+
+
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "changepassword", 1 );';
+
+/* old way
+this_html = '<tr id="changepassword_tr"><td><label for="changepassword" class="highlight">Change password </label></td><td><input type="checkbox" name="changepassword" id="changepassword" data-repeater="checkbox"></td></tr>'
++ '<tr><td></td><td colspan="4"><table id="changepassword-repeater"></table></td></tr>' old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_user_config", "#changepassword" );'
+
+
+
+
+
+ + 'ga.repeat.repeater( "sys_user_config", "changepassword", "checkbox" );$( "#changepassword" ).change( function() { ga.repeat.change( "sys_user_config", "changepassword" ); } );'
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "changepassword", 1 );';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="changepassword_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- password.input --
+
+ga.layout.fields[ "password" ] = {};
+ga.layout.fields[ "password" ].lhtml = '<label for="password" id="password-div">Current password </label>';
+ga.layout.fields[ "password" ].dhtml = '<div id="password-div-itd"><input type="password" name="password" id="password" required pattern=".{10,}"  size="30" class="ga-field-input-control"><span class="help">__fields:help__</span}><span id="password_msg" class="warning field_msg" > </span></div>';
+
+ga.layout.slayout( 'password' );
+
+ga.layout.fields[ "password" ].eval  =
+  'ga.value.setLastValue( "sys_user_config", "#password" );$( "#password" ).keypress( function() { $( "#password_msg" ).html( "" ); });'
+  
+  
+  ;
+
+[ ga.layout.fields[ "password" ].lhtml, ga.layout.fields[ "password" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "password" );
+ga.layout.fields[ "password" ].eval = 'ga.repeat.repeatOn("sys_user_config", "password", "changepassword" );';
+
+
+/* old way
+
+this_html = '<tr id="password-tr"><td><label for="password">Current password </label></td><td id="password-tr-itd"><input type="password" name="password" id="password" required pattern=".{10,}"  size="30"><span id="password_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_user_config", "#password" );$( "#password" ).keypress( function() { $( "#password_msg" ).html( "" ); });'
+;
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "password", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "password", "changepassword" );';
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end password.input --
+// -- password.input --
+
+ga.layout.fields[ "password1" ] = {};
+ga.layout.fields[ "password1" ].lhtml = '<label for="password1" id="password1-div">New password </label>';
+ga.layout.fields[ "password1" ].dhtml = '<div id="password1-div-itd"><input type="password" name="password1" id="password1" required pattern=".{10,}"  size="30" class="ga-field-input-control help_link"><span class="help">Enter a password of minimum 10 characters length</span}><span id="password1_msg" class="warning field_msg" > </span></div>';
+
+ga.layout.slayout( 'password1' );
+
+ga.layout.fields[ "password1" ].eval  =
+  'ga.value.setLastValue( "sys_user_config", "#password1" );$( "#password1" ).keypress( function() { $( "#password1_msg" ).html( "" ); });'
+  
+  
+  ;
+
+[ ga.layout.fields[ "password1" ].lhtml, ga.layout.fields[ "password1" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "password1" );
+ga.layout.fields[ "password1" ].eval = 'ga.repeat.repeatOn("sys_user_config", "password1", "changepassword" );';
+
+
+/* old way
+
+this_html = '<tr id="password1-tr"><td><label for="password1">New password </label></td><td id="password1-tr-itd"><input type="password" name="password1" id="password1" required pattern=".{10,}"  size="30" class="help_link"><span class="help">Enter a password of minimum 10 characters length</span><span id="password1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_user_config", "#password1" );$( "#password1" ).keypress( function() { $( "#password1_msg" ).html( "" ); });'
+;
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "password1", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "password1", "changepassword" );';
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end password.input --
+// -- password.input --
+
+ga.layout.fields[ "password2" ] = {};
+ga.layout.fields[ "password2" ].lhtml = '<label for="password2" id="password2-div">Repeat new password </label>';
+ga.layout.fields[ "password2" ].dhtml = '<div id="password2-div-itd"><input type="password" name="password2" id="password2" required pattern=".{10,}"  size="30" class="ga-field-input-control help_link"><span class="help">Repeat the password of minimum 10 characters length</span}><span id="password2_msg" class="warning field_msg" > </span></div>';
+
+ga.layout.slayout( 'password2' );
+
+ga.layout.fields[ "password2" ].eval  =
+  'ga.value.setLastValue( "sys_user_config", "#password2" );$( "#password2" ).keypress( function() { $( "#password2_msg" ).html( "" ); });'
+   + '$( "#password2" ).blur( function() { ga.valid.checkMatch( "#password2", "#changepassword-password1" ); } );'
+  
+  ;
+
+[ ga.layout.fields[ "password2" ].lhtml, ga.layout.fields[ "password2" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "password2" );
+ga.layout.fields[ "password2" ].eval = 'ga.repeat.repeatOn("sys_user_config", "password2", "changepassword" );';
+
+
+/* old way
+
+this_html = '<tr id="password2-tr"><td><label for="password2">Repeat new password </label></td><td id="password2-tr-itd"><input type="password" name="password2" id="password2" required pattern=".{10,}"  size="30" class="help_link"><span class="help">Repeat the password of minimum 10 characters length</span><span id="password2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.value.setLastValue( "sys_user_config", "#password2" );$( "#password2" ).keypress( function() { $( "#password2_msg" ).html( "" ); });'
+ + '$( "#password2" ).blur( function() { ga.valid.checkMatch( "#password2", "#changepassword-password1" ); } );';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "password2", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "password2", "changepassword" );';
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end password.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "changeemail" ] = {};
+ga.layout.fields[ "changeemail" ].lhtml =
+  '<label for="changeemail">Change email address </label>'
+//  
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="changeemail" id="changeemail" data-repeater="checkbox" class="ga-field-input-control-off">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="changeemail" id="changeemail" data-repeater="checkbox" class="custom-control-input">'
+  
+  + '<label class="custom-control-label" for="changeemail"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "changeemail" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "changeemail" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// ga.layout.fields[ "changeemail" ].rhtml = '<div id=ga-repeater-changeemail></div>';
+ga.layout.fields[ "changeemail" ].rhtml = ga.layout.rhtml( 'changeemail' );
+
+
+ga.layout.fields[ "changeemail" ].eval  = 
+  'ga.value.setLastValue( "sys_user_config", "#changeemail" );'
+  
+  
+   + 'ga.repeat.repeater( "sys_user_config", "changeemail", "checkbox" );$( "#changeemail" ).change( function() { ga.repeat.change( "sys_user_config", "changeemail" ); } );'
+  ;
+
+
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "changeemail", 1 );';
+
+/* old way
+this_html = '<tr id="changeemail_tr"><td><label for="changeemail" class="highlight">Change email address </label></td><td><input type="checkbox" name="changeemail" id="changeemail" data-repeater="checkbox"></td></tr>'
++ '<tr><td></td><td colspan="4"><table id="changeemail-repeater"></table></td></tr>' old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_user_config", "#changeemail" );'
+
+
+
+
+
+ + 'ga.repeat.repeater( "sys_user_config", "changeemail", "checkbox" );$( "#changeemail" ).change( function() { ga.repeat.change( "sys_user_config", "changeemail" ); } );'
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "changeemail", 1 );';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="changeemail_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- email.input --
+
+ga.layout.fields[ "email1" ] = {};
+ga.layout.fields[ "email1" ].lhtml = '<label for="email1">Email address </label>';
+ga.layout.fields[ "email1" ].dhtml = '<input type="email" name="email1" id="email1" required size="50" class="ga-field-input-control help_link"><span class="help">Enter a valid email address</span}><span id="email1_msg" class="warning field_msg" > </span>';
+ga.layout.slayout( 'email1' );
+
+ga.layout.fields[ "email1" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#email1", "email", "email", "#changeemail" );' + 
+  
+  
+  'ga.value.setLastValue( "sys_user_config", "#email1" );$( "#email1" ).keypress( function() { $( "#email1_msg" ).html( "" ); });'
+  ;
+  ;
+
+[ ga.layout.fields[ "email1" ].lhtml, ga.layout.fields[ "email1" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "email1" );
+ga.layout.fields[ "email1" ].eval = 'ga.repeat.repeatOn("sys_user_config", "email1", "changeemail" );';
+
+
+/* old way
+
+this_html = '<tr><td><label for="email1">Email address </label></td><td><input type="email" name="email1" id="email1" required size="50" class="help_link"><span class="help">Enter a valid email address</span><span id="email1_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.pull.toPull( "sys_user_config", "#email1", "email", "email", "#changeemail" );' + 
+
+
+'ga.value.setLastValue( "sys_user_config", "#email1" );$( "#email1" ).keypress( function() { $( "#email1_msg" ).html( "" ); });'
+;
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "email1", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "email1", "changeemail" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end email.input --
+// -- email.input --
+
+ga.layout.fields[ "email2" ] = {};
+ga.layout.fields[ "email2" ].lhtml = '<label for="email2">Repeat email address </label>';
+ga.layout.fields[ "email2" ].dhtml = '<input type="email" name="email2" id="email2" required size="50" class="ga-field-input-control help_link"><span class="help">Repeat the valid email address</span}><span id="email2_msg" class="warning field_msg" > </span>';
+ga.layout.slayout( 'email2' );
+
+ga.layout.fields[ "email2" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#email2", "email", "email", "#changeemail" );' + 
+  
+  
+  'ga.value.setLastValue( "sys_user_config", "#email2" );$( "#email2" ).keypress( function() { $( "#email2_msg" ).html( "" ); });'
+   + '$( "#email2" ).blur( function() { ga.valid.checkMatch( "#email2", "#changeemail-email1" ); } );';
+  ;
+
+[ ga.layout.fields[ "email2" ].lhtml, ga.layout.fields[ "email2" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "email2" );
+ga.layout.fields[ "email2" ].eval = 'ga.repeat.repeatOn("sys_user_config", "email2", "changeemail" );';
+
+
+/* old way
+
+this_html = '<tr><td><label for="email2">Repeat email address </label></td><td><input type="email" name="email2" id="email2" required size="50" class="help_link"><span class="help">Repeat the valid email address</span><span id="email2_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.pull.toPull( "sys_user_config", "#email2", "email", "email", "#changeemail" );' + 
+
+
+'ga.value.setLastValue( "sys_user_config", "#email2" );$( "#email2" ).keypress( function() { $( "#email2_msg" ).html( "" ); });'
+ + '$( "#email2" ).blur( function() { ga.valid.checkMatch( "#email2", "#changeemail-email1" ); } );';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "email2", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "email2", "changeemail" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end email.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "visible" ] = {};
+ga.layout.fields[ "visible" ].lhtml =
+  '<label for="visible">Allow other users to see your User id </label>'
+//  + '<span class="help">Setting this flag allows other users to share their projects with you</span>'
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="visible" id="visible" class="ga-field-input-control-off help_link">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="visible" id="visible" class="custom-control-input help_link">'
+  + '<span class="help">Setting this flag allows other users to share their projects with you</span>'
+  + '<label class="custom-control-label" for="visible"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "visible" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "visible" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// 
+
+
+
+ga.layout.fields[ "visible" ].eval  = 'ga.pull.toPull( "sys_user_config", "#visible", "checkbox", "visible", "#__fields:repeat__" );' +
+  'ga.value.setLastValue( "sys_user_config", "#visible" );'
+  
+  
+  
+  ;
+
+
+
+
+
+;
+
+/* old way
+this_html = '<tr id="visible_tr"><td><label for="visible" class="highlight">Allow other users to see your User id </label></td><td><input type="checkbox" name="visible" id="visible" class="help_link"><span class="help">Setting this flag allows other users to share their projects with you</span></td></tr>'
+ old way
+;
+this_eval = 'ga.pull.toPull( "sys_user_config", "#visible", "checkbox", "visible", "#__fields:repeat__" );' + 
+'ga.value.setLastValue( "sys_user_config", "#visible" );'
+
+
+
+
+
+
+
+
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="visible_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- group.input --
+
+ga.layout.fields[ "groups" ] = {};
+ga.layout.fields[ "groups" ].lhtml = '';
+ga.layout.fields[ "groups" ].dhtml = ga.group.inputhtml( "groups" );
+ga.layout.fields[ "groups" ].eval  = '';
+
+/* old way
+
+this_html = ga.group.inputhtml( "groups" );
+input_html += this_html;
+*/
+
+// -- end group.input --
+// -- checkbox.input --
+
+ga.layout.fields[ "updatecolors" ] = {};
+ga.layout.fields[ "updatecolors" ].lhtml =
+  '<label for="updatecolors">Update colors </label>'
+//  
+  ;
+
+ga.tmp.dhtml = {};
+ga.tmp.dhtml.checkbox =
+  '<input type="checkbox" name="updatecolors" id="updatecolors" data-repeater="checkbox" class="ga-field-input-control-off">'
+  ;
+ga.tmp.dhtml.switch =
+  '<div class="custom-control custom-switch"><input type="checkbox" name="updatecolors" id="updatecolors" data-repeater="checkbox" class="custom-control-input">'
+  
+  + '<label class="custom-control-label" for="updatecolors"></label></div>'
+  ;
+
+
+if ( '__fields:style__' !== "classic" ) {
+    ga.layout.fields[ "updatecolors" ].dhtml = ga.tmp.dhtml.switch;
+} else {
+    ga.layout.fields[ "updatecolors" ].dhtml = ga.tmp.dhtml.checkbox;
+}
+// ga.layout.fields[ "updatecolors" ].rhtml = '<div id=ga-repeater-updatecolors></div>';
+ga.layout.fields[ "updatecolors" ].rhtml = ga.layout.rhtml( 'updatecolors' );
+
+
+ga.layout.fields[ "updatecolors" ].eval  = 
+  'ga.value.setLastValue( "sys_user_config", "#updatecolors" );'
+  + 'ga.hideifnot( "#updatecolors_tr", "usercolors" );'
+  
+   + 'ga.repeat.repeater( "sys_user_config", "updatecolors", "checkbox" );$( "#updatecolors" ).change( function() { ga.repeat.change( "sys_user_config", "updatecolors" ); } );'
+  ;
+
+
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "updatecolors", 1 );';
+
+/* old way
+this_html = '<tr id="updatecolors_tr"><td><label for="updatecolors" class="highlight">Update colors </label></td><td><input type="checkbox" name="updatecolors" id="updatecolors" data-repeater="checkbox"></td></tr>'
++ '<tr><td></td><td colspan="4"><table id="updatecolors-repeater"></table></td></tr>' old way
+;
+this_eval = 
+'ga.value.setLastValue( "sys_user_config", "#updatecolors" );'
+
++ 'ga.hideifnot( "#updatecolors_tr", "usercolors" );'
+
+
+
+ + 'ga.repeat.repeater( "sys_user_config", "updatecolors", "checkbox" );$( "#updatecolors" ).change( function() { ga.repeat.change( "sys_user_config", "updatecolors" ); } );'
+
+
+
+ input_repeats += 'ga.repeat.change( "sys_user_config", "updatecolors", 1 );';
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr id="updatecolors_tr">/, "" ); skipped_row=0;};
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end checkbox.input --
+// -- color.input --
+
+ga.layout.fields[ "colorbg" ] = {};
+ga.layout.fields[ "colorbg" ].lhtml = '<label for="colorbg">Select a background color </label>';
+ga.layout.fields[ "colorbg" ].dhtml = '<input type="color" data-type="color" name="colorbg" id="colorbg" class="ga-field-input-control"><span class="help">__fields:help__</span}><span id="colorbg_msg" class="warning field_msg" > </span>';
+
+ga.layout.slayout( 'colorbg' );
+
+ga.layout.fields[ "colorbg" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#colorbg", "text", "color:body:background", "#updatecolors" );' +
+  'ga.color.spectrum( "#colorbg" ); ga.value.setLastValue( "sys_user_config", "#colorbg" );$( "#colorbg" ).keypress( function() { $( "#colorbg_msg" ).html( "" ); });'
+  ;
+
+[ ga.layout.fields[ "colorbg" ].lhtml, ga.layout.fields[ "colorbg" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "colorbg" );
+ga.layout.fields[ "colorbg" ].eval = 'ga.repeat.repeatOn("sys_user_config", "colorbg", "updatecolors" );';
+
+/* old way
+
+this_html = '<tr><td><label for="colorbg">Select a background color </label></td><td><input type="color" data-type="color" name="colorbg" id="colorbg"><span id="colorbg_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.pull.toPull( "sys_user_config", "#colorbg", "text", "color:body:background", "#updatecolors" );' + 
+'ga.color.spectrum( "#colorbg" ); ga.value.setLastValue( "sys_user_config", "#colorbg" );$( "#colorbg" ).keypress( function() { $( "#colorbg_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "colorbg", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "colorbg", "updatecolors" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end color.input --
+// -- color.input --
+
+ga.layout.fields[ "colortext" ] = {};
+ga.layout.fields[ "colortext" ].lhtml = '<label for="colortext">Select a text color </label>';
+ga.layout.fields[ "colortext" ].dhtml = '<input type="color" data-type="color" name="colortext" id="colortext" class="ga-field-input-control"><span class="help">__fields:help__</span}><span id="colortext_msg" class="warning field_msg" > </span>';
+
+ga.layout.slayout( 'colortext' );
+
+ga.layout.fields[ "colortext" ].eval  =
+  'ga.pull.toPull( "sys_user_config", "#colortext", "text", "color:body:color", "#updatecolors" );' +
+  'ga.color.spectrum( "#colortext" ); ga.value.setLastValue( "sys_user_config", "#colortext" );$( "#colortext" ).keypress( function() { $( "#colortext_msg" ).html( "" ); });'
+  ;
+
+[ ga.layout.fields[ "colortext" ].lhtml, ga.layout.fields[ "colortext" ].dhtml ] = ga.repeat.repeat( "sys_user_config", "colortext" );
+ga.layout.fields[ "colortext" ].eval = 'ga.repeat.repeatOn("sys_user_config", "colortext", "updatecolors" );';
+
+/* old way
+
+this_html = '<tr><td><label for="colortext">Select a text color </label></td><td><input type="color" data-type="color" name="colortext" id="colortext"><span id="colortext_msg" class="warning field_msg" > </span></td></tr>';
+this_eval = 'ga.pull.toPull( "sys_user_config", "#colortext", "text", "color:body:color", "#updatecolors" );' + 
+'ga.color.spectrum( "#colortext" ); ga.value.setLastValue( "sys_user_config", "#colortext" );$( "#colortext" ).keypress( function() { $( "#colortext_msg" ).html( "" ); });';
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+this_html = ga.repeat.repeat( "sys_user_config", "colortext", this_html, this_eval );
+this_eval = 'ga.repeat.repeatOn("sys_user_config", "colortext", "updatecolors" );';
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end color.input --
+// -- textarea.output --
+
+ga.layout.fields[ "status" ] = {};
+ga.layout.fields[ "status" ].lhtml = '<label for="status" class="ga-g-sys_user_config-status">Status </label>';
+ga.layout.fields[ "status" ].dhtml =
+  '<textarea name="status" id="status" rows="4" cols="50" readonly class="ga-g-sys_user_config-status ga-field-output-control"></textarea>'
+  
+  ;
+ga.layout.fields[ "status" ].eval  =
+  '' +
+  'ga.value.setLastValue( "sys_user_config_output", "#status" );'
+  ;
+
+/* old way
+
+<tr><td><label for="status">Status </label></td><td><textarea name="status" id="status" rows="4" cols="50" readonly></textarea>
+</td></tr>
+start script>
+
+ga.value.setLastValue( "sys_user_config_output", "#status" );
+ end script>
+*/
+
+// -- end textarea.output --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#sys_user_config_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="sys_user_config_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="sys_user_config_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#sys_user_config_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="sys_user_config_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="sys_user_config_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="sys_user_config_progress"></span> -->
+<script>
+$( "#sys_user_config_b_reset_button" ).remove();
+
+
+
+
+
+var sys_user_config_output_msgs = $("#sys_user_config_output_msgs");
+sys_user_config_output_msgs.text( "" );
+
+var sys_user_config_timeout_handler = "unset";
+var sys_user_config_timeout_handler_uuid;
+
+function get_results_sys_user_config( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "sys_user_config", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( sys_user_config_timeout_handler != "unset" )
+              {
+                  clearTimeout( sys_user_config_timeout_handler );
+                  sys_user_config_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "sys_user_config" );
+              eval( sys_user_config_done_eval );
+              ga.progress.clear(  "sys_user_config", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               sys_user_config_timeout_handler =  setTimeout( get_results_sys_user_config, last_timeout, id, last_timeout, 0 );
+               sys_user_config_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#sys_user_config_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_user_config.php </span>" );
+           ga.progress.clear( 'sys_user_config', 'input.footer 1' );
+           if ( sys_user_config_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_user_config_timeout_handler );
+               sys_user_config_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "sys_user_config" );
+           eval( sys_user_config_done_eval );
+          } );
+    return false;
+};
+
+function msg_sys_user_config ( id, data )
+{
+   ga.data.update( "sys_user_config", data, get_results_sys_user_config, id );
+};
+
+$( "#sys_user_config_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#sys_user_config" ).find( ".toclear" ).remove();   
+   if ( sys_user_config_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_user_config_timeout_handler );
+       if ( sys_user_config_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_user_config_timeout_handler_uuid, "sys_user_config" );
+       }
+       sys_user_config_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "sys_user_config_output", true );
+
+   
+   return ga.xsede.select( "local", do_sys_user_config_submit, $(this) );
+   //   return do_sys_user_config_submit( $(this) );
+});
+
+function do_sys_user_config_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+      $ok = 1;
+   
+
+   ga.event( "", "sys_user_config", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "sys_user_config" ) ) {
+       ga.valid.showerrormessage( "sys_user_config" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_sys_user_config_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_sys_user_config_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_sys_user_config, do_sys_user_config_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#sys_user_config_results" ).text( "" );
+
+              ga.value.saveLastValues( "sys_user_config" );
+              ga.value.resetDefaultValues( "sys_user_config_output", true );
+
+              var found_errors = 0;
+              $("#sys_user_config").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#sys_user_config " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "sys_user_config" );
+    ga.valuen.addhtml( "sys_user_config" );
+
+    ga.extrahidden( "sys_user_config" );
+
+    ga.ws.sub( vuuid, msg_sys_user_config, "sys_user_config" );
+
+    var formData = new FormData($('#sys_user_config')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["sys_user_config"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "sys_user_config", formData, ga.stages["sys_user_config"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'sys_user_config', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "sys_user_config", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["sys_user_config"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/sys_user_config.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'sys_user_config_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["sys_user_config"] )
+      {
+        ga.value.showfields(ga.multistage, "sys_user_config", ga.stages["sys_user_config"], ga.currentstage);
+    	delete ga.stages["sys_user_config"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'sys_user_config', 'input.footer 2' );
+   
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           sys_user_config_output_msgs.text( "" );
+           job_status = ga.data.update( "sys_user_config", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( sys_user_config_timeout_handler != "unset" )
+               {
+                   clearTimeout( sys_user_config_timeout_handler );
+                   sys_user_config_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "sys_user_config" );
+               eval( sys_user_config_done_eval );
+           } else {
+               sys_user_config_timeout_handler = setTimeout( get_results_sys_user_config, 2000, vuuid, 2000, 0 );
+               sys_user_config_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#sys_user_config_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_user_config.php </span>" );
+           ga.progress.clear( 'sys_user_config', 'input.footer 3' );
+           if ( sys_user_config_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_user_config_timeout_handler );
+               sys_user_config_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "sys_user_config" );
+           eval( sys_user_config_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+sys_user_config_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "sys_user_config_output_textarea" ).style.height = 0;
+    }
+
+    if ( sys_user_config_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_user_config_timeout_handler );
+       if ( sys_user_config_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_user_config_timeout_handler_uuid, "sys_user_config" );
+       }
+       sys_user_config_timeout_handler = "unset";
+    }
+    ga.event( "", "sys_user_config", "reset clicked" );
+    ga.valid.clearerrorcounter( "sys_user_config" );
+
+   if ( ga.multistage["sys_user_config"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"sys_user_config");
+       ga.stages["sys_user_config"].length = 0;
+       ga.stages["sys_user_config"] = ga.stagesdefault["sys_user_config"].slice();
+       console.log("Reset: " + ga.stages["sys_user_config"]);
+     }
+
+    //    ga.value.resetDefaultValues( "sys_user_config" );
+    ga.valuen.restore.dflt(  "sys_user_config" );
+    ga.value.resetDefaultValues( "sys_user_config_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#sys_user_config_reset" ).click( function() {
+   return sys_user_config_reset();
+});
+
+ga.value.resetDefaultValues( "sys_user_config" );ga.value.resetDefaultValues( "sys_user_config_output" ); ga.value.resetDefaultValue( "sys_user_config_output", "sys_user_config_output_msgs" );
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="sys_user_config_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#sys_user_config").append( ga.tmp.html );
+</script>
+
+<form id="sys_user_config_output">
+<!-- moved to layout.js <div id="sys_user_config_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "sys_user_config_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="sys_user_config_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="sys_user_config_output_textarea_label" for="sys_user_config_output_textarea" class=""></label>
+<textarea readonly hidden id="sys_user_config_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_sys_user_config = 1; </script>

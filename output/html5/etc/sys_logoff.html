@@ -1,0 +1,613 @@
+<!-- input.header -->
+
+
+<form id="sys_logoff" 
+ style="max-height:65vh;overflow:auto">
+<div id="sys_logoff_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "sys_logoff";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"panels":[{"root":{"gap":"5px","size":["auto",[1,1]],"data":[1,2],"repeats":{"size":["auto",[1,1]],"location":["next","full"]},"gtc":"1fr 1fr ","gtr":"auto","align":"left","label":[1,1]}}],"fields":[{"layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"label1","type":"label","dgc":2,"lgc":1,"lgr":1,"role":"input","dgr":1},{"id":"b_submit","layout":{"parent":"root","data":[1,1],"label":[1,1]},"type":"button","dgc":1,"lgc":1,"lgr":2,"role":"input","buttontext":"Submit","dgr":2},{"lgr":3,"role":"input","dgr":2,"buttontext":"Reset to default values","type":"button","dgc":2,"id":"b_reset","layout":{"data":[0,2],"parent":"root","label":[1,1]},"lgc":1},{"dgr":4,"role":"output","layout":{"label":"none","data":[1,[1,3]],"parent":"root"},"id":"sys_logoff_progress","type":"span","dgc":"1/3"},{"role":"output","lgr":5,"dgr":5,"type":"span","dgc":"1/3","id":"sys_logoff_output_airavata","layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"lgc":1},{"dgr":6,"lgr":6,"role":"output","lgc":1,"dgc":"1/3","type":"span","id":"sys_logoff_output_msgs","layout":{"parent":"root","data":[1,[1,3]],"label":[1,1]}},{"dgr":7,"role":"output","lgr":7,"lgc":1,"type":"span","dgc":"1/3","layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"id":"sys_logoff_output_textarea"}]}' );
+ga.layout.module.json = JSON.parse( '{"executable":"sys_logoff","fields":[{"default":"header3","id":"label1","label":"Logoff","posthline":"true","role":"input","type":"label"}],"label":"Logoff","modal":"true","moduleid":"sys_logoff","nojobcontrol":"true","noreset":"true","resource":"local","submit_label":"Logoff"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'sys_logoff' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+$("body").css( { "background": ga.tmp.bgi + " no-repeat center center fixed", "-webkit-background-size" : "cover", "-moz-background-size" : "cover", "-o-background-size" : "cover" , "background-size": "cover"} );
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+sys_logoff_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#sys_logoff').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label1" ] = {};
+ga.layout.fields[ "label1" ].lhtml = '<label id="label1_label" class="ga-field-input-header3 " style="">Logoff</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label1"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label1" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label1" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="label1_label" class="header3 ">Logoff</label>' + 
+'</td>' +
+'<td><div id="label1"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#sys_logoff_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="sys_logoff_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="sys_logoff_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#sys_logoff_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="sys_logoff_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="sys_logoff_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="sys_logoff_progress"></span> -->
+<script>
+$( "#sys_logoff_b_reset_button" ).remove();
+$( "#sys_logoff_b_submit_button .buttontext" ).html( "Logoff" );
+
+
+
+
+var sys_logoff_output_msgs = $("#sys_logoff_output_msgs");
+sys_logoff_output_msgs.text( "" );
+
+var sys_logoff_timeout_handler = "unset";
+var sys_logoff_timeout_handler_uuid;
+
+function get_results_sys_logoff( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "sys_logoff", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( sys_logoff_timeout_handler != "unset" )
+              {
+                  clearTimeout( sys_logoff_timeout_handler );
+                  sys_logoff_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "sys_logoff" );
+              eval( sys_logoff_done_eval );
+              ga.progress.clear(  "sys_logoff", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               sys_logoff_timeout_handler =  setTimeout( get_results_sys_logoff, last_timeout, id, last_timeout, 0 );
+               sys_logoff_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#sys_logoff_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_logoff.php </span>" );
+           ga.progress.clear( 'sys_logoff', 'input.footer 1' );
+           if ( sys_logoff_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_logoff_timeout_handler );
+               sys_logoff_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "sys_logoff" );
+           eval( sys_logoff_done_eval );
+          } );
+    return false;
+};
+
+function msg_sys_logoff ( id, data )
+{
+   ga.data.update( "sys_logoff", data, get_results_sys_logoff, id );
+};
+
+$( "#sys_logoff_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#sys_logoff" ).find( ".toclear" ).remove();   
+   if ( sys_logoff_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_logoff_timeout_handler );
+       if ( sys_logoff_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_logoff_timeout_handler_uuid, "sys_logoff" );
+       }
+       sys_logoff_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "sys_logoff_output", true );
+
+   
+   return ga.xsede.select( "local", do_sys_logoff_submit, $(this) );
+   //   return do_sys_logoff_submit( $(this) );
+});
+
+function do_sys_logoff_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+      $ok = 1;
+   
+
+   ga.event( "", "sys_logoff", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "sys_logoff" ) ) {
+       ga.valid.showerrormessage( "sys_logoff" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_sys_logoff_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_sys_logoff_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_sys_logoff, do_sys_logoff_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#sys_logoff_results" ).text( "" );
+
+              ga.value.saveLastValues( "sys_logoff" );
+              ga.value.resetDefaultValues( "sys_logoff_output", true );
+
+              var found_errors = 0;
+              $("#sys_logoff").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#sys_logoff " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "sys_logoff" );
+    ga.valuen.addhtml( "sys_logoff" );
+
+    ga.extrahidden( "sys_logoff" );
+
+    ga.ws.sub( vuuid, msg_sys_logoff, "sys_logoff" );
+
+    var formData = new FormData($('#sys_logoff')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["sys_logoff"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "sys_logoff", formData, ga.stages["sys_logoff"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'sys_logoff', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "sys_logoff", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["sys_logoff"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/sys_logoff.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'sys_logoff_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["sys_logoff"] )
+      {
+        ga.value.showfields(ga.multistage, "sys_logoff", ga.stages["sys_logoff"], ga.currentstage);
+    	delete ga.stages["sys_logoff"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'sys_logoff', 'input.footer 2' );
+   
+           var do_refresh = 1;
+           do_refresh = 0;
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           sys_logoff_output_msgs.text( "" );
+           job_status = ga.data.update( "sys_logoff", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( sys_logoff_timeout_handler != "unset" )
+               {
+                   clearTimeout( sys_logoff_timeout_handler );
+                   sys_logoff_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "sys_logoff" );
+               eval( sys_logoff_done_eval );
+           } else {
+               sys_logoff_timeout_handler = setTimeout( get_results_sys_logoff, 2000, vuuid, 2000, 0 );
+               sys_logoff_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#sys_logoff_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_logoff.php </span>" );
+           ga.progress.clear( 'sys_logoff', 'input.footer 3' );
+           if ( sys_logoff_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_logoff_timeout_handler );
+               sys_logoff_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "sys_logoff" );
+           eval( sys_logoff_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+sys_logoff_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "sys_logoff_output_textarea" ).style.height = 0;
+    }
+
+    if ( sys_logoff_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_logoff_timeout_handler );
+       if ( sys_logoff_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_logoff_timeout_handler_uuid, "sys_logoff" );
+       }
+       sys_logoff_timeout_handler = "unset";
+    }
+    ga.event( "", "sys_logoff", "reset clicked" );
+    ga.valid.clearerrorcounter( "sys_logoff" );
+
+   if ( ga.multistage["sys_logoff"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"sys_logoff");
+       ga.stages["sys_logoff"].length = 0;
+       ga.stages["sys_logoff"] = ga.stagesdefault["sys_logoff"].slice();
+       console.log("Reset: " + ga.stages["sys_logoff"]);
+     }
+
+    //    ga.value.resetDefaultValues( "sys_logoff" );
+    ga.valuen.restore.dflt(  "sys_logoff" );
+    ga.value.resetDefaultValues( "sys_logoff_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#sys_logoff_reset" ).click( function() {
+   return sys_logoff_reset();
+});
+
+
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="sys_logoff_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#sys_logoff").append( ga.tmp.html );
+</script>
+
+<form id="sys_logoff_output">
+<!-- moved to layout.js <div id="sys_logoff_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "sys_logoff_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="sys_logoff_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="sys_logoff_output_textarea_label" for="sys_logoff_output_textarea" class=""></label>
+<textarea readonly hidden id="sys_logoff_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_sys_logoff = 1; </script>

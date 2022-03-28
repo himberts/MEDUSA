@@ -1,0 +1,968 @@
+<!-- input.header -->
+
+
+<form id="sys_pull" 
+>
+<div id="sys_pull_input_area" class="ga-module"></div>
+<script>
+
+ga.layout = ga.layout || {};
+ga.layout.module = {};
+ga.layout.module.name = "sys_pull";
+ga.layout.buttonhtml = {};
+ga.layout.fields = {};
+ga.layout.panel = JSON.parse( '{"fields":[{"lgc":1,"type":"label","dgc":2,"id":"label1","layout":{"label":[1,1],"parent":"root","data":[1,2]},"dgr":1,"lgr":1,"role":"input"},{"lgr":2,"role":"input","dgr":2,"dgc":2,"type":"integer","layout":{"label":[1,1],"data":[1,2],"parent":"root"},"id":"project","lgc":1},{"lgr":3,"role":"input","dgr":3,"dgc":2,"type":"integer","id":"xsedeproject","layout":{"parent":"root","data":[1,2],"label":[1,1]},"lgc":1},{"lgr":4,"role":"input","dgr":4,"id":"datetime","layout":{"parent":"root","data":[1,2],"label":[1,1]},"type":"integer","dgc":2,"lgc":1},{"dgc":2,"type":"integer","id":"email","layout":{"data":[1,2],"parent":"root","label":[1,1]},"lgc":1,"role":"input","lgr":5,"dgr":5},{"role":"input","lgr":6,"dgr":6,"type":"integer","dgc":2,"layout":{"label":[1,1],"parent":"root","data":[1,2]},"id":"visible","lgc":1},{"layout":{"label":[1,1],"data":[1,1],"parent":"root"},"id":"b_submit","type":"button","dgc":1,"lgc":1,"lgr":7,"role":"input","buttontext":"Submit","dgr":7},{"lgr":8,"role":"input","buttontext":"Reset to default values","dgr":7,"dgc":2,"type":"button","id":"b_reset","layout":{"label":[1,1],"parent":"root","data":[0,2]},"lgc":1},{"type":"span","dgc":"1/3","id":"sys_pull_progress","layout":{"label":"none","parent":"root","data":[1,[1,3]]},"dgr":9,"role":"output"},{"lgr":10,"role":"output","dgr":10,"layout":{"label":[1,1],"data":[1,[1,3]],"parent":"root"},"id":"sys_pull_output_airavata","dgc":"1/3","type":"span","lgc":1},{"dgr":11,"lgr":11,"role":"output","lgc":1,"dgc":"1/3","type":"span","layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"id":"sys_pull_output_msgs"},{"lgc":1,"type":"span","dgc":"1/3","id":"sys_pull_output_textarea","layout":{"data":[1,[1,3]],"parent":"root","label":[1,1]},"dgr":12,"lgr":12,"role":"output"}],"panels":[{"root":{"data":[1,2],"gap":"5px","size":["auto",[1,1]],"repeats":{"location":["next","full"],"size":["auto",[1,1]]},"gtc":"1fr 1fr ","gtr":"auto","align":"left","label":[1,1]}}]}' );
+ga.layout.module.json = JSON.parse( '{"executable":"sys_pull","fields":[{"default":"header3","id":"label1","label":"Pull","posthline":"true","role":"input","type":"label"},{"id":"project","role":"input","type":"integer"},{"id":"xsedeproject","role":"input","type":"integer"},{"id":"datetime","role":"input","type":"integer"},{"id":"email","role":"input","type":"integer"},{"id":"visible","role":"input","type":"integer"}],"label":"Pull","moduleid":"sys_pull","noreset":"true","resource":"local","submit_label":"Pull"}' );
+ga.layout.handler = ga.layout.handler || {};
+ga.layout.handler[ 'sys_pull' ] = {};
+ga.layout.init();
+
+ga.tmp.bgi = ga.color.data.body.background;
+
+
+
+
+
+input_eval = "";
+input_html = "<table>";
+input_repeats = "";
+input_trees = [];
+skipped_row = 0;
+sys_pull_done_eval = "";
+_jmol_info = {};
+// jmol = "jmol";
+ga.pull.clearPull();
+ga.specproj.clear();
+$('#sys_pull').on("keyup keypress", function(e) { var code = e.keyCode || e.which;  if (code  == 13) { e.preventDefault(); return false; }});
+// -- end input.header --
+// -- label.input --
+
+ga.layout.fields[ "label1" ] = {};
+ga.layout.fields[ "label1" ].lhtml = '<label id="label1_label" class="ga-field-input-header3 " style="">Pull</label>'
+ + '<span class="help">__fields:help__</span>'
+ '<div id="label1"></div>'; // ga.layout (for testing needs comment)
+ga.layout.fields[ "label1" ].dhtml = '';
+
+
+
+ga.layout.fields[ "label1" ].eval  =
+  ''
+  
+  ;
+
+
+
+
+/* old way
+
+this_html = '<tr><td><label id="label1_label" class="header3 ">Pull</label>' + 
+'</td>' +
+'<td><div id="label1"></div>' +
+'__</td></tr><tr><td><hr></td></tr>';
+this_eval = '';
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end label.input --
+// -- integer.input --
+
+ga.layout.fields[ "project" ] = {};
+ga.layout.fields[ "project" ].lhtml = '<label for="project">__fields:label__ </label>';
+ga.layout.fields[ "project" ].dhtml =
+  '<input type="number" name="project" id="project" data-type="float" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="project_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "project" ].eval  =
+  
+  'ga.value.setLastValue( "sys_pull", "#project" );'
+  
+  
+  + 'ga.value.registerid("sys_pull","project","__fields:label__");'
+  + '$( "#project" ).on("change blur", function() { ga.valid.checkInt( "#project" );'
+  
+  
+  + '});'
+  + '$( "#project" ).keypress( function() { $( "#project_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="project">__fields:label__ </label></td>' + 
+'<td><input type="number" name="project" id="project" data-type="integer"' +
+'><span id="project_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "sys_pull", "#project" );'
+
+
++ 'ga.value.registerid("sys_pull","project","__fields:label__");'
++ '$( "#project" ).on("change blur", function() { ga.valid.checkInt( "#project" );'
+
+
++ '});'
+
++ '$( "#project" ).keypress( function() { $( "#project_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- integer.input --
+
+ga.layout.fields[ "xsedeproject" ] = {};
+ga.layout.fields[ "xsedeproject" ].lhtml = '<label for="xsedeproject">__fields:label__ </label>';
+ga.layout.fields[ "xsedeproject" ].dhtml =
+  '<input type="number" name="xsedeproject" id="xsedeproject" data-type="float" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="xsedeproject_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "xsedeproject" ].eval  =
+  
+  'ga.value.setLastValue( "sys_pull", "#xsedeproject" );'
+  
+  
+  + 'ga.value.registerid("sys_pull","xsedeproject","__fields:label__");'
+  + '$( "#xsedeproject" ).on("change blur", function() { ga.valid.checkInt( "#xsedeproject" );'
+  
+  
+  + '});'
+  + '$( "#xsedeproject" ).keypress( function() { $( "#xsedeproject_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="xsedeproject">__fields:label__ </label></td>' + 
+'<td><input type="number" name="xsedeproject" id="xsedeproject" data-type="integer"' +
+'><span id="xsedeproject_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "sys_pull", "#xsedeproject" );'
+
+
++ 'ga.value.registerid("sys_pull","xsedeproject","__fields:label__");'
++ '$( "#xsedeproject" ).on("change blur", function() { ga.valid.checkInt( "#xsedeproject" );'
+
+
++ '});'
+
++ '$( "#xsedeproject" ).keypress( function() { $( "#xsedeproject_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- integer.input --
+
+ga.layout.fields[ "datetime" ] = {};
+ga.layout.fields[ "datetime" ].lhtml = '<label for="datetime">__fields:label__ </label>';
+ga.layout.fields[ "datetime" ].dhtml =
+  '<input type="number" name="datetime" id="datetime" data-type="float" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="datetime_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "datetime" ].eval  =
+  
+  'ga.value.setLastValue( "sys_pull", "#datetime" );'
+  
+  
+  + 'ga.value.registerid("sys_pull","datetime","__fields:label__");'
+  + '$( "#datetime" ).on("change blur", function() { ga.valid.checkInt( "#datetime" );'
+  
+  
+  + '});'
+  + '$( "#datetime" ).keypress( function() { $( "#datetime_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="datetime">__fields:label__ </label></td>' + 
+'<td><input type="number" name="datetime" id="datetime" data-type="integer"' +
+'><span id="datetime_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "sys_pull", "#datetime" );'
+
+
++ 'ga.value.registerid("sys_pull","datetime","__fields:label__");'
++ '$( "#datetime" ).on("change blur", function() { ga.valid.checkInt( "#datetime" );'
+
+
++ '});'
+
++ '$( "#datetime" ).keypress( function() { $( "#datetime_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- integer.input --
+
+ga.layout.fields[ "email" ] = {};
+ga.layout.fields[ "email" ].lhtml = '<label for="email">__fields:label__ </label>';
+ga.layout.fields[ "email" ].dhtml =
+  '<input type="number" name="email" id="email" data-type="float" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="email_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "email" ].eval  =
+  
+  'ga.value.setLastValue( "sys_pull", "#email" );'
+  
+  
+  + 'ga.value.registerid("sys_pull","email","__fields:label__");'
+  + '$( "#email" ).on("change blur", function() { ga.valid.checkInt( "#email" );'
+  
+  
+  + '});'
+  + '$( "#email" ).keypress( function() { $( "#email_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="email">__fields:label__ </label></td>' + 
+'<td><input type="number" name="email" id="email" data-type="integer"' +
+'><span id="email_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "sys_pull", "#email" );'
+
+
++ 'ga.value.registerid("sys_pull","email","__fields:label__");'
++ '$( "#email" ).on("change blur", function() { ga.valid.checkInt( "#email" );'
+
+
++ '});'
+
++ '$( "#email" ).keypress( function() { $( "#email_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- integer.input --
+
+ga.layout.fields[ "visible" ] = {};
+ga.layout.fields[ "visible" ].lhtml = '<label for="visible">__fields:label__ </label>';
+ga.layout.fields[ "visible" ].dhtml =
+  '<input type="number" name="visible" id="visible" data-type="float" class="ga-field-input-control"><span class="help">__fields:help__</span><span id="visible_msg" class="warning field_msg" > </span>';
+
+// 
+
+
+
+ga.layout.fields[ "visible" ].eval  =
+  
+  'ga.value.setLastValue( "sys_pull", "#visible" );'
+  
+  
+  + 'ga.value.registerid("sys_pull","visible","__fields:label__");'
+  + '$( "#visible" ).on("change blur", function() { ga.valid.checkInt( "#visible" );'
+  
+  
+  + '});'
+  + '$( "#visible" ).keypress( function() { $( "#visible_msg" ).html( "" ); });'
+  
+  ;
+
+
+
+
+;
+
+/* old way
+ga.tmp.html = '';
+
+
+this_html = '<tr>' +
+'<td><label for="visible">__fields:label__ </label></td>' + 
+'<td><input type="number" name="visible" id="visible" data-type="integer"' +
+'><span id="visible_msg" class="warning field_msg" > </span></td></tr>'
+
+;
+
+this_eval = 
+'ga.value.setLastValue( "sys_pull", "#visible" );'
+
+
++ 'ga.value.registerid("sys_pull","visible","__fields:label__");'
++ '$( "#visible" ).on("change blur", function() { ga.valid.checkInt( "#visible" );'
+
+
++ '});'
+
++ '$( "#visible" ).keypress( function() { $( "#visible_msg" ).html( "" ); });'
+
+
+
+;
+
+;
+
+if ( skipped_row == 1 ){ this_html = this_html.replace(/^<tr>/, "" ); skipped_row=0;};
+
+
+
+
+
+
+input_html += this_html;
+input_eval += this_eval;
+*/
+
+// -- end integer.input --
+// -- input.footer --
+// if( skipped_row == 1 ){ input_html += "</tr>"; }
+// input_html += '</table>';
+// $( '#sys_pull_input_area' ).html( input_html );
+// eval( input_eval );
+// TODO: replace with ga.layout functions for input & eval
+// ga.layout.buttonhtml[ 'submit' ] = '<button id="sys_pull_submit" class="help_link"><span class="buttontext">Submit</span></button><span class="help">this is help for the submit button</span>';
+//ga.layout.buttonhtml[ 'submit' ] += '<span class="help">this is help for the submit button</span>';
+// ga.layout.buttonhtml[ 'reset' ] = '<button id="sys_pull_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>';
+// ga.layout.buttonhtml[ 'reset' ] += '<span class="help">this is help for the reset to default values button</span>';
+// new layout setup?
+ga.layout.process( {
+    captcha : 0
+    ,resource : "local"
+    ,help : {
+        submit : 10 ? 0 : "this is help for the submit button"
+        ,reset  : 10  ? 0 : "this is help for the reset to default values button"
+    }
+});
+console.log( ga.layout.html() );
+$( '#sys_pull_input_area' ).html( ga.layout.html( 0 ) );
+
+
+
+// ${ga.layout.buttons()}
+console.log( ga.layout.eval() );
+eval( ga.layout.eval() );
+</script>
+<!-- no buttons
+<p><button id="sys_pull_submit" class="help_link"><span class="buttontext">Submit</span></button>
+<span class="help">this is help for the submit button</span>
+<button id="sys_pull_reset" class="help_link"><span class="buttontext">Reset to default values</span></button>
+<span class="help">this is help for the reset to default values button</span>
+
+-->
+</p>
+<!-- <span id="sys_pull_progress"></span> -->
+<script>
+$( "#sys_pull_b_reset_button" ).remove();
+$( "#sys_pull_b_submit_button .buttontext" ).html( "Pull" );
+
+
+
+
+var sys_pull_output_msgs = $("#sys_pull_output_msgs");
+sys_pull_output_msgs.text( "" );
+
+var sys_pull_timeout_handler = "unset";
+var sys_pull_timeout_handler_uuid;
+
+function get_results_sys_pull( id, last_timeout, getlastmsg, getinput )
+{
+
+//             url:"ajax/get_results.php?_window=" +  window.name + "&_logon=" +$( "#_state" ).data( "_logon" ) + '&_uuid=' + id,
+    var job_status = "";
+    
+    $.getJSON( 
+             "ajax/get_results.php",
+             {
+                tagmode: "any",
+                format: "json",
+                _window : window.name,
+                _logon : $( "#_state" ).data( "_logon" ),
+                _uuid : id,
+                _getlastmsg : getlastmsg,
+                _getinput : getinput ? true : false
+             } )
+    .done( function( data, status, xhr ) {
+
+           var do_refresh = 1;
+
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( id );
+           }
+
+           job_status = ga.data.update( "sys_pull", data ).job_status;
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+              if ( sys_pull_timeout_handler != "unset" )
+              {
+                  clearTimeout( sys_pull_timeout_handler );
+                  sys_pull_timeout_handler = "unset";
+              }
+              ga.ws.unsub( id, "sys_pull" );
+              eval( sys_pull_done_eval );
+              ga.progress.clear(  "sys_pull", "input.footer 4" );
+           } else {
+               if ( !last_timeout || last_timeout < 2000 )
+               { 
+                  last_timeout = 2000;
+               } else {
+                  if ( last_timeout < 16000 )
+                  {
+                      last_timeout *= 2;
+                  } else {
+                      last_timeout = 16000;
+                  }
+               }
+
+               sys_pull_timeout_handler =  setTimeout( get_results_sys_pull, last_timeout, id, last_timeout, 0 );
+               sys_pull_timeout_handler_uuid = id;
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+           $( "#sys_pull_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_pull.php </span>" );
+           ga.progress.clear( 'sys_pull', 'input.footer 1' );
+           if ( sys_pull_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_pull_timeout_handler );
+               sys_pull_timeout_handler = "unset";
+           }
+           ga.ws.unsub( id, "sys_pull" );
+           eval( sys_pull_done_eval );
+          } );
+    return false;
+};
+
+function msg_sys_pull ( id, data )
+{
+   ga.data.update( "sys_pull", data, get_results_sys_pull, id );
+};
+
+$( "#sys_pull_submit" ).click( function( e ) {
+   e.preventDefault();
+   e.returnValue = false;
+   $( "#sys_pull" ).find( ".toclear" ).remove();   
+   if ( sys_pull_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_pull_timeout_handler );
+       if ( sys_pull_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_pull_timeout_handler_uuid, "sys_pull" );
+       }
+       sys_pull_timeout_handler = "unset";
+   }
+   ga.value.resetDefaultValues( "sys_pull_output", true );
+
+   
+   return ga.xsede.select( "local", do_sys_pull_submit, $(this) );
+   //   return do_sys_pull_submit( $(this) );
+});
+
+function do_sys_pull_submit( $form, airavataresource, skipcached ) {
+
+   var $ok = 0;
+   
+   
+
+   ga.event( "", "sys_pull", "submit clicked" );
+
+   
+
+
+
+
+
+   if ( !ga.valid.checksubmit( "sys_pull" ) ) {
+       ga.valid.showerrormessage( "sys_pull" );
+       return false;
+   }
+
+   if ( ga.specproj.data.length ) {
+      if ( $( "#_state" ).data( '_logon' ) &&
+           $( "#_state" ).data( '_logon' ).length ) {
+          $( "#sel_project" ).html( ga.specproj.gname() );
+          $( "#_state" ).data( '_project', ga.specproj.gname() );
+          
+      }
+   }  
+
+//   if ( 0 && !xsedeproject) {
+//      
+//      switch( project = ga.xsede.select( "local", do_sys_pull_submit, $form ) ) {
+//      case "deferred" : return false; break;
+//      case "abort"    : return false; break;
+//      case "notused"  : break;
+//      }
+      
+      
+
+   if ( !airavataresource ) {
+      
+      switch( airavataresource = ga.airavata.select( "local", "__airavataselect__", do_sys_pull_submit, $form ) ) {
+      case "deferred" : return false; break;
+      case "abort"    : return false; break;
+      case "notused"  : break;
+      }
+      
+   }
+   
+
+   $.ajax({
+       type: 'get'
+       ,url: "ajax/sys_config/sys_joblocked.php?_window=" +  window.name + "&_logon=" + $( "#_state" ).data( "_logon" )
+
+
+
+       ,context: $form
+       ,success: function( data ) { // your success handler
+
+          if ( !$ok )
+          {
+          switch ( data )
+          {
+             case "1" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"This project directory is currently locked by another project.\nYou can wait until it completes, change the project in user configuration or clear the lock in the job manager." } );
+                 return;
+             } break;
+             case "2" :
+             {
+                 ga.msg.box( { icon:"warning.png", text:"You must be logged in to submit this module." } );
+                 return;
+             } break;
+             case "0" :
+             {
+
+                 $ok = 1;
+             } break;
+             default : 
+             {
+                if ( /^Your job/.test( data ) ) {
+                   ga.msg.box( { icon : "warning.png",
+                                 text : data } );
+                   return;
+                }
+                
+                if ( skipcached ) {
+                    $ok = 1;
+                } else {
+                    return ga.cache.msg( "", "", get_results_sys_pull, do_sys_pull_submit, data, $form, airavataresource );
+                }
+             } break;
+          }
+          }
+       }
+       ,error: function() { // your error handler
+          ga.msg.box( { icon:"toast.png", text:"Checking the project lock failed. This is possibly a server or network issue" } );
+       }
+       ,complete: function() { 
+          this.off('submit');
+          if ( $ok )
+          {
+
+
+              $( "#sys_pull_results" ).text( "" );
+
+              ga.value.saveLastValues( "sys_pull" );
+              ga.value.resetDefaultValues( "sys_pull_output", true );
+
+              var found_errors = 0;
+              $("#sys_pull").find("input").each(function(i){
+                 if ( $(this).attr( 'required' ) && $(this).val().length == 0 )
+                 {
+                    var tag =  "#sys_pull " + "#" + $(this).attr('id') + "_msg";
+
+                    $( tag ).html( "missing required field" );
+                    found_errors = 1;
+                 }
+              });
+              if ( found_errors ) {
+                  return;
+              }
+
+    var tree_html = "";
+    $( "._hidden_tree_selects" ).remove( );
+    $.each( input_trees, function( k, v ){
+
+        $( 'input[type=hidden][name="' + v + '[]"]' ).remove();
+        var selectedElms = $('#' + v).jstree("get_selected", true);
+        var i = 0;
+        $.each(selectedElms, function() {
+           tree_html += '<input type="hidden" name="' + v + '[]" value="' + this.id + '" class="_hidden_tree_selects"/>';
+
+        });
+    });
+
+    $( this ).append( tree_html );
+    $( ".ga-i-r" ).remove();
+
+
+    var logonadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_logon").val( $( "#_state" ).data( "_logon" ) );$( this ).append($(logonadd));
+    var projectadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_project").val( $( "#_state" ).data( "_project" ) );$( this ).append($(projectadd));
+    var windowadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_window").val( window.name );$( this ).append($(windowadd));
+    
+    var vuuid = uuid.v1();
+
+
+
+
+
+
+
+    if ( airavataresource != "notused" ) {
+        $( this ).append( $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_airavataresource").val( airavataresource ) );
+    }
+
+    var uuidadd = $("<input>").attr("type", "hidden").attr("class","ga-i-r" ).attr("name", "_uuid").val( vuuid );$( this ).append($(uuidadd));
+//    ga.altfile.add( "sys_pull" );
+    ga.valuen.addhtml( "sys_pull" );
+
+    ga.extrahidden( "sys_pull" );
+
+    ga.ws.sub( vuuid, msg_sys_pull, "sys_pull" );
+
+    var formData = new FormData($('#sys_pull')[0]);
+    
+     
+     
+    
+     
+     
+
+     
+     if ( ga.multistage["sys_pull"] )
+      {
+        ga.value.modifyformdata(ga.multistage, "sys_pull", formData, ga.stages["sys_pull"], ga.currentstage);
+      }
+
+
+
+    ga.progress.set( 'sys_pull', 'Uploading' );
+
+    var job_status = "";
+
+    ga.event( "", "sys_pull", "submit: passed submit checks, submitting" );
+
+
+    // var url - coditional based on module's .json setting, and use it in ajax call
+
+    // for Safari 11 bug
+    if ( ga.browser.type == "safari" &&
+         ga.browser.majversion == "11" ) {
+        for ( var pair of formData.entries() ) {
+            if ( pair[1] instanceof File &&
+                 pair[1].name == "" ) {
+                console.log( "setting key " + pair[0] + " to empty string" );
+                formData.set( pair[0], "" );
+            }
+        }
+    }
+
+    ga.tmp.elements = document.forms["sys_pull"].elements;
+    for (i=0; i<ga.tmp.elements.length; i++){
+      if ( ga.tmp.elements[i].type == "file" &&
+           ga.tmp.elements[i].webkitdirectory ) {
+        ga.tmp.files = ga.tmp.elements[i].files;
+        for (j in ga.tmp.files){
+          if( ga.tmp.files[j].size){
+              formData.append( ga.tmp.elements[i].id + "[]", ga.tmp.files[j]);
+              
+          }
+        };
+      }
+    }
+    delete ga.tmp.elements;
+    delete ga.tmp.files;
+              
+    ga.tmp.ids = ga.layout.output_ids();              
+    for ( ga.tmp.id in ga.tmp.ids ) {
+        formData.delete( ga.tmp.ids[ ga.tmp.id ] );
+    }
+    delete ga.tmp.ids;
+    delete ga.tmp.id;
+
+    $.ajax( {
+             dataType: "json",
+             cache:false,
+//             timeout:3000,  // for testing
+             type:"POST",
+             url:"ajax/sys_config/sys_pull.php",
+             data: formData,
+             xhr: function() {  // Custom XMLHttpRequest
+                 var myXhr = $.ajaxSettings.xhr();
+                 if(myXhr.upload){ // Check if upload property exists
+                     myXhr.upload.addEventListener('progress',
+                         function(e) {
+                         if(e.lengthComputable){
+                           
+                           document.getElementById( 'sys_pull_upload_progressbar').style.width = (100*e.loaded/e.total).toString() + "%";
+                         } }
+//                     progressHandlingFunction
+                    , false);
+                 }
+                 return myXhr;
+             },
+             contentType: false,
+             processData: false
+            } )
+    .done( function( data, status, xhr ) {
+    
+    if ( ga.multistage["sys_pull"] )
+      {
+        ga.value.showfields(ga.multistage, "sys_pull", ga.stages["sys_pull"], ga.currentstage);
+    	delete ga.stages["sys_pull"][ga.currentstage]; 
+    	++ga.currentstage;	
+      }	
+
+
+
+
+// refresh cache for this project
+           ga.progress.clear( 'sys_pull', 'input.footer 2' );
+   
+           var do_refresh = 1;
+
+           if ( do_refresh ) {
+              ga.fc.clear( $.base64.encode( "./" + $( "#_state" ).data( "_project" ) ) );
+              ga.jc.clear_leaf( vuuid );
+           }
+           
+// loop through data pairs
+           sys_pull_output_msgs.text( "" );
+           job_status = ga.data.update( "sys_pull", data ).job_status;
+
+           if ( job_status == "complete" ||
+                job_status == "cancelled" ||
+                job_status == "failed" )
+           {
+               if ( sys_pull_timeout_handler != "unset" )
+               {
+                   clearTimeout( sys_pull_timeout_handler );
+                   sys_pull_timeout_handler = "unset";
+               }
+               ga.ws.unsub( vuuid, "sys_pull" );
+               eval( sys_pull_done_eval );
+           } else {
+               sys_pull_timeout_handler = setTimeout( get_results_sys_pull, 2000, vuuid, 2000, 0 );
+               sys_pull_timeout_handler_uuid = vuuid;
+
+           }
+          } )
+    .fail( function( xhr, status, errorThrown ) {
+
+
+
+
+           $( "#sys_pull_results" ).html( "<span class=\"warning\"> Failed: " + status + " : '" + xhr.status + ":" + errorThrown + "' on URL ajax/sys_config/sys_pull.php </span>" );
+           ga.progress.clear( 'sys_pull', 'input.footer 3' );
+           if ( sys_pull_timeout_handler != "unset" )
+           {
+               clearTimeout( sys_pull_timeout_handler );
+               sys_pull_timeout_handler = "unset";
+           }
+           ga.ws.unsub( vuuid, "sys_pull" );
+           eval( sys_pull_done_eval );
+          } );
+          } else {
+
+          }
+       }
+   });
+} 
+
+sys_pull_reset = function() {
+    
+    if ( !10 ) {
+        // required to reset scrollheight ... 
+        document.getElementById( "sys_pull_output_textarea" ).style.height = 0;
+    }
+
+    if ( sys_pull_timeout_handler != "unset" ) {
+       
+       clearTimeout( sys_pull_timeout_handler );
+       if ( sys_pull_timeout_handler_uuid ) {
+           ga.ws.unsub( sys_pull_timeout_handler_uuid, "sys_pull" );
+       }
+       sys_pull_timeout_handler = "unset";
+    }
+    ga.event( "", "sys_pull", "reset clicked" );
+    ga.valid.clearerrorcounter( "sys_pull" );
+
+   if ( ga.multistage["sys_pull"] )
+     {
+       ga.currentstage = 0;
+       ga.value.sethiddenfields(ga.multistage,"sys_pull");
+       ga.stages["sys_pull"].length = 0;
+       ga.stages["sys_pull"] = ga.stagesdefault["sys_pull"].slice();
+       console.log("Reset: " + ga.stages["sys_pull"]);
+     }
+
+    //    ga.value.resetDefaultValues( "sys_pull" );
+    ga.valuen.restore.dflt(  "sys_pull" );
+    ga.value.resetDefaultValues( "sys_pull_output", true );
+    
+    eval( input_repeats );
+    return false;
+}
+
+$( "#sys_pull_reset" ).click( function() {
+   return sys_pull_reset();
+});
+
+
+
+eval( input_repeats );
+ga.hhelp.set();
+ga.hhelp.reset();
+ga.pull.doPull();
+</script>
+</form>
+<div id="sys_pull_results"></div>
+<!-- end input.footer -->
+
+<!-- output.header -->
+<script>
+// ga.tmp.html = "<hr>";
+ga.tmp.html = "";
+
+$("#sys_pull").append( ga.tmp.html );
+</script>
+
+<form id="sys_pull_output">
+<!-- moved to layout.js <div id="sys_pull_output_msgs" class="warning" type="msgs"></div> -->
+<script>
+ga.value.setLastValueOutput( "sys_pull_output" );
+// ga.value.extra_resets.clear();
+</script>
+
+<!-- output_airavata, textarea moved to layout.js
+<span id="sys_pull_output_airavata"></span>
+
+<table>
+<tr>
+<td colspan="4"><label hidden id="sys_pull_output_textarea_label" for="sys_pull_output_textarea" class=""></label>
+<textarea readonly hidden id="sys_pull_output_textarea" rows="10" cols="110" class="help_link"></textarea>
+<span class="help">general textarea help</span>
+</td>
+</tr>
+-->
+<!-- end output.header -->
+</table>
+</form>
+
+
+
+
+<script>loaded_sys_pull = 1; </script>
