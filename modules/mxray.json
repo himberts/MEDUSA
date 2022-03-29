@@ -1,7 +1,7 @@
 {
-    "moduleid" : "mcsim"
-    ,"label"    : "McSim"
-    ,"executable"   : "mcsim.py"
+    "moduleid" : "mxray"
+    ,"label"    : "MXray"
+    ,"executable"   : "mxray.py"
     ,"submitpolicy" : "all"
     ,"dependencies" : [
         { "base" : "python3" }
@@ -14,186 +14,70 @@
             ,"type"      : "label"
             ,"colspan"   : 3
             ,"default"   : "header3"
-            ,"label"     : "McSim [<a target=_blank href=https://doi.org/10.1107/S1600576714013156>1,</a><a target=_blank href=http://scripts.iucr.org/cgi-bin/paper?S0021889890002801>2,</a><a target=_blank href=https://github.com/ehb54/GenApp-McSim>Source code</a>]"
+            ,"label"     : "MXray"
             ,"prehline"  : "true"
             ,"posthline" : "true"
         }
         ,{
             "role"       : "input"
-            ,"id"         : "qmin"
-            ,"label"      : "q min"
+            ,"id"         : "xi"
+            ,"label"      : "xi"
             ,"type"       : "float"
-            ,"step"       : 0.01
-	    ,"default"    : 0.001
-            ,"help"       : "q min, in inverse Angstroms"
+            ,"step"       : 0.1
+	    ,"default"    : 80
+            ,"help"       : "Calle Parameter xi"
         }
         ,{
-            "role"       : "input"
-            ,"id"         : "qmax"
-            ,"label"      : "q max "
-            ,"type"       : "float"
-            ,"step"       : 0.001
-	    ,"default"    : 1.0
-            ,"help"       : "q max, in inverse Angstrom"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "qpoints"
-            ,"label"      : "Number of points in q"
-            ,"type"       : "integer"
-            ,"min"        : 10
-            ,"default"    : 400
-            ,"max"        : 2000
-            ,"help"       : "<p>Number of points in q.</p><p>Default: 100, Minimum 10, Maximum 2000</p>"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "polydispersity"
-            ,"label"      : "Relative polydispersity"
-            ,"type"       : "float"
-            ,"step"       : 0.01
-            ,"default"    : 0.0
-	    ,"min"        : 0.0
-	    ,"max"        : 0.2
-            ,"help"       : "Relative polydispersity. Min: 0.0 (monodisperse), max: 0.2."
-        }
-	,{
             "role"       : "input"
             ,"id"         : "eta"
-            ,"label"      : "Volume fraction"
+            ,"label"      : "eta"
             ,"type"       : "float"
             ,"step"       : 0.01
-            ,"default"    : 0.0
-            ,"min"        : 0.0
+	    ,"default"    : 0.1
+            ,"help"       : "Calle Parameter Eta"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "q1"
+            ,"label"      : "Lamellar spacing q_1 (inverse Angstrom)"
+            ,"type"       : "float"
+            ,"min"        : .01
+            ,"default"    : .1
+            ,"max"        : .2
+            ,"help"       : "<p>Lamellar in q space</p><p>Default: 100, Minimum 10, Maximum 2000</p>"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "qzb"
+            ,"label"      : "q_start"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+            ,"default"    : 0.05
+	          ,"min"        : 0.05
+	          ,"max"        : 0.6
+            ,"help"       : "Lower limit of the scattering vector qz."
+        }
+	,{
+            "role"       : "input"
+            ,"id"         : "qze"
+            ,"label"      : "qz_end"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+            ,"default"    : 0.2
+            ,"min"        : 0.1
             ,"max"        : 0.9
-            ,"help"       : "<p>Volume fraction - for high concentration samples.</p><p> Giving rise to a hard sphere structure factor, S(q)</p><p>Min: 0.0 (no structure factor), max: 0.9.</p>"
+            ,"help"       : "Upper limit of the scattering vector qz."
         }
         ,{
             "role"       : "input"
-            ,"id"         : "sigma_r"
-            ,"label"      : "Interface roughness, in Aangstrom"
+            ,"id"         : "qzs"
+            ,"label"      : "qz_step"
             ,"type"       : "float"
-            ,"step"       : 0.01
-            ,"default"    : 0.0
-            ,"min"        : 0.0
-            ,"max"        : 10.0
-            ,"help"       : "<p>Interface roughness, for non-sharp edges between models. </p> See Skar-Gislinge et al, PhysChemChemPhys 2011: Small-angle scattering from phospholipid nanodiscs: derivation and refinement of a molecular constrained analytical model form factor. </p><p> Decreasing scattering at high q, by I(q) = I(q)*exp(-(q*sigma_r)^2/2)</p><p>Min: 0.0 (no roughness), max: 10, default: none.</p>"
-        }
-	,{
-            "role"       : "input"
-            ,"id"         : "noise"
-            ,"label"      : "Relative noise"
-            ,"type"       : "float"
-            ,"step"       : 0.01
-            ,"default"    : 1.0
-            ,"min"        : 0.0001
-            ,"max"        : 10000
-            ,"help"       : "<p>Relative noise on simulated data.</p><p>Min: 0.0001, max: 10000.</p><p> the error is simulated using: sigma = noise*sqrt[(10000*I)/(0.9*q)], where I,q are calculated from the p(r)</p><p>Sedlak, Bruetzel and Lipfert (2017). J. Appl. Cryst. 50, 621-30. Quantitative evaluation of statistical errors in small- angle X-ray scattering measurements (https://doi.org/10.1107/S1600576717003077)</p>"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "prpoints"
-            ,"label"      : "Number of points in p(r)"
-            ,"type"       : "integer"
-            ,"min"        : 10
-            ,"default"    : 100
-            ,"max"        : 200
-            ,"help"       : "<p>Number of points in the estimated function p(r).</p><p>Default: 100, Minimum 10, Maximum 200</p>"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "exclude_overlap"
-            ,"label"      : "Exclude overlap regions"
-            ,"type"       : "checkbox"
-            ,"help"       : "<p>Exclude overlap regions.</p><p>If there is overlap with models higher up in the list, the points in the overlap region will be omitted.</p>"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "label_model"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "Model"
-            ,"norow"      : "true"
-	    ,"readonly"   : "true"
-	    ,"size"       : 17
-            ,"help"       : "<p>Models and parameters (in Angstrom):</p><p>Sphere; a: Radius, b,c: no effect</p><p> Ellipsoid; a, b, c: semiaxes</p><p> Cylinder/Disc; a, b: semiaxes, c: length</p><p>Cube; a: side length, b,c: no effect</p><p>Cuboid; a: width, b: depth, c: height</p><p>Hollow sphere; a: outer radius, b: inner radius, c: no effect</p><p>Hollow square; a: outer side length, b: inner side length, c: no effect </p><p>Cylindrical/discoidal ring; a: outer radius, b: inner radius, c: length </p>"
-        }
-	,{
-            "role"       : "input"
-            ,"id"         : "label_a"
-            ,"label"      : " "
-            ,"type"       : "text"
-	    ,"default"    : "a"
-	    ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "<p>Sphere: radius</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: side length</p><p>Cuboid: width</p><p>Hollow sphere: outer radius</p><p>Hollow square: outer side length</p><p>Cylindrical/discoidal ring: outer radius </p>"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "label_b"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "b"
-            ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "<p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc: semiaxis</p><p>Cube: no effect</p><p>Cuboid: depth</p><p>Hollow sphere: inner radius</p><p>Hollow square: inner side length</p><p>Cylindrical/discoidal ring: inner radius </p>"
-        }
-	,{
-            "role"       : "input"
-            ,"id"         : "label_c"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "c"
-            ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "<p>Sphere: no effect</p><p> Ellipsoid: semiaxis </p><p> Cylinder/Disc*: length</p><p>Cube: no effect</p><p>Cuboid: height</p><p>Hollow sphere: no effect </p><p>Hollow square: no effect</p><p>Cylindrical/discoidal ring*: length </p><p>*Cylinder and disc is the same model. They just differe in default paramters. Same is true for discoidal and cylindrical ring.</p>"
-	}
-        ,{
-            "role"       : "input"
-            ,"id"         : "label_p"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "Delta SLD"
-            ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "Excess scattering length density of object"
-        }
-	,{
-            "role"       : "input"
-            ,"id"         : "label_x"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "x_com"
-            ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "center of mass x position of object"
-        }
-	,{
-            "role"       : "input"
-            ,"id"         : "label_y"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "y_com"
-            ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "center of mass y position of object"
-        }
-	,{
-            "role"       : "input"
-            ,"id"         : "label_z"
-            ,"label"      : " "
-            ,"type"       : "text"
-            ,"default"    : "z_com"
-            ,"norow"      : "true"
-            ,"readonly"   : "true"
-            ,"size"       : 20
-            ,"help"       : "center of mass z position of object"
+            ,"step"       : 0.001
+            ,"default"    : 0.01
+            ,"min"        : 0.001
+            ,"max"        : 0.1
+            ,"help"       : "Stepsize of the scattering vector qz."
         }
 #################################################################################################################
         ,{"role": "input","id": "model1","label": " ","type": "listbox","values": "Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring","norow": "true","size": 30,"default": "sphere"}
