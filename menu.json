@@ -10,10 +10,6 @@
             "startup" : "true",
             "modules" : [
                          {
-                          "id"    : "mcsim",
-                          "label" : "McSim"
-                         }
-                         ,{
                           "id"    : "mxray",
                           "label" : "MxRay"
                          }
