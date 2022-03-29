@@ -39,7 +39,7 @@
         ,{
             "role"       : "input"
             ,"id"         : "q1"
-            ,"label"      : "Lamellar spacing q_1 (inverse Angstrom)"
+            ,"label"      : "q1"
             ,"type"       : "float"
             ,"min"        : .01
             ,"default"    : .1
