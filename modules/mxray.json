@@ -40,7 +40,6 @@
             "role"       : "input"
             ,"id"         : "q1"
             ,"label"      : "q1"
-            ,"type"       : "float"
             ,"min"        : .01
             ,"default"    : .1
             ,"max"        : .2
