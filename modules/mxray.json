@@ -47,15 +47,6 @@
         }
         ,{
             "role"       : "input"
-            ,"id"         : "q1"
-            ,"label"      : "q1"
-            ,"min"        : .01
-            ,"default"    : .1
-            ,"max"        : .2
-            ,"help"       : "<p>Lamellar in q space</p><p>Default: 100, Minimum 10, Maximum 2000</p>"
-        }
-        ,{
-            "role"       : "input"
             ,"id"         : "qzb"
             ,"label"      : "q_start"
             ,"type"       : "float"
