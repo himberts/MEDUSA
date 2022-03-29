@@ -5,7 +5,7 @@
 
 # "genapptest" below could be replaced, but you should probably also then replace "genapptest" in the paths below
 # the application name should not contain any special characters
-  "application"               : "mxray",
+  "application"               : "Mxray",
 
 #  "footer"                    : "Test footer",
 #  "footersize"                : "50px",
@@ -36,7 +36,7 @@
                                  "txt" :"vi",
                                  "pdb" :"rasmol"
                                 },
-# only uncomment this to have a "docs" tab in html5 which hyperlinks to your self created docs directory 
+# only uncomment this to have a "docs" tab in html5 which hyperlinks to your self created docs directory
 #  "docsbaseurl"               : "docs",
 
 # global hover help texts
