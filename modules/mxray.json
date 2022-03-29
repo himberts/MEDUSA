@@ -36,6 +36,15 @@
 	    ,"default"    : 0.1
             ,"help"       : "Calle Parameter Eta"
         }
+      ,{
+            "role"       : "input"
+            ,"id"         : "q"
+            ,"label"      : "q"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+      ,"default"    : 0.1
+            ,"help"       : "q"
+        }
         ,{
             "role"       : "input"
             ,"id"         : "q1"
