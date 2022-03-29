@@ -11,11 +11,11 @@
             "modules" : [
                          {
                           "id"    : "mcsim",
-                          "label" : "McSim",
+                          "label" : "McSim"
                          }
                          ,{
                           "id"    : "mxray",
-                          "label" : "MxRay",
+                          "label" : "MxRay"
                          }
                         ]
             }
