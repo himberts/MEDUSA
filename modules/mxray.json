@@ -5,6 +5,7 @@
     ,"submitpolicy" : "all"
     ,"dependencies" : [
         { "base" : "python3" }
+#	,{ "file" : "mass_energy.py" }
         ,{ "conda" : [ "numpy", "matplotlib", "fast_histogram" ] }
     ]
     ,"fields"   : [
@@ -82,15 +83,13 @@
             "role"       : "output"
             ,"id"         : "kc"
             ,"label"      : "<hr> Bending Modulus <hr>"
-            ,"type"       : "label"
-            ,"colspan"    : 2
+            ,"type"       : "text"
         }
         ,{
             "role"       : "output"
             ,"id"         : "B"
             ,"label"      : "<hr> Interaction Modulus <hr>"
-            ,"type"       : "label"
-            ,"colspan"    : 2
+            ,"type"       : "text"
         }
         ,{
             "role"       : "output"

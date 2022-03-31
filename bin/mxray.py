@@ -25,9 +25,9 @@ if __name__=='__main__':
     json_variables = json.load(argv_io_string)
     xi = float(json_variables['xi'])
     eta = float(json_variables['eta'])
-    q = int(json_variables['q']) # number of points in (simulated) q
+    q = float(json_variables['q']) # number of points in (simulated) q
     qzb = float(json_variables['qzb'])
-    qze = int(json_variables['qze']) # number of points in p(r)
+    qze = float(json_variables['qze']) # number of points in p(r)
     qzs = float(json_variables['qzs'])
 
     ## read checkboxes and related input
@@ -196,15 +196,15 @@ if __name__=='__main__':
     # os.system('zip results.zip pr.d Iq.d Isim.d model.pdb plot.png')
 
     ## structure output to GUI
-    output = {} # create an empty python dictionary
-    output["pr"] = "%s/pr.d" % folder
-    output["Iq"] = "%s/Iq.d" % folder
-    output["Isim"] = "%s/Isim.d" % folder
-    output["pdb"] = "%s/model.pdb" % folder
-    output["fig"] = "%s/plot.png" % folder
-    output["zip"] = "%s/results.zip" % folder
-    output["Dmax"] = "%1.2f" % Dmax
-    output["Rg"] = "%1.2f" % Rg
+ #   output = {} # create an empty python dictionary
+ #   output["pr"] = "%s/pr.d" % folder
+ #   output["Iq"] = "%s/Iq.d" % folder
+ #   output["Isim"] = "%s/Isim.d" % folder
+ #   output["pdb"] = "%s/model.pdb" % folder
+ #   output["fig"] = "%s/plot.png" % folder
+  #  output["zip"] = "%s/results.zip" % folder
+  #  output["Dmax"] = "%1.2f" % Dmax
+  #  output["Rg"] = "%1.2f" % Rg
     # if polydispersity > 0.0:
     #     output["Dmax_poly"] = "%1.2f" % Dmax_poly
     #     output["Rg_poly"] = "%1.2f" % Rg_poly
@@ -224,4 +224,4 @@ if __name__=='__main__':
     # message.udpmessage({"_textarea":"\n# Finished succesfully.\n    time total: %1.2f sec\n" % time_total})
 
     ## send output to GUI
-    print( json.dumps(output) ) # convert dictionary to json and output
+#    print( json.dumps(output) ) # convert dictionary to json and output

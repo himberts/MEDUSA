@@ -5,7 +5,7 @@
 
 # "genapptest" below could be replaced, but you should probably also then replace "genapptest" in the paths below
 # the application name should not contain any special characters
-  "application"               : "Mxray",
+  "application"               : "mxray",
 
 #  "footer"                    : "Test footer",
 #  "footersize"                : "50px",
