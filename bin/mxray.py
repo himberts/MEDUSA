@@ -15,6 +15,7 @@ import time
 from fast_histogram import histogram1d #histogram1d from fast_histogram is faster than np.histogram (https://pypi.org/project/fast-histogram/)
 import gc # garbage collector for freeing memory
 from sys import getsizeof
+import time
 
 if __name__=='__main__':
 
@@ -45,6 +46,7 @@ if __name__=='__main__':
     output["kc"] = "%1.2f" % 10.57
     output["B"] = "%1.2f" % 5.23
     message.udpmessage({"Running Calculation"})
+    time.sleep(20)
     print( json.dumps(output) ) # convert dictionary to json and output
 
     # ## read model parameters
