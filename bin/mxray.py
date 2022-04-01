@@ -47,51 +47,51 @@ if __name__=='__main__':
     output["kc"] = "%1.2f" % 10.57
     output["B"] = "%1.2f" % 5.23
 
-    s = subprocess.check_output(["mxray_bending","-m","2ds", "-z", "80","-e" ,".1", "-q", ".1","--qzb","0.05","--qze","0.3","--qzs","0.01","-o","testgenapp"])
+    s = subprocess.check_output(["mxray_bending","-m","2ds", "-z", str(xi),"-e" ,str(eta), "-q", ".1","--qzb","0.05","--qze","0.3","--qzs","0.01","-o","testgenapp"])
 
     # decoding to print a normal output
 
 #    print(s.decode("utf-8"))
    # message.udpmessage({"Running Calculation"})
 
-    output['plotline'] = {
-            "data" : [
-                    {
-                            "x": [1, 2, 3, 4],
-                            "y": [10, 15, 13, 17],
-                            "mode": "markers",
-                            "marker": {
-                                    "color": "rgb(219, 64, 82)",
-                                    "size": 12
-                            }
-                    },
-                    {
-                            "x" : [2, 3, 4, 5],
-                            "y" : [16, 5, 11, 9],
-                            "mode" : "lines",
-                            "line" : {
-                                    "color" : "rgb(55, 128, 191)",
-                                    "width": 3
-                            }
-                    },
-                    {
-                            "x" : [1, 2, 3, 4],
-                            "y" : [12, 9, 15, 12],
-                            "mode" : "lines+markers",
-                            "marker" : {
-                                    "color" : "rgb(128, 0, 128)",
-                                    "size": 8
-                            },
-                            "line" : {
-                                    "color" : "rgb(128, 0, 128)",
-                                    "width" : 1
-                            }
-                    }
-            ],
-            "layout" : {
-                    "title" : "Line and Scatter Styling"
-            }
-    }
+#    output['plotline'] = {
+ #           "data" : [
+  #                  {
+   #                         "x": [1, 2, 3, 4],
+    #                        "y": [10, 15, 13, 17],
+    #                        "mode": "markers",
+     #                       "marker": {
+      #                              "color": "rgb(219, 64, 82)",
+       #                             "size": 12
+        #                    }
+         #           },
+          #          {
+           #                 "x" : [2, 3, 4, 5],
+          #                  "y" : [16, 5, 11, 9],
+           #                 "mode" : "lines",
+            #                "line" : {
+             #                       "color" : "rgb(55, 128, 191)",
+              #                      "width": 3
+               #             }
+ #                   },
+  #                  {
+   #                         "x" : [1, 2, 3, 4],
+    #                        "y" : [12, 9, 15, 12],
+     #                       "mode" : "lines+markers",
+      #                      "marker" : {
+        #                            "color" : "rgb(128, 0, 128)",
+       #                             "size": 8
+         #                   },
+           #                 "line" : {
+          #                          "color" : "rgb(128, 0, 128)",
+            #                        "width" : 1
+             #               }
+              #      }
+          #  ],
+          #  "layout" : {
+           #         "title" : "Line and Scatter Styling"
+           # }
+ #   }
 
     output['_textarea'] = s.decode("utf-8")
 #    output['_textarea'] += "JSON input to executable:\n" + json.dumps( json_variables, indent=4 ) + "\n";
