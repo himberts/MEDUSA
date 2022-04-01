@@ -98,5 +98,11 @@
             ,"type"       : "file"
             ,"help"       : "The calculated fit"
         }
+        ,{
+            "role"        : "output"
+            ,"id"         : "plotline"
+            ,"type"       : "plotly"
+            ,"label"      : "Fit Results"
+        }
     ]
 }

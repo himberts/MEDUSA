@@ -46,7 +46,12 @@ if __name__=='__main__':
     output["kc"] = "%1.2f" % 10.57
     output["B"] = "%1.2f" % 5.23
     message.udpmessage({"Running Calculation"})
-    time.sleep(20)
+
+
+
+
+
+    
     print( json.dumps(output) ) # convert dictionary to json and output
 
     # ## read model parameters
