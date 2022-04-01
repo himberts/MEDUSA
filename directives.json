@@ -63,7 +63,7 @@
 #      ,"verticalalign"  : "top"
       "cols"           : "120"
 # define rows to stop autosize
-#      ,"rows"           : "200"
+      ,"rows"           : "200"
       ,"help"           : "general textarea help"
   },
 

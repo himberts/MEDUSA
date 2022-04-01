@@ -16,7 +16,6 @@ from fast_histogram import histogram1d #histogram1d from fast_histogram is faste
 import gc # garbage collector for freeing memory
 from sys import getsizeof
 import time
-import subprocess
 
 if __name__=='__main__':
 
@@ -31,7 +30,7 @@ if __name__=='__main__':
     qzb = float(json_variables['qzb'])
     qze = float(json_variables['qze']) # number of points in p(r)
     qzs = float(json_variables['qzs'])
-    folder = json_variables['_base_directory'] # output folder dir
+
     ## read checkboxes and related input
     # the Json input for checkboxes only exists if boxes are checked
     # therefore, I use try-except to import
@@ -46,13 +45,7 @@ if __name__=='__main__':
     output = {} # create an empty python dictionary
     output["kc"] = "%1.2f" % 10.57
     output["B"] = "%1.2f" % 5.23
-
-    s = subprocess.check_output(["mxray_bending","-m","2ds", "-z", "80","-e" ,".1", "-q", ".1","--qzb","0.05","--qze","0.3","--qzs","0.01","-o","testgenapp"])
-
-    # decoding to print a normal output
-
-#    print(s.decode("utf-8"))
-   # message.udpmessage({"Running Calculation"})
+    message.udpmessage({"Running Calculation"})
 
     output['plotline'] = {
             "data" : [
@@ -93,9 +86,9 @@ if __name__=='__main__':
             }
     }
 
-    output['_textarea'] = s.decode("utf-8")
-#    output['_textarea'] += "JSON input to executable:\n" + json.dumps( json_variables, indent=4 ) + "\n";
-    output["Fit"] = "%s/testgenapp.simg" % folder
+    output['_textarea'] = "JSON output from executable:\n" + json.dumps( output, indent=4 ) + "\n\n";
+    output['_textarea'] += "JSON input to executable:\n" + json.dumps( json_variables, indent=4 ) + "\n";
+
 
 
     print( json.dumps(output) ) # convert dictionary to json and output

@@ -1,11 +1,10 @@
 {
     "moduleid" : "mxray"
     ,"label"    : "MXray"
-    ,"executable"   : "mxray.py"
+    ,"executable"   : "mcsim.py"
     ,"submitpolicy" : "all"
     ,"dependencies" : [
         { "base" : "python3" }
-	,{ "file" : "diffuse_analysis_v21_CUDA" }
         ,{ "conda" : [ "numpy", "matplotlib", "fast_histogram" ] }
     ]
     ,"fields"   : [
@@ -83,13 +82,15 @@
             "role"       : "output"
             ,"id"         : "kc"
             ,"label"      : "<hr> Bending Modulus <hr>"
-            ,"type"       : "text"
+            ,"type"       : "label"
+            ,"colspan"    : 2
         }
         ,{
             "role"       : "output"
             ,"id"         : "B"
             ,"label"      : "<hr> Interaction Modulus <hr>"
-            ,"type"       : "text"
+            ,"type"       : "label"
+            ,"colspan"    : 2
         }
         ,{
             "role"       : "output"
@@ -97,12 +98,6 @@
             ,"label"      : "Fit Results"
             ,"type"       : "file"
             ,"help"       : "The calculated fit"
-        }
-        ,{
-            "role"        : "output"
-            ,"id"         : "plotline"
-            ,"type"       : "plotly"
-            ,"label"      : "Fit Results"
         }
     ]
 }

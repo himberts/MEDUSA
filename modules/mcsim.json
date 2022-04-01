@@ -14,7 +14,7 @@
             ,"type"      : "label"
             ,"colspan"   : 3
             ,"default"   : "header3"
-            ,"label"     : "McSim [<a target=_blank href=https://doi.org/10.1107/S1600576714013156>1,</a><a target=_blank href=http://scripts.iucr.org/cgi-bin/paper?S0021889890002801>2,</a><a target=_blank href=https://github.com/ehb54/GenApp-McSim>Source code</a>]"
+            ,"label"     : "McSim [<a target=_blank href=https://doi.org/10.1107/S1600576714013156>1,</a><a target=_blank href=http://scripts.iucr.org/cgi-bin/paper?S0021889890002801>2,</a><a target=_blank href=https://github.com/ehb54/GenApp-McSim>Source code</a>]"	   
             ,"prehline"  : "true"
             ,"posthline" : "true"
         }
@@ -171,7 +171,7 @@
             ,"norow"      : "true"
             ,"readonly"   : "true"
             ,"size"       : 20
-            ,"help"       : "center of mass x position of object"
+            ,"help"       : "center of mass x position of object" 
         }
 	,{
             "role"       : "input"
@@ -195,7 +195,7 @@
             ,"size"       : 20
             ,"help"       : "center of mass z position of object"
         }
-#################################################################################################################
+#################################################################################################################       
         ,{"role": "input","id": "model1","label": " ","type": "listbox","values": "Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring","norow": "true","size": 30,"default": "sphere"}
         ,{"role": "input","id": "a1","label": " ","type": "float","min": "0","default": 100,"norow": "true","required"   : "true"}
         ,{"role": "input","id": "b1","label": " ","type": "float","min": "0","norow": "true"}
@@ -204,7 +204,7 @@
 	,{"role": "input","id": "x1","label": " ","type": "float","default": 0.0,"norow": "true"}
 	,{"role": "input","id": "y1","label": " ","type": "float","default": 0.0,"norow": "true"}
 	,{"role": "input","id": "z1","label": " ","type": "float","default": 0.0,"norow": "true"}
-#################################################################################################################
+#################################################################################################################       
         ,{"role": "input","id": "model2","label": " ","type": "listbox","values": "Sphere~sphere~Ellipsoid (Tri-axial)~ellipsoid~Cylinder~cylinder~Disc~disc~Cube~cube~Cuboid~cuboid~Hollow sphere~hollow_sphere~Hollow cube~hollow_cube~Cylindrical ring~cyl_ring~Discoidal ring~disc_ring~Choose a model~none","norow": "true","size": 30,"default": "none"}
         ,{"role": "input","id": "a2","label": " ","type": "float","min": "0","default": 100,"norow": "true","required"   : "true"}
         ,{"role": "input","id": "b2","label": " ","type": "float","min": "0","norow": "true"}
@@ -240,7 +240,7 @@
         ,{"role": "input","id": "x5","label": " ","type": "float","default": 0.0,"norow": "true"}
         ,{"role": "input","id": "y5","label": " ","type": "float","default": 0.0,"norow": "true"}
         ,{"role": "input","id": "z5","label": " ","type": "float","default": 0.0,"norow": "true"}
-#################################################################################################################
+#################################################################################################################        
         ,{
             "role"       : "output"
             ,"id"         : "hroutput"
@@ -296,14 +296,14 @@
             ,"label"      : "Dmax, monodisperse"
             ,"type"       : "text"
 	    ,"help"       : "Maximum distance in monodisperse particle"
-        }
+        }  
         ,{
             "role"       : "output"
             ,"id"         : "Rg"
             ,"label"      : "Rg, monodisperse"
             ,"type"       : "text"
             ,"help"       : "Radius of gyration of monodisperse particle"
-        }
+        }	
        	,{
             "role"       : "output"
             ,"id"         : "Dmax_poly"
