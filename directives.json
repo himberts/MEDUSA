@@ -61,9 +61,9 @@
 #      "label"           : "Report:"
 #      ,"default"        : "header3"
 #      ,"verticalalign"  : "top"
-      "cols"           : "110"
+      "cols"           : "120"
 # define rows to stop autosize
-      ,"rows"           : "10"
+#      ,"rows"           : "200"
       ,"help"           : "general textarea help"
   },
 
