@@ -21,6 +21,13 @@
         }
         ,{
             "role"       : "input"
+            ,"id"         : "data"
+            ,"label"      : "data"
+            ,"type"       : "file"
+            ,"help"       : "Data to be fitted"
+        }
+        ,{
+            "role"       : "input"
             ,"id"         : "xi"
             ,"label"      : "xi"
             ,"type"       : "float"

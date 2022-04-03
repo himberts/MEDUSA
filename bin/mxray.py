@@ -31,6 +31,7 @@ if __name__=='__main__':
     qzb = float(json_variables['qzb'])
     qze = float(json_variables['qze']) # number of points in p(r)
     qzs = float(json_variables['qzs'])
+    DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
     ## read checkboxes and related input
     # the Json input for checkboxes only exists if boxes are checked
@@ -47,7 +48,8 @@ if __name__=='__main__':
     output["kc"] = "%1.2f" % 10.57
     output["B"] = "%1.2f" % 5.23
 
-    s = subprocess.check_output(["mxray_bending","-m","2ds", "-z", str(xi),"-e" ,str(eta), "-q", ".1","--qzb","0.05","--qze","0.3","--qzs","0.01","-o","testgenapp"])
+    # s = subprocess.check_output(["mxray_bending","-m","2ds", "-z", str(xi),"-e" ,str(eta), "-q", ".1","--qzb","0.05","--qze","0.3","--qzs","0.01","-o","testgenapp"])
+    s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", DataFile,"--Lr","300","--sr","100","-o","TestFit"])
 
     # decoding to print a normal output
 
@@ -95,7 +97,7 @@ if __name__=='__main__':
 
     output['_textarea'] = s.decode("utf-8")
 #    output['_textarea'] += "JSON input to executable:\n" + json.dumps( json_variables, indent=4 ) + "\n";
-    output["Fit"] = "%s/testgenapp.simg" % folder
+    output["Fit"] = "%s/TestFit.fit" % folder
 
 
     print( json.dumps(output) ) # convert dictionary to json and output
