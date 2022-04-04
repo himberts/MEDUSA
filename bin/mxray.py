@@ -77,17 +77,17 @@ if __name__=='__main__':
     file1.close()
     DummyData = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
     Data_dict={}
-    Data_dict['x'] = DummyData[:,0]
-    Data_dict['y'] = DummyData[:,1]
+    Data_dict['x'] = DummyData[:,0].tolist()
+    Data_dict['y'] = DummyData[:,1].tolist()
     Data_dict['mode'] = "markers"
     Data_dict['marker'] = {
-            "color": "rgb(219, 64, 82)",
+            "color": "rgb(0, 0, 200)",
             "size": 12
     }
 
     Fit_dict={}
-    Fit_dict['x'] = DummyData[:,2]
-    Fit_dict['y'] = DummyData[:,3]
+    Fit_dict['x'] = DummyData[:,0].tolist()
+    Fit_dict['y'] = DummyData[:,3].tolist()
     Fit_dict['mode'] = "lines"
     Fit_dict['line'] = {
             "color" : "rgb(200, 0, 0)",
@@ -95,22 +95,53 @@ if __name__=='__main__':
     }
 
     Datatmp = []
-    Datatmp.appen(Data_dict)
-    Datatmp.appen(Fit_dict)
+    Datatmp.append(Data_dict)
+    Datatmp.append(Fit_dict)
     Graph_dict={}
     Graph_dict["data"] = Datatmp
     Graph_dict["layout"] = {
             "title" : "Fit Results"
     }
 
-    output['plotline'] = json.dumps(Graph_dict)
+    GraphTest = {
+        "data": [
+            {
+                "x": [1, 2, 3, 4],
+                "y": [10, 15, 13, 17],
+                "mode": "markers",
+                "marker": {
+                    "color": "rgb(219, 64, 82)",
+                    "size": 12
+                }
+            },
+            {
+                "x": [2, 3, 4, 5],
+                "y": [16, 5, 11, 9],
+                "mode": "lines",
+                "line": {
+                    "color": "rgb(55, 128, 191)",
+                    "width": 3
+                }
+            }
+        ],
+        "layout": {
+            "title": "Line and Scatter Styling"
+        }
+    }
+
+
+
+    output['plotline'] = Graph_dict
+
+    
 
     buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
     buff_B = "%.2e +- %.2e" % (B, dB)
     output["kc"] = buff_Kc
     output["B"] = buff_B
 
-    output['_textarea'] = s.decode("utf-8")
+    #output['_textarea'] = s.decode("utf-8")
+    output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
     output["Fit"] = "%s/TestFit_fitted.fit" % folder
 
     print( json.dumps(output) ) # convert dictionary to json and output
