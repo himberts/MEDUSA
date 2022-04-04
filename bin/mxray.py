@@ -45,11 +45,37 @@ if __name__=='__main__':
     ## setup  messaging in GUI
     message = genapp(json_variables)
     output = {} # create an empty python dictionary
-    output["kc"] = "%1.2f" % 10.57
-    output["B"] = "%1.2f" % 5.23
+  #  output["kc"] = "%1.2f" % 10.57
+  #  output["B"] = "%1.2f" % 5.23
 
     # s = subprocess.check_output(["mxray_bending","-m","2ds", "-z", str(xi),"-e" ,str(eta), "-q", ".1","--qzb","0.05","--qze","0.3","--qzs","0.01","-o","testgenapp"])
-    s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", DataFile,"--Lr","300","--sr","100","-o","TestFit"])
+    s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", str(DataFile[0]),"--Lr","300","--sr","100","-o","TestFit"])
+
+    file1 = open('TestFit_fitted.fit', 'r')
+    Lines = file1.readlines()
+
+    tmp = Lines[10].strip()
+    splittext = tmp.split('=')
+    B = float(splittext[1])
+    # print(B)
+    tmp = Lines[11].strip()
+    splittext = tmp.split('=')
+    dB = float(splittext[1])
+    # print(dB)
+    tmp = Lines[12].strip()
+    splittext = tmp.split('=')
+    Kc = float(splittext[1])
+    # print(Kc)
+    tmp = Lines[13].strip()
+    splittext = tmp.split('=')
+    dKc = float(splittext[1])
+    # print(dKc)
+    buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
+    buff_B = "%.2e +- %.2e" % (B, dB)
+    output["kc"] = buff_Kc
+    output["B"] = buff_B
+ #   print(buff_Kc)
+#    print(buff_B)
 
     # decoding to print a normal output
 
@@ -97,7 +123,7 @@ if __name__=='__main__':
 
     output['_textarea'] = s.decode("utf-8")
 #    output['_textarea'] += "JSON input to executable:\n" + json.dumps( json_variables, indent=4 ) + "\n";
-    output["Fit"] = "%s/TestFit.fit" % folder
+    output["Fit"] = "%s/TestFit_fitted.fit" % folder
 
 
     print( json.dumps(output) ) # convert dictionary to json and output
