@@ -75,65 +75,58 @@ if __name__=='__main__':
     dKc = float(splittext[1])
     # print(dKc)
     file1.close()
-    DummyData = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
+    DataFit1 = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
+    DataFit2 = np.genfromtxt('TestFit_fitted2.fit', delimiter='\t', skip_header=31)
     Data_dict={}
-    Data_dict['x'] = DummyData[:,0].tolist()
-    Data_dict['y'] = DummyData[:,1].tolist()
+    Data_dict['x'] = DataFit1[:,0].tolist()
+    Data_dict['y'] = DataFit1[:,1].tolist()
     Data_dict['mode'] = "markers"
     Data_dict['marker'] = {
             "color": "rgb(0, 0, 200)",
             "size": 12
     }
 
+    Data_dict2={}
+    Data_dict2['x'] = DataFit2[:,0].tolist()
+    Data_dict2['y'] = DataFit2[:,1].tolist()
+    Data_dict2['mode'] = "markers"
+    Data_dict2['marker'] = {
+            "color": "rgb(0, 50, 200)",
+            "size": 12
+    }
+
     Fit_dict={}
-    Fit_dict['x'] = DummyData[:,0].tolist()
-    Fit_dict['y'] = DummyData[:,3].tolist()
+    Fit_dict['x'] = DataFit1[:,0].tolist()
+    Fit_dict['y'] = DataFit1[:,3].tolist()
     Fit_dict['mode'] = "lines"
     Fit_dict['line'] = {
             "color" : "rgb(200, 0, 0)",
             "width": 3
     }
 
+    Fit_dict2={}
+    Fit_dict2['x'] = DataFit2[:,0].tolist()
+    Fit_dict2['y'] = DataFit2[:,3].tolist()
+    Fit_dict2['mode'] = "lines"
+    Fit_dict2['line'] = {
+            "color" : "rgb(200, 50, 0)",
+            "width": 3
+    }
+
     Datatmp = []
     Datatmp.append(Data_dict)
     Datatmp.append(Fit_dict)
+    Datatmp.append(Data_dict2)
+    Datatmp.append(Fit_dict2)
     Graph_dict={}
     Graph_dict["data"] = Datatmp
     Graph_dict["layout"] = {
             "title" : "Fit Results"
     }
 
-    GraphTest = {
-        "data": [
-            {
-                "x": [1, 2, 3, 4],
-                "y": [10, 15, 13, 17],
-                "mode": "markers",
-                "marker": {
-                    "color": "rgb(219, 64, 82)",
-                    "size": 12
-                }
-            },
-            {
-                "x": [2, 3, 4, 5],
-                "y": [16, 5, 11, 9],
-                "mode": "lines",
-                "line": {
-                    "color": "rgb(55, 128, 191)",
-                    "width": 3
-                }
-            }
-        ],
-        "layout": {
-            "title": "Line and Scatter Styling"
-        }
-    }
-
-
 
     output['plotline'] = Graph_dict
 
-    
 
     buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
     buff_B = "%.2e +- %.2e" % (B, dB)
