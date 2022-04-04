@@ -74,13 +74,43 @@ if __name__=='__main__':
     splittext = tmp.split('=')
     dKc = float(splittext[1])
     # print(dKc)
+    file1.close()
+    DummyData = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
+    Data_dict={}
+    Data_dict['x'] = DummyData[:,0]
+    Data_dict['y'] = DummyData[:,1]
+    Data_dict['mode'] = "markers"
+    Data_dict['marker'] = {
+            "color": "rgb(219, 64, 82)",
+            "size": 12
+    }
+
+    Fit_dict={}
+    Fit_dict['x'] = DummyData[:,2]
+    Fit_dict['y'] = DummyData[:,3]
+    Fit_dict['mode'] = "lines"
+    Fit_dict['line'] = {
+            "color" : "rgb(200, 0, 0)",
+            "width": 3
+    }
+
+    Datatmp = []
+    Datatmp.appen(Data_dict)
+    Datatmp.appen(Fit_dict)
+    Graph_dict={}
+    Graph_dict["data"] = Datatmp
+    Graph_dict["layout"] = {
+            "title" : "Fit Results"
+    }
+
+    output['plotline'] = json.dumps(Graph_dict)
+
     buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
     buff_B = "%.2e +- %.2e" % (B, dB)
     output["kc"] = buff_Kc
     output["B"] = buff_B
 
     output['_textarea'] = s.decode("utf-8")
-#    output['_textarea'] += "JSON input to executable:\n" + json.dumps( json_variables, indent=4 ) + "\n";
     output["Fit"] = "%s/TestFit_fitted.fit" % folder
 
     print( json.dumps(output) ) # convert dictionary to json and output
