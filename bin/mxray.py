@@ -51,7 +51,7 @@ if __name__=='__main__':
     socket_dict['_textarea'] = "Process started ..."
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
-    sock.sendto(doc_string,(UDP_IP,UDP_PORT))
+    sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
     s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", str(DataFile[0]),"--Lr","300","--sr","100","-o","TestFit"])
 
