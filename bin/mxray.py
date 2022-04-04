@@ -133,8 +133,8 @@ if __name__=='__main__':
     output["kc"] = buff_Kc
     output["B"] = buff_B
 
-    #output['_textarea'] = s.decode("utf-8")
-    output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
+    output['_textarea'] = s.decode("utf-8")
+    #output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
     output["Fit"] = "%s/TestFit_fitted.fit" % folder
 
     print( json.dumps(output) ) # convert dictionary to json and output
