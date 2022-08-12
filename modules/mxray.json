@@ -41,7 +41,7 @@
             ,"label"      : "xi"
             ,"type"       : "float"
             ,"step"       : 0.1
-	           ,"default"    : 80
+	    ,"default"    : 77.35
             ,"help"       : "Calle Parameter xi"
         }
         ,{
@@ -50,7 +50,7 @@
             ,"label"      : "eta"
             ,"type"       : "float"
             ,"step"       : 0.01
-	           ,"default"    : 0.1
+            ,"default"    : 0.1111
             ,"help"       : "Calle Parameter Eta"
         }
       ,{
@@ -117,7 +117,7 @@
             ,"label"      : "Detector Pixel Size (mm)"
             ,"type"       : "float"
             ,"step"       : 0.01
-            ,"default"    : 0.2
+            ,"default"    : 0.1
             ,"min"        : 0.001
             ,"max"        : 1
             ,"help"       : "Detector Pixel Size. Only squared Pixels are supported"
