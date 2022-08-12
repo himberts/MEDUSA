@@ -22,9 +22,9 @@
         ,{
             "role"       : "input"
             ,"id"         : "data"
-            ,"label"      : "data"
+            ,"label"      : "X-ray Data"
             ,"type"       : "file"
-            ,"help"       : "Data to be fitted"
+            ,"help"       : "2D X-ray Intesity (.tiff)"
         }
         ,{
             "role"       : "input"
@@ -32,7 +32,7 @@
             ,"label"      : "xi"
             ,"type"       : "float"
             ,"step"       : 0.1
-	    ,"default"    : 80
+	           ,"default"    : 80
             ,"help"       : "Calle Parameter xi"
         }
         ,{
@@ -41,7 +41,7 @@
             ,"label"      : "eta"
             ,"type"       : "float"
             ,"step"       : 0.01
-	    ,"default"    : 0.1
+	           ,"default"    : 0.1
             ,"help"       : "Calle Parameter Eta"
         }
       ,{
