@@ -58,8 +58,8 @@ if __name__=='__main__':
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
 
-    a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength)
-    qparcuts = a.tonparray(qparcutstext,',')
+    a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
+    qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
 
     #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
     # a.plottiff()
