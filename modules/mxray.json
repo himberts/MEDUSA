@@ -19,6 +19,15 @@
             ,"prehline"  : "true"
             ,"posthline" : "true"
         }
+        {
+            "role"       : "input"
+            ,"id"        : "FitPar"
+            ,"type"      : "label"
+            ,"colspan"   : 3
+            ,"default"   : "Fit Parameter"
+            ,"label"     : "MXray"
+            ,"posthline" : "true"
+        }
         ,{
             "role"       : "input"
             ,"id"         : "data"
@@ -54,6 +63,44 @@
             ,"help"       : "Membrane d-spacing in reciprocal space"
         }
         ,{
+              "role"       : "input"
+              ,"id"         : "qparcuts"
+              ,"label"      : "q-cut parameter"
+              ,"type"       : "textarea"
+              ,"help"       : "q-values for cropping and fitting the data"
+          }
+          ,{
+              "role"       : "input"
+              ,"id"         : "lr"
+              ,"label"      : "Domain Size Lr (Angstrom)"
+              ,"type"       : "float"
+              ,"step"       : 1
+              ,"default"    : 300
+              ,"min"        : 300
+              ,"max"        : 10000
+              ,"help"       : "Enter the accessible domain size Lr in Angstrom"
+          }
+          ,{
+              "role"       : "input"
+              ,"id"         : "sr"
+              ,"label"      : "Domain Size spread sr (Angstrom)"
+              ,"type"       : "float"
+              ,"step"       : 1
+              ,"default"    : 100
+              ,"min"        : 100
+              ,"max"        : 3000
+              ,"help"       : "Enter the accessible domain size sr in Angstrom"
+          }
+          ,{
+              "role"       : "input"
+              ,"id"        : "InstrPar"
+              ,"type"      : "label"
+              ,"colspan"   : 3
+              ,"default"   : "Instrument Parameter"
+              ,"label"     : "MXray"
+              ,"posthline" : "true"
+          }
+        ,{
             "role"       : "input"
             ,"id"         : "sd"
             ,"label"      : "Sample to Detector Distance (mm)"
@@ -65,13 +112,13 @@
             ,"help"       : "Instrumental Parameter: minimal distance between sample and detector"
         }
 	       ,{
-            "role"       : "input"
+            "role"        : "input"
             ,"id"         : "pxs"
             ,"label"      : "Detector Pixel Size (mm)"
             ,"type"       : "float"
             ,"step"       : 0.01
             ,"default"    : 0.2
-            ,"min"        : .001
+            ,"min"        : 0.001
             ,"max"        : 1
             ,"help"       : "Detector Pixel Size. Only squared Pixels are supported"
         }
@@ -110,25 +157,17 @@
         }
         ,{
             "role"       : "input"
-            ,"id"         : "sr"
-            ,"label"      : "Domain Size Lr (Angstrom)"
-            ,"type"       : "float"
-            ,"step"       : 1
-            ,"default"    : 300
-            ,"min"        : 300
-            ,"max"        : 10000
-            ,"help"       : "Enter the accessible domain size Lr in Angstrom"
+            ,"id"         : "distqpar"
+            ,"label"      : "Distortion in qpar"
+            ,"type"       : "checkbox"
+            ,"help"       : "Distortion in q parrallel"
         }
         ,{
             "role"       : "input"
-            ,"id"         : "sr"
-            ,"label"      : "Domain Size spread sr (Angstrom)"
-            ,"type"       : "float"
-            ,"step"       : 1
-            ,"default"    : 100
-            ,"min"        : 100
-            ,"max"        : 3000
-            ,"help"       : "Enter the accessible domain size sr in Angstrom"
+            ,"id"         : "distqpar"
+            ,"label"      : "Distortion in qz"
+            ,"type"       : "checkbox"
+            ,"help"       : "Distortion in q z"
         }
         ,{
             "role"       : "output"
