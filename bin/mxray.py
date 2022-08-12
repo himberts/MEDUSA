@@ -18,6 +18,7 @@ from sys import getsizeof
 import time
 import subprocess
 import locale, multiprocessing
+from XrayLib import xray
 
 if __name__=='__main__':
 
@@ -52,6 +53,13 @@ if __name__=='__main__':
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+
+
+	a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=332.1269, xorigin=775-364.017, yorigin=0.5101, wavelength=1.541867)
+	# a.plottiff()
+	a.cropimg(point1=0.3, point2=0.35, plot=0)
+	a.calcmeanandplot(plot=0)
+	a.export()
 
     s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", str(DataFile[0]),"--Lr","300","--sr","100","-o","TestFit"])
 

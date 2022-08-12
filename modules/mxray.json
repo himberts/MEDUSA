@@ -6,7 +6,7 @@
     ,"dependencies" : [
         { "base" : "python3" }
 	,{ "file" : "diffuse_analysis_v21_CUDA" }
-        ,{ "conda" : [ "numpy", "matplotlib", "fast_histogram" ] }
+        ,{ "conda" : [ "XrayLib.py", "numpy", "matplotlib", "fast_histogram" ] }
     ]
     ,"fields"   : [
         {
