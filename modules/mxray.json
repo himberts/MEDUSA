@@ -19,13 +19,13 @@
             ,"prehline"  : "true"
             ,"posthline" : "true"
         }
-        {
+        ,{
             "role"       : "input"
             ,"id"        : "FitPar"
             ,"type"      : "label"
             ,"colspan"   : 3
             ,"default"   : "Fit Parameter"
-            ,"label"     : "MXray"
+            ,"label"     : "Fit Parameter"
             ,"posthline" : "true"
         }
         ,{
@@ -97,7 +97,7 @@
               ,"type"      : "label"
               ,"colspan"   : 3
               ,"default"   : "Instrument Parameter"
-              ,"label"     : "MXray"
+              ,"label"     : "Instrument Parameter"
               ,"posthline" : "true"
           }
         ,{
@@ -160,11 +160,12 @@
             ,"id"         : "distqpar"
             ,"label"      : "Distortion in qpar"
             ,"type"       : "checkbox"
+            ,"default"    : true
             ,"help"       : "Distortion in q parrallel"
         }
         ,{
             "role"       : "input"
-            ,"id"         : "distqpar"
+            ,"id"         : "distqz"
             ,"label"      : "Distortion in qz"
             ,"type"       : "checkbox"
             ,"help"       : "Distortion in q z"
