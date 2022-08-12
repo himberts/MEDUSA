@@ -91,8 +91,8 @@ if __name__=='__main__':
     Data_dict2['y'] = DataFit2[:,1].tolist()
     Data_dict2['mode'] = "markers"
     Data_dict2['marker'] = {
-             "color": "rgb(0, 50, 200)",
-             "size": 12
+            "color": "rgb(0, 50, 200)",
+            "size": 12
     }
 
     Fit_dict={}
