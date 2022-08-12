@@ -61,7 +61,7 @@ if __name__=='__main__':
     a.calcmeanandplot(plot=0)
     a.export()
 
-    s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", str(DataFile[0]),"--Lr","300","--sr","100","-o","TestFit"])
+    s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"])
 
     file1 = open('TestFit_fitted.fit', 'r')
     Lines = file1.readlines()
