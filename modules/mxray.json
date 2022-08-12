@@ -22,7 +22,7 @@
         ,{
             "role"       : "input"
             ,"id"         : "data"
-            ,"label"      : "X-ray Data"
+            ,"label"      : "2D X-ray Data (.tiff)"
             ,"type"       : "file"
             ,"help"       : "2D X-ray Intesity (.tiff)"
         }
@@ -47,44 +47,88 @@
       ,{
             "role"       : "input"
             ,"id"         : "q"
-            ,"label"      : "q"
+            ,"label"      : "d-spacing in q (A^(-1))"
             ,"type"       : "float"
             ,"step"       : 0.01
-      ,"default"    : 0.1
-            ,"help"       : "q"
+            ,"default"    : 0.1
+            ,"help"       : "Membrane d-spacing in reciprocal space"
         }
         ,{
             "role"       : "input"
-            ,"id"         : "qzb"
-            ,"label"      : "q_start"
+            ,"id"         : "sd"
+            ,"label"      : "Sample to Detector Distance (mm)"
             ,"type"       : "float"
             ,"step"       : 0.01
             ,"default"    : 0.05
 	          ,"min"        : 0.05
 	          ,"max"        : 0.6
-            ,"help"       : "Lower limit of the scattering vector qz."
+            ,"help"       : "Instrumental Parameter: minimal distance between sample and detector"
         }
-	,{
+	       ,{
             "role"       : "input"
-            ,"id"         : "qze"
-            ,"label"      : "qz_end"
+            ,"id"         : "pxs"
+            ,"label"      : "Detector Pixel Size (mm)"
             ,"type"       : "float"
             ,"step"       : 0.01
             ,"default"    : 0.2
-            ,"min"        : 0.1
-            ,"max"        : 0.9
-            ,"help"       : "Upper limit of the scattering vector qz."
+            ,"min"        : .001
+            ,"max"        : 1
+            ,"help"       : "Detector Pixel Size. Only squared Pixels are supported"
         }
         ,{
             "role"       : "input"
-            ,"id"         : "qzs"
-            ,"label"      : "qz_step"
+            ,"id"         : "xorigin"
+            ,"label"      : "Origin in X (pixel)"
             ,"type"       : "float"
-            ,"step"       : 0.001
-            ,"default"    : 0.01
-            ,"min"        : 0.001
-            ,"max"        : 0.1
-            ,"help"       : "Stepsize of the scattering vector qz."
+            ,"step"       : 0.1
+            ,"default"    : 410.983
+            ,"min"        : 0.1
+            ,"max"        : 4000
+            ,"help"       : "X Location of the central beam (in pixel)"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "yorigin"
+            ,"label"      : "Origin in y (pixel)"
+            ,"type"       : "float"
+            ,"step"       : 0.1
+            ,"default"    : 0.5
+            ,"min"        : 0.1
+            ,"max"        : 4000
+            ,"help"       : "Y Location of the central beam (in pixel)"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "lambda"
+            ,"label"      : "lambda (Angstrom)"
+            ,"type"       : "float"
+            ,"step"       : 0.0001
+            ,"default"    : 1.5418
+            ,"min"        : 0.0001
+            ,"max"        : 20
+            ,"help"       : "Wavelength of the X-ray Source"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "sr"
+            ,"label"      : "Domain Size Lr (Angstrom)"
+            ,"type"       : "float"
+            ,"step"       : 1
+            ,"default"    : 300
+            ,"min"        : 300
+            ,"max"        : 10000
+            ,"help"       : "Enter the accessible domain size Lr in Angstrom"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "sr"
+            ,"label"      : "Domain Size spread sr (Angstrom)"
+            ,"type"       : "float"
+            ,"step"       : 1
+            ,"default"    : 100
+            ,"min"        : 100
+            ,"max"        : 3000
+            ,"help"       : "Enter the accessible domain size sr in Angstrom"
         }
         ,{
             "role"       : "output"

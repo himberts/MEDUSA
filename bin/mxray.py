@@ -30,9 +30,9 @@ if __name__=='__main__':
     xi = float(json_variables['xi'])
     eta = float(json_variables['eta'])
     q = float(json_variables['q']) # number of points in (simulated) q
-    qzb = float(json_variables['qzb'])
-    qze = float(json_variables['qze']) # number of points in p(r)
-    qzs = float(json_variables['qzs'])
+    qzb = float(json_variables['sd'])
+    qze = float(json_variables['pxs']) # number of points in p(r)
+    qzs = float(json_variables['xorigin'])
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
