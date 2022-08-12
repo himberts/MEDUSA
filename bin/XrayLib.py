@@ -2,10 +2,11 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 import math as m
+from numpy import char as ch
 
 
 class xray:
-    def __init__(self, filename, px, sampledetectdist, xorigin, yorigin, wavelength):
+    def __init__(self, filename, px, sampledetectdist, xorigin, yorigin, wavelength, q1):
         # TODO: (X-Chi-Q Parallel) and (Y_Theta-Q Z)
         """
         __init__ method for xray class. Parameters that are passed through the class are determined by user/machine
@@ -23,6 +24,7 @@ class xray:
         self.yorigin = yorigin
         self.name = filename
         self.wavelength = wavelength
+        self.q1 = q1
 
         # Image related variables used for loading and manipulation
         self.img = None
@@ -109,16 +111,16 @@ class xray:
         plt.show()
 
     @staticmethod
-    def tonparray(num):
+    def tonparray(num, seperator=" "):
         """
         Converts a given string with multiple numbers spaced out with spaces and converts it into a numpy array with each number a float entry
+
         :param num: A string with multiple numbers in it
-        :return: num - A numpy array
+        :param seperator: The character that the string will be split around
+        :return: arr - A numpy array with float entries
         """
-        num = str.split(num)
-        num = list(map(float, num))
-        num = np.array(num)
-        return num
+        arr = ch.split(num, seperator).astype(np.float32)
+        return arr
 
     def tifftoarr(self):
         """
@@ -227,11 +229,11 @@ class xray:
         self.frgrndcrop1 = np.subtract(meancrop1, background)
         self.frgrndcrop2 = np.subtract(meancrop2, background)
 
-        # if plot:
-        #     self.plot(self.qparr, self.meandata1, "tab:blue", 0, 100)
-        #     self.plot(self.qparr, self.meandata2, "tab:orange", 0, 100)
-        #     self.plot(self.qparr, self.frgrndcrop1, "tab:blue", 0, 100)
-        #     self.plot(self.qparr, self.frgrndcrop2, "tab:orange", 0, 20)
+        if plot:
+            self.plot(self.qparr, self.meandata1, "tab:blue", 0, 100)
+            self.plot(self.qparr, self.meandata2, "tab:orange", 0, 100)
+            self.plot(self.qparr, self.frgrndcrop1, "tab:blue", 0, 100)
+            self.plot(self.qparr, self.frgrndcrop2, "tab:orange", 0, 20)
 
     def loadimg(self, filename):
         fid = open(filename, 'r')
@@ -307,20 +309,20 @@ class xray:
         self.croppedimg1 = self.imgarr[self.getindex(self.qz, point1) - 4:self.getindex(self.qz, point1) + 4, :]
         self.croppedimg2 = self.imgarr[self.getindex(self.qz, point2) - 4:self.getindex(self.qz, point2) + 4, :]
 
-        # if plot:
-        #     plt.figure()
-        #     plt.imshow(self.croppedimg1)
-        #     plt.xlabel("Q_||")
-        #     plt.ylabel("Q_z")
-        #
-        #     # plt.figure()
-        #     # plt.plot(self.qparr, np.mean(self.croppedimg1, 0))
-        #
-        #     plt.figure()
-        #     plt.imshow(self.croppedimg2)
-        #     plt.xlabel("Q_||")
-        #     plt.ylabel("Q_z")
-        #     plt.show()
+        if plot:
+            plt.figure()
+            plt.imshow(self.croppedimg1)
+            plt.xlabel("Q_||")
+            plt.ylabel("Q_z")
+
+            # plt.figure()
+            # plt.plot(self.qparr, np.mean(self.croppedimg1, 0))
+
+            plt.figure()
+            plt.imshow(self.croppedimg2)
+            plt.xlabel("Q_||")
+            plt.ylabel("Q_z")
+            plt.show()
 
     def export(self):
         file = "outputfile.dat"
@@ -347,7 +349,7 @@ class xray:
                   "\nNUMLINES=8" +
                   "\nFILENAME=" + self.name +
                   "\nNUMDATLINES=" + str(len(self.qparrcrop)) +
-                  "\nQ1=" + str(0.0945) +
+                  "\nQ1=" + str(self.q1) +
                   "\nQZSTART=" + str(self.point1) +
                   "\nQZSTART=" + str(self.point2) +
                   "\n}")
