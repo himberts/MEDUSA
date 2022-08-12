@@ -30,9 +30,11 @@ if __name__=='__main__':
     xi = float(json_variables['xi'])
     eta = float(json_variables['eta'])
     q = float(json_variables['q']) # number of points in (simulated) q
-    qzb = float(json_variables['sd'])
-    qze = float(json_variables['pxs']) # number of points in p(r)
-    qzs = float(json_variables['xorigin'])
+    SampleDetectorDistance = float(json_variables['sd'])
+    PixelSize = float(json_variables['pxs']) # number of points in p(r)
+    XOrigin = float(json_variables['xorigin'])
+    YOrigin = float(json_variables['yorigin'])
+    WaveLength = float(json_variables['lambda'])
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
@@ -55,7 +57,7 @@ if __name__=='__main__':
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
 
-    a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=332.1269, xorigin=775-364.017, yorigin=0.5101, wavelength=1.541867)
+    a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength)
     # a.plottiff()
     a.cropimg(point1=0.3, point2=0.35, plot=0)
     a.calcmeanandplot(plot=0)
