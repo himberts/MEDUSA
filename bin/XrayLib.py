@@ -227,11 +227,11 @@ class xray:
         self.frgrndcrop1 = np.subtract(meancrop1, background)
         self.frgrndcrop2 = np.subtract(meancrop2, background)
 
-        if plot:
-            self.plot(self.qparr, self.meandata1, "tab:blue", 0, 100)
-            self.plot(self.qparr, self.meandata2, "tab:orange", 0, 100)
-            self.plot(self.qparr, self.frgrndcrop1, "tab:blue", 0, 100)
-            self.plot(self.qparr, self.frgrndcrop2, "tab:orange", 0, 20)
+        # if plot:
+        #     self.plot(self.qparr, self.meandata1, "tab:blue", 0, 100)
+        #     self.plot(self.qparr, self.meandata2, "tab:orange", 0, 100)
+        #     self.plot(self.qparr, self.frgrndcrop1, "tab:blue", 0, 100)
+        #     self.plot(self.qparr, self.frgrndcrop2, "tab:orange", 0, 20)
 
     def loadimg(self, filename):
         fid = open(filename, 'r')
@@ -307,20 +307,20 @@ class xray:
         self.croppedimg1 = self.imgarr[self.getindex(self.qz, point1) - 4:self.getindex(self.qz, point1) + 4, :]
         self.croppedimg2 = self.imgarr[self.getindex(self.qz, point2) - 4:self.getindex(self.qz, point2) + 4, :]
 
-        if plot:
-            plt.figure()
-            plt.imshow(self.croppedimg1)
-            plt.xlabel("Q_||")
-            plt.ylabel("Q_z")
-
-            # plt.figure()
-            # plt.plot(self.qparr, np.mean(self.croppedimg1, 0))
-
-            plt.figure()
-            plt.imshow(self.croppedimg2)
-            plt.xlabel("Q_||")
-            plt.ylabel("Q_z")
-            plt.show()
+        # if plot:
+        #     plt.figure()
+        #     plt.imshow(self.croppedimg1)
+        #     plt.xlabel("Q_||")
+        #     plt.ylabel("Q_z")
+        #
+        #     # plt.figure()
+        #     # plt.plot(self.qparr, np.mean(self.croppedimg1, 0))
+        #
+        #     plt.figure()
+        #     plt.imshow(self.croppedimg2)
+        #     plt.xlabel("Q_||")
+        #     plt.ylabel("Q_z")
+        #     plt.show()
 
     def export(self):
         file = "outputfile.dat"
