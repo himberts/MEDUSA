@@ -1,6 +1,6 @@
 # this is a project menu file
 {
-# "header" : "WillItFit",
+# "header" : "MxRay",
  "menu" : [
         {
             "id"      : "mxray_fitting",
@@ -28,8 +28,12 @@
                 "startup" : "true",
                 "modules" : [
                              {
-                              "id"    : "mcsim",
-                              "label" : "mcsim"
+                              "id"    : "tmxray",
+                              "label" : "tmxray"
+                             }
+                             ,{
+                              "id"    : "t2mxray",
+                              "label" : "t2mxray"
                              }
                             ]
                 }
