@@ -36,60 +36,11 @@
             ,"help"       : "2D X-ray Intesity (.tiff)"
         }
         ,{
-            "role"       : "input"
-            ,"id"         : "xi"
-            ,"label"      : "xi"
-            ,"type"       : "float"
-            ,"step"       : 0.1
-	    ,"default"    : 77.35
-            ,"help"       : "Calle Parameter xi"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "eta"
-            ,"label"      : "eta"
-            ,"type"       : "float"
-            ,"step"       : 0.01
-            ,"default"    : 0.1111
-            ,"help"       : "Calle Parameter Eta"
-        }
-      ,{
-            "role"       : "input"
-            ,"id"         : "q"
-            ,"label"      : "d-spacing in q (A^(-1))"
-            ,"type"       : "float"
-            ,"step"       : 0.01
-            ,"default"    : 0.1
-            ,"help"       : "Membrane d-spacing in reciprocal space"
-        }
-        ,{
               "role"       : "input"
               ,"id"         : "qparcuts"
               ,"label"      : "q-cut parameter"
               ,"type"       : "textarea"
               ,"help"       : "q-values for cropping and fitting the data"
-          }
-          ,{
-              "role"       : "input"
-              ,"id"         : "lr"
-              ,"label"      : "Domain Size Lr (Angstrom)"
-              ,"type"       : "float"
-              ,"step"       : 1
-              ,"default"    : 300
-              ,"min"        : 300
-              ,"max"        : 10000
-              ,"help"       : "Enter the accessible domain size Lr in Angstrom"
-          }
-          ,{
-              "role"       : "input"
-              ,"id"         : "sr"
-              ,"label"      : "Domain Size spread sr (Angstrom)"
-              ,"type"       : "float"
-              ,"step"       : 1
-              ,"default"    : 100
-              ,"min"        : 100
-              ,"max"        : 3000
-              ,"help"       : "Enter the accessible domain size sr in Angstrom"
           }
           ,{
               "role"       : "input"
@@ -169,18 +120,6 @@
             ,"label"      : "Distortion in qz"
             ,"type"       : "checkbox"
             ,"help"       : "Distortion in q z"
-        }
-        ,{
-            "role"       : "output"
-            ,"id"         : "kc"
-            ,"label"      : "<hr> Bending Modulus <hr>"
-            ,"type"       : "text"
-        }
-        ,{
-            "role"       : "output"
-            ,"id"         : "B"
-            ,"label"      : "<hr> Interaction Modulus <hr>"
-            ,"type"       : "text"
         }
         ,{
             "role"       : "output"
