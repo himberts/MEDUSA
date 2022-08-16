@@ -149,6 +149,6 @@ if __name__=='__main__':
 
     output['_textarea'] = 'Completed Data loading'
     #output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
-    output["Fit"] = "%s/%s" % folder,str(DataFile[0])
+    output["Fit"] = "%s/%s" % (folder,str(DataFile[0]))
 
     print( json.dumps(output) ) # convert dictionary to json and output

@@ -1,0 +1,103 @@
+{
+    "moduleid" : "mxray"
+    ,"label"    : "MXray"
+    ,"executable"   : "mcsim.py"
+    ,"submitpolicy" : "all"
+    ,"dependencies" : [
+        { "base" : "python3" }
+        ,{ "conda" : [ "numpy", "matplotlib", "fast_histogram" ] }
+    ]
+    ,"fields"   : [
+        {
+            "role"       : "input"
+            ,"id"        : "label_0"
+            ,"type"      : "label"
+            ,"colspan"   : 3
+            ,"default"   : "header3"
+            ,"label"     : "MXray"
+            ,"prehline"  : "true"
+            ,"posthline" : "true"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "xi"
+            ,"label"      : "xi"
+            ,"type"       : "float"
+            ,"step"       : 0.1
+	    ,"default"    : 80
+            ,"help"       : "Calle Parameter xi"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "eta"
+            ,"label"      : "eta"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+	    ,"default"    : 0.1
+            ,"help"       : "Calle Parameter Eta"
+        }
+      ,{
+            "role"       : "input"
+            ,"id"         : "q"
+            ,"label"      : "q"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+      ,"default"    : 0.1
+            ,"help"       : "q"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "qzb"
+            ,"label"      : "q_start"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+            ,"default"    : 0.05
+	          ,"min"        : 0.05
+	          ,"max"        : 0.6
+            ,"help"       : "Lower limit of the scattering vector qz."
+        }
+	,{
+            "role"       : "input"
+            ,"id"         : "qze"
+            ,"label"      : "qz_end"
+            ,"type"       : "float"
+            ,"step"       : 0.01
+            ,"default"    : 0.2
+            ,"min"        : 0.1
+            ,"max"        : 0.9
+            ,"help"       : "Upper limit of the scattering vector qz."
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "qzs"
+            ,"label"      : "qz_step"
+            ,"type"       : "float"
+            ,"step"       : 0.001
+            ,"default"    : 0.01
+            ,"min"        : 0.001
+            ,"max"        : 0.1
+            ,"help"       : "Stepsize of the scattering vector qz."
+        }
+        ,{
+            "role"       : "output"
+            ,"id"         : "kc"
+            ,"label"      : "<hr> Bending Modulus <hr>"
+            ,"type"       : "label"
+            ,"colspan"    : 2
+        }
+        ,{
+            "role"       : "output"
+            ,"id"         : "B"
+            ,"label"      : "<hr> Interaction Modulus <hr>"
+            ,"type"       : "label"
+            ,"colspan"    : 2
+        }
+        ,{
+            "role"       : "output"
+            ,"id"         : "Fit"
+            ,"label"      : "Fit Results"
+            ,"type"       : "file"
+            ,"help"       : "The calculated fit"
+        }
+    ]
+}

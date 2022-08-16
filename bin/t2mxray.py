@@ -36,7 +36,7 @@ if __name__=='__main__':
     XOrigin = float(json_variables['xorigin'])
     YOrigin = float(json_variables['yorigin'])
     WaveLength = float(json_variables['lambda'])
-    DataFile = json_variables['data']
+#    DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
 
@@ -149,6 +149,6 @@ if __name__=='__main__':
 
     output['_textarea'] = 'Completed Data loading'
     #output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
-    output["Fit"] = "%s/%s" % folder,str(DataFile[0])
+    output["Fit"] = "%s/testoutput32Bit.tiff" % folder
 
     print( json.dumps(output) ) # convert dictionary to json and output
