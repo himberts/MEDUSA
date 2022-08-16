@@ -1,7 +1,7 @@
 # this is a project directives file
 # comments are ok but must start the line in this JSON
 {
-  "title"                     : "mxray",
+  "title"                     : "MxRay",
 
 # "genapptest" below could be replaced, but you should probably also then replace "genapptest" in the paths below
 # the application name should not contain any special characters
@@ -10,7 +10,7 @@
 #  "footer"                    : "Test footer",
 #  "footersize"                : "50px",
 
-  "version"                   : " - &#x3B1; 0.1",
+  "version"                   : " - &#x3B1; 1.1",
 # choose your target languages to generate currently from [ "html5", "qt3", "qt4", "qt5" ]
   "languages"                 : [ "html5" ],
 
@@ -79,49 +79,49 @@
 
 
 # "blue" colors
-  "text_color_rgb"            : "43,29,14",
-#  "text_color_rgb"            : "0,0,0",
-  "error_color_rgb"           : "255,0,0",
-  "background_color_rgb"      : "195,200,200",
-#  "background_color_rgb"      : "0,0,95",
-  "select_color_rgb"          : "200,128,0",
-  "button_color_rgb"          : "228,255,250",
-  "button_color_hex"          : "E4FFFA",
-  "button_g_color_rgb"        : "128,170,150",
-  "button_g_color_hex"        : "80AA06",
-#  "button_g_color_rgb"        : "77,66,87",
-#  "button_g_color_hex"        : "4D4257",
-  "button_hover_color_rgb"    : "255,255,255",
-  "button_hover_color_hex"    : "FFFFFF",
-  "button_hover_g_color_rgb"  : "228,255,250",
-  "button_hover_g_color_hex"  : "E4FFFA",
-  "header1_color"             : "228,255,250",
-  "header2_color"             : "228,255,250",
-#  "header3_color"             : "228,255,250",
-  "header3_color"             : "43,29,14",
-  "header4_color"             : "228,255,250",
-  "help_background_color_rgb" : "0,0,75",
-  "help_text_color_rgb"       : "240,240,210"
-
-# paper colors (useful for screenshots for publications)
+#  "text_color_rgb"            : "43,29,14",
 #  "text_color_rgb"            : "0,0,0",
 #  "error_color_rgb"           : "255,0,0",
-#  "background_color_rgb"      : "255,255,255",
+#  "background_color_rgb"      : "195,200,200",
+#  "background_color_rgb"      : "0,0,95",
 #  "select_color_rgb"          : "200,128,0",
-#  "button_color_rgb"          : "192,192,255",
-#  "button_color_hex"          : "C0C0FF",
-#  "button_g_color_rgb"        : "255,255,255",
-#  "button_g_color_hex"        : "FFFFFF",
-#  "button_hover_color_rgb"    : "192,192,192",
-#  "button_hover_color_hex"    : "C0C0C0",
-#  "button_hover_g_color_rgb"  : "255,255,255",
-#  "button_hover_g_color_hex"  : "FFFFFF",
-#  "header1_color"             : "0,0,128",
-#  "header2_color"             : "0,0,128",
-#  "header3_color"             : "0,0,128",
-#  "header4_color"             : "0,0,128",
-#  "help_background_color_rgb" : "230,230,230",
-#  "help_text_color_rgb"       : "0,0,0"
+#  "button_color_rgb"          : "228,255,250",
+#  "button_color_hex"          : "E4FFFA",
+#  "button_g_color_rgb"        : "128,170,150",
+#  "button_g_color_hex"        : "80AA06",
+#  "button_g_color_rgb"        : "77,66,87",
+#  "button_g_color_hex"        : "4D4257",
+#  "button_hover_color_rgb"    : "255,255,255",
+#  "button_hover_color_hex"    : "FFFFFF",
+#  "button_hover_g_color_rgb"  : "228,255,250",
+#  "button_hover_g_color_hex"  : "E4FFFA",
+#  "header1_color"             : "228,255,250",
+#  "header2_color"             : "228,255,250",
+#  "header3_color"             : "228,255,250",
+#  "header3_color"             : "43,29,14",
+#  "header4_color"             : "228,255,250",
+#  "help_background_color_rgb" : "0,0,75",
+#  "help_text_color_rgb"       : "240,240,210",
+
+# paper colors (useful for screenshots for publications)
+  "text_color_rgb"            : "0,0,0",
+  "error_color_rgb"           : "255,0,0",
+  "background_color_rgb"      : "255,255,255",
+  "select_color_rgb"          : "200,128,0",
+  "button_color_rgb"          : "192,192,255",
+  "button_color_hex"          : "C0C0FF",
+  "button_g_color_rgb"        : "255,255,255",
+  "button_g_color_hex"        : "FFFFFF",
+  "button_hover_color_rgb"    : "192,192,192",
+  "button_hover_color_hex"    : "C0C0C0",
+  "button_hover_g_color_rgb"  : "255,255,255",
+  "button_hover_g_color_hex"  : "FFFFFF",
+  "header1_color"             : "0,0,128",
+  "header2_color"             : "0,0,128",
+  "header3_color"             : "0,0,128",
+  "header4_color"             : "0,0,128",
+  "help_background_color_rgb" : "230,230,230",
+  "help_text_color_rgb"       : "0,0,0"
 
 # debugging controls
 
