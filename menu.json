@@ -3,18 +3,36 @@
 # "header" : "WillItFit",
  "menu" : [
         {
-            "id"      : "mcsim_menu",
-            "label"   : "Calculations",
+            "id"      : "mxray_fitting",
+            "label"   : "Fitting",
             "icon"    : "pngs/simulate.png",
-	    "autorun" : "mcsim",
+	          "autorun" : "mxray",
             "startup" : "true",
             "modules" : [
                          {
                           "id"    : "mxray",
                           "label" : "MXray"
                          }
+                         ,{
+                          "id"    : "mcsim",
+                          "label" : "mcsim"
+                         }
                         ]
             }
+
+            ,{
+                "id"      : "mxray_tutorial",
+                "label"   : "Readme",
+                "icon"    : "pngs/simulate.png",
+    	          "autorun" : "mcsim",
+                "startup" : "true",
+                "modules" : [
+                             {
+                              "id"    : "mcsim",
+                              "label" : "mcsim"
+                             }
+                            ]
+                }
 
            ,{
             "id"         : "admin",
