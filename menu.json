@@ -6,16 +6,16 @@
             "id"      : "mxray_fitting",
             "label"   : "Fitting",
             "icon"    : "pngs/simulate.png",
-	          "autorun" : "mxray",
+	          "autorun" : "mxray_red",
             "startup" : "true",
             "modules" : [
                          {
-                          "id"    : "mxray",
-                          "label" : "MXray"
+                          "id"    : "mxray_red",
+                          "label" : "Reduction"
                          }
                          ,{
-                          "id"    : "mcsim",
-                          "label" : "mcsim"
+                          "id"    : "mxray_fit",
+                          "label" : "Fitting"
                          }
                         ]
             }
@@ -24,7 +24,7 @@
                 "id"      : "mxray_tutorial",
                 "label"   : "Readme",
                 "icon"    : "pngs/simulate.png",
-    	          "autorun" : "mcsim",
+    	          "autorun" : "tmxray",
                 "startup" : "true",
                 "modules" : [
                              {
