@@ -30,7 +30,7 @@ if __name__=='__main__':
     xi = float(json_variables['xi'])
     eta = float(json_variables['eta'])
     q = float(json_variables['q']) # number of points in (simulated) q
-    qparcutstext = json_variables['qparcuts']
+#    qparcutstext = json_variables['qparcuts']
     SampleDetectorDistance = float(json_variables['sd'])
     PixelSize = float(json_variables['pxs']) # number of points in p(r)
     XOrigin = float(json_variables['xorigin'])
@@ -59,11 +59,11 @@ if __name__=='__main__':
 
 
     a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
-    qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
+#    qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
 
     #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
     # a.plottiff()
-    a.cropimg(point1=qparcuts[0], point2=qparcuts[1], plot=0)
+    a.cropimg(point1=0.3, point2=0.35, plot=0)
     a.calcmeanandplot(plot=0)
     a.export()
 
