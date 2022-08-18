@@ -2,7 +2,7 @@
     "moduleid" : "mxray_fit"
     ,"label"    : "Fitting"
     ,"executable"   : "mxray_fitting.py"
-    ,"submitpolicy" : "all"
+    ,"submitpolicy" : "login"
     ,"dependencies" : [
         { "base" : "python3" }
 	,{ "file" : "diffuse_analysis_v21_CUDA" }
