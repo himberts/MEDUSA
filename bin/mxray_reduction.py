@@ -50,7 +50,10 @@ if __name__=='__main__':
     a.export()
     #
     #
+    content = ''
+    for file in os.listdir(folder):
+        content = "%s \n %s" % (content,file)
     #
-    output['_textarea'] = os.listdir(folder) #"Reduction Complete ..."
+    output['_textarea'] =  content#"Reduction Complete ..."
 
     print( json.dumps(output) ) # convert dictionary to json and output
