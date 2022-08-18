@@ -27,7 +27,7 @@ if __name__=='__main__':
     ## read global Json input (input from GUI)
     argv_io_string = io.StringIO(sys.argv[1])
     json_variables = json.load(argv_io_string)
-    # qparcutstext = json_variables['qparcuts']
+    qparcutstext = json_variables['qparcuts']
     SampleDetectorDistance = float(json_variables['sd'])
     PixelSize = float(json_variables['pxs']) # number of points in p(r)
     XOrigin = float(json_variables['xorigin'])
@@ -51,7 +51,9 @@ if __name__=='__main__':
     #
     #
     content = ''
-    for file in os.listdir(folder):
+    # for file in os.listdir(folder):
+    #     content = "%s \n %s" % (content,file)
+    for file in qparcutstext:
         content = "%s \n %s" % (content,file)
     #
     output['_textarea'] =  content#"Reduction Complete ..."
