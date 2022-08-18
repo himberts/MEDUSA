@@ -1,8 +1,11 @@
-from PIL import Image
+import matplotlib.patches as pch
 import matplotlib.pyplot as plt
+from numpy import char as ch
+from PIL import Image
+import zipfile as z
 import numpy as np
 import math as m
-from numpy import char as ch
+import os
 
 
 class xray:
@@ -26,6 +29,8 @@ class xray:
         self.wavelength = wavelength
         self.q1 = q1
 
+        ##### Variables declared after this point are properly initialized later in the program #####
+
         # Image related variables used for loading and manipulation
         self.img = None
         self.imgarr = None
@@ -36,10 +41,11 @@ class xray:
         self.xend = 0
         self.ystart = 0
         self.yend = 0
+        self.index1_1 = 0
+        self.index1_2 = 0
 
         # Objects for holding pixel measurements
         self.pxarr = None
-        self.pxarr2 = None
         self.xpxarr = None
         self.ypxarr = None
 
@@ -53,10 +59,8 @@ class xray:
 
         # Variables for holding q space measurements, average and standard deviation
         self.qspacearr = None
-        self.qparr = None
+        self.qpar = None
         self.qz = None
-        # self.avgalongqp = None
-        # self.avgalongqz = None
         self.qpavgstd = None
         self.qzavgstd = None
 
@@ -74,25 +78,18 @@ class xray:
         self.data = None
 
         # Variables for holding data for plotting the mean event counts
-        self.meandata1 = None
-        self.meandata2 = None
+        self.meandata = []
+        self.mdcrops = []
+        self.mirroravgs = []
+        self.qparcrop = None
+        self.index0 = 0
+        self.croplen = 0
+        self.errors = []
+        self.ecrops = []
+        self.qparpositive = None
 
-        # Variables for cropping data
-        self.point1 = 0
-        self.point2 = 0
+        self.outputzip = z.ZipFile("outputs.zip", mode='w')
 
-        # Variables for data export into a .dat file
-        self.error1 = None
-        self.error2 = None
-        self.qparrcrop = None
-        self.md1crop = None
-        self.md2crop = None
-        self.e1crop = None
-        self.e2crop = None
-        self.frgrndcrop1 = None
-        self.frgrndcrop2 = None
-
-        # Methods for populating various arrays to be used later
         self.tifftoarr()
         self.pop_pxarrs()
         self.pop_metricarrs()
@@ -103,12 +100,6 @@ class xray:
     def getindex(arr, point):
         index = int(np.where(np.abs(arr - point) == np.min(np.abs(arr - point)))[0])
         return index
-
-    @staticmethod
-    def plot(xarr, yarr, colour, mini, maxi):
-        plt.plot(xarr, yarr, color=colour)
-        plt.ylim(mini, maxi)
-        plt.show()
 
     @staticmethod
     def tonparray(num, seperator=" "):
@@ -135,31 +126,21 @@ class xray:
         self.ydim = self.imgarr.shape[0]
         self.img.close()
 
-    def plottiff(self):
+    def plottiff(self, show):
         """
         Plots the provided .tiff file with pixels on axis
 
         :return: None
         """
-        # print(self.xpxarr)
-        # print(self.ypxarr)
-        # print("\n")
-        # print(self.xarr)
-        # print(self.yarr)
-        # print("\n")
-        # print(self.chiarr)
-        # print(self.thetaarr)
-        # print("\n")
-        # print(self.qparr)
-        # print(self.qz)
-        # print("\n")
-
-        e = [self.qparr[0], self.qparr[-1], self.qz[-1], self.qz[0]]
-        plt.figure()
+        e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
+        plt.figure(1)
         plt.imshow(np.log(self.imgarr + 1), extent=e)
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
-        plt.show()
+        plt.savefig("outputs/" + self.name[:-5])
+        #self.outputzip.write(os.getcwd() + "/outputs/" + self.name[:-5] + ".png", arcname=self.name[:-5] + ".png")
+        if show:
+            plt.show()
 
     def pop_pxarrs(self):
         """
@@ -192,48 +173,120 @@ class xray:
 
     def pop_qspacearrs(self):
         """
-        Populates the q space arrays, qz and qparr
+        Populates the q space arrays, qz and qpar
 
         :return: None
         """
         deg2rad = 2 * m.pi / 360
-        self.qparr = (4 * m.pi * np.sin((self.chiarr / 2) * deg2rad)) / self.wavelength
+        self.qpar = (4 * m.pi * np.sin((self.chiarr / 2) * deg2rad)) / self.wavelength
         self.qz = (4 * m.pi * np.sin(self.thetaarr / 2 * deg2rad)) / self.wavelength
 
-    def calcmeanandplot(self, plot):
+    def cropimg(self, points, showcrop):
         """
-        Averages the values of the image over the qparr axis, subtracts the background events and plots it
+        Crops the given image/colour map based on points provided by the user in a +/-10 px range
 
-        :param plot: If true, displays the line graph plots of mean events vs qparr. If false, does nothing
+        :param points: A list or tuple of the points of interest in the image
+        :param showcrop: Boolean, if true shows the cropped slice plots. If false, does nothing
+        :return: None
+        """
+        rectangles = []
+        rectangles2 = []
+        self.croppedimgs = []
+        self.imgwithrectangle = []
+        self.points = points
+        e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
+
+        for a in points:
+            self.croppedimgs.append(self.imgarr[self.getindex(self.qz, a) - 4:self.getindex(self.qz, a) + 4, :])
+
+        for a in points:
+            rectangle = pch.Rectangle((0, self.getindex(self.qz, a)-4), self.imgarr.shape[1]-1, 8, linewidth=1, edgecolor='r', facecolor='none')
+            rectangles.append(rectangle)
+            rectangle2 = pch.Rectangle((0, self.getindex(self.qz, a) - 4), self.imgarr.shape[1], 8, linewidth=1, edgecolor='r', facecolor='none')
+            rectangles2.append(rectangle2)
+
+        plt.figure(2)
+        fig, a = plt.subplots()
+        a.imshow(np.log(self.imgarr + 1))
+        a.title.set_text("Image with all slices highlighted")
+        a.set_xlabel("Q_||")
+        a.set_ylabel("Q_z")
+        for r in rectangles2:
+            a.add_patch(r)
+        filehilights = self.name[:-5] + "_allhighlights.png"
+        plt.savefig("outputs/" + filehilights)
+        self.outputzip.write(os.getcwd() + "/outputs/" + filehilights, arcname=filehilights)
+
+        for a in range(len(self.points)):
+            fig, ax = plt.subplots()
+            ax.imshow(np.log(self.imgarr + 1))
+            ax.title.set_text("Slice of " + str(self.points[a]) + " +/- 4 pixels")
+            ax.set_xlabel("Q_||")
+            ax.set_ylabel("Q_z")
+            ax.add_patch(rectangles[a])
+            file = self.name[:-5] + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
+            plt.savefig("outputs/" + file)
+            self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
+            if showcrop:
+                plt.show()
+
+    def calcmeanandplot(self, show, showopt):
+        """
+        Averages the values of the image over the qpar axis, subtracts the background events and plots it
+
+        :param show: If true, displays the line graph plots of mean events vs qpar. If false, does nothing for controlling clutter
+        :param showopt: Boolean for whether or not to show the optimized meandata arrays plots, use for controlling clutter
         :return: None
         """
 
-        self.meandata1 = np.mean(self.croppedimg1, 0)
-        self.meandata2 = np.mean(self.croppedimg2, 0)
+        for a in self.croppedimgs:
+            self.meandata.append(np.mean(a, 0))
 
-        index2_1 = self.getindex(self.qparr, -0.2)
-        index2_2 = self.getindex(self.qparr, 0.2)
-        index2_3 = self.getindex(self.qparr, -0.4)
+        for a in self.meandata:
+            self.mirroravgs.append(self.qparoptimize(a))
 
-        y1 = self.meandata1[index2_1]
-        y2 = self.meandata1[index2_2]
-        y3 = self.meandata1[index2_3]
-        c = (y2 - y1) / (index2_2 - index2_1)
-        b = y3 - c * index2_3
+        self.qparpositive = self.qpar[self.index0:self.index0+self.croplen]
 
-        y = lambda x: c * x + b
+        self.index1_1 = self.getindex(self.qpar, 0.01)
+        self.index1_2 = self.getindex(self.qpar, 0.099)
 
-        background = y(self.qparr)
-        meancrop1 = np.mean(self.croppedimg1, 0)
-        meancrop2 = np.mean(self.croppedimg2, 0)
-        self.frgrndcrop1 = np.subtract(meancrop1, background)
-        self.frgrndcrop2 = np.subtract(meancrop2, background)
+        self.qparcrop = self.qpar[self.index1_1:self.index1_2]
 
-        if plot:
-            self.plot(self.qparr, self.meandata1, "tab:blue", 0, 100)
-            self.plot(self.qparr, self.meandata2, "tab:orange", 0, 100)
-            self.plot(self.qparr, self.frgrndcrop1, "tab:blue", 0, 100)
-            self.plot(self.qparr, self.frgrndcrop2, "tab:orange", 0, 20)
+        bgdsample = self.mirroravgs[0]
+
+        ranges = [self.getindex(self.qparpositive, 0.18)-10, self.getindex(self.qparpositive, 0.18)+10, self.getindex(self.qparpositive, 0.40)-10, self.getindex(self.qparpositive, 0.4)+10]
+        bgdpointsx = self.qparpositive[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
+        bgdpointsy = bgdsample[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
+        lineparams = np.polyfit(bgdpointsx, bgdpointsy, 1)
+
+        bgd = lambda x: lineparams[0] * x + lineparams[1]
+
+        bgdevents = bgd(self.qparpositive)
+        bdgevents2 = bgd(self.qpar)
+
+        for a in range(len(self.meandata)):
+            self.mirroravgs[a] = self.mirroravgs[a] - bgdevents
+            self.meandata[a] = self.meandata[a] - bdgevents2
+
+        for a in range(len(self.meandata)):
+            filename = self.name[:-5] + "_sliceplot_" + str(self.points[a]).replace(".", "") + ".png"
+            plt.plot(self.qpar, self.meandata[a])
+            plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
+            plt.xlabel("Q_||")
+            plt.savefig("outputs/" + filename)
+            self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
+            if show:
+                plt.show()
+
+        for a in range(len(self.mirroravgs)):
+            filename = self.name[:-5] + "_optimizedsliceplot_" + str(self.points[a]).replace(".", "") + ".png"
+            plt.plot(self.qparpositive, self.mirroravgs[a])
+            plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
+            plt.xlabel("Q_||")
+            plt.savefig("outputs/" + filename)
+            self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
+            if showopt:
+                plt.show()
 
     def loadimg(self, filename):
         fid = open(filename, 'r')
@@ -294,66 +347,67 @@ class xray:
         plt.imshow(np.log(self.data))
         plt.show()
 
-    def cropimg(self, point1, point2, plot):
+    def qparoptimize(self, arr):
         """
-        Crops the given image/colour map based on points provided by the user in a +/-10 px range
+        Optimizes the data by splitting it in the middle at qpar = 0 then treating the two sides as different sets of data and averages the two
 
-        :param point1: First point of interest
-        :param point2: Second point of interest
-        :param plot: Boolean, if true plots the cropped slices. If false, does nothing
+        :param arr: Array to be optimized (split, averaged, and possibly plotted)
         :return: None
         """
-        self.point1 = point1
-        self.point2 = point2
+        self.index0 = self.getindex(self.qpar, 0)
+        negativedata = np.flip(arr[:self.index0])
+        positivedata = arr[self.index0:]
 
-        self.croppedimg1 = self.imgarr[self.getindex(self.qz, point1) - 4:self.getindex(self.qz, point1) + 4, :]
-        self.croppedimg2 = self.imgarr[self.getindex(self.qz, point2) - 4:self.getindex(self.qz, point2) + 4, :]
+        self.croplen = positivedata.size
+        if negativedata.size < positivedata.size:
+            self.croplen = negativedata.size
+            positivedata = positivedata[:self.croplen]
+        elif negativedata.size > positivedata.size:
+            negativedata = negativedata[:self.croplen]
 
-        if plot:
-            plt.figure()
-            plt.imshow(self.croppedimg1)
-            plt.xlabel("Q_||")
-            plt.ylabel("Q_z")
+        avgdata = np.mean((negativedata, positivedata), axis=0)
 
-            # plt.figure()
-            # plt.plot(self.qparr, np.mean(self.croppedimg1, 0))
-
-            plt.figure()
-            plt.imshow(self.croppedimg2)
-            plt.xlabel("Q_||")
-            plt.ylabel("Q_z")
-            plt.show()
+        return avgdata
 
     def export(self):
         file = "outputfile.dat"
-        fh = open(file, "w")
+        fh = open("outputs/" + file, "w")
 
-        index1_1 = self.getindex(self.qparr, 0.01)
-        index1_2 = self.getindex(self.qparr, 0.099)
+        self.index1_1 = self.getindex(self.qparpositive, 0.01)
+        self.index1_2 = self.getindex(self.qparpositive, 0.099)
 
-        # self.error1 = np.sqrt(self.frgrndcrop1)
-        # self.error2 = np.sqrt(self.frgrndcrop2)
-        self.error1 = np.ones_like(self.frgrndcrop1)
-        self.error2 = np.ones_like(self.frgrndcrop2)
+        self.qparposcrop = self.qparpositive[self.index1_1:self.index1_2]
 
-        self.qparrcrop = self.qparr[index1_1:index1_2]
-        self.md1crop = self.frgrndcrop1[index1_1:index1_2]
-        self.e1crop = self.error1[index1_1:index1_2]
-        self.md2crop = self.frgrndcrop2[index1_1:index1_2]
-        self.e2crop = self.error2[index1_1:index1_2]
+        for a in self.mirroravgs:
+            self.errors.append(np.ones_like(a))
 
-        data = np.column_stack((self.qparrcrop, self.md1crop, self.e1crop, self.md2crop, self.e2crop))
-        # TODO: Figure out how error is calculated
+        self.mirroravgcrops = []
+        for a in range(len(self.mirroravgs)):
+            self.mirroravgcrops.append(self.mirroravgs[a][self.index1_1:self.index1_2])
+            self.ecrops.append(self.errors[a][self.index1_1:self.index1_2])
+
+        data = self.qparposcrop
+        for a in range(len(self.mirroravgcrops)):
+            data = np.column_stack((data, self.mirroravgcrops[a], self.ecrops[a]))
+
         fmt = '%4.4f'
         header = ("{"
-                  "\nNUMLINES=8" +
+                  "\nNUMLINES=" + str(6+len(self.points)) +
                   "\nFILENAME=" + self.name +
-                  "\nNUMDATLINES=" + str(len(self.qparrcrop)) +
-                  "\nQ1=" + str(self.q1) +
-                  "\nQZSTART=" + str(self.point1) +
-                  "\nQZSTART=" + str(self.point2) +
-                  "\n}")
+                  "\nNUMDATLINES=" + str(len(self.qparposcrop)) +
+                  "\nQ1=" + str(self.q1))
 
-        np.savetxt(file, data, fmt=fmt, header=header, comments='')
+        for a in self.points:
+            header = header + "\nQZSTART=" + str(a)
+
+        header = header + "\n}"
+
+        np.savetxt("outputs/" + file, data, fmt=fmt, header=header, comments='')
 
         fh.close()
+
+        self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
+        # These do not work lmao
+        # self.outputzip.write(os.getcwd() + "/tifftodat.py", arcname="tifftodat.ipynb")
+        # self.outputzip.write(os.getcwd() + "/functions.py", arcname="functions.ipynb")
+        self.outputzip.close()
