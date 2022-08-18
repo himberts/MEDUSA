@@ -53,9 +53,11 @@ if __name__=='__main__':
     content = ''
     # for file in os.listdir(folder):
     #     content = "%s \n %s" % (content,file)
-    qparcuts  = qparcutstext.split(',')
-    for file in qparcuts:
-        content = "%s \n %s" % (content,file)
+    qparCutsList  = qparcutstext.split(',')
+    qparCuts = np.ndarray(len(qparCutsList))
+    for k in range(len(qparCutsList)):
+        qparCuts[k] = float(qparCutsList[k])
+        content = "%s \n %f" % (content,qparCuts[k])
     #
     output['_textarea'] =  content#"Reduction Complete ..."
     output['Data2D'] = '<img src="%s/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
