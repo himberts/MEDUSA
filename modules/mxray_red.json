@@ -1,7 +1,7 @@
 {
     "moduleid" : "mxray"
     ,"label"    : "MXray"
-    ,"executable"   : "mxray.py"
+    ,"executable"   : "mxray_reduction.py"
     ,"submitpolicy" : "all"
     ,"dependencies" : [
         { "base" : "python3" }
