@@ -58,94 +58,94 @@ if __name__=='__main__':
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
 
-    # a = xray(filename='outputfile.dat', px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
-#    qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
+    a = xray(filename='outputfile.dat', px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
+   qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
 
-    #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
-    # a.plottiff()
-    # a.cropimg(point1=0.3, point2=0.35, plot=0)
-    # a.calcmeanandplot(plot=0)
-    # a.export()
+    a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
+    a.plottiff()
+    a.cropimg(point1=0.3, point2=0.35, plot=0)
+    a.calcmeanandplot(plot=0)
+    a.export()
 
-    # s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"])
-    #
-    # file1 = open('TestFit_fitted.fit', 'r')
-    # Lines = file1.readlines()
-    #
-    # tmp = Lines[10].strip()
-    # splittext = tmp.split('=')
-    # B = float(splittext[1])
-    # # print(B)
-    # tmp = Lines[11].strip()
-    # splittext = tmp.split('=')
-    # dB = float(splittext[1])
-    # # print(dB)
-    # tmp = Lines[12].strip()
-    # splittext = tmp.split('=')
-    # Kc = float(splittext[1])
-    # # print(Kc)
-    # tmp = Lines[13].strip()
-    # splittext = tmp.split('=')
-    # dKc = float(splittext[1])
-    # # print(dKc)
-    # file1.close()
-    # DataFit1 = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
-    # DataFit2 = np.genfromtxt('TestFit_fitted2.fit', delimiter='\t', skip_header=31)
-    # Data_dict={}
-    # Data_dict['x'] = DataFit1[:,0].tolist()
-    # Data_dict['y'] = DataFit1[:,1].tolist()
-    # Data_dict['mode'] = "markers"
-    # Data_dict['marker'] = {
-    #         "color": "rgb(0, 0, 200)",
-    #         "size": 12
-    # }
-    #
-    # Data_dict2={}
-    # Data_dict2['x'] = DataFit2[:,0].tolist()
-    # Data_dict2['y'] = DataFit2[:,1].tolist()
-    # Data_dict2['mode'] = "markers"
-    # Data_dict2['marker'] = {
-    #          "color": "rgb(0, 50, 200)",
-    #          "size": 12
-    # }
-    #
-    # Fit_dict={}
-    # Fit_dict['x'] = DataFit1[:,0].tolist()
-    # Fit_dict['y'] = DataFit1[:,3].tolist()
-    # Fit_dict['mode'] = "lines"
-    # Fit_dict['line'] = {
-    #         "color" : "rgb(200, 0, 0)",
-    #         "width": 3
-    # }
-    #
-    # Fit_dict2={}
-    # Fit_dict2['x'] = DataFit2[:,0].tolist()
-    # Fit_dict2['y'] = DataFit2[:,3].tolist()
-    # Fit_dict2['mode'] = "lines"
-    # Fit_dict2['line'] = {
-    #         "color" : "rgb(200, 50, 0)",
-    #         "width": 3
-    # }
-    #
-    # Datatmp = []
-    # Datatmp.append(Data_dict)
-    # Datatmp.append(Fit_dict)
-    # Datatmp.append(Data_dict2)
-    # Datatmp.append(Fit_dict2)
-    # Graph_dict={}
-    # Graph_dict["data"] = Datatmp
-    # Graph_dict["layout"] = {
-    #         "title" : "Fit Results"
-    # }
-    #
-    #
-    # output['plotline'] = Graph_dict
-    #
-    #
-    # buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
-    # buff_B = "%.2e +- %.2e" % (B, dB)
-    # output["kc"] = buff_Kc
-    # output["B"] = buff_B
+    s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"])
+
+    file1 = open('TestFit_fitted.fit', 'r')
+    Lines = file1.readlines()
+
+    tmp = Lines[10].strip()
+    splittext = tmp.split('=')
+    B = float(splittext[1])
+    # print(B)
+    tmp = Lines[11].strip()
+    splittext = tmp.split('=')
+    dB = float(splittext[1])
+    # print(dB)
+    tmp = Lines[12].strip()
+    splittext = tmp.split('=')
+    Kc = float(splittext[1])
+    # print(Kc)
+    tmp = Lines[13].strip()
+    splittext = tmp.split('=')
+    dKc = float(splittext[1])
+    # print(dKc)
+    file1.close()
+    DataFit1 = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
+    DataFit2 = np.genfromtxt('TestFit_fitted2.fit', delimiter='\t', skip_header=31)
+    Data_dict={}
+    Data_dict['x'] = DataFit1[:,0].tolist()
+    Data_dict['y'] = DataFit1[:,1].tolist()
+    Data_dict['mode'] = "markers"
+    Data_dict['marker'] = {
+            "color": "rgb(0, 0, 200)",
+            "size": 12
+    }
+
+    Data_dict2={}
+    Data_dict2['x'] = DataFit2[:,0].tolist()
+    Data_dict2['y'] = DataFit2[:,1].tolist()
+    Data_dict2['mode'] = "markers"
+    Data_dict2['marker'] = {
+             "color": "rgb(0, 50, 200)",
+             "size": 12
+    }
+
+    Fit_dict={}
+    Fit_dict['x'] = DataFit1[:,0].tolist()
+    Fit_dict['y'] = DataFit1[:,3].tolist()
+    Fit_dict['mode'] = "lines"
+    Fit_dict['line'] = {
+            "color" : "rgb(200, 0, 0)",
+            "width": 3
+    }
+
+    Fit_dict2={}
+    Fit_dict2['x'] = DataFit2[:,0].tolist()
+    Fit_dict2['y'] = DataFit2[:,3].tolist()
+    Fit_dict2['mode'] = "lines"
+    Fit_dict2['line'] = {
+            "color" : "rgb(200, 50, 0)",
+            "width": 3
+    }
+
+    Datatmp = []
+    Datatmp.append(Data_dict)
+    Datatmp.append(Fit_dict)
+    Datatmp.append(Data_dict2)
+    Datatmp.append(Fit_dict2)
+    Graph_dict={}
+    Graph_dict["data"] = Datatmp
+    Graph_dict["layout"] = {
+            "title" : "Fit Results"
+    }
+
+
+    output['plotline'] = Graph_dict
+
+
+    buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
+    buff_B = "%.2e +- %.2e" % (B, dB)
+    output["kc"] = buff_Kc
+    output["B"] = buff_B
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
