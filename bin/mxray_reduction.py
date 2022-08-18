@@ -59,7 +59,7 @@ if __name__=='__main__':
     a.export()
     #
     #
-    output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
+    output['_textarea'] =  '%s' % folder#"Reduction Completed; Please Continue on the Fitting tab"
     output['Data2D'] = '<img src="%s/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     output['RedAreas'] = '<img src="%s/Dataset_allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     print( json.dumps(output) ) # convert dictionary to json and output
