@@ -123,6 +123,13 @@
         }
         ,{
             "role"       : "output"
+            ,"id"         : "reddat"
+            ,"label"      : "Reduced Data"
+            ,"type"       : "file"
+            ,"help"       : "Reduced Data"
+        }
+        ,{
+            "role"       : "output"
             ,"id"         : "Data2D"
             ,"label"      : "2D Data"
             ,"type"       : "html"

@@ -59,6 +59,7 @@ if __name__=='__main__':
     a.export()
     #
     #
+    output["reddat"] = "%s/outputfile.dat" % folder
     output['_textarea'] =  '%s' % folder#"Reduction Completed; Please Continue on the Fitting tab"
     output['Data2D'] = '<img src="%s/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     output['RedAreas'] = '<img src="%s/Dataset_allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
