@@ -36,6 +36,9 @@ if __name__=='__main__':
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
+    # message = genapp(json_variables)
+    output = {} # create an empty python dictionary
+
     a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
     # qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
     #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
