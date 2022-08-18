@@ -15,7 +15,7 @@
             ,"type"      : "label"
             ,"colspan"   : 3
             ,"default"   : "header3"
-            ,"label"     : "MXray"
+            ,"label"     : "Fitting"
             ,"prehline"  : "true"
             ,"posthline" : "true"
         }
@@ -24,16 +24,9 @@
             ,"id"        : "FitPar"
             ,"type"      : "label"
             ,"colspan"   : 3
-            ,"default"   : "Fit Parameter"
+            ,"default"   : "header4"
             ,"label"     : "Fit Parameter"
             ,"posthline" : "true"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "data"
-            ,"label"      : "2D X-ray Data (.tiff)"
-            ,"type"       : "file"
-            ,"help"       : "2D X-ray Intesity (.tiff)"
         }
         ,{
             "role"       : "input"
@@ -41,7 +34,7 @@
             ,"label"      : "xi"
             ,"type"       : "float"
             ,"step"       : 0.1
-	    ,"default"    : 77.35
+	          ,"default"    : 77.35
             ,"help"       : "Calle Parameter xi"
         }
         ,{
@@ -62,13 +55,6 @@
             ,"default"    : 0.1
             ,"help"       : "Membrane d-spacing in reciprocal space"
         }
-        ,{
-              "role"       : "input"
-              ,"id"         : "qparcuts"
-              ,"label"      : "q-cut parameter"
-              ,"type"       : "textarea"
-              ,"help"       : "q-values for cropping and fitting the data"
-          }
           ,{
               "role"       : "input"
               ,"id"         : "lr"
@@ -91,85 +77,6 @@
               ,"max"        : 3000
               ,"help"       : "Enter the accessible domain size sr in Angstrom"
           }
-          ,{
-              "role"       : "input"
-              ,"id"        : "InstrPar"
-              ,"type"      : "label"
-              ,"colspan"   : 3
-              ,"default"   : "Instrument Parameter"
-              ,"label"     : "Instrument Parameter"
-              ,"posthline" : "true"
-          }
-        ,{
-            "role"       : "input"
-            ,"id"         : "sd"
-            ,"label"      : "Sample to Detector Distance (mm)"
-            ,"type"       : "float"
-            ,"step"       : 0.1
-            ,"default"    : 332.1269
-	          ,"min"        : 0.1
-	          ,"max"        : 1000
-            ,"help"       : "Instrumental Parameter: minimal distance between sample and detector"
-        }
-	       ,{
-            "role"        : "input"
-            ,"id"         : "pxs"
-            ,"label"      : "Detector Pixel Size (mm)"
-            ,"type"       : "float"
-            ,"step"       : 0.01
-            ,"default"    : 0.1
-            ,"min"        : 0.001
-            ,"max"        : 1
-            ,"help"       : "Detector Pixel Size. Only squared Pixels are supported"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "xorigin"
-            ,"label"      : "Origin in X (pixel)"
-            ,"type"       : "float"
-            ,"step"       : 0.1
-            ,"default"    : 410.983
-            ,"min"        : 0.1
-            ,"max"        : 4000
-            ,"help"       : "X Location of the central beam (in pixel)"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "yorigin"
-            ,"label"      : "Origin in y (pixel)"
-            ,"type"       : "float"
-            ,"step"       : 0.1
-            ,"default"    : 0.5
-            ,"min"        : 0.1
-            ,"max"        : 4000
-            ,"help"       : "Y Location of the central beam (in pixel)"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "lambda"
-            ,"label"      : "lambda (Angstrom)"
-            ,"type"       : "float"
-            ,"step"       : 0.0001
-            ,"default"    : 1.5418
-            ,"min"        : 0.0001
-            ,"max"        : 20
-            ,"help"       : "Wavelength of the X-ray Source"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "distqpar"
-            ,"label"      : "Distortion in qpar"
-            ,"type"       : "checkbox"
-            ,"default"    : true
-            ,"help"       : "Distortion in q parrallel"
-        }
-        ,{
-            "role"       : "input"
-            ,"id"         : "distqz"
-            ,"label"      : "Distortion in qz"
-            ,"type"       : "checkbox"
-            ,"help"       : "Distortion in q z"
-        }
         ,{
             "role"       : "output"
             ,"id"         : "kc"
