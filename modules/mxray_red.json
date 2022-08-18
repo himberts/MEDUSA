@@ -1,5 +1,5 @@
 {
-    "moduleid" : "mxray"
+    "moduleid" : "mxray_red"
     ,"label"    : "MXray"
     ,"executable"   : "mxray_reduction.py"
     ,"submitpolicy" : "all"

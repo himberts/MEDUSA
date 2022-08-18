@@ -41,7 +41,7 @@ if __name__=='__main__':
 s
     #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
     # a.plottiff()
-    a.cropimg(point1=qparcuts[0], point2=qparcuts[1], plot=0)
+    a.cropimg(point1=0.3, point2=0.35, plot=0)
     a.calcmeanandplot(plot=0)
     a.export()
     a.plottiff(show=0)
