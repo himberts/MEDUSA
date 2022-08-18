@@ -88,7 +88,7 @@ class xray:
         self.ecrops = []
         self.qparpositive = None
 
-        self.outputzip = z.ZipFile("outputs.zip", mode='w')
+        # self.outputzip = z.ZipFile("outputs.zip", mode='w')
 
         self.tifftoarr()
         self.pop_pxarrs()
@@ -406,8 +406,8 @@ class xray:
 
         fh.close()
 
-        self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
+        #self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
         # These do not work lmao
         # self.outputzip.write(os.getcwd() + "/tifftodat.py", arcname="tifftodat.ipynb")
         # self.outputzip.write(os.getcwd() + "/functions.py", arcname="functions.ipynb")
-        self.outputzip.close()
+        # self.outputzip.close()
