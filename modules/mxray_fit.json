@@ -34,7 +34,7 @@
             ,"label"      : "xi"
             ,"type"       : "float"
             ,"step"       : 0.1
-	          ,"default"    : 77.35
+	          ,"default"    : 87.3982
             ,"help"       : "Calle Parameter xi"
         }
         ,{
@@ -43,7 +43,7 @@
             ,"label"      : "eta"
             ,"type"       : "float"
             ,"step"       : 0.01
-            ,"default"    : 0.1111
+            ,"default"    : 0.12274
             ,"help"       : "Calle Parameter Eta"
         }
       ,{
