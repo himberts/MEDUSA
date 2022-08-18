@@ -137,7 +137,7 @@ class xray:
         plt.imshow(np.log(self.imgarr + 1), extent=e)
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
-        plt.savefig("outputs/" + self.name[:-5])
+        plt.savefig(self.name[:-5])
         #self.outputzip.write(os.getcwd() + "/outputs/" + self.name[:-5] + ".png", arcname=self.name[:-5] + ".png")
         if show:
             plt.show()
@@ -214,7 +214,7 @@ class xray:
         for r in rectangles2:
             a.add_patch(r)
         filehilights = self.name[:-5] + "_allhighlights.png"
-        plt.savefig("outputs/" + filehilights)
+        plt.savefig(filehilights)
         # self.outputzip.write(os.getcwd() + "/outputs/" + filehilights, arcname=filehilights)
 
         for a in range(len(self.points)):
@@ -225,7 +225,7 @@ class xray:
             ax.set_ylabel("Q_z")
             ax.add_patch(rectangles[a])
             file = self.name[:-5] + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
-            plt.savefig("outputs/" + file)
+            plt.savefig(file)
             # self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
             if showcrop:
                 plt.show()
@@ -273,7 +273,7 @@ class xray:
             plt.plot(self.qpar, self.meandata[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
-            plt.savefig("outputs/" + filename)
+            plt.savefig(filename)
             # self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
             if show:
                 plt.show()
@@ -283,7 +283,7 @@ class xray:
             plt.plot(self.qparpositive, self.mirroravgs[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
-            plt.savefig("outputs/" + filename)
+            plt.savefig(filename)
             # self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
             if showopt:
                 plt.show()
@@ -371,7 +371,7 @@ class xray:
 
     def export(self):
         file = "outputfile.dat"
-        fh = open("outputs/" + file, "w")
+        fh = open(file, "w")
 
         self.index1_1 = self.getindex(self.qparpositive, 0.01)
         self.index1_2 = self.getindex(self.qparpositive, 0.099)
@@ -402,7 +402,7 @@ class xray:
 
         header = header + "\n}"
 
-        np.savetxt("outputs/" + file, data, fmt=fmt, header=header, comments='')
+        np.savetxt(file, data, fmt=fmt, header=header, comments='')
 
         fh.close()
 
