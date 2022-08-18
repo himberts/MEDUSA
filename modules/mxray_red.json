@@ -125,7 +125,6 @@
             "role"       : "output"
             ,"id"         : "2DData"
             ,"label"      : "2D Data"
-            ,"default"    : "<a href="https://mxray-dev.genapp.rocks/mxray/">Click Here</a>"
             ,"type"       : "html"
             ,"help"       : "ImageOutput"
         }
