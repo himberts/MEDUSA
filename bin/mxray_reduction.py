@@ -43,13 +43,6 @@ if __name__=='__main__':
     # qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
     #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
     # a.plottiff()
-    a.plottiff(show=0)
-    a.cropimg([0.1, 0.15, 0.2, 0.25, 0.3], showcrop=1)
-    # a.cropimg(point1=0.3, point2=0.35, plot=0)
-    a.calcmeanandplot(show=0, showopt=0)
-    a.export()
-    #
-    #
     content = ''
     # for file in os.listdir(folder):
     #     content = "%s \n %s" % (content,file)
@@ -58,6 +51,13 @@ if __name__=='__main__':
     for k in range(len(qparCutsList)):
         qparCuts[k] = float(qparCutsList[k])
         content = "%s \n %f" % (content,qparCuts[k])
+
+    a.plottiff(show=0)
+    a.cropimg(qparCuts, showcrop=1)
+    # a.cropimg(point1=0.3, point2=0.35, plot=0)
+    a.calcmeanandplot(show=0, showopt=0)
+    a.export()
+    #
     #
     output['_textarea'] =  content#"Reduction Complete ..."
     output['Data2D'] = '<img src="%s/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
