@@ -15,7 +15,7 @@
             ,"type"      : "label"
             ,"colspan"   : 3
             ,"default"   : "header3"
-            ,"label"     : "MXray"
+            ,"label"     : "Reduction"
             ,"prehline"  : "true"
             ,"posthline" : "true"
         }
@@ -24,8 +24,8 @@
             ,"id"        : "FitPar"
             ,"type"      : "label"
             ,"colspan"   : 3
-            ,"default"   : "Fit Parameter"
-            ,"label"     : "Fit Parameter"
+            ,"default"   : "header4"
+            ,"label"     : "Reduction Parameter"
             ,"posthline" : "true"
         }
         ,{
@@ -47,7 +47,7 @@
               ,"id"        : "InstrPar"
               ,"type"      : "label"
               ,"colspan"   : 3
-              ,"default"   : "Instrument Parameter"
+              ,"default"   : "header4"
               ,"label"     : "Instrument Parameter"
               ,"posthline" : "true"
           }
@@ -123,8 +123,16 @@
         }
         ,{
             "role"       : "output"
-            ,"id"         : "ImageOutput"
-            ,"label"      : "ImageOutput"
+            ,"id"         : "2DData"
+            ,"label"      : "2D Data"
+            ,"default"    : "<a href="https://mxray-dev.genapp.rocks/mxray/">Click Here</a>"
+            ,"type"       : "html"
+            ,"help"       : "ImageOutput"
+        }
+        ,{
+            "role"       : "output"
+            ,"id"         : "RedAreas"
+            ,"label"      : "Reduced Areas"
             ,"type"       : "html"
             ,"help"       : "ImageOutput"
         }
