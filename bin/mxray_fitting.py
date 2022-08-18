@@ -146,7 +146,7 @@ if __name__=='__main__':
     # buff_B = "%.2e +- %.2e" % (B, dB)
     # output["kc"] = buff_Kc
     # output["B"] = buff_B
-
+    content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
     # output['_textarea'] = s.decode("utf-8")
