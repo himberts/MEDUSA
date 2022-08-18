@@ -20,23 +20,23 @@
                         ]
             }
 
-            ,{
-                "id"      : "mxray_tutorial",
-                "label"   : "Readme",
-                "icon"    : "pngs/simulate.png",
-    	          "autorun" : "tmxray",
-                "startup" : "true",
-                "modules" : [
-                             {
-                              "id"    : "tmxray",
-                              "label" : "tmxray"
-                             }
-                             ,{
-                              "id"    : "t2mxray",
-                              "label" : "t2mxray"
-                             }
-                            ]
-                }
+#            ,{
+#                "id"      : "mxray_tutorial",
+#                "label"   : "Readme",
+#                "icon"    : "pngs/simulate.png",
+#    	          "autorun" : "tmxray",
+#                "startup" : "true",
+#                "modules" : [
+#                             {
+#                              "id"    : "tmxray",
+#                              "label" : "tmxray"
+#                             }
+#                             ,{
+#                              "id"    : "t2mxray",
+#                              "label" : "t2mxray"
+#                             }
+#                            ]
+#                }
 
            ,{
             "id"         : "admin",
