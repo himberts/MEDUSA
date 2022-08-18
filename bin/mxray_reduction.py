@@ -55,5 +55,6 @@ if __name__=='__main__':
         content = "%s \n %s" % (content,file)
     #
     output['_textarea'] =  content#"Reduction Complete ..."
+    output['ImageOutput'] =  '<img src=" Dataset.png" alt="2DGraphics">'#"Reduction Complete ..."
 
     print( json.dumps(output) ) # convert dictionary to json and output

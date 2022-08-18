@@ -123,10 +123,10 @@
         }
         ,{
             "role"       : "output"
-            ,"id"         : "Fit"
-            ,"label"      : "Fit Results"
-            ,"type"       : "file"
-            ,"help"       : "The calculated fit"
+            ,"id"         : "ImageOutput"
+            ,"label"      : "ImageOutput"
+            ,"type"       : "html"
+            ,"help"       : "ImageOutput"
         }
         ,{
             "role"        : "output"
