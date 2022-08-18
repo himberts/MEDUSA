@@ -51,6 +51,6 @@ if __name__=='__main__':
     #
     #
     #
-    output['_textarea'] = os.listdir() #"Reduction Complete ..."
+    output['_textarea'] = os.listdir(folder) #"Reduction Complete ..."
 
     print( json.dumps(output) ) # convert dictionary to json and output
