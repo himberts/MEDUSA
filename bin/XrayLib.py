@@ -137,7 +137,7 @@ class xray:
         plt.imshow(np.log(self.imgarr + 1), extent=e)
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
-        plt.savefig(self.name[:-5])
+        plt.savefig('Dataset')
         #self.outputzip.write(os.getcwd() + "/outputs/" + self.name[:-5] + ".png", arcname=self.name[:-5] + ".png")
         if show:
             plt.show()
@@ -213,7 +213,7 @@ class xray:
         a.set_ylabel("Q_z")
         for r in rectangles2:
             a.add_patch(r)
-        filehilights = self.name[:-5] + "_allhighlights.png"
+        filehilights = 'Dataset' + "_allhighlights.png"
         plt.savefig(filehilights)
         # self.outputzip.write(os.getcwd() + "/outputs/" + filehilights, arcname=filehilights)
 
@@ -224,7 +224,7 @@ class xray:
             ax.set_xlabel("Q_||")
             ax.set_ylabel("Q_z")
             ax.add_patch(rectangles[a])
-            file = self.name[:-5] + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
+            file = 'Dataset' + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
             plt.savefig(file)
             # self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
             if showcrop:
@@ -269,7 +269,7 @@ class xray:
             self.meandata[a] = self.meandata[a] - bdgevents2
 
         for a in range(len(self.meandata)):
-            filename = self.name[:-5] + "_sliceplot_" + str(self.points[a]).replace(".", "") + ".png"
+            filename = 'Dataset' + "_sliceplot_" + str(self.points[a]).replace(".", "") + ".png"
             plt.plot(self.qpar, self.meandata[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
@@ -279,7 +279,7 @@ class xray:
                 plt.show()
 
         for a in range(len(self.mirroravgs)):
-            filename = self.name[:-5] + "_optimizedsliceplot_" + str(self.points[a]).replace(".", "") + ".png"
+            filename = 'Dataset' + "_optimizedsliceplot_" + str(self.points[a]).replace(".", "") + ".png"
             plt.plot(self.qparpositive, self.mirroravgs[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
