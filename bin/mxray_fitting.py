@@ -149,8 +149,8 @@ if __name__=='__main__':
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
-    # output['_textarea'] = s.decode("utf-8")
-    output['_textarea'] = content
+    output['_textarea'] = s.decode("utf-8")
+    # output['_textarea'] = content
     #output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
     # output["Fit"] = "%s/TestFit_fitted.fit" % folder
 
