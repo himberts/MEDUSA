@@ -43,14 +43,14 @@ if __name__=='__main__':
     # qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
     #a = xray(filename=str(DataFile[0]), px=PixelSize, sampledetectdist=332.1269, xorigin=410.983, yorigin=0.5101, wavelength=1.541867)
     # a.plottiff()
-    content = ''
+    # content = ''
     # for file in os.listdir(folder):
     #     content = "%s \n %s" % (content,file)
     qparCutsList  = qparcutstext.split(',')
     qparCuts = np.ndarray(len(qparCutsList))
     for k in range(len(qparCutsList)):
         qparCuts[k] = float(qparCutsList[k])
-        content = "%s \n %f" % (content,qparCuts[k])
+        # content = "%s \n %f" % (content,qparCuts[k])
 
     a.plottiff(show=0)
     a.cropimg(qparCuts, showcrop=1)
@@ -59,7 +59,7 @@ if __name__=='__main__':
     a.export()
     #
     #
-    output['_textarea'] =  content#"Reduction Complete ..."
+    output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['Data2D'] = '<img src="%s/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     output['RedAreas'] = '<img src="%s/Dataset_allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     print( json.dumps(output) ) # convert dictionary to json and output
