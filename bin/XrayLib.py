@@ -215,7 +215,7 @@ class xray:
             a.add_patch(r)
         filehilights = self.name[:-5] + "_allhighlights.png"
         plt.savefig("outputs/" + filehilights)
-        self.outputzip.write(os.getcwd() + "/outputs/" + filehilights, arcname=filehilights)
+        # self.outputzip.write(os.getcwd() + "/outputs/" + filehilights, arcname=filehilights)
 
         for a in range(len(self.points)):
             fig, ax = plt.subplots()
@@ -226,7 +226,7 @@ class xray:
             ax.add_patch(rectangles[a])
             file = self.name[:-5] + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
             plt.savefig("outputs/" + file)
-            self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
+            # self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
             if showcrop:
                 plt.show()
 
@@ -274,7 +274,7 @@ class xray:
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
             plt.savefig("outputs/" + filename)
-            self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
+            # self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
             if show:
                 plt.show()
 
@@ -284,7 +284,7 @@ class xray:
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
             plt.savefig("outputs/" + filename)
-            self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
+            # self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
             if showopt:
                 plt.show()
 
