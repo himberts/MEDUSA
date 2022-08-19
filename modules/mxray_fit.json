@@ -5,7 +5,7 @@
     ,"submitpolicy" : "login"
     ,"dependencies" : [
         { "base" : "python3" }
-	,{ "file" : "diffuse_analysis_v21_CUDA" }
+	,{ "file" : "diffuse_analysis_v22_CUDA" }
         ,{ "conda" : [ "XrayLib.py", "numpy", "matplotlib", "fast_histogram" ] }
     ]
     ,"fields"   : [
