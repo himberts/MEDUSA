@@ -93,6 +93,7 @@ if __name__=='__main__':
                 NoWhiteSpace = Readout.replace(" ", "")
                 NoTrail = Readout.replace("\n", "")
                 print(NoTrail)
+                splittedValue = NoTrail.split('|')
                 # values = [float(i) for i in NoTrail.split('|')]
                 # Iteration.append(values[1])
                 # XiSquare.append(values[4])
@@ -109,10 +110,11 @@ if __name__=='__main__':
                 # Graph_dict["layout"] = {
                 #         "title" : "XiSquare"
                 # }
-                # socket_dict['plotline'] = Graph_dict
-                # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-                # doc_string = json.dumps(socket_dict)
-                # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+                socket_dict['_textarea'] = '%s\t%s\t%s' % (NoTrail,splittedValue[1],splittedValue[4])
+                socket_dict['plotline'] = Graph_dict
+                # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
+                doc_string = json.dumps(socket_dict)
+                sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
         else:
             print("Not found!")
         # print line
