@@ -92,26 +92,27 @@ if __name__=='__main__':
                 Readout = line.decode("utf-8")
                 NoWhiteSpace = Readout.replace(" ", "")
                 NoTrail = Readout.replace("\n", "")
-                values = [float(i) for i in NoTrail.split('|')]
-                Iteration.append(values[1])
-                XiSquare.append(values[4])
-                Data_dict={}
-                Data_dict['x'] = Iteration
-                Data_dict['y'] = XiSquare
-                Data_dict['mode'] = "markers"
-                Data_dict['marker'] = {
-                        "color": "rgb(0, 0, 200)",
-                        "size": 12
-                }
-                Graph_dict={}
-                Graph_dict["data"] = [Data_dict]
-                Graph_dict["layout"] = {
-                        "title" : "XiSquare"
-                }
-                socket_dict['plotline'] = Graph_dict
-                # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-                doc_string = json.dumps(socket_dict)
-                sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+                print(NoTrail)
+                # values = [float(i) for i in NoTrail.split('|')]
+                # Iteration.append(values[1])
+                # XiSquare.append(values[4])
+                # Data_dict={}
+                # Data_dict['x'] = Iteration
+                # Data_dict['y'] = XiSquare
+                # Data_dict['mode'] = "markers"
+                # Data_dict['marker'] = {
+                #         "color": "rgb(0, 0, 200)",
+                #         "size": 12
+                # }
+                # Graph_dict={}
+                # Graph_dict["data"] = [Data_dict]
+                # Graph_dict["layout"] = {
+                #         "title" : "XiSquare"
+                # }
+                # socket_dict['plotline'] = Graph_dict
+                # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
+                # doc_string = json.dumps(socket_dict)
+                # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
         else:
             print("Not found!")
         # print line
