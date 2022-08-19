@@ -74,7 +74,7 @@ if __name__=='__main__':
         line = p.stdout.readline()
         if not line:
             break
-        socket_dict['_textarea'] = line
+        socket_dict['_textarea'] = '%s' % line
         # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
         doc_string = json.dumps(socket_dict)
         sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
