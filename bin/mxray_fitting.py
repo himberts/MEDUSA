@@ -70,16 +70,22 @@ if __name__=='__main__':
     # s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"])
 
     p = subprocess.Popen(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"], stdout=subprocess.PIPE)
+
+    ParseXiSquare = 0
     while True:
         line = p.stdout.readline()
         if not line:
             break
 
         if '|' in line.decode("utf-8"):
-            socket_dict['_textarea'] = '%s\n' % line
+            socket_dict['_textarea'] = '%s\n' % type(line)
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-            doc_string = json.dumps(socket_dict)
-            sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+            # doc_string = json.dumps(socket_dict)
+            # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+            # if 'Iteration|' in line.decode("utf-8"):
+            #     ParseXiSquare = 1
+            # if ParseXiSquare:
+            #
         else:
             print("Not found!")
         # print line
