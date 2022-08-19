@@ -84,9 +84,7 @@ if __name__=='__main__':
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
             doc_string = json.dumps(socket_dict)
             sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
-            if 'Iteration|' in line.decode("utf-8"):
-                ParseXiSquare = 1
-            elif 'Parameter|' in line.decode("utf-8"):
+            if 'Parameter|' in line.decode("utf-8"):
                 ParseXiSquare = 0
             if ParseXiSquare:
                 Readout = line.decode("utf-8")
@@ -110,11 +108,13 @@ if __name__=='__main__':
                 # Graph_dict["layout"] = {
                 #         "title" : "XiSquare"
                 # }
-                socket_dict['_textarea'] = '%s\t%s\t%s' % (NoTrail,splittedValue[1],splittedValue[4])
+                socket_dict['_textarea'] = '\n%s\t%s\t%s\n' % (NoTrail,splittedValue[1],splittedValue[4])
                 # socket_dict['plotline'] = Graph_dict
                 # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
                 doc_string = json.dumps(socket_dict)
                 sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+            if 'Iteration|' in line.decode("utf-8"):
+                ParseXiSquare = 1
         else:
             print("Not found!")
         # print line
