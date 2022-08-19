@@ -91,7 +91,7 @@ if __name__=='__main__':
                 NoWhiteSpace = Readout.replace(" ", "")
                 NoTrail = Readout.replace("\n", "")
                 # print(NoTrail)
-                # splittedValue = NoTrail.split('|')
+                splittedValue = NoTrail.split('|')
                 # values = [float(i) for i in NoTrail.split('|')]
                 # Iteration.append(values[1])
                 # XiSquare.append(values[4])
