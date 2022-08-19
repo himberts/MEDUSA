@@ -76,7 +76,7 @@ if __name__=='__main__':
             break
 
         if '|' in line.decode("utf-8"):
-            socket_dict['_textarea'] = '%s' % line
+            socket_dict['_textarea'] = '%s\n' % line
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
             doc_string = json.dumps(socket_dict)
             sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
@@ -165,7 +165,7 @@ if __name__=='__main__':
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
-    output['_textarea'] = s.decode("utf-8")
+    # output['_textarea'] = s.decode("utf-8")
     # output['_textarea'] = content
     #output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
     # output["Fit"] = "%s/TestFit_fitted.fit" % folder
