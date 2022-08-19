@@ -135,7 +135,7 @@
         }
         ,{
             "role"    : "output",
-            "id"      : "output3",
+            "id"      : "progressbar",
             "label"   : "Progress",
             "type"    : "progress",
             "max"     : 1.0
