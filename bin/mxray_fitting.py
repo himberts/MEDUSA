@@ -78,14 +78,17 @@ if __name__=='__main__':
             break
 
         if '|' in line.decode("utf-8"):
-            socket_dict['_textarea'] = '%s' % line.decode("utf-8")
+            socket_dict['_textarea'] = '%s' % line
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
             doc_string = json.dumps(socket_dict)
             sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
-            # if 'Iteration|' in line.decode("utf-8"):
-            #     ParseXiSquare = 1
+            if 'Iteration|' in line.decode("utf-8"):
+                ParseXiSquare = 1
+            elif 'Parameter|' in line.decode("utf-8"):
+                ParseXiSquare = 0
             # if ParseXiSquare:
-            #
+            #     Readout = line.decode("utf-8")
+            #     Readout.replace()
         else:
             print("Not found!")
         # print line
