@@ -80,8 +80,8 @@ if __name__=='__main__':
         if '|' in line.decode("utf-8"):
             socket_dict['_textarea'] = '%s\n' % type(line)
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-            # doc_string = json.dumps(socket_dict)
-            # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+            doc_string = json.dumps(socket_dict)
+            sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
             # if 'Iteration|' in line.decode("utf-8"):
             #     ParseXiSquare = 1
             # if ParseXiSquare:
