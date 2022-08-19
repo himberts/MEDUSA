@@ -20,6 +20,18 @@
             ,"posthline" : "true"
         }
         ,{
+            "role"       : "input",
+            "id"         : "imageid",
+            "name"       : "XRDSetup.jpg",  
+            "type"       : "image",
+            "label"      : "Image",
+            "alt"        : "Some Alternative Text",
+            # colspan, height, width are optional, but specifying a too small colspan (column span) will effect the layout of columns in the input fields
+            "colspan"    :  5,
+            "width"      : 300,
+            "height"     : 250
+ }
+        ,{
             "role"       : "input"
             ,"id"        : "FitPar"
             ,"type"      : "label"
