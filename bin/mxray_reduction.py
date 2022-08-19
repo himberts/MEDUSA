@@ -46,7 +46,7 @@ if __name__=='__main__':
     socket_dict={}
     socket_dict['_uuid'] = json_variables['_uuid']
 
-    socket_dict['_textarea'] = "Process started ..."
+    socket_dict['_textarea'] = "Process started ... \n"
     socket_dict['progressbar'] = 0
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
@@ -56,7 +56,7 @@ if __name__=='__main__':
 
     a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
 
-    socket_dict['_textarea'] = "Data Loaded ..."
+    socket_dict['_textarea'] = "Data Loaded ...\n"
     socket_dict['progressbar'] = 0.2
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
@@ -69,14 +69,14 @@ if __name__=='__main__':
         # content = "%s \n %f" % (content,qparCuts[k])
 
     a.plottiff(show=0)
-    socket_dict['_textarea'] = "2D Graphics created ..."
+    socket_dict['_textarea'] = "2D Graphics created ...\n"
     socket_dict['progressbar'] = 0.4
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
     a.cropimg(qparCuts, showcrop=1)
     # a.cropimg(point1=0.3, point2=0.35, plot=0)
-    socket_dict['_textarea'] = "qr cuts created ..."
+    socket_dict['_textarea'] = "qr cuts created ...\n"
     socket_dict['progressbar'] = 0.6
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
@@ -84,7 +84,7 @@ if __name__=='__main__':
 
     a.calcmeanandplot(show=0, showopt=0)
 
-    socket_dict['_textarea'] = "Cuts averaged ..."
+    socket_dict['_textarea'] = "Cuts averaged ...\n"
     socket_dict['progressbar'] = 0.8
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
@@ -92,7 +92,7 @@ if __name__=='__main__':
 
     a.export()
 
-    socket_dict['_textarea'] = "Data exported ..."
+    socket_dict['_textarea'] = "Data exported ...\n"
     socket_dict['progressbar'] = 1
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
@@ -100,7 +100,7 @@ if __name__=='__main__':
     #
     #
     output["reddat"] = "%s/outputfile.dat" % folder
-    output['_textarea'] =  '%s' % folder#"Reduction Completed; Please Continue on the Fitting tab"
+    output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['Data2D'] = '<img src="%s/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     output['RedAreas'] = '<img src="%s/Dataset_allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     print( json.dumps(output) ) # convert dictionary to json and output
