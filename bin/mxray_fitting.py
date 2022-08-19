@@ -108,8 +108,8 @@ if __name__=='__main__':
                 # Graph_dict["layout"] = {
                 #         "title" : "XiSquare"
                 # }
+                # socket_dict['plotline'] = Graph_dict
                 socket_dict['_textarea'] = '\n%s\t%f\t%f\n' % (NoTrail,float(splittedValue[1]),float(splittedValue[4]))
-                socket_dict['plotline'] = Graph_dict
                 # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
                 doc_string = json.dumps(socket_dict)
                 sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
