@@ -98,7 +98,13 @@
         }
         ,{
             "role"        : "output"
-            ,"id"         : "plotline"
+            ,"id"         : "xisquareGraph"
+            ,"type"       : "plotly"
+            ,"label"      : "XiSquare Convergence"
+        }
+        ,{
+            "role"        : "output"
+            ,"id"         : "fitresults"
             ,"type"       : "plotly"
             ,"label"      : "Fit Results"
         }
