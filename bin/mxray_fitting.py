@@ -74,7 +74,11 @@ if __name__=='__main__':
         line = p.stdout.readline()
         if not line:
             break
-        print line
+        socket_dict['_textarea'] = line
+        # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
+        doc_string = json.dumps(socket_dict)
+        sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+        # print line
 
 
     file1 = open('TestFit_fitted.fit', 'r')
