@@ -52,7 +52,7 @@ if __name__=='__main__':
     # message = genapp(json_variables)
     output = {} # create an empty python dictionary
 
-    socket_dict['_textarea'] = "Process started ..."
+    socket_dict['_textarea'] = "Process started ...\n"
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
@@ -78,7 +78,7 @@ if __name__=='__main__':
             break
 
         if '|' in line.decode("utf-8"):
-            socket_dict['_textarea'] = '%s\n' % type(line)
+            socket_dict['_textarea'] = '%s' % line.decode("utf-8")
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
             doc_string = json.dumps(socket_dict)
             sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
