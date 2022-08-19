@@ -22,15 +22,15 @@
         ,{
             "role"       : "input",
             "id"         : "imageid",
-            "name"       : "XRDSetup.jpg",  
+            "name"       : "XRDSetup.jpg",
             "type"       : "image",
             "label"      : "Image",
-            "alt"        : "Some Alternative Text",
+            "alt"        : "X-ray Diffraction Setup",
             # colspan, height, width are optional, but specifying a too small colspan (column span) will effect the layout of columns in the input fields
             "colspan"    :  5,
-            "width"      : 300,
-            "height"     : 250
- }
+            "width"      : 992,
+            "height"     : 603
+          }
         ,{
             "role"       : "input"
             ,"id"        : "FitPar"
@@ -133,6 +133,13 @@
             ,"type"       : "checkbox"
             ,"help"       : "Distortion in q z"
         }
+        ,{
+            "role"    : "output",
+            "id"      : "output3",
+            "label"   : "Progress",
+            "type"    : "progress",
+            "max"     : 1.0
+          }
         ,{
             "role"       : "output"
             ,"id"         : "reddat"
