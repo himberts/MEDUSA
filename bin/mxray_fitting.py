@@ -80,34 +80,34 @@ if __name__=='__main__':
             break
 
         if '|' in line.decode("utf-8"):
-            socket_dict['_textarea'] = '%s' % line.decode("utf-8")
-            # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-            doc_string = json.dumps(socket_dict)
-            sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+            # socket_dict['_textarea'] = '%s' % line.decode("utf-8")
+            # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
+            # doc_string = json.dumps(socket_dict)
+            # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
             if 'Parameter|' in line.decode("utf-8"):
                 ParseXiSquare = 0
             if ParseXiSquare:
                 Readout = line.decode("utf-8")
                 NoWhiteSpace = Readout.replace(" ", "")
                 NoTrail = Readout.replace("\n", "")
-                print(NoTrail)
-                splittedValue = NoTrail.split('|')
-                values = [float(i) for i in NoTrail.split('|')]
-                Iteration.append(values[1])
-                XiSquare.append(values[4])
-                Data_dict={}
-                Data_dict['x'] = Iteration
-                Data_dict['y'] = XiSquare
-                Data_dict['mode'] = "markers"
-                Data_dict['marker'] = {
-                        "color": "rgb(0, 0, 200)",
-                        "size": 12
-                }
-                Graph_dict={}
-                Graph_dict["data"] = [Data_dict]
-                Graph_dict["layout"] = {
-                        "title" : "XiSquare"
-                }
+                # print(NoTrail)
+                # splittedValue = NoTrail.split('|')
+                # values = [float(i) for i in NoTrail.split('|')]
+                # Iteration.append(values[1])
+                # XiSquare.append(values[4])
+                # Data_dict={}
+                # Data_dict['x'] = Iteration
+                # Data_dict['y'] = XiSquare
+                # Data_dict['mode'] = "markers"
+                # Data_dict['marker'] = {
+                #         "color": "rgb(0, 0, 200)",
+                #         "size": 12
+                # }
+                # Graph_dict={}
+                # Graph_dict["data"] = [Data_dict]
+                # Graph_dict["layout"] = {
+                #         "title" : "XiSquare"
+                # }
                 socket_dict['_textarea'] = '\n%s\t%f\t%f\n' % (NoTrail,float(splittedValue[1]),float(splittedValue[4]))
                 socket_dict['plotline'] = Graph_dict
                 # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
