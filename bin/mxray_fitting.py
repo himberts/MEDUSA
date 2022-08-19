@@ -75,7 +75,7 @@ if __name__=='__main__':
         if not line:
             break
 
-        if '|' in line:
+        if '|' in line.decode("utf-8"):
             socket_dict['_textarea'] = '%s' % line
             # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
             doc_string = json.dumps(socket_dict)
