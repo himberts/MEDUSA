@@ -459,7 +459,7 @@ class xray:
         data["0"] = {
             "z": np.log(self.imgarr + 1).tolist(),
             "x": self.qpar.tolist(),
-            "y": self.qpar.tolist(),
+            "y": self.qz.tolist(),
             "type": "heatmap"
         }
 
