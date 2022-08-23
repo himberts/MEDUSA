@@ -220,7 +220,8 @@ class xray:
 
     def cropimg(self, points, showcrop):
         """
-        Crops the given image/colour map based on points provided by the user in a +/-10 px range
+        Crops the given image/colour map based on points provided by the user in a +/-4 px range
+        and also plots/shows the images with individual slices highlighted
 
         :param points: A list or tuple of the points of interest in the image
         :param showcrop: Boolean, if true shows the cropped slice plots. If false, does nothing
@@ -262,8 +263,7 @@ class xray:
             ax.set_ylabel("Q_z")
             ax.add_patch(rectangles[a])
             file = self.name[:-5] + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
-            plt.savefig(os.getcwd() + "/outputs/" + __slicehighlight__ + str(a) + ".png")
-
+            plt.savefig(os.getcwd() + "/outputs/" + __slicehighlight__ + " " + str(a+1) + ".png")
             if showcrop:
                 plt.show()
 
@@ -309,26 +309,28 @@ class xray:
             self.mirroravgs[a] = self.mirroravgs[a] - bgdevents
             self.meandata[a] = self.meandata[a] - bdgevents2
 
-        plt.figure(3)
         for a in range(len(self.meandata)):
+            plt.figure()
             filename = self.name[:-5] + "_sliceplot_" + str(self.points[a]).replace(".", "") + ".png"
             plt.plot(self.qpar, self.meandata[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
-            plt.savefig(os.getcwd() + "/outputs/" + __sliceplot__ + ".png")
+            plt.savefig(os.getcwd() + "/outputs/" + __sliceplot__ + " " + str(a+1) + ".png")
             if show:
                 plt.show()
+            plt.close()
 
         # plt.figure()
         for a in range(len(self.mirroravgs)):
+            plt.figure()
             filename = self.name[:-5] + "_optimizedsliceplot_" + str(a).replace(".", "") + ".png"
             plt.plot(self.qparpositive, self.mirroravgs[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
-            plt.savefig(os.getcwd() + "/outputs/" + __optimizedsliceplot__ + ".png")
+            plt.savefig(os.getcwd() + "/outputs/" + __optimizedsliceplot__ + " " + str(a+1) + ".png")
             if showopt:
                 plt.show()
-        plt.close(3)
+            plt.close()
 
     def loadimg(self, filename):
         fid = open(filename, 'r')
