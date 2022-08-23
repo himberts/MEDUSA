@@ -115,4 +115,12 @@ if __name__=='__main__':
             "title" : "2D Data"
     }
     output['Data2DPlotly'] = Graph_dict
+    Datatmp = []
+    Datatmp.append(a.datadict["0"])
+    Graph_dict={}
+    Graph_dict["data"] = Datatmp
+    Graph_dict["layout"] = {
+            "title" : "Reduced Areas"
+    }
+    output['Data2DMarked'] = Graph_dict
     print( json.dumps(output) ) # convert dictionary to json and output
