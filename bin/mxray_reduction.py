@@ -106,4 +106,5 @@ if __name__=='__main__':
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['Data2D'] = '<img src="%s/outputs/originaltiff.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     output['RedAreas'] = '<img src="%s/outputs/allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
+    output['Data2DPlotly'] = a.datadict["0"]
     print( json.dumps(output) ) # convert dictionary to json and output
