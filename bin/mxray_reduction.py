@@ -101,6 +101,6 @@ if __name__=='__main__':
     #
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
-    output['Data2D'] = '<img src="%s/outputs/Dataset.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
-    output['RedAreas'] = '<img src="%s/outputs/Dataset_allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
+    output['Data2D'] = '<img src="%s/outputs/originaltiff.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
+    output['RedAreas'] = '<img src="%s/outputs/allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     print( json.dumps(output) ) # convert dictionary to json and output
