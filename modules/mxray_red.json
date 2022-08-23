@@ -148,20 +148,6 @@
             ,"help"       : "Reduced Data"
         }
         ,{
-            "role"       : "output"
-            ,"id"         : "Data2D"
-            ,"label"      : "2D Data"
-            ,"type"       : "html"
-            ,"help"       : "ImageOutput"
-        }
-        ,{
-            "role"       : "output"
-            ,"id"         : "RedAreas"
-            ,"label"      : "Reduced Areas"
-            ,"type"       : "html"
-            ,"help"       : "ImageOutput"
-        }
-        ,{
             "role"        : "output"
             ,"id"         : "Data2DPlotly"
             ,"type"       : "plotly"
