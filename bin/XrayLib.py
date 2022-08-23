@@ -460,7 +460,7 @@ class xray:
             "z": np.log(self.imgarr + 1).tolist(),
             "x": self.qpar.tolist(),
             "y": self.qz.tolist(),
-            "type": "mesh3d"
+            "type": "heatmap"
         }
 
         temp = self.imgarr.copy()
