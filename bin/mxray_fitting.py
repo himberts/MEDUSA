@@ -191,8 +191,8 @@ if __name__=='__main__':
 
 
     output['fitresults'] = Graph_dict
-
-
+    shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
+    #a.zipoutputs()
     buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
     buff_B = "%.2e +- %.2e" % (B, dB)
     output["kc"] = buff_Kc
@@ -203,6 +203,6 @@ if __name__=='__main__':
     # output['_textarea'] = s.decode("utf-8")
     # output['_textarea'] = content
     #output['_textarea'] = "JSON input to executable:\n" + json.dumps( Graph_dict, indent=4 ) + "\n";
-    # output["Fit"] = "%s/TestFit_fitted.fit" % folder
+    output["Fit"] = "%s/outputs.zip" % folder
 
     print( json.dumps(output) ) # convert dictionary to json and output
