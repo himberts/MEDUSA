@@ -106,5 +106,13 @@ if __name__=='__main__':
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['Data2D'] = '<img src="%s/outputs/originaltiff.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
     output['RedAreas'] = '<img src="%s/outputs/allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
-    output['Data2DPlotly'] = a.datadict["0"]
+
+    Datatmp = []
+    Datatmp.append(a.datadict["0"])
+    Graph_dict={}
+    Graph_dict["data"] = Datatmp
+    Graph_dict["layout"] = {
+            "title" : "2D Data"
+    }
+    output['Data2DPlotly'] = Graph_dict
     print( json.dumps(output) ) # convert dictionary to json and output
