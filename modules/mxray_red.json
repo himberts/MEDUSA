@@ -170,7 +170,7 @@
         ,{
             "role"        : "output"
             ,"id"         : "Data2DMarked"
-            ,"type"       : "plotly"
+            ,"type"       : "plot3d"
             ,"label"      : "Reduced Areas"
         }
     ]
