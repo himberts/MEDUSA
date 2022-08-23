@@ -19,6 +19,7 @@ import time
 import subprocess
 import locale, multiprocessing
 from XrayLib import xray
+import shutil
 
 if __name__=='__main__':
 
