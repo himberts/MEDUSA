@@ -104,8 +104,6 @@ if __name__=='__main__':
     #
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
-    output['Data2D'] = '<img src="%s/outputs/originaltiff.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
-    output['RedAreas'] = '<img src="%s/outputs/allhighlights.png" alt="2DGraphics">' % folder#"Reduction Complete ..."
 
     Datatmp = []
     Datatmp.append(a.datadict["0"])
