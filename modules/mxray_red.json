@@ -163,9 +163,15 @@
         }
         ,{
             "role"        : "output"
-            ,"id"         : "plotline"
+            ,"id"         : "Data2DPlotly"
             ,"type"       : "plotly"
-            ,"label"      : "Fit Results"
+            ,"label"      : "2D Results"
+        }
+        ,{
+            "role"        : "output"
+            ,"id"         : "Data2DMarked"
+            ,"type"       : "plotly"
+            ,"label"      : "Reduced Areas"
         }
     ]
 }

@@ -1,16 +1,31 @@
 import matplotlib.patches as pch
 import matplotlib.pyplot as plt
 from numpy import char as ch
+import plotly.express as plyx
+import plotly.io as plyio
 from PIL import Image
 import zipfile as z
 import numpy as np
 import math as m
+import shutil
+import json
 import os
+
+# !/usr/bin/env python
+"""
+Functions.py: This file holds a class structure for analyzing .tiff files with diffraction patterns
+"""
+__outputfolder__ = os.getcwd() + "/outputs/"  # Directory for the folder in which all the outputs are stored
+__tiffname__ = "originaltiff"  # Name of the original tiff file which will be output as a .png
+__allhighlights__ = "allhighlights"  # Name for the image file that has all of the highlighted areas
+__slicehighlight__ = "highlight"  # Prefix for the image file which will highlight individual areas
+__sliceplot__ = "sliceplot"  # Prefix for the plots which show the average of the whole slice plotted
+__optimizedsliceplot__ = "optimizedsliceplot"  # Prefix for the plots which show the average of the slices, (after they've been halved and overlayed) plotted
 
 
 class xray:
     def __init__(self, filename, px, sampledetectdist, xorigin, yorigin, wavelength, q1):
-        # TODO: (X-Chi-Q Parallel) and (Y_Theta-Q Z)
+        # TODO: Just used for important notes to keep in mind: (X-Chi-Q Parallel) and (Y_Theta-Q Z); 1 px = 0.00122
         """
         __init__ method for xray class. Parameters that are passed through the class are determined by user/machine
 
@@ -84,11 +99,21 @@ class xray:
         self.qparcrop = None
         self.index0 = 0
         self.croplen = 0
+
+        # Variables used for holding data to be exported in .dat file
         self.errors = []
         self.ecrops = []
         self.qparpositive = None
 
-        # self.outputzip = z.ZipFile("outputs.zip", mode='w')
+        # Variables used for highlighting the slices of interest on the original image
+        self.croppedimgs = []
+        self.imgwithrectangle = []
+        self.points = None
+
+        # Variables used for converting the .tiff files into a json file to allow for interaction with image on the mxray website
+        self.datadict = {}
+        self.imgjson = {}
+        self.outputdict = {}
 
         self.tifftoarr()
         self.pop_pxarrs()
@@ -113,6 +138,10 @@ class xray:
         arr = ch.split(num, seperator).astype(np.float32)
         return arr
 
+    @staticmethod
+    def zipoutputs():
+        shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
+
     def tifftoarr(self):
         """
         Converts the given .tiff file to a NumPy array as well as defining some dimensional variables to streamline certain lines of code
@@ -134,13 +163,21 @@ class xray:
         """
         e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
         plt.figure(1)
-        plt.imshow(np.log(self.imgarr + 1), extent=e)
+        plt.title(self.name[:-5])
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
-        plt.savefig('Dataset')
-        #self.outputzip.write(os.getcwd() + "/outputs/" + self.name[:-5] + ".png", arcname=self.name[:-5] + ".png")
+        plt.imshow(np.log(self.imgarr + 1), extent=e)
+
+        if os.path.isdir(os.getcwd() + "/outputs/"):
+            plt.savefig(os.getcwd() + "/outputs/" + __tiffname__ + ".png")
+        else:
+            os.makedirs(os.getcwd()+"/outputs/")
+            plt.savefig(os.getcwd() + "/outputs/" + __tiffname__ + ".png")
+
         if show:
             plt.show()
+
+        plt.close(1)
 
     def pop_pxarrs(self):
         """
@@ -191,8 +228,6 @@ class xray:
         """
         rectangles = []
         rectangles2 = []
-        self.croppedimgs = []
-        self.imgwithrectangle = []
         self.points = points
         e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
 
@@ -200,35 +235,40 @@ class xray:
             self.croppedimgs.append(self.imgarr[self.getindex(self.qz, a) - 4:self.getindex(self.qz, a) + 4, :])
 
         for a in points:
-            rectangle = pch.Rectangle((0, self.getindex(self.qz, a)-4), self.imgarr.shape[1]-1, 8, linewidth=1, edgecolor='r', facecolor='none')
+            rectangle = pch.Rectangle((e[0], a - 0.00488), e[1] - e[0] - 0.00001, 0.00976, linewidth=1, edgecolor='r',
+                                      facecolor='none')
             rectangles.append(rectangle)
-            rectangle2 = pch.Rectangle((0, self.getindex(self.qz, a) - 4), self.imgarr.shape[1], 8, linewidth=1, edgecolor='r', facecolor='none')
+            rectangle2 = pch.Rectangle((e[0], a - 0.00488), e[1] - e[0], 0.00976, linewidth=1, edgecolor='r',
+                                       facecolor='none')
             rectangles2.append(rectangle2)
 
         plt.figure(2)
         fig, a = plt.subplots()
-        a.imshow(np.log(self.imgarr + 1))
+        a.imshow(np.log(self.imgarr + 1), extent=e)
         a.title.set_text("Image with all slices highlighted")
         a.set_xlabel("Q_||")
         a.set_ylabel("Q_z")
         for r in rectangles2:
             a.add_patch(r)
-        filehilights = 'Dataset' + "_allhighlights.png"
-        plt.savefig(filehilights)
-        # self.outputzip.write(os.getcwd() + "/outputs/" + filehilights, arcname=filehilights)
+        filehilights = self.name[:-5] + "_allhighlights.png"
+        # self.imghighlightsjson = self.datadictjson()
+        plt.savefig(os.getcwd() + "/outputs/" + __allhighlights__ + ".png")
 
         for a in range(len(self.points)):
             fig, ax = plt.subplots()
-            ax.imshow(np.log(self.imgarr + 1))
+            ax.imshow(np.log(self.imgarr + 1), extent=e)
             ax.title.set_text("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             ax.set_xlabel("Q_||")
             ax.set_ylabel("Q_z")
             ax.add_patch(rectangles[a])
-            file = 'Dataset' + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
-            plt.savefig(file)
-            # self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
+            file = self.name[:-5] + "_highlight_" + str(self.points[a]).replace(".", "") + ".png"
+            plt.savefig(os.getcwd() + "/outputs/" + __slicehighlight__ + str(a) + ".png")
+
             if showcrop:
                 plt.show()
+
+        self.datadict = self.datadictjsons(points)
+        plt.close("2")
 
     def calcmeanandplot(self, show, showopt):
         """
@@ -245,7 +285,7 @@ class xray:
         for a in self.meandata:
             self.mirroravgs.append(self.qparoptimize(a))
 
-        self.qparpositive = self.qpar[self.index0:self.index0+self.croplen]
+        self.qparpositive = self.qpar[self.index0:self.index0 + self.croplen]
 
         self.index1_1 = self.getindex(self.qpar, 0.01)
         self.index1_2 = self.getindex(self.qpar, 0.099)
@@ -254,7 +294,8 @@ class xray:
 
         bgdsample = self.mirroravgs[0]
 
-        ranges = [self.getindex(self.qparpositive, 0.18)-10, self.getindex(self.qparpositive, 0.18)+10, self.getindex(self.qparpositive, 0.40)-10, self.getindex(self.qparpositive, 0.4)+10]
+        ranges = [self.getindex(self.qparpositive, 0.18) - 10, self.getindex(self.qparpositive, 0.18) + 10,
+                  self.getindex(self.qparpositive, 0.40) - 10, self.getindex(self.qparpositive, 0.4) + 10]
         bgdpointsx = self.qparpositive[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
         bgdpointsy = bgdsample[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
         lineparams = np.polyfit(bgdpointsx, bgdpointsy, 1)
@@ -268,25 +309,26 @@ class xray:
             self.mirroravgs[a] = self.mirroravgs[a] - bgdevents
             self.meandata[a] = self.meandata[a] - bdgevents2
 
+        plt.figure(3)
         for a in range(len(self.meandata)):
-            filename = 'Dataset' + "_sliceplot_" + str(self.points[a]).replace(".", "") + ".png"
+            filename = self.name[:-5] + "_sliceplot_" + str(self.points[a]).replace(".", "") + ".png"
             plt.plot(self.qpar, self.meandata[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
-            plt.savefig(filename)
-            # self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
+            plt.savefig(os.getcwd() + "/outputs/" + __sliceplot__ + ".png")
             if show:
                 plt.show()
 
+        # plt.figure()
         for a in range(len(self.mirroravgs)):
-            filename = 'Dataset' + "_optimizedsliceplot_" + str(self.points[a]).replace(".", "") + ".png"
+            filename = self.name[:-5] + "_optimizedsliceplot_" + str(a).replace(".", "") + ".png"
             plt.plot(self.qparpositive, self.mirroravgs[a])
             plt.title("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             plt.xlabel("Q_||")
-            plt.savefig(filename)
-            # self.outputzip.write(os.getcwd() + "/outputs/" + filename, arcname=filename)
+            plt.savefig(os.getcwd() + "/outputs/" + __optimizedsliceplot__ + ".png")
             if showopt:
                 plt.show()
+        plt.close(3)
 
     def loadimg(self, filename):
         fid = open(filename, 'r')
@@ -371,7 +413,7 @@ class xray:
 
     def export(self):
         file = "outputfile.dat"
-        fh = open(file, "w")
+        fh = open(os.getcwd() + "/outputs/" + file, "w")
 
         self.index1_1 = self.getindex(self.qparpositive, 0.01)
         self.index1_2 = self.getindex(self.qparpositive, 0.099)
@@ -392,7 +434,7 @@ class xray:
 
         fmt = '%4.4f'
         header = ("{"
-                  "\nNUMLINES=" + str(6+len(self.points)) +
+                  "\nNUMLINES=" + str(6 + len(self.points)) +
                   "\nFILENAME=" + self.name +
                   "\nNUMDATLINES=" + str(len(self.qparposcrop)) +
                   "\nQ1=" + str(self.q1))
@@ -402,12 +444,64 @@ class xray:
 
         header = header + "\n}"
 
-        np.savetxt(file, data, fmt=fmt, header=header, comments='')
+        np.savetxt(os.getcwd() + "/outputs/" + file, data, fmt=fmt, header=header, comments='')
 
         fh.close()
 
-        #self.outputzip.write(os.getcwd() + "/outputs/" + file, arcname=file)
-        # These do not work lmao
-        # self.outputzip.write(os.getcwd() + "/tifftodat.py", arcname="tifftodat.ipynb")
-        # self.outputzip.write(os.getcwd() + "/functions.py", arcname="functions.ipynb")
-        # self.outputzip.close()
+        datadict = json.dumps(self.datadict)
+        with open(os.getcwd() + "/outputs/" + "heatmaps.json", "w") as outfile:
+            outfile.write(datadict)
+
+    def datadictjsons(self, points):
+        data = {}
+        data["0"] = {
+            "z": np.log(self.imgarr + 1).tolist(),
+            "x": self.qpar.tolist(),
+            "y": self.qpar.tolist(),
+            "type": "heatmap"
+        }
+
+        temp = self.imgarr.copy()
+        for a in points:
+            pointindex = self.getindex(self.qz, a)
+            maxentry = np.max(temp)
+            temp[pointindex + 4] = maxentry
+            temp[pointindex - 4] = maxentry
+
+        data['1'] = {
+            "z": np.log(temp + 1).tolist(),
+            "x": self.qpar.tolist(),
+            "y": self.qz.tolist(),
+            "type": "heatmap"
+        }
+        # outputjson = json.dumps(outputdict, indent=4)
+
+        # with open(__outputfolder__ + "test.json", 'w') as fh:
+        #     fh.write(outputjson)
+        #
+        # output = plyio.read_json(os.getcwd() + "/" + __outputfolder__ + "test.json")
+        # output.show()
+
+        return data
+
+    # def makehighlightjson(self, point, showresult):
+    #     pointindex = self.getindex(self.qz, point)
+    #     temp = self.imgarr.copy()
+    #     maxentry = np.max(temp)
+    #     temp[pointindex + 4] = maxentry
+    #     temp[pointindex - 4] = maxentry
+    #
+    #     plt.figure()
+    #     plt.imshow(np.log(temp + 1))
+    #     plt.colorbar()
+    #     if True:
+    #         plt.show()
+    #     plt.close()
+    #
+    #     outputdict = {}
+    #     outputdict["z"] = np.log(temp + 1).tolist()
+    #     outputdict["x"] = self.qpar.tolist()
+    #     outputdict["y"] = self.qz.tolist()
+    #     outputdict["type"] = "heatmap"
+    #
+    #     return outputdict
