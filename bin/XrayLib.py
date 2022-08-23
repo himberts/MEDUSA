@@ -1,8 +1,8 @@
 import matplotlib.patches as pch
 import matplotlib.pyplot as plt
 from numpy import char as ch
-import plotly.express as plyx
-import plotly.io as plyio
+# import plotly.express as plyx
+# import plotly.io as plyio
 from PIL import Image
 import zipfile as z
 import numpy as np
