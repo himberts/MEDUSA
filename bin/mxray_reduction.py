@@ -116,7 +116,7 @@ if __name__=='__main__':
     }
     output['Data2DPlotly'] = Graph_dict
     Datatmp = []
-    Datatmp.append(a.datadict["0"])
+    Datatmp.append(a.datadict["1"])
     Graph_dict={}
     Graph_dict["data"] = Datatmp
     Graph_dict["layout"] = {
