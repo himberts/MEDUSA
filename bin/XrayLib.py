@@ -486,10 +486,10 @@ class xray:
 
         return data
 
-def save(self):
-    # FileName = "outputs/ReductionResults.pkl"
-    with open(os.getcwd() + "/outputs/" + "ReductionResults.pkl", "w") as outp:  # Overwrites any existing file.
-        pickle.dump(self, outp, pickle.HIGHEST_PROTOCOL)
+    def save(self):
+        # FileName = "outputs/ReductionResults.pkl"
+        with open(os.getcwd() + "/outputs/" + "ReductionResults.pkl", "w") as outp:  # Overwrites any existing file.
+            pickle.dump(self, outp, pickle.HIGHEST_PROTOCOL)
     # def makehighlightjson(self, point, showresult):
     #     pointindex = self.getindex(self.qz, point)
     #     temp = self.imgarr.copy()
