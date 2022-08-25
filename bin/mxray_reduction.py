@@ -106,7 +106,7 @@ if __name__=='__main__':
     # FID = open(ObjectOutputFileName, 'w')
     # pickle.dump(a, FID)
 
-    a.save()
+    # a.save()
     #
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
