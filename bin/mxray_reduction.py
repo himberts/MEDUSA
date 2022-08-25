@@ -21,6 +21,7 @@ import locale, multiprocessing
 from XrayLib import xray
 from pathlib import Path
 import shutil
+import pickle
 
 if __name__=='__main__':
 
@@ -101,6 +102,9 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
     #
+    FID = open(filename, 'w')
+    ObjectOutputFileName = "%s/outputs/ReductionResults.pkl" % folder
+    pickle.dump(a, FID)
     #
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"

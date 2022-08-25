@@ -70,7 +70,7 @@ if __name__=='__main__':
 
     # s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"])
 
-    p = subprocess.Popen(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputs/outputfile.dat","--Lr","300","--sr","100","-o","TestFit"], stdout=subprocess.PIPE)
+    p = subprocess.Popen(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputs/outputfile.dat","--Lr","300","--sr","100","-o","outputs/FitResults"], stdout=subprocess.PIPE)
 
     ParseXiSquare = 0
     Iteration = []
