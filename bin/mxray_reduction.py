@@ -102,9 +102,13 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
     #
-    ObjectOutputFileName = "%s/outputs/ReductionResults.pkl" % folder
-    FID = open(ObjectOutputFileName, 'w')
-    pickle.dump(a, FID)
+    # ObjectOutputFileName = "%s/outputs/ReductionResults.pkl" % folder
+    # FID = open(ObjectOutputFileName, 'w')
+    # pickle.dump(a, FID)
+
+    FileName = "%s/outputs/ReductionResults.pkl" % folder
+    with open(FileName, 'wb') as outp:  # Overwrites any existing file.
+        pickle.dump(a, outp, pickle.HIGHEST_PROTOCOL)
     #
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
