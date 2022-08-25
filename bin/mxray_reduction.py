@@ -102,8 +102,8 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
     #
-    FID = open(filename, 'w')
     ObjectOutputFileName = "%s/outputs/ReductionResults.pkl" % folder
+    FID = open(ObjectOutputFileName, 'w')
     pickle.dump(a, FID)
     #
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
