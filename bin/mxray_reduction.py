@@ -58,37 +58,8 @@ if __name__=='__main__':
 
     rmfolder = '%s/outputs' % folder
 
-    try:
+    if os.path.exists(rmfolder) and os.path.isdir(rmfolder):
         shutil.rmtree(rmfolder)
-    except OSError as e:
-        print("Error")
-
-    os.remove('outputs.zip')
-    os.remove('TestFit_fitted.fit')
-    os.remove('TestFit_fitted.qr')
-    os.remove('Dataset_sliceplot_03.png')
-    os.remove('Dataset_highlight_035.png')
-    os.remove('testoutput32Bit.png')
-    os.remove('Dataset.png')
-    os.remove('Dataset_optimizedsliceplot_037.png')
-    os.remove('Dataset_optimizedsliceplot_05.png')
-    os.remove('Dataset_highlight_037.png')
-    os.remove('Dataset_sliceplot_035.png')
-    os.remove('#TestFit_fitted.qr#')
-    os.remove('Dataset_highlight_05.png')
-    os.remove('Dataset_sliceplot_037.png')
-    os.remove('#TestFit_fitted2.fit#')
-    os.remove('outputfile.dat')
-    os.remove('#TestFit_fitted.fit#')
-    os.remove('Dataset_sliceplot_05.png')
-    os.remove('testoutput32Bit.tiff')
-    os.remove('Dataset_allhighlights.png')
-    os.remove('Dataset_highlight_03.png')
-    os.remove('Dataset_optimizedsliceplot_035.png')
-    os.remove('Dataset_optimizedsliceplot_03.png')
-    os.remove('testoutput.tiff')
-
-
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
@@ -97,10 +68,6 @@ if __name__=='__main__':
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
-
-
-    if os.path.exists('./outputs') and os.path.isdir('./outputs'):
-        shutil.rmtree('./outputs')
 
     a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
 
@@ -152,6 +119,11 @@ if __name__=='__main__':
 
     # a.save()
     #
+    scr = '%s/%s'%(folder,str(DataFile[0]))
+    dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
+    
+    shutil.copyfile(src, dst)
+
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
 
