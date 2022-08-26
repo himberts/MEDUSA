@@ -56,15 +56,6 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
-    testfile = '%s/*.png' % folder
-    files = glob.glob(testfile)
-
-    for file in files:
-        try:
-            file.unlink()
-        except OSError as e:
-            print("Error: %s : %s" % (f, e.strerror))
-
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
