@@ -1,16 +1,16 @@
+import pickle
+
 import matplotlib.patches as pch
 import matplotlib.pyplot as plt
 from numpy import char as ch
-# import plotly.express as plyx
-# import plotly.io as plyio
+import plotly.io as plyio
 from PIL import Image
-import zipfile as z
+import pickle as pkl
 import numpy as np
 import math as m
 import shutil
 import json
 import os
-import pickle
 
 # !/usr/bin/env python
 """
@@ -22,10 +22,11 @@ __allhighlights__ = "allhighlights"  # Name for the image file that has all of t
 __slicehighlight__ = "highlight"  # Prefix for the image file which will highlight individual areas
 __sliceplot__ = "sliceplot"  # Prefix for the plots which show the average of the whole slice plotted
 __optimizedsliceplot__ = "optimizedsliceplot"  # Prefix for the plots which show the average of the slices, (after they've been halved and overlayed) plotted
+__reflectivityplot__ = "reflectivityplot"  # Name for the plot which shows reflectivity
 
 
 class xray:
-    def __init__(self, filename, px, sampledetectdist, xorigin, yorigin, wavelength, q1):
+    def __init__(self, filename, px, sampledetectdist, wavelength, q1):
         # TODO: Just used for important notes to keep in mind: (X-Chi-Q Parallel) and (Y_Theta-Q Z); 1 px = 0.00122
         """
         __init__ method for xray class. Parameters that are passed through the class are determined by user/machine
@@ -39,8 +40,8 @@ class xray:
         """
         self.px = px
         self.sampledetectdist = sampledetectdist
-        self.xorigin = xorigin
-        self.yorigin = yorigin
+        self.xorigin = 0
+        self.yorigin = 0
         self.name = filename
         self.wavelength = wavelength
         self.q1 = q1
@@ -116,6 +117,8 @@ class xray:
         self.imgjson = {}
         self.outputdict = {}
 
+        self.reflectavg = None
+
         self.tifftoarr()
         self.pop_pxarrs()
         self.pop_metricarrs()
@@ -124,6 +127,14 @@ class xray:
 
     @staticmethod
     def getindex(arr, point):
+        """
+        Static method used for finding the index of the entry provided or closest to it in the case of approximation
+        by looking for smallest absolute difference between all the entries of the array and the point
+
+        :param arr: Array to be searched
+        :param point: Point to be searched for
+        :return: index: Index of point or closest point in array
+        """
         index = int(np.where(np.abs(arr - point) == np.min(np.abs(arr - point)))[0])
         return index
 
@@ -141,6 +152,11 @@ class xray:
 
     @staticmethod
     def zipoutputs():
+        """
+        Zips the outputs folder to facilitate downloading of output files for the user
+        :return: None
+        """
+
         shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
 
     def tifftoarr(self):
@@ -154,7 +170,15 @@ class xray:
         self.imgarr = np.array(self.img)
         self.xdim = self.imgarr.shape[1]
         self.ydim = self.imgarr.shape[0]
-        self.img.close()
+
+        # Calculates the x coordinate of the origin
+        index0 = self.imgarr.argmax()
+        index0 = index0 % self.xdim
+        self.xorigin = self.xdim - index0
+
+        # Calculates the y coordinate of the origin
+        index1 = self.imgarr[:, index0].argmax() + 1
+        self.yorigin = self.ydim - index1
 
     def plottiff(self, show):
         """
@@ -164,7 +188,7 @@ class xray:
         """
         e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
         plt.figure(1)
-        plt.title(self.name[:-5])
+        plt.title("Data Set")
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
         plt.imshow(np.log(self.imgarr + 1), extent=e)
@@ -268,7 +292,6 @@ class xray:
             if showcrop:
                 plt.show()
 
-        self.datadict = self.datadictjsons(points)
         plt.close("2")
 
     def calcmeanandplot(self, show, showopt):
@@ -394,7 +417,8 @@ class xray:
 
     def qparoptimize(self, arr):
         """
-        Optimizes the data by splitting it in the middle at qpar = 0 then treating the two sides as different sets of data and averages the two
+        Optimizes the data by splitting it in the middle at qpar = 0, cropping the edges of pictures as needed to make equivalently sized pieces
+        and treating the two sides as different sets of data to eventually average the two and get
 
         :param arr: Array to be optimized (split, averaged, and possibly plotted)
         :return: None
@@ -415,6 +439,11 @@ class xray:
         return avgdata
 
     def export(self):
+        """
+        Creates the .dat file that will be run through the subprocess started by the website, and stores it in the outputs folder for later zipping.\\\n
+
+        :return: None
+        """
         file = "outputfile.dat"
         fh = open(os.getcwd() + "/outputs/" + file, "w")
 
@@ -455,60 +484,81 @@ class xray:
         with open(os.getcwd() + "/outputs/" + "heatmaps.json", "w") as outfile:
             outfile.write(datadict)
 
-    def datadictjsons(self, points):
-        data = {}
-        data["0"] = {
+    def datadictjsons(self):
+        """
+        Creates dictionary entries used for json files. \\\n
+        First entry, key: "0" has the regular unmodified image\\\n
+        Second entry, key: "1" has the image with the the areas of interest highlighted\\\n
+        Third entry, key: "2" has the reflectivity graph used for identifying Q1\\\n
+
+        :return: None
+        """
+        self.data = {}
+        self.data["0"] = {
             "z": np.log(self.imgarr + 1).tolist(),
             "x": self.qpar.tolist(),
             "y": self.qz.tolist(),
-            "type": "heatmap"
+            "type": "heatmap",
         }
 
         temp = self.imgarr.copy()
-        for a in points:
+        for a in self.points:
             pointindex = self.getindex(self.qz, a)
             maxentry = np.max(temp)
             temp[pointindex + 4] = maxentry
             temp[pointindex - 4] = maxentry
 
-        data['1'] = {
+        self.data["1"] = {
             "z": np.log(temp + 1).tolist(),
             "x": self.qpar.tolist(),
             "y": self.qz.tolist(),
-            "type": "heatmap"
+            "type": "heatmap",
         }
-        # outputjson = json.dumps(outputdict, indent=4)
 
+        self.data["2"] = {
+            "x": np.log(self.reflectavg),
+            "y": self.qz,
+            "type": "scatter"
+        }
+
+        # outputjson = json.dumps(data["0"], indent=4)
+        #
         # with open(__outputfolder__ + "test.json", 'w') as fh:
         #     fh.write(outputjson)
         #
-        # output = plyio.read_json(os.getcwd() + "/" + __outputfolder__ + "test.json")
+        # output = plyio.read_json(os.getcwd() + "/outputs/test.json")
         # output.show()
 
-        return data
+        # return data
 
-    def save(self):
-        # FileName = "outputs/ReductionResults.pkl"
-        with open(os.getcwd() + "/outputs/" + "ReductionResults.pkl", "w") as outp:  # Overwrites any existing file.
-            pickle.dump(self, outp, pickle.HIGHEST_PROTOCOL)
-    # def makehighlightjson(self, point, showresult):
-    #     pointindex = self.getindex(self.qz, point)
-    #     temp = self.imgarr.copy()
-    #     maxentry = np.max(temp)
-    #     temp[pointindex + 4] = maxentry
-    #     temp[pointindex - 4] = maxentry
-    #
-    #     plt.figure()
-    #     plt.imshow(np.log(temp + 1))
-    #     plt.colorbar()
-    #     if True:
-    #         plt.show()
-    #     plt.close()
-    #
-    #     outputdict = {}
-    #     outputdict["z"] = np.log(temp + 1).tolist()
-    #     outputdict["x"] = self.qpar.tolist()
-    #     outputdict["y"] = self.qz.tolist()
-    #     outputdict["type"] = "heatmap"
-    #
-    #     return outputdict
+    def plotreflectivity(self, showreflect):
+        """
+        Plots the reflectivity by taking a slice of the image around the origin of the picture in a -/+6 px range and puts it in an array
+
+        :param showreflect: Used for tracing, if true, shows the end result in SciView, otherwise does nothing
+        :return: None
+        """
+        reflection = self.imgarr[:, (self.xdim-self.xorigin-6):(self.xdim-self.xorigin+6)]
+        e = [self.qpar[self.xdim-self.xorigin-6], self.qpar[self.xdim-self.xorigin+6], self.qz[-1], self.qz[0]]
+        plt.figure()
+        plt.imshow(np.log(reflection + 1), extent=e)
+        plt.title("Beam Reflectivity Slice")
+        plt.xticks([])
+        if showreflect:
+            plt.show()
+        plt.close()
+
+        plt.figure()
+        self.reflectavg = np.average(reflection, axis=1)
+        plt.plot(self.qz, np.log(self.reflectavg))
+        plt.title("Reflectivity")
+        plt.xlabel("Q_Z")
+        plt.ylabel("log(I)")
+        plt.savefig(os.getcwd() + "/outputs/" + __reflectivityplot__ + ".png")
+        plt.show()
+        plt.close()
+
+    def pickleme(self):
+        with open(os.getcwd() + "/outputs/xrayobj.pkl", "wb") as fh:
+            pickle.dump(self, fh)
+        self.img.close()
