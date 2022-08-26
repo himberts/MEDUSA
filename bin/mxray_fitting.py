@@ -191,7 +191,7 @@ if __name__=='__main__':
     }
 
     src = '/opt/genapp/mxray/add/AnalysisTools.ipynb'
-    dst = '%s/outputs/' % (folder)
+    dst = '%s/outputs/AnalysisTools.ipynb' % (folder)
 
     shutil.copyfile(src, dst)
 
