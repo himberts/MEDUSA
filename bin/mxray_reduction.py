@@ -55,6 +55,8 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
+    os.remove('*.zip')
+    os.remove('*.png')
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
