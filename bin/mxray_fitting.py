@@ -121,7 +121,7 @@ if __name__=='__main__':
         # print line
 
 
-    file1 = open('TestFit_fitted.fit', 'r')
+    file1 = open('outputs/TestFit_fitted.fit', 'r')
     Lines = file1.readlines()
 
     tmp = Lines[10].strip()
@@ -141,8 +141,8 @@ if __name__=='__main__':
     dKc = float(splittext[1])
     # print(dKc)
     file1.close()
-    DataFit1 = np.genfromtxt('TestFit_fitted.fit', delimiter='\t', skip_header=31)
-    DataFit2 = np.genfromtxt('TestFit_fitted2.fit', delimiter='\t', skip_header=31)
+    DataFit1 = np.genfromtxt('outputs/TestFit_fitted.fit', delimiter='\t', skip_header=31)
+    DataFit2 = np.genfromtxt('outputs/TestFit_fitted2.fit', delimiter='\t', skip_header=31)
     Data_dict={}
     Data_dict['x'] = DataFit1[:,0].tolist()
     Data_dict['y'] = DataFit1[:,1].tolist()
