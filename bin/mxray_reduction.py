@@ -105,9 +105,8 @@ if __name__=='__main__':
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
-
+    a.datadictjsons()
     a.export()
-
     socket_dict['_textarea'] = "Data exported ...\n"
     socket_dict['progressbar'] = 1
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
@@ -117,7 +116,6 @@ if __name__=='__main__':
     # ObjectOutputFileName = "%s/outputs/ReductionResults.pkl" % folder
     # FID = open(ObjectOutputFileName, 'w')
     # pickle.dump(a, FID)
-
     a.pickleme()
     #
     src = '%s/%s'%(folder,str(DataFile[0]))
