@@ -555,7 +555,7 @@ class xray:
         plt.xlabel("Q_Z")
         plt.ylabel("log(I)")
         plt.savefig(os.getcwd() + "/outputs/" + __reflectivityplot__ + ".png")
-        plt.show()
+        # plt.show()
         plt.close()
 
     def pickleme(self):

@@ -99,7 +99,7 @@ if __name__=='__main__':
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
     a.calcmeanandplot(show=0, showopt=0)
-
+    a.plotreflectivity(showreflect=0)
     socket_dict['_textarea'] = "Cuts averaged ...\n"
     socket_dict['progressbar'] = 0.8
     # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
