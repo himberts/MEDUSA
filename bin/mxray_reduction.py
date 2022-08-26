@@ -55,6 +55,16 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
+    content = ''
+    for file in os.listdir(folder):
+        content = "%s \n %s" % (content,file)
+
+    socket_dict['_textarea'] = content
+    # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
+    doc_string = json.dumps(socket_dict)
+    sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+
+
     if os.path.exists('./outputs') and os.path.isdir('./outputs'):
         shutil.rmtree('./outputs')
 
