@@ -3,7 +3,7 @@ import pickle
 import matplotlib.patches as pch
 import matplotlib.pyplot as plt
 from numpy import char as ch
-import plotly.io as plyio
+# import plotly.io as plyio
 from PIL import Image
 import pickle as pkl
 import numpy as np
