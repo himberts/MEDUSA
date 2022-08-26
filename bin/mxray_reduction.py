@@ -127,7 +127,7 @@ if __name__=='__main__':
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
 
     Datatmp = []
-    Datatmp.append(a.datadict["0"])
+    Datatmp.append(a.data["0"])
     Graph_dict={}
     Graph_dict["data"] = Datatmp
     Graph_dict["layout"] = {
@@ -135,7 +135,7 @@ if __name__=='__main__':
     }
     output['Data2DPlotly'] = Graph_dict
     Datatmp = []
-    Datatmp.append(a.datadict["1"])
+    Datatmp.append(a.data["1"])
     Graph_dict={}
     Graph_dict["data"] = Datatmp
     Graph_dict["layout"] = {
