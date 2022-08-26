@@ -22,6 +22,7 @@ from XrayLib import xray
 from pathlib import Path
 import shutil
 import pickle
+import glob
 
 if __name__=='__main__':
 
@@ -55,8 +56,14 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
-    os.remove('*.zip')
-    os.remove('*.png')
+    testfile = '%s/*.png' % folder
+    files = glob.glob(testfile)
+
+    for f in files:
+        try:
+            f.unlink()
+
+
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
