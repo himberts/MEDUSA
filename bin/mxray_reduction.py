@@ -69,7 +69,8 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
-    a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
+    # a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
+    a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945')
 
     socket_dict['_textarea'] = "Data Loaded ...\n"
     socket_dict['progressbar'] = 0.2
@@ -117,7 +118,7 @@ if __name__=='__main__':
     # FID = open(ObjectOutputFileName, 'w')
     # pickle.dump(a, FID)
 
-    # a.save()
+    a.pickleme()
     #
     src = '%s/%s'%(folder,str(DataFile[0]))
     dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
