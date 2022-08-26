@@ -119,9 +119,9 @@ if __name__=='__main__':
 
     # a.save()
     #
-    scr = '%s/%s'%(folder,str(DataFile[0]))
+    src = '%s/%s'%(folder,str(DataFile[0]))
     dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
-    
+
     shutil.copyfile(src, dst)
 
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
