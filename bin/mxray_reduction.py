@@ -63,6 +63,37 @@ if __name__=='__main__':
     except OSError as e:
         print("Error")
 
+    os.remove('outputs.zip')
+    os.remove('TestFit_fitted.fit')
+    os.remove('TestFit_fitted.qr')
+    os.remove('Dataset_sliceplot_03.png')
+    os.remove('Dataset_highlight_035.png')
+    os.remove('testoutput32Bit.png')
+    os.remove('Dataset.png')
+    os.remove('Dataset_optimizedsliceplot_037.png')
+    os.remove('Dataset_optimizedsliceplot_05.png')
+    os.remove('Dataset_highlight_037.png')
+    os.remove('Dataset_sliceplot_035.png')
+    os.remove('#TestFit_fitted.qr#')
+    os.remove('Dataset_highlight_05.png')
+    os.remove('Dataset_sliceplot_037.png')
+    os.remove('#TestFit_fitted2.fit#')
+    os.remove('outputfile.dat')
+    os.remove('#TestFit_fitted.fit#')
+    os.remove('Dataset_sliceplot_05.png')
+    os.remove('testoutput32Bit.tiff')
+    os.remove('Dataset_allhighlights.png')
+    os.remove('Dataset_highlight_03.png')
+    os.remove('Dataset_optimizedsliceplot_035.png')
+    os.remove('Dataset_optimizedsliceplot_03.png')
+    os.remove('testoutput.tiff')
+
+
+
+
+
+
+
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
