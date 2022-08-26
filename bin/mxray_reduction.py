@@ -62,6 +62,8 @@ if __name__=='__main__':
     for file in files:
         try:
             file.unlink()
+        except OSError as e:
+            print("Error: %s : %s" % (f, e.strerror))
 
     content = ''
     for file in os.listdir(folder):
