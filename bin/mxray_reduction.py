@@ -62,7 +62,7 @@ if __name__=='__main__':
     for f in files:
         try:
             f.unlink()
-            
+
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
