@@ -89,11 +89,6 @@ if __name__=='__main__':
     os.remove('testoutput.tiff')
 
 
-
-
-
-
-
     content = ''
     for file in os.listdir(folder):
         content = "%s \n %s" % (content,file)
