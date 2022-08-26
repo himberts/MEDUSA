@@ -190,6 +190,10 @@ if __name__=='__main__':
             "title" : "Fit Results"
     }
 
+    src = '/opt/genapp/mxray/add/AnalysisTools.ipynb'
+    dst = '%s/outpus/' % (folder)
+
+    shutil.copyfile(src, dst)
 
     output['fitresults'] = Graph_dict
     shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
