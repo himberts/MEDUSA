@@ -2,8 +2,8 @@
 import matplotlib.patches as pch
 import matplotlib.pyplot as plt
 from numpy import char as ch
-import plotly.express as px
-import plotly.io as pio
+# import plotly.express as px
+# import plotly.io as pio
 from PIL import Image
 import numpy as np
 import math as m
