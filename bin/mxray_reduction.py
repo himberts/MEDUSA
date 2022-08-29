@@ -118,14 +118,14 @@ if __name__=='__main__':
     # pickle.dump(a, FID)
     a.pickleme()
     #
-    src = '%s/%s'%(folder,str(DataFile[0]))
-    dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
-
-    shutil.copyfile(src, dst)
+    # src = '%s/%s'%(folder,str(DataFile[0]))
+    # dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
+    #
+    # shutil.copyfile(src, dst)
 
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
-    # 
+    #
     # Datatmp = []
     # Datatmp.append(a.data["0"])
     # Graph_dict={}

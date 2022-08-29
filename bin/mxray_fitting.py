@@ -190,6 +190,11 @@ if __name__=='__main__':
             "title" : "Fit Results"
     }
 
+    src = '/opt/genapp/mxray/add/XrayLib.py'
+    dst = '%s/outputs/XrayLib.py' % (folder)
+
+    shutil.copyfile(src, dst)
+
     src = '/opt/genapp/mxray/add/AnalysisTools.ipynb'
     dst = '%s/outputs/AnalysisTools.ipynb' % (folder)
 
