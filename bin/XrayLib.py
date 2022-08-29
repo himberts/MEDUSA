@@ -633,11 +633,11 @@ class xray:
             self.datadict["data"].append(top)
             self.datadict["data"].append(bottom)
 
-        subplotjson = json.dumps(self.datadict, indent=4)
-        with open(os.getcwd() + "/outputs/subplots.json", 'w') as fh:
-            fh.write(str(subplotjson))
-        output = pio.read_json(os.getcwd() + "/outputs/subplots.json")
-        output.show()
+        # subplotjson = json.dumps(self.datadict, indent=4)
+        # with open(os.getcwd() + "/outputs/subplots.json", 'w') as fh:
+        #     fh.write(str(subplotjson))
+        # output = pio.read_json(os.getcwd() + "/outputs/subplots.json")
+        # output.show()
 
         # self.datadict["0"] = {
         #     "z": np.log(self.imgarr + 1).tolist(),
