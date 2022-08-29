@@ -1,14 +1,14 @@
+import pickle
 
 import matplotlib.patches as pch
 import matplotlib.pyplot as plt
 from numpy import char as ch
-import plotly.express as px
-import plotly.io as pio
+# import plotly.io as plyio
 from PIL import Image
+import pickle as pkl
 import numpy as np
 import math as m
 import shutil
-import pickle
 import json
 import os
 
@@ -408,13 +408,11 @@ class xray:
         fid = open(filename, 'rb')
 
         fid.seek(self.headerbytes, 0)
-        # self.data = np.fromfile(fid, np.int32).reshape((self.sizex, self.sizey))
-        # print(self.data)
-        self.datadict = np.fromfile(fid, np.int32).reshape((self.sizex, self.sizey))
-        print(self.datadict)
+        self.data = np.fromfile(fid, np.int32).reshape((self.sizex, self.sizey))
+        print(self.data)
         fid.close()
 
-        plt.imshow(np.log(self.datadict))
+        plt.imshow(np.log(self.data))
         plt.show()
 
     def qparoptimize(self, arr):
@@ -422,8 +420,8 @@ class xray:
         Optimizes the data by splitting it in the middle at qpar = 0, cropping the edges of pictures as needed to make equivalently sized pieces
         and treating the two sides as different sets of data to eventually average the two and get
 
-        :param arr: Array to be optimized (split and averaged)
-        :return: avgdata: a Numpy array that holds the new averaged data
+        :param arr: Array to be optimized (split, averaged, and possibly plotted)
+        :return: None
         """
         self.index0 = self.getindex(self.qpar, 0)
         negativedata = np.flip(arr[:self.index0])
@@ -495,176 +493,43 @@ class xray:
 
         :return: None
         """
-
-        #Following goes as so: Blue, Turquoise, Light Purple, Peach, Light Blue, Pink, Light Yellow-Green, Purple-Pink, Sand
-        color = ["#636efa", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"]
-        self.datadict = {
-            "data": [
-                {   # This entry is for the image data plot
-                    "x": self.qpar.tolist(),
-                    "y": self.qz.tolist(),
-                    "z": np.log(self.imgarr+1).tolist(),
-                    "type": "heatmap",
-                    "xaxis": "x",
-                    "yaxis": "y",
-                    "colorbar": {
-                        "x": 0.45,
-                        "y": 0.78,
-                        "len": 0.5,
-                        "nticks": 5,
-                        "thickness": 10},
-                    "name": "Data Set",
-                    "hoverinfo": ["x", "y", "z"]
-                },
-                {  # This entry is for the reflectivity plot
-                    "x": np.log(self.reflectavg).tolist(),
-                    "y": self.qz.tolist(),
-                    "type": "scatter",
-                    "xaxis": "x2",
-                    "yaxis": "y2",
-                    "mode": "lines",
-                    "showlegend": False,
-                },
-                {
-                    "x": np.full(self.ydim, self.qpar[abs(self.xorigin-self.xdim)+6]).tolist(),
-                    "y": self.qz.tolist(),
-                    "type": "scatter",
-                    "xaxis": "x",
-                    "yaxis": "y",
-                    "mode": "lines",
-                    "showlegend": False,
-                    "marker": {
-                        "color": "#EF553B"
-                    },
-                    "hoverinfo": "skip"
-                },
-                {
-                    "x": np.full(self.ydim, self.qpar[abs(self.xdim-self.xorigin)-6]).tolist(),
-                    "y": self.qz.tolist(),
-                    "type": "scatter",
-                    "xaxis": "x",
-                    "yaxis": "y",
-                    "mode": "lines",
-                    "showlegend": False,
-                    "marker": {
-                        "color": "#EF553B"
-                    },
-                    "hoverinfo": "skip"
-                }
-                ],
-            "layout": {
-                "xaxis": {
-                    "anchor": "y",
-                    "domain": [0.0, 0.45],
-                    "title": "Q ||"
-                },
-                "yaxis": {
-                    "anchor": "x",
-                    "domain": [0.575, 1.0],
-                    "title": "Q z",
-                },
-                "xaxis2": {
-                    "anchor": "y2",
-                    "domain": [0.55, 1.0],
-                    "title": "log(Intensity)"
-                },
-                "yaxis2": {
-                    "anchor": "x2",
-                    "domain": [0.575, 1.0],
-                    "side": "right",
-                    "title": "Q z",
-                },
-                "xaxis3": {
-                    "anchor": "y3",
-                    "domain": [0.0, 0.45],
-                    "title": "Q_|| cut plots"},
-                "yaxis3": {
-                    "anchor": "x3",
-                    "domain": [0.0, 0.425],
-                    "title": "Intensity",
-                }
-            }
+        self.data = {}
+        self.data["0"] = {
+            "z": np.log(self.imgarr + 1).tolist(),
+            "x": self.qpar.tolist(),
+            "y": self.qz.tolist(),
+            "type": "heatmap",
         }
 
-        # This for loop is responsible for appending to the above dictionary, all the entries which show the slices as line plots on one plot
-        for a in range(len(self.meandata)):
-            temp = {
-                    "x": self.qpar.tolist(),
-                    "y": self.meandata[a].tolist(),
-                    "type": "scatter",
-                    "xaxis": "x3",
-                    "yaxis": "y3",
-                    "mode": "lines",
-                    "showlegend": False,
-                    "marker": {
-                        "color": color[a]
-                    }
-            }
-            self.datadict["data"].append(temp)
+        temp = self.imgarr.copy()
+        for a in self.points:
+            pointindex = self.getindex(self.qz, a)
+            maxentry = np.max(temp)
+            temp[pointindex + 4] = maxentry
+            temp[pointindex - 4] = maxentry
 
-        for a in range(len(self.points)):
-            top = {
-                "x": self.qpar.tolist(),
-                "y": np.full(self.xdim, self.points[a]+0.00488).tolist(),
-                "type": "scatter",
-                "xaxis": "x",
-                "yaxis": "y",
-                "mode": "lines",
-                "showlegend": False,
-                "marker": {
-                    "color": color[a]
-                },
-                "hoverinfo": "skip"
-            }
-            bottom = {
-                "x": self.qpar.tolist(),
-                "y": np.full(self.xdim, self.points[a]-0.00488).tolist(),
-                "type": "scatter",
-                "xaxis": "x",
-                "yaxis": "y",
-                "mode": "lines",
-                "showlegend": False,
-                "marker": {
-                    "color": color[a]
-                },
-                "hoverinfo": "skip"
-            }
+        self.data["1"] = {
+            "z": np.log(temp + 1).tolist(),
+            "x": self.qpar.tolist(),
+            "y": self.qz.tolist(),
+            "type": "heatmap",
+        }
 
-            self.datadict["data"].append(top)
-            self.datadict["data"].append(bottom)
+        self.data["2"] = {
+            "x": np.log(self.reflectavg),
+            "y": self.qz,
+            "type": "scatter"
+        }
 
-        subplotjson = json.dumps(self.datadict, indent=4)
-        with open(os.getcwd() + "/outputs/subplots.json", 'w') as fh:
-            fh.write(str(subplotjson))
-        output = pio.read_json(os.getcwd() + "/outputs/subplots.json")
-        output.show()
-
-        # self.datadict["0"] = {
-        #     "z": np.log(self.imgarr + 1).tolist(),
-        #     "x": self.qpar.tolist(),
-        #     "y": self.qz.tolist(),
-        #     "type": "heatmap",
-        # }
+        # outputjson = json.dumps(data["0"], indent=4)
         #
-        # temp = self.imgarr.copy()
-        # for a in self.points:
-        #     pointindex = self.getindex(self.qz, a)
-        #     maxentry = np.max(temp)
-        #     temp[pointindex + 4] = maxentry
-        #     temp[pointindex - 4] = maxentry
+        # with open(__outputfolder__ + "test.json", 'w') as fh:
+        #     fh.write(outputjson)
         #
-        # self.datadict["1"] = {
-        #     "z": np.log(temp + 1).tolist(),
-        #     "x": self.qpar.tolist(),
-        #     "y": self.qz.tolist(),
-        #     "type": "heatmap",
-        # }
-        #
-        # self.datadict["2"] = {
-        #     "x": np.log(self.reflectavg).tolist(),
-        #     "y": self.qz.tolist(),
-        #     "type": "scatter"
-        # }
+        # output = plyio.read_json(os.getcwd() + "/outputs/test.json")
+        # output.show()
+
+        # return data
 
     def plotreflectivity(self, showreflect):
         """
@@ -690,8 +555,7 @@ class xray:
         plt.xlabel("Q_Z")
         plt.ylabel("log(I)")
         plt.savefig(os.getcwd() + "/outputs/" + __reflectivityplot__ + ".png")
-        if showreflect:
-            plt.show()
+        # plt.show()
         plt.close()
 
     def pickleme(self):

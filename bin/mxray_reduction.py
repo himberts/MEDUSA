@@ -125,21 +125,21 @@ if __name__=='__main__':
 
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
-
-    Datatmp = []
-    Datatmp.append(a.data["0"])
-    Graph_dict={}
-    Graph_dict["data"] = Datatmp
-    Graph_dict["layout"] = {
-            "title" : "2D Data"
-    }
-    output['Data2DPlotly'] = Graph_dict
-    Datatmp = []
-    Datatmp.append(a.data["1"])
-    Graph_dict={}
-    Graph_dict["data"] = Datatmp
-    Graph_dict["layout"] = {
-            "title" : "Reduced Areas"
-    }
-    output['Data2DMarked'] = Graph_dict
+    # 
+    # Datatmp = []
+    # Datatmp.append(a.data["0"])
+    # Graph_dict={}
+    # Graph_dict["data"] = Datatmp
+    # Graph_dict["layout"] = {
+    #         "title" : "2D Data"
+    # }
+    output['Data2DPlotly'] = a.datadict
+    # Datatmp = []
+    # Datatmp.append(a.data["1"])
+    # Graph_dict={}
+    # Graph_dict["data"] = Datatmp
+    # Graph_dict["layout"] = {
+    #         "title" : "Reduced Areas"
+    # }
+    # output['Data2DMarked'] = Graph_dict
     print( json.dumps(output) ) # convert dictionary to json and output
