@@ -58,6 +58,14 @@ class GenappCom:
         self.socket_dict['_textarea'] = content
         doc_string = json.dumps(self.socket_dict)
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
+    def postSubmittedKeys(self,JsonDict):
+        content = ''
+        for file in list(JsonDict.keys()):
+            content = "%s \n %s" % (content,file)
+
+        self.socket_dict['_textarea'] = content
+        doc_string = json.dumps(self.socket_dict)
+        self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
 
 
 if __name__=='__main__':
@@ -82,14 +90,15 @@ if __name__=='__main__':
     else:
         DistChi=0
 
-    StatusDistTheta = json_variables['distqz']
-    if StatusDistTheta=="on":
-        DistTheta=1
-    else:
-        DistTheta=0
+    # StatusDistTheta = json_variables['distqz']
+    # if StatusDistTheta=="on":
+    #     DistTheta=1
+    # else:
+    #     DistTheta=0
 
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()
+    GenappPost.postSubmittedKeys(json_variables)
     GenappPost.postupdate("Process started ... \n",0)
 
     rmfolder = '%s/outputs' % folder
