@@ -75,9 +75,18 @@ if __name__=='__main__':
     WaveLength = float(json_variables['lambda'])
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
-    DistChi = int(json_variables['distqpar'])
-    DistTheta = int(json_variables['distqz'])
+    StatusDistChi = json_variables['distqpar']
+    StatusDistTheta = json_variables['distqz']
 
+    if StatusDistChi=="on":
+        DistChi=1
+    else:
+        DistChi=0
+
+    if StatusDistTheta=="on":
+        DistTheta=1
+    else:
+        DistTheta=0
 
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()

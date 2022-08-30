@@ -124,6 +124,7 @@
             ,"id"         : "distqpar"
             ,"label"      : "Distortion in qpar"
             ,"type"       : "checkbox"
+            ,"default"    : "on"
             ,"help"       : "Distortion in q parrallel"
         }
         ,{
