@@ -38,8 +38,8 @@ class xray:
         """
         self.px = px
         self.sampledetectdist = sampledetectdist
-        self.xorigin = ceil(xorigin)
-        self.yorigin = ceil(yorigin)
+        self.xorigin = m.ceil(xorigin)
+        self.yorigin = m.ceil(yorigin)
         self.name = filename
         self.wavelength = wavelength
         self.q1 = q1
