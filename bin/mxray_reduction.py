@@ -84,7 +84,7 @@ if __name__=='__main__':
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
-    if if 'distqpar' in json_variables:
+    if 'distqpar' in json_variables:
         DistChi=1
     else:
         DistChi=0
