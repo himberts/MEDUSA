@@ -168,7 +168,20 @@ if __name__=='__main__':
     #
     # shutil.copyfile(src, dst)
 
-    output["reddat"] = "%s/outputs/outputfile.dat" % folder
+    src = '/opt/genapp/mxray/add/XrayLib.py'
+    dst = '%s/outputs/XrayLib.py' % (folder)
+
+    shutil.copyfile(src, dst)
+
+    src = '/opt/genapp/mxray/add/AnalysisTools.ipynb'
+    dst = '%s/outputs/AnalysisTools.ipynb' % (folder)
+
+    shutil.copyfile(src, dst)
+
+    output['fitresults'] = Graph_dict
+    shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
+
+    output["reddat"] = "%s/outputs.zip" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['progressbar'] =  1
     #
@@ -181,7 +194,7 @@ if __name__=='__main__':
     # }
     output['Data2DPlotly'] = a.datadict
     GenappPost = GenappCom()
-    GenappPost.postupdate("Sending Data ...\n",0.7)
+    GenappPost.postupdate("Sending Data ...\n",0.8)
     # Datatmp = []
     # Datatmp.append(a.data["1"])
     # Graph_dict={}
