@@ -75,8 +75,8 @@ if __name__=='__main__':
     WaveLength = float(json_variables['lambda'])
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
-    DistTheta = int(json_variables['distqz'])
     DistChi = int(json_variables['distqpar'])
+    DistTheta = int(json_variables['distqz'])
 
 
     output = {} # create an empty python dictionary
