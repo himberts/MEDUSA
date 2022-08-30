@@ -128,8 +128,6 @@ if __name__=='__main__':
     dst = '%s/outputs/AnalysisTools.ipynb' % (folder)
 
     shutil.copyfile(src, dst)
-
-    output['fitresults'] = Graph_dict
     shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
 
     output["reddat"] = "%s/outputs.zip" % folder
