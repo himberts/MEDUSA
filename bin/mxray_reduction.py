@@ -75,14 +75,14 @@ if __name__=='__main__':
     WaveLength = float(json_variables['lambda'])
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
-    StatusDistChi = json_variables['distqpar']
-    StatusDistTheta = json_variables['distqz']
 
+    StatusDistChi = json_variables['distqpar']
     if StatusDistChi=="on":
         DistChi=1
     else:
         DistChi=0
 
+    StatusDistTheta = json_variables['distqz']
     if StatusDistTheta=="on":
         DistTheta=1
     else:

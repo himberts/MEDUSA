@@ -132,6 +132,7 @@
             ,"id"         : "distqz"
             ,"label"      : "Distortion in qz"
             ,"type"       : "checkbox"
+            ,"default"    : "on"
             ,"help"       : "Distortion in q z"
         }
         ,{
