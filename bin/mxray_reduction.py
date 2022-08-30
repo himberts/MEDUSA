@@ -85,7 +85,7 @@ if __name__=='__main__':
     if os.path.exists(rmfolder) and os.path.isdir(rmfolder):
         shutil.rmtree(rmfolder)
 
-    a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945')
+    a = xray(filename=str(DataFile[0]), px=0.1, xorigin=XOrigin, yorigin=YOrigin, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945',distTheta=0,distChi=1)
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 

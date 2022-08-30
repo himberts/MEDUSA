@@ -24,7 +24,7 @@ __reflectivityplot__ = "reflectivityplot"  # Name for the plot which shows refle
 
 
 class xray:
-    def __init__(self, filename, px, sampledetectdist, wavelength, q1):
+    def __init__(self, filename, px, xorigin, yorigin, sampledetectdist, wavelength, q1,distTheta,distChi):
         # TODO: Just used for important notes to keep in mind: (X-Chi-Q Parallel) and (Y_Theta-Q Z); 1 px = 0.00122
         """
         __init__ method for xray class. Parameters that are passed through the class are determined by user/machine
@@ -38,8 +38,8 @@ class xray:
         """
         self.px = px
         self.sampledetectdist = sampledetectdist
-        self.xorigin = 0
-        self.yorigin = 0
+        self.xorigin = xorigin
+        self.yorigin = yorigin
         self.name = filename
         self.wavelength = wavelength
         self.q1 = q1
@@ -120,7 +120,7 @@ class xray:
         self.tifftoarr()
         self.pop_pxarrs()
         self.pop_metricarrs()
-        self.pop_anglearrs()
+        self.pop_anglearrs(distTheta,distChi)
         self.pop_qspacearrs()
 
     @staticmethod
@@ -169,14 +169,14 @@ class xray:
         self.xdim = self.imgarr.shape[1]
         self.ydim = self.imgarr.shape[0]
 
-        # Calculates the x coordinate of the origin
-        index0 = self.imgarr.argmax()
-        index0 = index0 % self.xdim
-        self.xorigin = self.xdim - index0
-
-        # Calculates the y coordinate of the origin
-        index1 = self.imgarr[:, index0].argmax() + 1
-        self.yorigin = self.ydim - index1
+        # # Calculates the x coordinate of the origin
+        # index0 = self.imgarr.argmax()
+        # index0 = index0 % self.xdim
+        # self.xorigin = self.xdim - index0
+        #
+        # # Calculates the y coordinate of the origin
+        # index1 = self.imgarr[:, index0].argmax() + 1
+        # self.yorigin = self.ydim - index1
 
     def plottiff(self, show):
         """
@@ -221,15 +221,23 @@ class xray:
         self.yarr = (self.ypxarr - self.yorigin) * self.px
         self.xarr = (self.xpxarr - (self.xdim - self.xorigin)) * self.px
 
-    def pop_anglearrs(self):
+    def pop_anglearrs(self,distTheta,distChi):
         """
         Populates the angular space arrays, thetarr and chiarr, with measurements in degrees
 
         :return: None
         """
         rad2deg = 360 / (2 * m.pi)
-        self.thetaarr = (self.yarr / self.sampledetectdist) * rad2deg
-        self.chiarr = np.arctan(self.xarr / self.sampledetectdist) * rad2deg
+
+        if distTheta:
+            self.thetaarr = np.arctan(self.yarr / self.sampledetectdist) * rad2deg
+        else:
+            self.thetaarr = (self.yarr / self.sampledetectdist) * rad2deg
+
+        if distChi:
+            self.chiarr = np.arctan(self.xarr / self.sampledetectdist) * rad2deg
+        else:
+            self.chiarr = (self.xarr / self.sampledetectdist) * rad2deg
 
     def pop_qspacearrs(self):
         """
