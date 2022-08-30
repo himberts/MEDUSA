@@ -49,7 +49,7 @@
       ,{
             "role"       : "input"
             ,"id"         : "q"
-            ,"label"      : "d-spacing in q (A^(-1))"
+            ,"label"      : "d-spacing in q (&#8491^<sup>-1</sup>)"
             ,"type"       : "float"
             ,"step"       : 0.01
             ,"default"    : 0.1
@@ -80,13 +80,13 @@
         ,{
             "role"       : "output"
             ,"id"         : "kc"
-            ,"label"      : "<hr> Bending Modulus <hr>"
+            ,"label"      : "<hr> Bending Modulus (kBT) <hr>"
             ,"type"       : "text"
         }
         ,{
             "role"       : "output"
             ,"id"         : "B"
-            ,"label"      : "<hr> Interaction Modulus <hr>"
+            ,"label"      : "<hr> Interaction Modulus (kBT) <hr>"
             ,"type"       : "text"
         }
         ,{
