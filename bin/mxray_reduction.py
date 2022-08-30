@@ -84,17 +84,15 @@ if __name__=='__main__':
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
-    StatusDistChi = json_variables['distqpar']
-    if StatusDistChi=="on":
+    if if 'distqpar' in json_variables:
         DistChi=1
     else:
         DistChi=0
 
-    # StatusDistTheta = json_variables['distqz']
-    # if StatusDistTheta=="on":
-    #     DistTheta=1
-    # else:
-    #     DistTheta=0
+    if 'distqz' in json_variables:
+        DistTheta=1
+    else:
+        DistTheta=0
 
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()
