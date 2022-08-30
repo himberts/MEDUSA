@@ -75,6 +75,9 @@ if __name__=='__main__':
     WaveLength = float(json_variables['lambda'])
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
+    DistTheta = int(json_variables['distqz'])
+    DistChi = int(json_variables['distqpar'])
+
 
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()
@@ -85,7 +88,7 @@ if __name__=='__main__':
     if os.path.exists(rmfolder) and os.path.isdir(rmfolder):
         shutil.rmtree(rmfolder)
 
-    a = xray(filename=str(DataFile[0]), px=0.1, xorigin=XOrigin, yorigin=YOrigin, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945',distTheta=0,distChi=1)
+    a = xray(filename=str(DataFile[0]), px=0.1, xorigin=XOrigin, yorigin=YOrigin, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945',distTheta=DistTheta,distChi=DistChi)
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
