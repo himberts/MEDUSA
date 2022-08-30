@@ -582,7 +582,8 @@ class xray:
                     "anchor": "x3",
                     "domain": [0.0, 0.425],
                     "title": "Intensity",
-                }
+                },
+
             }
         }
 
