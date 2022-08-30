@@ -153,11 +153,5 @@
             ,"type"       : "plotly"
             ,"label"      : "2D Results"
         }
-        ,{
-            "role"        : "output"
-            ,"id"         : "Data2DMarked"
-            ,"type"       : "plot3d"
-            ,"label"      : "Reduced Areas"
-        }
     ]
 }
