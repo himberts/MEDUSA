@@ -1,0 +1,16 @@
+{
+    "moduleid"       : "mxray_about",
+    "label"          : "About",
+    "noreset"        : "true",
+    "nosubmit"       : "true",
+    "nooutputhr"     : "true",
+    "fields"   : [
+                  {
+                   "role"       : "input",
+                   "id"         : "text1",
+                   "type"       : "html"
+                  ,"value"      : "__< about.html"
+                   }
+
+    ]
+}

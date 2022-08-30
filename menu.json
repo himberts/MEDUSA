@@ -17,6 +17,10 @@
                           "id"    : "mxray_fit",
                           "label" : "Fitting"
                          }
+                         {
+                          "id"    : "mxray_about",
+                          "label" : "About"
+                         }
                         ]
             }
 
