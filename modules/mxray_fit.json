@@ -31,7 +31,7 @@
         ,{
             "role"       : "input"
             ,"id"         : "xi"
-            ,"label"      : "xi"
+            ,"label"      : "&#958 (&#8491)"
             ,"type"       : "float"
             ,"step"       : 0.1
 	          ,"default"    : 87.3982
@@ -40,7 +40,7 @@
         ,{
             "role"       : "input"
             ,"id"         : "eta"
-            ,"label"      : "eta"
+            ,"label"      : "&#951 (a.u.)"
             ,"type"       : "float"
             ,"step"       : 0.01
             ,"default"    : 0.12274
@@ -49,7 +49,7 @@
       ,{
             "role"       : "input"
             ,"id"         : "q"
-            ,"label"      : "d-spacing in q (&#8491^<sup>-1</sup>)"
+            ,"label"      : "d-spacing in q (&#8491<sup>-1</sup>)"
             ,"type"       : "float"
             ,"step"       : 0.01
             ,"default"    : 0.1
@@ -58,7 +58,7 @@
           ,{
               "role"       : "input"
               ,"id"         : "lr"
-              ,"label"      : "Domain Size Lr (Angstrom)"
+              ,"label"      : "Domain Size Lr (&#8491)"
               ,"type"       : "float"
               ,"step"       : 1
               ,"default"    : 300
@@ -69,7 +69,7 @@
           ,{
               "role"       : "input"
               ,"id"         : "sr"
-              ,"label"      : "Domain Size spread sr (Angstrom)"
+              ,"label"      : "Domain Size spread sr (&#8491)"
               ,"type"       : "float"
               ,"step"       : 1
               ,"default"    : 100
@@ -80,13 +80,13 @@
         ,{
             "role"       : "output"
             ,"id"         : "kc"
-            ,"label"      : "<hr> Bending Modulus (kBT) <hr>"
+            ,"label"      : "<hr> Bending Modulus (k<sub>B</sub>T) <hr>"
             ,"type"       : "text"
         }
         ,{
             "role"       : "output"
             ,"id"         : "B"
-            ,"label"      : "<hr> Interaction Modulus (kBT) <hr>"
+            ,"label"      : "<hr> Interaction Modulus (k<sub>B</sub>T/&#8491<sup>4</sup>) <hr>"
             ,"type"       : "text"
         }
         ,{
