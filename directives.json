@@ -10,7 +10,7 @@
 #  "footer"                    : "Test footer",
 #  "footersize"                : "50px",
 
-  "version"                   : " - &#x3B1; 1.1",
+  "version"                   : " - &#x3B1; 2.1",
 # choose your target languages to generate currently from [ "html5", "qt3", "qt4", "qt5" ]
   "languages"                 : [ "html5" ],
 
