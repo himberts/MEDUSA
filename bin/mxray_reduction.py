@@ -48,8 +48,8 @@ class GenappCom:
         """
         self.socket_dict['_textarea'] = UpdateText
         self.socket_dict['progressbar'] = Progress
-        doc_string = json.dumps(socket_dict)
-        sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+        doc_string = json.dumps(self.socket_dict)
+        self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
 
 
 
