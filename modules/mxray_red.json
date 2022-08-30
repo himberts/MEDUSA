@@ -29,7 +29,7 @@
             # colspan, height, width are optional, but specifying a too small colspan (column span) will effect the layout of columns in the input fields
             "colspan"    :  5,
             "width"      : 992,
-            "height"     : 603
+            "height"     : 309
           }
         ,{
             "role"       : "input"
@@ -50,7 +50,8 @@
         ,{
               "role"       : "input"
               ,"id"         : "qparcuts"
-              ,"label"      : "q-cut parameter"
+              ,"label"      : "q-cut parameter (comma separated, e.g. 0.3,0.35)"
+              ,"default"    : "0.3,0.35"
               ,"type"       : "textarea"
               ,"help"       : "q-values for cropping and fitting the data"
           }
