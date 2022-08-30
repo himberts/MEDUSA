@@ -50,7 +50,14 @@ class GenappCom:
         self.socket_dict['progressbar'] = Progress
         doc_string = json.dumps(self.socket_dict)
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
+    def postcontent(self):
+        content = ''
+        for file in os.listdir(folder):
+            content = "%s \n %s" % (content,file)
 
+        self.socket_dict['_textarea'] = content
+        doc_string = json.dumps(self.socket_dict)
+        self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
 
 
 if __name__=='__main__':
@@ -69,105 +76,49 @@ if __name__=='__main__':
     DataFile = json_variables['data']
     folder = json_variables['_base_directory'] # output folder dir
 
-    # message = genapp(json_variables)
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()
     GenappPost.postupdate("Process started ... \n",0)
-
-    # UDP_IP = json_variables['_udphost']
-    # UDP_PORT = int( json_variables['_udpport'] )
-    # sock = socket.socket(socket.AF_INET, # Internet
-    #         socket.SOCK_DGRAM) # UDP
-    #
-    # socket_dict={}
-    # socket_dict['_uuid'] = json_variables['_uuid']
-    #
-    # socket_dict['_textarea'] = "Process started ... \n"
-    # socket_dict['progressbar'] = 0
-    # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
     rmfolder = '%s/outputs' % folder
 
     if os.path.exists(rmfolder) and os.path.isdir(rmfolder):
         shutil.rmtree(rmfolder)
-    # content = ''
-    # for file in os.listdir(folder):
-    #     content = "%s \n %s" % (content,file)
-    #
-    # socket_dict['_textarea'] = content
-    # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
-    # a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
     a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945')
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
-    # socket_dict['_textarea'] = "Data Loaded ...\n"
-    # socket_dict['progressbar'] = 0.2
-    # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
     qparCutsList  = qparcutstext.split(',')
     qparCuts = np.ndarray(len(qparCutsList))
     for k in range(len(qparCutsList)):
         qparCuts[k] = float(qparCutsList[k])
-        # content = "%s \n %f" % (content,qparCuts[k])
 
     a.plottiff(show=0)
     GenappPost = GenappCom()
     GenappPost.postupdate("2D Graphics created ...\n",0.2)
-    # socket_dict['_textarea'] = "2D Graphics created ...\n"
-    # socket_dict['progressbar'] = 0.4
-    # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+
     a.cropimg(qparCuts, showcrop=1)
     GenappPost = GenappCom()
     GenappPost.postupdate("qr cuts created ...\n",0.3)
-    # a.cropimg(point1=0.3, point2=0.35, plot=0)
-    # socket_dict['_textarea'] = "qr cuts created ...\n"
-    # socket_dict['progressbar'] = 0.6
-    # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
     a.calcmeanandplot(show=0, showopt=0)
     GenappPost = GenappCom()
     GenappPost.postupdate("Cuts averaged ...\n",0.4)
+
     a.plotreflectivity(showreflect=0)
     GenappPost = GenappCom()
     GenappPost.postupdate("Reflectivity Created ...\n",0.5)
-    # socket_dict['_textarea'] = "Cuts averaged ...\n"
-    # socket_dict['progressbar'] = 0.8
-    # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
+
     a.datadictjsons()
     a.export()
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Exported ...\n",0.6)
-    # socket_dict['_textarea'] = "Data exported ...\n"
-    # socket_dict['progressbar'] = 1
-    # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
-    # doc_string = json.dumps(socket_dict)
-    # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
-    #
-    # ObjectOutputFileName = "%s/outputs/ReductionResults.pkl" % folder
-    # FID = open(ObjectOutputFileName, 'w')
-    # pickle.dump(a, FID)
+
     a.pickleme()
     GenappPost = GenappCom()
     GenappPost.postupdate("Reduction Status Saved...\n",0.7)
     #
-    # src = '%s/%s'%(folder,str(DataFile[0]))
-    # dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
-    #
-    # shutil.copyfile(src, dst)
-
     src = '/opt/genapp/mxray/add/XrayLib.py'
     dst = '%s/outputs/XrayLib.py' % (folder)
 
@@ -185,22 +136,8 @@ if __name__=='__main__':
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['progressbar'] =  1
     #
-    # Datatmp = []
-    # Datatmp.append(a.data["0"])
-    # Graph_dict={}
-    # Graph_dict["data"] = Datatmp
-    # Graph_dict["layout"] = {
-    #         "title" : "2D Data"
-    # }
     output['Data2DPlotly'] = a.datadict
     GenappPost = GenappCom()
     GenappPost.postupdate("Sending Data ...\n",0.8)
-    # Datatmp = []
-    # Datatmp.append(a.data["1"])
-    # Graph_dict={}
-    # Graph_dict["data"] = Datatmp
-    # Graph_dict["layout"] = {
-    #         "title" : "Reduced Areas"
-    # }
-    # output['Data2DMarked'] = Graph_dict
+
     print( json.dumps(output) ) # convert dictionary to json and output
