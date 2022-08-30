@@ -103,7 +103,8 @@ if __name__=='__main__':
 
     # a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
     a = xray(filename=str(DataFile[0]), px=0.1, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945')
-
+    GenappPost = GenappCom()
+    GenappPost.postupdate("Data Loaded ...\n",0.1)
     # socket_dict['_textarea'] = "Data Loaded ...\n"
     # socket_dict['progressbar'] = 0.2
     # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
@@ -117,12 +118,16 @@ if __name__=='__main__':
         # content = "%s \n %f" % (content,qparCuts[k])
 
     a.plottiff(show=0)
+    GenappPost = GenappCom()
+    GenappPost.postupdate("2D Graphics created ...\n",0.2)
     # socket_dict['_textarea'] = "2D Graphics created ...\n"
     # socket_dict['progressbar'] = 0.4
     # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
     # doc_string = json.dumps(socket_dict)
     # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
     a.cropimg(qparCuts, showcrop=1)
+    GenappPost = GenappCom()
+    GenappPost.postupdate("qr cuts created ...\n",0.3)
     # a.cropimg(point1=0.3, point2=0.35, plot=0)
     # socket_dict['_textarea'] = "qr cuts created ...\n"
     # socket_dict['progressbar'] = 0.6
@@ -131,7 +136,11 @@ if __name__=='__main__':
     # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
     a.calcmeanandplot(show=0, showopt=0)
+    GenappPost = GenappCom()
+    GenappPost.postupdate("Cuts averaged ...\n",0.4)
     a.plotreflectivity(showreflect=0)
+    GenappPost = GenappCom()
+    GenappPost.postupdate("Reflectivity Created ...\n",0.5)
     # socket_dict['_textarea'] = "Cuts averaged ...\n"
     # socket_dict['progressbar'] = 0.8
     # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
@@ -139,6 +148,8 @@ if __name__=='__main__':
     # sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
     a.datadictjsons()
     a.export()
+    GenappPost = GenappCom()
+    GenappPost.postupdate("Data Exported ...\n",0.6)
     # socket_dict['_textarea'] = "Data exported ...\n"
     # socket_dict['progressbar'] = 1
     # # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
@@ -149,6 +160,8 @@ if __name__=='__main__':
     # FID = open(ObjectOutputFileName, 'w')
     # pickle.dump(a, FID)
     a.pickleme()
+    GenappPost = GenappCom()
+    GenappPost.postupdate("Reduction Status Saved...\n",0.7)
     #
     # src = '%s/%s'%(folder,str(DataFile[0]))
     # dst = '%s/outpus/%s'%(folder,str(DataFile[0]))
@@ -157,6 +170,7 @@ if __name__=='__main__':
 
     output["reddat"] = "%s/outputs/outputfile.dat" % folder
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
+    output['progressbar'] =  1
     #
     # Datatmp = []
     # Datatmp.append(a.data["0"])
@@ -166,6 +180,8 @@ if __name__=='__main__':
     #         "title" : "2D Data"
     # }
     output['Data2DPlotly'] = a.datadict
+    GenappPost = GenappCom()
+    GenappPost.postupdate("Sending Data ...\n",0.7)
     # Datatmp = []
     # Datatmp.append(a.data["1"])
     # Graph_dict={}
