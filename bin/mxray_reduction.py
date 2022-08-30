@@ -25,7 +25,7 @@ import pickle
 import glob
 
 class GenappCom:
-    def __init__():
+    def __init__(self):
         """
 
         __init__ method for GenappCom.No Parameter needed
@@ -39,7 +39,7 @@ class GenappCom:
         self.socket_dict={}
         self.socket_dict['_uuid'] = json_variables['_uuid']
 
-    def postupdate(UpdateText,Progress):
+    def postupdate(self,UpdateText,Progress):
         """
         postupdate method for GenappCom. Parameters that are passed through the class are determined by user/machine
         :param UpdateText: Text to be posted to the Genapp default messaging textbox
