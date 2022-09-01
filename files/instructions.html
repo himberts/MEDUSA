@@ -1,0 +1,12 @@
+<div style="width:850px;margin-left:100px;">
+  <p><span style="font-weight:bold;font-size:20pt;font-family:'Avenir'">How to use MxRay</span></p>
+  <p>
+    Start by going to the Reduction tab and selecting the image data to be analyzed. Currently only supports .tif,.tiff files.<br><br>
+    Next, select the points of interest which will be determining the slices that will be analyzed by inputting the corresponding Q_z parameter comma seperated. Insensitive to spaces.<br><br>
+    Following that, input all the instrument parameters such as sample to detector distance (mm), detector pixel size (mm), origin in x (pixels) etc., as well as if the origin should be detected or read from provided values<br><br>
+    Finally before pressing submit on this tab, select whether there is distortion or not in either dimension of Q space so the proper corrections can be made<br><br>
+    Once this is all done, press submit and wait for all processes to be finished. Upon completion there will be an outputs.zip file ready for download, with all of the graphs and plots saved in .png format; a .pkl file of the xray object used; a .json file containing the data needed to display the plotly figures shown; as well as a .dat file which will be used in the Fitting tab. However, for the Fitting tab to be used, the zip file does not need to be downloaded.<br><br>
+    Moving on from the Reduction tab to the Fitting tab, not all of the parameters need to be changed. Xi (ξ, Angstroms), and Eta (η, arbitrary unit) do not need to be changed everytime. D-spacing in q (Angstroms<sup>-1</sup>) is the position of the first order Bragg peak and needs to be input everytime specified by the user. Finally Domain Size Lr (Angstroms) and Domain Size spread si (Angstroms) should not be changed.<br><br>
+    Once the correct parameters have been input, click submit and after the fitting has been completed there will be two values, Bending Modulus and Interaction Modulus. Underneath those there will be another outputs.zip download ?containing the previously mentioned contents as well as now the fitting plots displayed beneath them. Xi<sup>2</sup> convergence is displayed on the top and the fit results plot are displayed on the bottom.<br><br>
+    That covers everything needed to know, now continue onto the Reduction tab for analysis.
+  </p>
