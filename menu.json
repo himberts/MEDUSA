@@ -9,6 +9,10 @@
 	          "autorun" : "mxray_red",
             "startup" : "true",
             "modules" : [
+                        ,{
+                          "id"    : "mxray_readme",
+                          "label" : "How To"
+                         }
                          {
                           "id"    : "mxray_red",
                           "label" : "Reduction"
