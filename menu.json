@@ -6,7 +6,7 @@
             "id"      : "mxray_fitting",
             "label"   : "Fitting",
             "icon"    : "pngs/simulate.png",
-	          "autorun" : "mxray_red",
+	          "autorun" : "mxray_readme",
             "startup" : "true",
             "modules" : [
                          {
