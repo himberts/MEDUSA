@@ -185,7 +185,7 @@
     ,"bootstrap" : {
 #        "package" : "genapp"
 #        "package" : "material-design"
-        "package" : "bootswatch",
+#        "package" : "bootswatch",
 #        "theme" : "cerulean"
 #        "theme" : "cosmo"
 #        "theme" : "cyborg"
