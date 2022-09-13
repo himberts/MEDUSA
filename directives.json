@@ -67,8 +67,8 @@
       ,"help"           : "general textarea help"
   },
 
-"usercolors" : "true",
-"css" : "custom.css",
+#"usercolors" : "true",
+#"css" : "custom.css",
 
 "style" : {
         "sidebarwidth"        : "280px"
