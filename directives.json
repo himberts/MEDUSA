@@ -186,7 +186,7 @@
 #        "package" : "genapp"
 #        "package" : "material-design"
         "package" : "bootswatch",
-#        "theme" : "cerulean"
+        "theme" : "cerulean"
 #        "theme" : "cosmo"
 #        "theme" : "cyborg"
 #        "theme" : "darkly"
@@ -198,7 +198,7 @@
 #        "theme" : "materia"
 #        "theme" : "minty"
 #        "theme" : "pulse"
-         "theme" : "sandstone"
+#         "theme" : "sandstone"
 #        "theme" : "simplex"
 #        "theme" : "sketchy"
 #        "theme" : "slate"
