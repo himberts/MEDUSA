@@ -67,7 +67,7 @@
       ,"help"           : "general textarea help"
   },
 
-#"usercolors" : "true",
+"usercolors" : "true",
 "css" : "custom.css",
 
 "style" : {
