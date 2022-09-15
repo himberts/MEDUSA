@@ -168,7 +168,7 @@ if __name__=='__main__':
                 "color" : "rgb(200, 0, 0)",
                 "width": 3
         }
-        Data_dict_list.append(Data_dict)
+        Data_dict_list.append(Fit_dict)
 
 
     # DataFit2 = np.genfromtxt('outputs/FitResults_1_fitted.fit', delimiter='\t', skip_header=31)
