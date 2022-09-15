@@ -149,7 +149,7 @@ if __name__=='__main__':
     # Fit_dict_list = []
 
     for idx,DataSet in enumerate(a.points):
-        FileName = 'outputs/FitResults_%d_fitted.fit' % int(idx-1)
+        FileName = 'outputs/FitResults_%d_fitted.fit' % int(idx)
         DataFit1 = np.genfromtxt(FileName, delimiter='\t', skip_header=31)
         Data_dict={}
         Data_dict['x'] = DataFit1[:,0].tolist()
