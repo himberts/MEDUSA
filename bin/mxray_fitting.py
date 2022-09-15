@@ -58,6 +58,8 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
+    with open('xrayobj.pkl', 'rb') as pickle_file:
+        a = pickle.load(pickle_file)
 
     # a = xray(filename='outputfile.dat', px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
    # qparcuts = np.char.split(qparcutstext, ',').astype(np.float32)
@@ -121,7 +123,7 @@ if __name__=='__main__':
         # print line
 
 
-    file1 = open('outputs/FitResults_fitted.fit', 'r')
+    file1 = open('outputs/FitResults_0_fitted.fit', 'r')
     Lines = file1.readlines()
 
     tmp = Lines[10].strip()
@@ -141,51 +143,60 @@ if __name__=='__main__':
     dKc = float(splittext[1])
     # print(dKc)
     file1.close()
-    DataFit1 = np.genfromtxt('outputs/FitResults_fitted.fit', delimiter='\t', skip_header=31)
-    DataFit2 = np.genfromtxt('outputs/FitResults_fitted2.fit', delimiter='\t', skip_header=31)
-    Data_dict={}
-    Data_dict['x'] = DataFit1[:,0].tolist()
-    Data_dict['y'] = DataFit1[:,1].tolist()
-    Data_dict['mode'] = "markers"
-    Data_dict['marker'] = {
-            "color": "rgb(0, 0, 200)",
-            "size": 12
-    }
 
-    Data_dict2={}
-    Data_dict2['x'] = DataFit2[:,0].tolist()
-    Data_dict2['y'] = DataFit2[:,1].tolist()
-    Data_dict2['mode'] = "markers"
-    Data_dict2['marker'] = {
-             "color": "rgb(0, 50, 200)",
-             "size": 12
-    }
+    Data_dict_list = []
+    # Fit_dict_list = []
 
-    Fit_dict={}
-    Fit_dict['x'] = DataFit1[:,0].tolist()
-    Fit_dict['y'] = DataFit1[:,3].tolist()
-    Fit_dict['mode'] = "lines"
-    Fit_dict['line'] = {
-            "color" : "rgb(200, 0, 0)",
-            "width": 3
-    }
+    for DataIndex in range(len(a.points)):
+        FileName = 'outputs/FitResults_%d_fitted.fit' % DataIndex-1
+        DataFit1 = np.genfromtxt(FileName, delimiter='\t', skip_header=31)
+        Data_dict={}
+        Data_dict['x'] = DataFit1[:,0].tolist()
+        Data_dict['y'] = DataFit1[:,1].tolist()
+        Data_dict['mode'] = "markers"
+        Data_dict['marker'] = {
+                "color": "rgb(0, 0, 200)",
+                "size": 12
+        }
+        Data_dict_list.append(Data_dict)
+        Fit_dict={}
+        Fit_dict['x'] = DataFit1[:,0].tolist()
+        Fit_dict['y'] = DataFit1[:,3].tolist()
+        Fit_dict['mode'] = "lines"
+        Fit_dict['line'] = {
+                "color" : "rgb(200, 0, 0)",
+                "width": 3
+        }
+        Data_dict_list.append(Data_dict)
 
-    Fit_dict2={}
-    Fit_dict2['x'] = DataFit2[:,0].tolist()
-    Fit_dict2['y'] = DataFit2[:,3].tolist()
-    Fit_dict2['mode'] = "lines"
-    Fit_dict2['line'] = {
-            "color" : "rgb(200, 50, 0)",
-            "width": 3
-    }
 
-    Datatmp = []
-    Datatmp.append(Data_dict)
-    Datatmp.append(Fit_dict)
-    Datatmp.append(Data_dict2)
-    Datatmp.append(Fit_dict2)
+    # DataFit2 = np.genfromtxt('outputs/FitResults_1_fitted.fit', delimiter='\t', skip_header=31)
+    # Data_dict2={}
+    # Data_dict2['x'] = DataFit2[:,0].tolist()
+    # Data_dict2['y'] = DataFit2[:,1].tolist()
+    # Data_dict2['mode'] = "markers"
+    # Data_dict2['marker'] = {
+    #          "color": "rgb(0, 50, 200)",
+    #          "size": 12
+    # }
+    #
+    #
+    # Fit_dict2={}
+    # Fit_dict2['x'] = DataFit2[:,0].tolist()
+    # Fit_dict2['y'] = DataFit2[:,3].tolist()
+    # Fit_dict2['mode'] = "lines"
+    # Fit_dict2['line'] = {
+    #         "color" : "rgb(200, 50, 0)",
+    #         "width": 3
+    # }
+
+    # Datatmp = []
+    # Datatmp.append(Data_dict)
+    # Datatmp.append(Fit_dict)
+    # Datatmp.append(Data_dict2)
+    # Datatmp.append(Fit_dict2)
     Graph_dict={}
-    Graph_dict["data"] = Datatmp
+    Graph_dict["data"] = Data_dict_list
     Graph_dict["layout"] = {
             "title" : "Fit Results"
     }
