@@ -58,7 +58,7 @@ if __name__=='__main__':
     doc_string = json.dumps(socket_dict)
     sock.sendto(doc_string.encode(),(UDP_IP,UDP_PORT))
 
-    with open('xrayobj.pkl', 'rb') as pickle_file:
+    with open('outputs/xrayobj.pkl', 'rb') as pickle_file:
         a = pickle.load(pickle_file)
 
     # a = xray(filename='outputfile.dat', px=0.1, sampledetectdist=SampleDetectorDistance, xorigin=XOrigin, yorigin=YOrigin, wavelength=WaveLength, q1='0.0945')
