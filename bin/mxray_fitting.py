@@ -20,6 +20,7 @@ import subprocess
 import locale, multiprocessing
 from XrayLib import xray
 import shutil
+import pickle
 
 if __name__=='__main__':
 
