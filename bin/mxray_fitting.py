@@ -163,7 +163,8 @@ if __name__=='__main__':
         Data_dict['x'] = DataFit1[:,0].tolist()
         Data_dict['y'] = DataFit1[:,1].tolist()
         Data_dict['mode'] = "markers"
-        Data_dict['labels'] = ["First Data"]
+        legendgroup="group",  # this can be any string, not just "group"
+        legendgrouptitle_text="First Group Title",
         Data_dict['marker'] = {
                 "color": "rgb(0, 0, 200)",
                 "size": 12
