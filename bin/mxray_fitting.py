@@ -154,6 +154,8 @@ if __name__=='__main__':
         Data_dict={}
         Data_dict['x'] = DataFit1[:,0].tolist()
         Data_dict['y'] = DataFit1[:,1].tolist()
+        Data_dict['xaxis'] = 'Iteration (a.u.)'
+        Data_dict['yaxis'] = 'Xisquare'
         Data_dict['mode'] = "markers"
         Data_dict['marker'] = {
                 "color": "rgb(0, 0, 200)",
@@ -164,6 +166,8 @@ if __name__=='__main__':
         Fit_dict['x'] = DataFit1[:,0].tolist()
         Fit_dict['y'] = DataFit1[:,3].tolist()
         Fit_dict['mode'] = "lines"
+        Data_dict['xaxis'] = 'qpar ()'
+        Data_dict['yaxis'] = 'Normalized Intensity'
         Fit_dict['line'] = {
                 "color" : "rgb(200, 0, 0)",
                 "width": 3
