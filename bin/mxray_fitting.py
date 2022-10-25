@@ -112,8 +112,11 @@ if __name__=='__main__':
                 Graph_dict["layout"] = {
                         "title" : "XiSquare",
                         "xaxis": {
-                            "title": "Q ||"
+                            "title": "Iteration (a.u.)"
                         },
+                        "yaxis": {
+                            "title": "&Chi;"
+                        }
                         # "xaxis" : "Iteration (a.u.)",
                         # "yaxis" : "Xisquare"
                 }
