@@ -209,7 +209,7 @@ if __name__=='__main__':
     Graph_dict["layout"] = {
             "title" : "Fit Results",
             "xaxis": {
-                "title": "q<sub>||<\sub> (\u212B<sup>-1</sup>)"
+                "title": "q<sub>||</sub> (\u212B<sup>-1</sup>)"
             },
             "yaxis": {
                 "title": "Normalized Intensity"
