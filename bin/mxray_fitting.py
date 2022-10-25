@@ -110,9 +110,9 @@ if __name__=='__main__':
                 Graph_dict={}
                 Graph_dict["data"] = [Data_dict]
                 Graph_dict["layout"] = {
-                        "title" : "XiSquare",
-                        "xaxis" : "Iteration (a.u.)",
-                        "yaxis" : "Xisquare"
+                        "title" : "XiSquare"
+                        # "xaxis" : "Iteration (a.u.)",
+                        # "yaxis" : "Xisquare"
                 }
                 socket_dict['xisquareGraph'] = Graph_dict
                 # socket_dict['_textarea'] = '\n%s\t%f\t%f\n' % (NoTrail,float(splittedValue[1]),float(splittedValue[4]))
