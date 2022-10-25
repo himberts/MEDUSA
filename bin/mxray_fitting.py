@@ -115,7 +115,7 @@ if __name__=='__main__':
                             "title": "Iteration (a.u.)"
                         },
                         "yaxis": {
-                            "title": r"$\Chi^2$"
+                            "title": u"&#8491"
                         }
                         # "xaxis" : "Iteration (a.u.)",
                         # "yaxis" : "Xisquare"
