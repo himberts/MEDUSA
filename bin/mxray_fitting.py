@@ -110,7 +110,7 @@ if __name__=='__main__':
                 Graph_dict={}
                 Graph_dict["data"] = [Data_dict]
                 Graph_dict["layout"] = {
-                        "title" : "XiSquare"
+                        "title" : "XiSquare",
                         "xaxis": {
                             "anchor": "y",
                             "domain": [0.0, 0.45],
