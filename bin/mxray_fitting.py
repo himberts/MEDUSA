@@ -163,6 +163,7 @@ if __name__=='__main__':
         Data_dict['x'] = DataFit1[:,0].tolist()
         Data_dict['y'] = DataFit1[:,1].tolist()
         Data_dict['mode'] = "markers"
+        Data_dict['labels'] = ["First Data"]
         Data_dict['marker'] = {
                 "color": "rgb(0, 0, 200)",
                 "size": 12
