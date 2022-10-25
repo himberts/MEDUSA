@@ -110,7 +110,7 @@ if __name__=='__main__':
                 Graph_dict={}
                 Graph_dict["data"] = [Data_dict]
                 Graph_dict["layout"] = {
-                        "title" : "XiSquare",
+                        "title" : u"\u03C7<sup>2</sup> Convergence",
                         "xaxis": {
                             "title": "Iteration (a.u.)"
                         },
@@ -208,8 +208,12 @@ if __name__=='__main__':
     Graph_dict["data"] = Data_dict_list
     Graph_dict["layout"] = {
             "title" : "Fit Results",
-            "xaxis" : "q|| ()",
-            "yaxis" : "Normalized Intensity"
+            "xaxis": {
+                "title": "q<sub>||<\sub> (\u212B<sup>-1</sup>)"
+            },
+            "yaxis": {
+                "title": "Normalized Intensity"
+            }
     }
 
     src = '/opt/genapp/mxray/add/XrayLib.py'
