@@ -157,11 +157,11 @@ if __name__=='__main__':
     # Fit_dict_list = []
 
     for idx,DataSet in enumerate(a.points):
-        FileName = 'outputs/FitResults_%d_fitted.fit' % int(idx)
+        FileName = 'outputs/FitResults_%d_fitted.fit' % (int(idx))
         DataFit1 = np.genfromtxt(FileName, delimiter='\t', skip_header=31)
-        LegendText = 'Data q<sub>||</sub>=%.2f\u212B<sup>-1</sup>' % a.points[idx]
+        LegendText = 'Data q<sub>||</sub>=%.2f\u212B<sup>-1</sup>' % (a.points[idx])
         color = list(np.random.choice(range(256), size=3))
-        RGBColorText='rgb(%d, %d, %d)'%color[0],color[1],color[2]
+        RGBColorText='rgb(%d, %d, %d)' % (color[0],color[1],color[2])
         Data_dict={}
         Data_dict['x'] = DataFit1[:,0].tolist()
         Data_dict['y'] = DataFit1[:,1].tolist()
@@ -175,7 +175,7 @@ if __name__=='__main__':
         Fit_dict={}
         Fit_dict['x'] = DataFit1[:,0].tolist()
         Fit_dict['y'] = DataFit1[:,3].tolist()
-        LegendText = 'Fit q<sub>||</sub>=%.2f\u212B<sup>-1</sup>' % a.points[idx]
+        LegendText = 'Fit q<sub>||</sub>=%.2f\u212B<sup>-1</sup>' % (a.points[idx])
         Fit_dict['mode'] = "lines"
         Fit_dict['name'] = LegendText
         Fit_dict['line'] = {
