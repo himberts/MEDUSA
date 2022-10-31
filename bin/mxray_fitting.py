@@ -160,13 +160,15 @@ if __name__=='__main__':
         FileName = 'outputs/FitResults_%d_fitted.fit' % int(idx)
         DataFit1 = np.genfromtxt(FileName, delimiter='\t', skip_header=31)
         LegendText = 'Data q<sub>||</sub>=%.2f\u212B<sup>-1</sup>' % a.points[idx]
+        color = list(np.random.choice(range(256), size=3))
+        RGBColorText='rgb(%d, %d, %d)'%color[0],color[1],color[2]
         Data_dict={}
         Data_dict['x'] = DataFit1[:,0].tolist()
         Data_dict['y'] = DataFit1[:,1].tolist()
         Data_dict['mode'] = "markers"
         Data_dict['name'] = LegendText
         Data_dict['marker'] = {
-                "color": "rgb(0, 0, 200)",
+                "color": RGBColorText,
                 "size": 12
         }
         Data_dict_list.append(Data_dict)
@@ -177,7 +179,7 @@ if __name__=='__main__':
         Fit_dict['mode'] = "lines"
         Fit_dict['name'] = LegendText
         Fit_dict['line'] = {
-                "color" : "rgb(200, 0, 0)",
+                "color" : RGBColorText,
                 "width": 3
         }
         Data_dict_list.append(Fit_dict)
