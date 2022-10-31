@@ -163,7 +163,7 @@ if __name__=='__main__':
         Data_dict['x'] = DataFit1[:,0].tolist()
         Data_dict['y'] = DataFit1[:,1].tolist()
         Data_dict['mode'] = "markers"
-        Data_dict['name'] = 'group' 
+        Data_dict['name'] = 'DataSet'
         Data_dict['marker'] = {
                 "color": "rgb(0, 0, 200)",
                 "size": 12
@@ -173,6 +173,7 @@ if __name__=='__main__':
         Fit_dict['x'] = DataFit1[:,0].tolist()
         Fit_dict['y'] = DataFit1[:,3].tolist()
         Fit_dict['mode'] = "lines"
+        Fit_dict['name'] = 'fit result'
         Fit_dict['line'] = {
                 "color" : "rgb(200, 0, 0)",
                 "width": 3
