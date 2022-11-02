@@ -595,11 +595,9 @@ class xray:
                 "layout": {
                     "xaxis3": {
                         "anchor": "y3",
-                        "domain": [0.0, 0.45],
                         "title": "Q_|| cut plots"},
                     "yaxis3": {
                         "anchor": "x3",
-                        "domain": [0.0, 0.425],
                         "title": "Intensity",
                     },
 
