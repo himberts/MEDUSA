@@ -552,12 +552,11 @@ class xray:
             "layout": {
                 "xaxis2": {
                     "anchor": "y2",
-                    "title": "log(Intensity)"
+                    "title": "Q z"
                 },
                 "yaxis2": {
                     "anchor": "x2",
-                    "side": "right",
-                    "title": "Q z",
+                    "title": "log(Intensity)"
                 },
             }
         }
