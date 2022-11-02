@@ -540,8 +540,8 @@ class xray:
         self.ReflectivityPlot = {
             "data": [
                 {  # This entry is for the reflectivity plot
-                    "x": np.log(self.reflectavg).tolist(),
-                    "y": self.qz.tolist(),
+                    "x": self.qz.tolist(),
+                    "y": np.log(self.reflectavg).tolist(),
                     "type": "scatter",
                     "xaxis": "x2",
                     "yaxis": "y2",
@@ -552,12 +552,10 @@ class xray:
             "layout": {
                 "xaxis2": {
                     "anchor": "y2",
-                    "domain": [0.55, 1.0],
                     "title": "log(Intensity)"
                 },
                 "yaxis2": {
                     "anchor": "x2",
-                    "domain": [0.575, 1.0],
                     "side": "right",
                     "title": "Q z",
                 },
