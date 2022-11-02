@@ -154,6 +154,7 @@ if __name__=='__main__':
     output['progressbar'] =  1
     #
     output['Data2DPlotly'] = a.DataPlot2D
+    output['ReflectivityPlotly'] = a.DataPlot2D
     GenappPost = GenappCom()
     GenappPost.postupdate("Sending Data ...\n",0.8)
 
