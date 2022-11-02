@@ -505,7 +505,7 @@ class xray:
         #Following goes as so: Blue, Turquoise, Light Purple, Peach, Light Blue, Pink, Light Yellow-Green, Purple-Pink, Sand
         color = ["#636efa", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"]
 
-        self.datadict = {
+        self.DataPlot2D = {
             "data": [
                 {   # This entry is for the image data plot
                     "x": self.qpar.tolist(),
@@ -514,12 +514,12 @@ class xray:
                     "type": "heatmap",
                     "xaxis": "x",
                     "yaxis": "y",
-                    "colorbar": {
-                        "x": 0.45,
-                        "y": 0.78,
-                        "len": 0.5,
-                        "nticks": 5,
-                        "thickness": 10},
+                    # "colorbar": {
+                    #     "x": 0.45,
+                    #     "y": 0.78,
+                    #     "len": 0.5,
+                    #     "nticks": 5,
+                    #     "thickness": 10},
                     "name": "Data Set",
                     "hoverinfo": ["x", "y", "z"]
                 }

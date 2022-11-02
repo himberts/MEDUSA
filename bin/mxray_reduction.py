@@ -153,7 +153,7 @@ if __name__=='__main__':
     output['_textarea'] =  "Reduction Completed; Please Continue on the Fitting tab"
     output['progressbar'] =  1
     #
-    output['Data2DPlotly'] = a.datadict
+    output['Data2DPlotly'] = a.DataPlot2D
     GenappPost = GenappCom()
     GenappPost.postupdate("Sending Data ...\n",0.8)
 
