@@ -522,7 +522,7 @@ class xray:
                         "thickness": 10},
                     "name": "Data Set",
                     "hoverinfo": ["x", "y", "z"]
-                },
+                }
                 ],
             "layout": {
                 "xaxis": {
@@ -626,52 +626,52 @@ class xray:
         #     }
         # }
 
-        # This for loop is responsible for appending to the above dictionary, all the entries which show the slices as line plots on one plot
-        for a in range(len(self.meandata)):
-            temp = {
-                    "x": self.qpar.tolist(),
-                    "y": self.meandata[a].tolist(),
-                    "type": "scatter",
-                    "xaxis": "x3",
-                    "yaxis": "y3",
-                    "mode": "lines",
-                    "showlegend": False,
-                    "marker": {
-                        "color": color[a]
-                    }
-            }
-            self.datadict["data"].append(temp)
-
-        for a in range(len(self.points)):
-            top = {
-                "x": self.qpar.tolist(),
-                "y": np.full(self.xdim, self.points[a]+0.00488).tolist(),
-                "type": "scatter",
-                "xaxis": "x",
-                "yaxis": "y",
-                "mode": "lines",
-                "showlegend": False,
-                "marker": {
-                    "color": color[a]
-                },
-                "hoverinfo": "skip"
-            }
-            bottom = {
-                "x": self.qpar.tolist(),
-                "y": np.full(self.xdim, self.points[a]-0.00488).tolist(),
-                "type": "scatter",
-                "xaxis": "x",
-                "yaxis": "y",
-                "mode": "lines",
-                "showlegend": False,
-                "marker": {
-                    "color": color[a]
-                },
-                "hoverinfo": "skip"
-            }
-
-            self.datadict["data"].append(top)
-            self.datadict["data"].append(bottom)
+        # # This for loop is responsible for appending to the above dictionary, all the entries which show the slices as line plots on one plot
+        # for a in range(len(self.meandata)):
+        #     temp = {
+        #             "x": self.qpar.tolist(),
+        #             "y": self.meandata[a].tolist(),
+        #             "type": "scatter",
+        #             "xaxis": "x3",
+        #             "yaxis": "y3",
+        #             "mode": "lines",
+        #             "showlegend": False,
+        #             "marker": {
+        #                 "color": color[a]
+        #             }
+        #     }
+        #     self.datadict["data"].append(temp)
+        #
+        # for a in range(len(self.points)):
+        #     top = {
+        #         "x": self.qpar.tolist(),
+        #         "y": np.full(self.xdim, self.points[a]+0.00488).tolist(),
+        #         "type": "scatter",
+        #         "xaxis": "x",
+        #         "yaxis": "y",
+        #         "mode": "lines",
+        #         "showlegend": False,
+        #         "marker": {
+        #             "color": color[a]
+        #         },
+        #         "hoverinfo": "skip"
+        #     }
+        #     bottom = {
+        #         "x": self.qpar.tolist(),
+        #         "y": np.full(self.xdim, self.points[a]-0.00488).tolist(),
+        #         "type": "scatter",
+        #         "xaxis": "x",
+        #         "yaxis": "y",
+        #         "mode": "lines",
+        #         "showlegend": False,
+        #         "marker": {
+        #             "color": color[a]
+        #         },
+        #         "hoverinfo": "skip"
+        #     }
+        #
+        #     self.datadict["data"].append(top)
+        #     self.datadict["data"].append(bottom)
 
         # subplotjson = json.dumps(self.datadict, indent=4)
         # with open(os.getcwd() + "/outputs/subplots.json", 'w') as fh:
