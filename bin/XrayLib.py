@@ -504,6 +504,7 @@ class xray:
 
         #Following goes as so: Blue, Turquoise, Light Purple, Peach, Light Blue, Pink, Light Yellow-Green, Purple-Pink, Sand
         color = ["#636efa", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"]
+
         self.datadict = {
             "data": [
                 {   # This entry is for the image data plot
@@ -522,76 +523,108 @@ class xray:
                     "name": "Data Set",
                     "hoverinfo": ["x", "y", "z"]
                 },
-                {  # This entry is for the reflectivity plot
-                    "x": np.log(self.reflectavg).tolist(),
-                    "y": self.qz.tolist(),
-                    "type": "scatter",
-                    "xaxis": "x2",
-                    "yaxis": "y2",
-                    "mode": "lines",
-                    "showlegend": False,
-                },
-                {
-                    "x": np.full(self.ydim, self.qpar[abs(self.xorigin-self.xdim)+6]).tolist(),
-                    "y": self.qz.tolist(),
-                    "type": "scatter",
-                    "xaxis": "x",
-                    "yaxis": "y",
-                    "mode": "lines",
-                    "showlegend": False,
-                    "marker": {
-                        "color": "#EF553B"
-                    },
-                    "hoverinfo": "skip"
-                },
-                {
-                    "x": np.full(self.ydim, self.qpar[abs(self.xdim-self.xorigin)-6]).tolist(),
-                    "y": self.qz.tolist(),
-                    "type": "scatter",
-                    "xaxis": "x",
-                    "yaxis": "y",
-                    "mode": "lines",
-                    "showlegend": False,
-                    "marker": {
-                        "color": "#EF553B"
-                    },
-                    "hoverinfo": "skip"
-                }
                 ],
             "layout": {
                 "xaxis": {
                     "anchor": "y",
-                    "domain": [0.0, 0.45],
                     "title": "Q ||"
                 },
                 "yaxis": {
                     "anchor": "x",
-                    "domain": [0.575, 1.0],
                     "title": "Q z",
-                },
-                "xaxis2": {
-                    "anchor": "y2",
-                    "domain": [0.55, 1.0],
-                    "title": "log(Intensity)"
-                },
-                "yaxis2": {
-                    "anchor": "x2",
-                    "domain": [0.575, 1.0],
-                    "side": "right",
-                    "title": "Q z",
-                },
-                "xaxis3": {
-                    "anchor": "y3",
-                    "domain": [0.0, 0.45],
-                    "title": "Q_|| cut plots"},
-                "yaxis3": {
-                    "anchor": "x3",
-                    "domain": [0.0, 0.425],
-                    "title": "Intensity",
                 },
 
             }
         }
+
+        # self.datadict = {
+        #     "data": [
+        #         {   # This entry is for the image data plot
+        #             "x": self.qpar.tolist(),
+        #             "y": self.qz.tolist(),
+        #             "z": np.log(self.imgarr+1).tolist(),
+        #             "type": "heatmap",
+        #             "xaxis": "x",
+        #             "yaxis": "y",
+        #             "colorbar": {
+        #                 "x": 0.45,
+        #                 "y": 0.78,
+        #                 "len": 0.5,
+        #                 "nticks": 5,
+        #                 "thickness": 10},
+        #             "name": "Data Set",
+        #             "hoverinfo": ["x", "y", "z"]
+        #         },
+        #         {  # This entry is for the reflectivity plot
+        #             "x": np.log(self.reflectavg).tolist(),
+        #             "y": self.qz.tolist(),
+        #             "type": "scatter",
+        #             "xaxis": "x2",
+        #             "yaxis": "y2",
+        #             "mode": "lines",
+        #             "showlegend": False,
+        #         },
+        #         {
+        #             "x": np.full(self.ydim, self.qpar[abs(self.xorigin-self.xdim)+6]).tolist(),
+        #             "y": self.qz.tolist(),
+        #             "type": "scatter",
+        #             "xaxis": "x",
+        #             "yaxis": "y",
+        #             "mode": "lines",
+        #             "showlegend": False,
+        #             "marker": {
+        #                 "color": "#EF553B"
+        #             },
+        #             "hoverinfo": "skip"
+        #         },
+        #         {
+        #             "x": np.full(self.ydim, self.qpar[abs(self.xdim-self.xorigin)-6]).tolist(),
+        #             "y": self.qz.tolist(),
+        #             "type": "scatter",
+        #             "xaxis": "x",
+        #             "yaxis": "y",
+        #             "mode": "lines",
+        #             "showlegend": False,
+        #             "marker": {
+        #                 "color": "#EF553B"
+        #             },
+        #             "hoverinfo": "skip"
+        #         }
+        #         ],
+        #     "layout": {
+        #         "xaxis": {
+        #             "anchor": "y",
+        #             "domain": [0.0, 0.45],
+        #             "title": "Q ||"
+        #         },
+        #         "yaxis": {
+        #             "anchor": "x",
+        #             "domain": [0.575, 1.0],
+        #             "title": "Q z",
+        #         },
+        #         "xaxis2": {
+        #             "anchor": "y2",
+        #             "domain": [0.55, 1.0],
+        #             "title": "log(Intensity)"
+        #         },
+        #         "yaxis2": {
+        #             "anchor": "x2",
+        #             "domain": [0.575, 1.0],
+        #             "side": "right",
+        #             "title": "Q z",
+        #         },
+        #         "xaxis3": {
+        #             "anchor": "y3",
+        #             "domain": [0.0, 0.45],
+        #             "title": "Q_|| cut plots"},
+        #         "yaxis3": {
+        #             "anchor": "x3",
+        #             "domain": [0.0, 0.425],
+        #             "title": "Intensity",
+        #         },
+        #
+        #     }
+        # }
 
         # This for loop is responsible for appending to the above dictionary, all the entries which show the slices as line plots on one plot
         for a in range(len(self.meandata)):

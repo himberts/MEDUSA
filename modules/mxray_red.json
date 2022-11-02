@@ -154,5 +154,17 @@
             ,"type"       : "plotly"
             ,"label"      : "2D Results"
         }
+        ,{
+            "role"        : "output"
+            ,"id"         : "ReflectivityPlotly"
+            ,"type"       : "plotly"
+            ,"label"      : "2D Results"
+        }
+        ,{
+            "role"        : "output"
+            ,"id"         : "DiffusePlotly"
+            ,"type"       : "plotly"
+            ,"label"      : "2D Results"
+        }
     ]
 }
