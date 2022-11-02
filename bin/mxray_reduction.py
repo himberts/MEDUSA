@@ -155,6 +155,7 @@ if __name__=='__main__':
     #
     output['Data2DPlotly'] = a.DataPlot2D
     output['ReflectivityPlotly'] = a.ReflectivityPlot
+    output['ReflectivityPlotly'] = a.DiffusePlot
     GenappPost = GenappCom()
     GenappPost.postupdate("Sending Data ...\n",0.8)
 

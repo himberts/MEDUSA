@@ -563,7 +563,7 @@ class xray:
         }
 
 
-        self.datadict = {
+        self.DiffusePlot = {
                 "data": [
                     {
                         "x": np.full(self.ydim, self.qpar[abs(self.xorigin-self.xdim)+6]).tolist(),
@@ -620,7 +620,7 @@ class xray:
                         "color": color[a]
                     }
             }
-            self.datadict["data"].append(temp)
+            self.DiffusePlot["data"].append(temp)
 
         for a in range(len(self.points)):
             top = {
@@ -650,8 +650,8 @@ class xray:
                 "hoverinfo": "skip"
             }
 
-            self.datadict["data"].append(top)
-            self.datadict["data"].append(bottom)
+            self.DiffusePlot["data"].append(top)
+            self.DiffusePlot["data"].append(bottom)
 
         # subplotjson = json.dumps(self.datadict, indent=4)
         # with open(os.getcwd() + "/outputs/subplots.json", 'w') as fh:
