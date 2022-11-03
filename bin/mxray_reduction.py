@@ -85,8 +85,8 @@ def ParseQcuts(qparcutstext,AvailableQPar):
         if '-' in qparCut:
             # print('error')
             Bounds = qparCut.split('-')
-            LowBoundVec   = np.argmin(np.abs(AvailableQPar - float(Bounds[0])))
-            UpperBoundVec = np.argmin(np.abs(AvailableQPar - float(Bounds[1])))
+            LowBoundVec   = np.argmin(np.abs(AvailableQPar - float(Bounds[1])))
+            UpperBoundVec = np.argmin(np.abs(AvailableQPar - float(Bounds[0])))
             # print(LowBoundVec)
             # print(UpperBoundVec)
             ToAddList = AvailableQPar[LowBoundVec:UpperBoundVec+1]
