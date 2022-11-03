@@ -53,7 +53,7 @@ class GenappCom:
     def postarray(self,List):
         content = ''
         for idx,ListItem in enumerate(List):
-            content = "%d/t%f\n" % (idx,ListItem)
+            content = "%s %s\n" % (content,ListItem)
 
         self.socket_dict['_textarea'] = content
         doc_string = json.dumps(self.socket_dict)
