@@ -68,11 +68,27 @@ class GenappCom:
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
 
 
-def ParseQcuts(qparcutstext):
+def ParseQcuts(qparcutstext,AvailableQPar):
     qparCutsList  = qparcutstext.split(',')
-    qparCuts = np.ndarray(len(qparCutsList))
-    for k in range(len(qparCutsList)):
-        qparCuts[k] = float(qparCutsList[k])
+    qparCuts = np.ndarray(1)
+
+    for idx, qparCut in enumerate(qparCutsList):
+        print(qparCut)
+
+        if '-' in qparCut:
+            print('error')
+            Bounds = qparCut.split('-')
+            LowBoundVec   = np.argmin(np.abs(AvailableQPar - float(Bounds[0])))
+            UpperBoundVec = np.argmin(np.abs(AvailableQPar - float(Bounds[1])))
+            print(LowBoundVec)
+            print(UpperBoundVec)
+            ToAddList = AvailableQPar[LowBoundVec:UpperBoundVec+1]
+            for ListItem in ToAddList:
+                qparCuts = np.append(qparCuts, [ListItem])
+        else:
+            qparCuts = np.append(qparCuts, np.asarray([float(qparCut)]))
+
+    qparCuts = np.delete(qparCuts,0)
     return qparCuts
 
 
@@ -116,7 +132,7 @@ if __name__=='__main__':
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
-    qparCuts = ParseQcuts(qparcutstext)
+    qparCuts = ParseQcuts(qparcutstext,a.qz)
 
     # qparCutsList  = qparcutstext.split(',')
     # qparCuts = np.ndarray(len(qparCutsList))
