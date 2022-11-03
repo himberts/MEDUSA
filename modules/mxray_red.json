@@ -158,13 +158,13 @@
             "role"        : "output"
             ,"id"         : "ReflectivityPlotly"
             ,"type"       : "plotly"
-            ,"label"      : "2D Results"
+            ,"label"      : "Reflectivity"
         }
         ,{
             "role"        : "output"
             ,"id"         : "DiffusePlotly"
             ,"type"       : "plotly"
-            ,"label"      : "2D Results"
+            ,"label"      : "Diffuse Data"
         }
     ]
 }
