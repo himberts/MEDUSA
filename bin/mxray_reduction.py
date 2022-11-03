@@ -140,7 +140,7 @@ if __name__=='__main__':
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
     qparCuts,lowb,upb,CropList = ParseQcuts(qparcutstext,a.qz)
-    GenappPost.postarray(qparCuts)
+    GenappPost.postarray([lowb,upb])
     # qparCutsList  = qparcutstext.split(',')
     # qparCuts = np.ndarray(len(qparCutsList))
     # for k in range(len(qparCutsList)):
