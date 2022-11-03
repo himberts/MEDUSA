@@ -50,6 +50,14 @@ class GenappCom:
         self.socket_dict['progressbar'] = Progress
         doc_string = json.dumps(self.socket_dict)
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
+    def postarray(self,List):
+        content = ''
+        for ListItem in List:
+            content = "%f\n" % (ListItem)
+
+        self.socket_dict['_textarea'] = content
+        doc_string = json.dumps(self.socket_dict)
+        self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
     def postcontent(self):
         content = ''
         for file in os.listdir(folder):
@@ -73,15 +81,14 @@ def ParseQcuts(qparcutstext,AvailableQPar):
     qparCuts = np.ndarray(1)
 
     for idx, qparCut in enumerate(qparCutsList):
-        print(qparCut)
-
+        # print(qparCut)
         if '-' in qparCut:
-            print('error')
+            # print('error')
             Bounds = qparCut.split('-')
             LowBoundVec   = np.argmin(np.abs(AvailableQPar - float(Bounds[0])))
             UpperBoundVec = np.argmin(np.abs(AvailableQPar - float(Bounds[1])))
-            print(LowBoundVec)
-            print(UpperBoundVec)
+            # print(LowBoundVec)
+            # print(UpperBoundVec)
             ToAddList = AvailableQPar[LowBoundVec:UpperBoundVec+1]
             for ListItem in ToAddList:
                 qparCuts = np.append(qparCuts, [ListItem])
@@ -133,7 +140,7 @@ if __name__=='__main__':
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
     qparCuts = ParseQcuts(qparcutstext,a.qz)
-
+    GenappPost.postarray(qparCuts)
     # qparCutsList  = qparcutstext.split(',')
     # qparCuts = np.ndarray(len(qparCutsList))
     # for k in range(len(qparCutsList)):
