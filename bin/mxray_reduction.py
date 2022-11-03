@@ -68,6 +68,14 @@ class GenappCom:
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
 
 
+def ParseQcuts(qparcutstext):
+    qparCutsList  = qparcutstext.split(',')
+    qparCuts = np.ndarray(len(qparCutsList))
+    for k in range(len(qparCutsList)):
+        qparCuts[k] = float(qparCutsList[k])
+    return qparCuts
+
+
 if __name__=='__main__':
 
    ################### IMPORT INPUT FROM GUI #####################################
@@ -108,10 +116,12 @@ if __name__=='__main__':
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
-    qparCutsList  = qparcutstext.split(',')
-    qparCuts = np.ndarray(len(qparCutsList))
-    for k in range(len(qparCutsList)):
-        qparCuts[k] = float(qparCutsList[k])
+    qparCuts = ParseQcuts(qparcutstext)
+
+    # qparCutsList  = qparcutstext.split(',')
+    # qparCuts = np.ndarray(len(qparCutsList))
+    # for k in range(len(qparCutsList)):
+    #     qparCuts[k] = float(qparCutsList[k])
 
     a.plottiff(show=0)
     GenappPost = GenappCom()
