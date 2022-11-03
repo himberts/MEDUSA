@@ -605,6 +605,8 @@ class xray:
 
         # This for loop is responsible for appending to the above dictionary, all the entries which show the slices as line plots on one plot
         for a in range(len(self.meandata)):
+            color = list(np.random.choice(range(256), size=3))
+            RGBColorText='rgb(%d, %d, %d)' % (color[0],color[1],color[2])
             temp = {
                     "x": self.qpar.tolist(),
                     "y": self.meandata[a].tolist(),
@@ -614,12 +616,13 @@ class xray:
                     "mode": "lines",
                     "showlegend": False,
                     "marker": {
-                        "color": color[a]
+                        "color": RGBColorText
                     }
             }
             self.DiffusePlot["data"].append(temp)
 
         for a in range(len(self.points)):
+            color = list(np.random.choice(range(256), size=3))
             top = {
                 "x": self.qpar.tolist(),
                 "y": np.full(self.xdim, self.points[a]+0.00488).tolist(),
@@ -629,7 +632,7 @@ class xray:
                 "mode": "lines",
                 "showlegend": False,
                 "marker": {
-                    "color": color[a]
+                    "color": RGBColorText
                 },
                 "hoverinfo": "skip"
             }
