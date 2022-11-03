@@ -52,8 +52,8 @@ class GenappCom:
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
     def postarray(self,List):
         content = ''
-        for ListItem in List:
-            content = "%f\n" % (ListItem)
+        for idx,ListItem in enumerate(List):
+            content = "%d/t%f\n" % (idx,ListItem)
 
         self.socket_dict['_textarea'] = content
         doc_string = json.dumps(self.socket_dict)
