@@ -645,7 +645,7 @@ class xray:
                 "mode": "lines",
                 "showlegend": False,
                 "marker": {
-                    "color": color[a]
+                    "color": RGBColorText
                 },
                 "hoverinfo": "skip"
             }
