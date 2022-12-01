@@ -22,7 +22,7 @@
         ,{
             "role"       : "input",
             "id"         : "imageid",
-            "name"       : "XRDSetup.jpg",
+            "name"       : "XDS_Setup_12012022.png",
             "type"       : "image",
             "label"      : "Image",
             "alt"        : "X-ray Diffraction Setup",

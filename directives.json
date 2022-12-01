@@ -1,7 +1,7 @@
 # this is a project directives file
 # comments are ok but must start the line in this JSON
 {
-  "title"                     : "MxRay",
+  "title"                     : "MEDUSA",
 
 # "genapptest" below could be replaced, but you should probably also then replace "genapptest" in the paths below
 # the application name should not contain any special characters
@@ -10,7 +10,7 @@
 #  "footer"                    : "Test footer",
 #  "footersize"                : "50px",
 
-  "version"                   : " - &#x3B1; 2.1",
+  "version"                   : "",
 # choose your target languages to generate currently from [ "html5", "qt3", "qt4", "qt5" ]
   "languages"                 : [ "html5" ],
 
