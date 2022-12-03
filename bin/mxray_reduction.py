@@ -96,7 +96,7 @@ def ParseQcuts(qparcutstext,AvailableQPar):
             qparCuts = np.append(qparCuts, np.asarray([float(qparCut)]))
 
     qparCuts = np.delete(qparCuts,0)
-    return qparCuts, ToAddList
+    return qparCuts
 
 
 if __name__=='__main__':
@@ -139,7 +139,7 @@ if __name__=='__main__':
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
-    qparCuts,CropList = ParseQcuts(qparcutstext,a.qz)
+    qparCuts = ParseQcuts(qparcutstext,a.qz)
     # GenappPost.postarray([lowb,upb])
     # qparCutsList  = qparcutstext.split(',')
     # qparCuts = np.ndarray(len(qparCutsList))
