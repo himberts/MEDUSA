@@ -235,8 +235,8 @@ if __name__=='__main__':
     output['fitresults'] = Graph_dict
     shutil.make_archive("outputs", "zip", os.getcwd() + "/outputs/")
     #a.zipoutputs()
-    buff_Kc = "%.2f +- %.2f"%(Kc,dKc)
-    buff_B = "%.2e +- %.2e" % (B, dB)
+    buff_Kc = "%.2f &#177 %.2f"%(Kc,dKc)
+    buff_B = "%.2e &#177 %.2e" % (B, dB)
     output["kc"] = buff_Kc
     output["B"] = buff_B
     content = ''
