@@ -107,7 +107,7 @@ if __name__=='__main__':
     argv_io_string = io.StringIO(sys.argv[1])
     json_variables = json.load(argv_io_string)
     qparcutstext = json_variables['qparcuts']
-    avgpix = float(json_variables['avgpix'])
+    avgpix = int(float(json_variables['avgpix']))
     SampleDetectorDistance = float(json_variables['sd'])
     PixelSize = float(json_variables['pxs']) # number of points in p(r)
     XOrigin = float(json_variables['xorigin'])
