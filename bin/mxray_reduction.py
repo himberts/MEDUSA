@@ -107,7 +107,7 @@ if __name__=='__main__':
     argv_io_string = io.StringIO(sys.argv[1])
     json_variables = json.load(argv_io_string)
     qparcutstext = json_variables['qparcuts']
-    AvgPix = float(json_variables['avgpix'])
+    avgpix = float(json_variables['avgpix'])
     SampleDetectorDistance = float(json_variables['sd'])
     PixelSize = float(json_variables['pxs']) # number of points in p(r)
     XOrigin = float(json_variables['xorigin'])
@@ -151,7 +151,7 @@ if __name__=='__main__':
     GenappPost = GenappCom()
     GenappPost.postupdate("2D Graphics created ...\n",0.2)
 
-    a.cropimg(qparCuts, showcrop=1,AvgPix)
+    a.cropimg(qparCuts, showcrop=1,AvgPix=avgpix)
     GenappPost = GenappCom()
     GenappPost.postupdate("qr cuts created ...\n",0.3)
 
