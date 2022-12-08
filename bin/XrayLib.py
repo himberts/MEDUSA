@@ -9,6 +9,7 @@ import shutil
 import pickle
 import json
 import os
+from scipy.signal import savgol_filter
 
 # !/usr/bin/env python
 """
@@ -338,6 +339,7 @@ class xray:
         for a in range(len(self.meandata)):
             self.mirroravgs[a] = self.mirroravgs[a] - bgdevents
             self.meandata[a] = self.meandata[a] - bdgevents2
+            self.mirroravgs[a] = savgol_filter(self.mirroravgs[a], 10, 4) # window size 51, polynomial order 3
 
         for a in range(len(self.meandata)):
             plt.figure()
