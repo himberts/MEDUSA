@@ -55,19 +55,21 @@
               ,"help"       : "q-values for cropping and fitting the data"
           }
           ,{
-                "role"       : "input"
-                ,"id"         : "avgpix"
-                ,"label"      : "Pixel to be averaged"
-                ,"default"    : "4"
-                ,"type"       : "textarea"
-                ,"help"       : "q-values for cropping and fitting the data"
-            }
+              "role"       : "input"
+              ,"id"         : "avgpix"
+              ,"label"      : "Pixel to be averaged"
+              ,"type"       : "float"
+              ,"step"       : 1
+              ,"default"    : 4
+  	          ,"min"        : 1
+  	          ,"max"        : 10
+              ,"help"       : "Averaging over x out-of-plane pixels for increased statistics"
+          }
             ,{
                 "role"       : "input"
                 ,"id"         : "smooth"
                 ,"label"      : "Smooth data"
                 ,"type"       : "checkbox"
-                ,"checked"    : "true"
                 ,"help"       : "Smooth q-cut data"
             }
           ,{
