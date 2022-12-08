@@ -249,7 +249,7 @@ class xray:
         self.qpar = (4 * m.pi * np.sin((self.chiarr / 2) * deg2rad)) / self.wavelength
         self.qz = (4 * m.pi * np.sin(self.thetaarr / 2 * deg2rad)) / self.wavelength
 
-    def cropimg(self, points, showcrop):
+    def cropimg(self, points, showcrop, AvgPix):
         """
         Crops the given image/colour map based on points provided by the user in a +/-4 px range
         and also plots/shows the images with individual slices highlighted
@@ -264,7 +264,7 @@ class xray:
         e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
 
         for a in points:
-            self.croppedimgs.append(self.imgarr[self.getindex(self.qz, a) - 4:self.getindex(self.qz, a) + 4, :])
+            self.croppedimgs.append(self.imgarr[self.getindex(self.qz, a) - AvgPix:self.getindex(self.qz, a) + AvgPix, :])
 
         for a in points:
             rectangle = pch.Rectangle((e[0], a - 0.00488), e[1] - e[0] - 0.00001, 0.00976, linewidth=1, edgecolor='r',

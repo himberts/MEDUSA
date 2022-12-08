@@ -49,11 +49,27 @@
         ,{
               "role"       : "input"
               ,"id"         : "qparcuts"
-              ,"label"      : "q-cut parameter (comma separated, e.g. 0.3,0.35)"
+              ,"label"      : "q-cut parameter (comma separated (e.g. 0.3,0.35,...) or range (0.3-0.35))"
               ,"default"    : "0.3,0.35"
               ,"type"       : "textarea"
               ,"help"       : "q-values for cropping and fitting the data"
           }
+          ,{
+                "role"       : "input"
+                ,"id"         : "avgpix"
+                ,"label"      : "Pixel to be averaged"
+                ,"default"    : "4"
+                ,"type"       : "textarea"
+                ,"help"       : "q-values for cropping and fitting the data"
+            }
+            ,{
+                "role"       : "input"
+                ,"id"         : "smooth"
+                ,"label"      : "Smooth data"
+                ,"type"       : "checkbox"
+                ,"checked"    : "true"
+                ,"help"       : "Smooth q-cut data"
+            }
           ,{
               "role"       : "input"
               ,"id"        : "InstrPar"
