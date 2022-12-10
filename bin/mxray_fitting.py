@@ -98,7 +98,7 @@ if __name__=='__main__':
                 splittedValue = NoTrail.split('|')
                 # values = [float(i) for i in NoTrail.split('|')]
                 Iteration.append(int(splittedValue[1]))
-                XiSquare.append(float(splittedValue[4]))
+                XiSquare.append(float(splittedValue[8]))
                 Data_dict={}
                 Data_dict['x'] = Iteration
                 Data_dict['y'] = XiSquare
@@ -121,6 +121,10 @@ if __name__=='__main__':
                         # "yaxis" : "Xisquare"
                 }
                 socket_dict['xisquareGraph'] = Graph_dict
+                buff_Kc = "%.2f ± %.2f"%(float(splittedValue[4]),float(splittedValue[5]))
+                buff_B = "%.2e ± %.2e" % (float(splittedValue[6]), float(splittedValue[7]))
+                socket_dict["kc"] = buff_Kc
+                socket_dict["B"] = buff_B
                 # socket_dict['_textarea'] = '\n%s\t%f\t%f\n' % (NoTrail,float(splittedValue[1]),float(splittedValue[4]))
                 # socket_dict['progress_html'] = '<center>'+svalue+'</center>'
                 doc_string = json.dumps(socket_dict)
