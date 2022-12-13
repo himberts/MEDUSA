@@ -25,7 +25,7 @@ __reflectivityplot__ = "reflectivityplot"  # Name for the plot which shows refle
 
 
 class xray:
-    def __init__(self, filename, px, xorigin, yorigin, sampledetectdist, wavelength, q1,distTheta,distChi,DataLog,AdjHist):
+    def __init__(self, filename, px, xorigin, yorigin, sampledetectdist, wavelength, q1,distTheta,distChi,DataLog,AdjHist,SubBackground):
         # TODO: Just used for important notes to keep in mind: (X-Chi-Q Parallel) and (Y_Theta-Q Z); 1 px = 0.00122
         """
         __init__ method for xray class. Parameters that are passed through the class are determined by user/machine
@@ -39,6 +39,7 @@ class xray:
         """
         self.DataLog = DataLog
         self.AdjHist = AdjHist
+        self.SubBackground = SubBackground
         self.px = px
         self.sampledetectdist = sampledetectdist
         self.xorigin = m.ceil(xorigin)
@@ -344,6 +345,9 @@ class xray:
 
         for a in self.croppedimgs:
             self.meandata.append(np.mean(a, 0))
+            plt.figure()
+            plt.plot(np.mean(a, 0))
+
 
         for a in self.meandata:
             self.mirroravgs.append(self.qparoptimize(a))
@@ -354,24 +358,24 @@ class xray:
         self.index1_2 = self.getindex(self.qpar, 0.099)
 
         self.qparcrop = self.qpar[self.index1_1:self.index1_2]
+        if self.SubBackground:
+            bgdsample = self.mirroravgs[0]
 
-        bgdsample = self.mirroravgs[0]
+            ranges = [self.getindex(self.qparpositive, 0.18) - 10, self.getindex(self.qparpositive, 0.18) + 10,
+                      self.getindex(self.qparpositive, 0.40) - 10, self.getindex(self.qparpositive, 0.4) + 10]
+            bgdpointsx = self.qparpositive[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
+            bgdpointsy = bgdsample[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
+            lineparams = np.polyfit(bgdpointsx, bgdpointsy, 1)
 
-        ranges = [self.getindex(self.qparpositive, 0.18) - 10, self.getindex(self.qparpositive, 0.18) + 10,
-                  self.getindex(self.qparpositive, 0.40) - 10, self.getindex(self.qparpositive, 0.4) + 10]
-        bgdpointsx = self.qparpositive[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
-        bgdpointsy = bgdsample[np.r_[ranges[0]:ranges[1], ranges[2]:ranges[3]]]
-        lineparams = np.polyfit(bgdpointsx, bgdpointsy, 1)
+            bgd = lambda x: lineparams[0] * x + lineparams[1]
 
-        bgd = lambda x: lineparams[0] * x + lineparams[1]
+            bgdevents = bgd(self.qparpositive)
+            bdgevents2 = bgd(self.qpar)
 
-        bgdevents = bgd(self.qparpositive)
-        bdgevents2 = bgd(self.qpar)
-
-        for a in range(len(self.meandata)):
-            self.mirroravgs[a] = self.mirroravgs[a] - bgdevents
-            self.meandata[a] = self.meandata[a] - bdgevents2
-            # self.mirroravgs[a] = savgol_filter(self.mirroravgs[a], 10, 4) # window size 51, polynomial order 3
+            for a in range(len(self.meandata)):
+                self.mirroravgs[a] = self.mirroravgs[a] - bgdevents
+                self.meandata[a] = self.meandata[a] - bdgevents2
+                # self.mirroravgs[a] = savgol_filter(self.mirroravgs[a], 10, 4) # window size 51, polynomial order 3
 
         for a in range(len(self.meandata)):
             plt.figure()
