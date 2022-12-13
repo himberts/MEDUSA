@@ -136,6 +136,11 @@ if __name__=='__main__':
     else:
         AdjHist=0
 
+    if 'subbg' in json_variables:
+        SubBG=1
+    else:
+        SubBG=0
+
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()
     GenappPost.postSubmittedKeys(json_variables)
@@ -146,7 +151,7 @@ if __name__=='__main__':
     if os.path.exists(rmfolder) and os.path.isdir(rmfolder):
         shutil.rmtree(rmfolder)
 
-    a = xray(filename=str(DataFile[0]), px=PixelSize, xorigin=XOrigin, yorigin=YOrigin, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945',distTheta=DistTheta,distChi=DistChi,DataLog=DataLog,AdjHist=AdjHist)
+    a = xray(filename=str(DataFile[0]), px=PixelSize, xorigin=XOrigin, yorigin=YOrigin, sampledetectdist=SampleDetectorDistance, wavelength=WaveLength, q1='0.0945',distTheta=DistTheta,distChi=DistChi,DataLog=DataLog,AdjHist=AdjHist,SubBackground=SubBG)
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 

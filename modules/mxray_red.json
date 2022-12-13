@@ -63,6 +63,14 @@
             ,"help"       : "Should the histogram be automatically adjusted?"
         }
         ,{
+            "role"       : "input"
+            ,"id"         : "subbg"
+            ,"label"      : "Substract Background"
+            ,"type"       : "checkbox"
+            ,"checked"    : "false"
+            ,"help"       : "Should the background be automatically substracted?"
+        }
+        ,{
               "role"       : "input"
               ,"id"         : "qparcuts"
               ,"label"      : "q-cut parameter (comma separated (e.g. 0.3,0.35,...) or range (0.3-0.35))"
