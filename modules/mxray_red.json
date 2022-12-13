@@ -47,6 +47,22 @@
             ,"help"       : "2D X-ray Intesity (.tiff)"
         }
         ,{
+            "role"       : "input"
+            ,"id"         : "datalog"
+            ,"label"      : "Logarithmic scale"
+            ,"type"       : "checkbox"
+            ,"checked"    : "false"
+            ,"help"       : "Are data on a Logarithmic scale?"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "adjhist"
+            ,"label"      : "Adjust Histogram"
+            ,"type"       : "checkbox"
+            ,"checked"    : "false"
+            ,"help"       : "Should the histogram be automatically adjusted?"
+        }
+        ,{
               "role"       : "input"
               ,"id"         : "qparcuts"
               ,"label"      : "q-cut parameter (comma separated (e.g. 0.3,0.35,...) or range (0.3-0.35))"

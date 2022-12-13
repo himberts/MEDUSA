@@ -25,7 +25,7 @@ __reflectivityplot__ = "reflectivityplot"  # Name for the plot which shows refle
 
 
 class xray:
-    def __init__(self, filename, px, xorigin, yorigin, sampledetectdist, wavelength, q1,distTheta,distChi,DataLog,AdjHist):
+    def __init__(self, filename, px, xorigin, yorigin, sampledetectdist, wavelength, q1,distTheta,distChi):
         # TODO: Just used for important notes to keep in mind: (X-Chi-Q Parallel) and (Y_Theta-Q Z); 1 px = 0.00122
         """
         __init__ method for xray class. Parameters that are passed through the class are determined by user/machine
@@ -37,8 +37,6 @@ class xray:
         :param yorigin: the y coordinate of the emitter with respect to the detector in pixels
         :param wavelength: xray wavelength in Angstroms
         """
-        self.DataLog = DataLog
-        self.AdjHist = AdjHist
         self.px = px
         self.sampledetectdist = sampledetectdist
         self.xorigin = m.ceil(xorigin)
@@ -172,19 +170,6 @@ class xray:
         self.xdim = self.imgarr.shape[1]
         self.ydim = self.imgarr.shape[0]
 
-        if self.DataLog:
-            self.imgarr = self.imgarr / np.max(self.imgarr)
-            self.imgarr = 10 * self.imgarr
-            self.imgarr = np.exp(self.imgarr)
-        if self.AdjHist:
-            self.imgarrAdj = self.imgarr
-            posValues = np.where(self.imgarrAdj > 0)
-            LowBoundHistogram = np.min(self.imgarrAdj[posValues])
-            self.imgarrAdj[posValues] = self.imgarrAdj[posValues] - LowBoundHistogram + 1
-            negValues = np.where(self.imgarrAdj <= 0)
-            self.imgarrAdj[negValues] = 0
-
-
         # # Calculates the x coordinate of the origin
         # index0 = self.imgarr.argmax()
         # index0 = index0 % self.xdim
@@ -205,14 +190,7 @@ class xray:
         plt.title("Data Set")
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
-
-        if self.AdjHist == True:
-            # print("log")
-            plt.imshow((self.imgarr + 1), extent=e)
-        else:
-            # print("nolog")
-            plt.imshow(np.log(self.imgarr + 1), extent=e)
-            plt.colorbar()
+        plt.imshow(np.log(self.imgarr + 1), extent=e)
 
         if os.path.isdir(os.getcwd() + "/outputs/"):
             plt.savefig(os.getcwd() + "/outputs/" + __tiffname__ + ".png")
@@ -253,15 +231,11 @@ class xray:
         rad2deg = 360 / (2 * m.pi)
 
         if distTheta:
-            print("Test")
             self.thetaarr = np.arctan(self.yarr / self.sampledetectdist) * rad2deg
         else:
             self.thetaarr = (self.yarr / self.sampledetectdist) * rad2deg
 
-        print(self.thetaarr)
-
         if distChi:
-            print("Test")
             self.chiarr = np.arctan(self.xarr / self.sampledetectdist) * rad2deg
         else:
             self.chiarr = (self.xarr / self.sampledetectdist) * rad2deg
@@ -303,10 +277,7 @@ class xray:
 
         plt.figure(2)
         fig, a = plt.subplots()
-        if self.AdjHist==True:
-            a.imshow((self.imgarr + 1), extent=e)
-        else:
-            a.imshow(np.log(self.imgarr + 1), extent=e)
+        a.imshow(np.log(self.imgarr + 1), extent=e)
         a.title.set_text("Image with all slices highlighted")
         a.set_xlabel("Q_||")
         a.set_ylabel("Q_z")
@@ -318,10 +289,7 @@ class xray:
 
         for a in range(len(self.points)):
             fig, ax = plt.subplots()
-            if self.AdjHist == True:
-                ax.imshow((self.imgarr + 1), extent=e)
-            else:
-                ax.imshow(np.log(self.imgarr + 1), extent=e)
+            ax.imshow(np.log(self.imgarr + 1), extent=e)
             ax.title.set_text("Slice of " + str(self.points[a]) + " +/- 4 pixels")
             ax.set_xlabel("Q_||")
             ax.set_ylabel("Q_z")
@@ -539,118 +507,61 @@ class xray:
         #Following goes as so: Blue, Turquoise, Light Purple, Peach, Light Blue, Pink, Light Yellow-Green, Purple-Pink, Sand
         color = ["#636efa", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"]
 
-        if self.AdjHist == True:
-            self.DataPlot2D = {
-                "data": [
-                    {  # This entry is for the image data plot
-                        "x": self.qpar.tolist(),
-                        "y": self.qz.tolist(),
-                        "z": (self.imgarr + 1).tolist(),
-                        "type": "heatmap",
-                        "xaxis": "x",
-                        "yaxis": "y",
-                        # "colorbar": {
-                        #     "x": 0.45,
-                        #     "y": 0.78,
-                        #     "len": 0.5,
-                        #     "nticks": 5,
-                        #     "thickness": 10},
-                        "name": "Data Set",
-                        "hoverinfo": ["x", "y", "z"]
-                    }
+        self.DataPlot2D = {
+            "data": [
+                {   # This entry is for the image data plot
+                    "x": self.qpar.tolist(),
+                    "y": self.qz.tolist(),
+                    "z": np.log(self.imgarr+1).tolist(),
+                    "type": "heatmap",
+                    "xaxis": "x",
+                    "yaxis": "y",
+                    # "colorbar": {
+                    #     "x": 0.45,
+                    #     "y": 0.78,
+                    #     "len": 0.5,
+                    #     "nticks": 5,
+                    #     "thickness": 10},
+                    "name": "Data Set",
+                    "hoverinfo": ["x", "y", "z"]
+                }
                 ],
-                "layout": {
-                    "xaxis": {
-                        "anchor": "y",
-                        "title": "Q ||"
-                    },
-                    "yaxis": {
-                        "anchor": "x",
-                        "title": "Q z",
-                    },
+            "layout": {
+                "xaxis": {
+                    "anchor": "y",
+                    "title": "Q ||"
+                },
+                "yaxis": {
+                    "anchor": "x",
+                    "title": "Q z",
+                },
 
-                }
             }
-        else:
-            self.DataPlot2D = {
-                "data": [
-                    {   # This entry is for the image data plot
-                        "x": self.qpar.tolist(),
-                        "y": self.qz.tolist(),
-                        "z": np.log(self.imgarr+1).tolist(),
-                        "type": "heatmap",
-                        "xaxis": "x",
-                        "yaxis": "y",
-                        # "colorbar": {
-                        #     "x": 0.45,
-                        #     "y": 0.78,
-                        #     "len": 0.5,
-                        #     "nticks": 5,
-                        #     "thickness": 10},
-                        "name": "Data Set",
-                        "hoverinfo": ["x", "y", "z"]
-                    }
-                    ],
-                "layout": {
-                    "xaxis": {
-                        "anchor": "y",
-                        "title": "Q ||"
-                    },
-                    "yaxis": {
-                        "anchor": "x",
-                        "title": "Q z",
-                    },
+        }
 
-                }
-            }
-        if self.AdjHist == True:
-            self.ReflectivityPlot = {
-                "data": [
-                    {  # This entry is for the reflectivity plot
-                        "x": self.qz.tolist(),
-                        "y": (self.reflectavg).tolist(),
-                        "type": "scatter",
-                        "xaxis": "x2",
-                        "yaxis": "y2",
-                        "mode": "lines",
-                        "showlegend": False,
-                    },
+        self.ReflectivityPlot = {
+            "data": [
+                {  # This entry is for the reflectivity plot
+                    "x": self.qz.tolist(),
+                    "y": np.log(self.reflectavg).tolist(),
+                    "type": "scatter",
+                    "xaxis": "x2",
+                    "yaxis": "y2",
+                    "mode": "lines",
+                    "showlegend": False,
+                },
                 ],
-                "layout": {
-                    "xaxis2": {
-                        "anchor": "y2",
-                        "title": "Q z"
-                    },
-                    "yaxis2": {
-                        "anchor": "x2",
-                        "title": "log(Intensity)"
-                    },
-                }
+            "layout": {
+                "xaxis2": {
+                    "anchor": "y2",
+                    "title": "Q z"
+                },
+                "yaxis2": {
+                    "anchor": "x2",
+                    "title": "log(Intensity)"
+                },
             }
-        else:
-            self.ReflectivityPlot = {
-                "data": [
-                    {  # This entry is for the reflectivity plot
-                        "x": self.qz.tolist(),
-                        "y": np.log(self.reflectavg).tolist(),
-                        "type": "scatter",
-                        "xaxis": "x2",
-                        "yaxis": "y2",
-                        "mode": "lines",
-                        "showlegend": False,
-                    },
-                    ],
-                "layout": {
-                    "xaxis2": {
-                        "anchor": "y2",
-                        "title": "Q z"
-                    },
-                    "yaxis2": {
-                        "anchor": "x2",
-                        "title": "log(Intensity)"
-                    },
-                }
-            }
+        }
 
 
         self.DiffusePlot = {
@@ -787,10 +698,7 @@ class xray:
         reflection = self.imgarr[:, (self.xdim-self.xorigin-6):(self.xdim-self.xorigin+6)]
         e = [self.qpar[self.xdim-self.xorigin-6], self.qpar[self.xdim-self.xorigin+6], self.qz[-1], self.qz[0]]
         plt.figure()
-        if self.AdjHist == True:
-            plt.imshow((reflection + 1), extent=e)
-        else:
-            plt.imshow(np.log(reflection + 1), extent=e)
+        plt.imshow(np.log(reflection + 1), extent=e)
         plt.title("Beam Reflectivity Slice")
         plt.xticks([])
         if showreflect:
@@ -799,11 +707,7 @@ class xray:
 
         plt.figure()
         self.reflectavg = np.average(reflection, axis=1)
-        if self.AdjHist == True:
-            # plt.plot(self.thetaarr, (self.reflectavg))
-            plt.plot(self.qz, (self.reflectavg))
-        else:
-            plt.plot(self.qz, np.log(self.reflectavg))
+        plt.plot(self.qz, np.log(self.reflectavg))
         plt.title("Reflectivity")
         plt.xlabel("Q_Z")
         plt.ylabel("log(I)")
