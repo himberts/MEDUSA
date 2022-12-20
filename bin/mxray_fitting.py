@@ -33,6 +33,8 @@ if __name__=='__main__':
     eta = float(json_variables['eta'])
     q = float(json_variables['q']) # number of points in (simulated) q
     BeamConv = float(json_variables['beamconv']) # number of points in (simulated) q
+    Lr = float(json_variables['lr']) # number of points in (simulated) q
+    Sr = float(json_variables['sr']) # number of points in (simulated) q
 # #    qparcutstext = json_variables['qparcuts']
 #     SampleDetectorDistance = float(json_variables['sd'])
 #     PixelSize = float(json_variables['pxs']) # number of points in p(r)
@@ -74,7 +76,7 @@ if __name__=='__main__':
 
     # s = subprocess.check_output(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputfile.dat","--Lr","300","--sr","100","-o","TestFit"])
 
-    p = subprocess.Popen(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputs/outputfile.dat","--Lr","300","--sr","100","-o","outputs/FitResults"], stdout=subprocess.PIPE)
+    p = subprocess.Popen(["mxray_bending","-m","fitd", "-z", str(xi),"-e" ,str(eta), "-f", "outputs/outputfile.dat","--Lr",str(Lr),"--sr",str(Sr), "-w",str(BeamConv), "-o","outputs/FitResults"], stdout=subprocess.PIPE)
 
     ParseXiSquare = 0
     Iteration = []
