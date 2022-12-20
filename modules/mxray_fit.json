@@ -77,6 +77,17 @@
               ,"max"        : 3000
               ,"help"       : "Enter the accessible domain size sr in Angstrom"
           }
+          ,{
+              "role"       : "input"
+              ,"id"         : "beamconv"
+              ,"label"      : "Gaussian Beam width"
+              ,"type"       : "float"
+              ,"step"       : 1
+              ,"default"    : 100
+              ,"min"        : 100
+              ,"max"        : 3000
+              ,"help"       : "Gaussian Beam width"
+          }
         ,{
             "role"       : "output"
             ,"id"         : "kc"

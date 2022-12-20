@@ -32,6 +32,7 @@ if __name__=='__main__':
     xi = float(json_variables['xi'])
     eta = float(json_variables['eta'])
     q = float(json_variables['q']) # number of points in (simulated) q
+    BeamConv = float(json_variables['beamconv']) # number of points in (simulated) q
 # #    qparcutstext = json_variables['qparcuts']
 #     SampleDetectorDistance = float(json_variables['sd'])
 #     PixelSize = float(json_variables['pxs']) # number of points in p(r)
