@@ -144,7 +144,7 @@ if __name__=='__main__':
 
     output = {} # create an empty python dictionary
     GenappPost = GenappCom()
-    GenappPost.postSubmittedKeys(json_variables)
+    #GenappPost.postSubmittedKeys(json_variables)
     GenappPost.postupdate("Process started ... \n",0)
 
     rmfolder = '%s/outputs' % folder

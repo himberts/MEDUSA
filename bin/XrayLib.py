@@ -292,7 +292,7 @@ class xray:
         e = [self.qpar[0], self.qpar[-1], self.qz[-1], self.qz[0]]
 
         for idx,a in enumerate(points):
-            self.croppedimgs.append(self.imgarr[self.getindex(self.qz, a) - AvgPix[idx]:self.getindex(self.qz, a) + AvgPix[idx], :])
+            self.croppedimgs.append(self.imgarr[self.getindex(self.qz, a) - np.int32(AvgPix[idx]):self.getindex(self.qz, a) + np.int32(AvgPix[idx]), :])
 
         for a in points:
             rectangle = pch.Rectangle((e[0], a - 0.00488), e[1] - e[0] - 0.00001, 0.00976, linewidth=1, edgecolor='r',
