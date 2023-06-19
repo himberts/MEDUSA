@@ -190,12 +190,12 @@ if __name__=='__main__':
     GenappPost = GenappCom()
     GenappPost.postupdate("Reduction Status Saved...\n",0.7)
     #
-    src = '/opt/genapp/mxray/add/XrayLib.py'
+    src = '/opt/genapp/medusa/add/XrayLib.py'
     dst = '%s/outputs/XrayLib.py' % (folder)
 
     shutil.copyfile(src, dst)
 
-    src = '/opt/genapp/mxray/add/AnalysisTools.ipynb'
+    src = '/opt/genapp/medusa/add/AnalysisTools.ipynb'
     dst = '%s/outputs/AnalysisTools.ipynb' % (folder)
 
     shutil.copyfile(src, dst)
