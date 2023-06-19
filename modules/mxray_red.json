@@ -78,16 +78,13 @@
               ,"type"       : "textarea"
               ,"help"       : "q-values for cropping and fitting the data"
           }
-          ,{
+		  ,{
               "role"       : "input"
               ,"id"         : "avgpix"
-              ,"label"      : "Pixel to be averaged"
-              ,"type"       : "float"
-              ,"step"       : 1
-              ,"default"    : 4
-  	          ,"min"        : 1
-  	          ,"max"        : 10
-              ,"help"       : "Averaging over x out-of-plane pixels for increased statistics"
+              ,"label"      : "q-cut avg parameter (comma separated (e.g. 0.3,0.35,...) or range (0.3-0.35))"
+              ,"default"    : "1,4"
+              ,"type"       : "textarea"
+              ,"help"       : "q-values for cropping and fitting the data"
           }
           ,{
               "role"       : "input"

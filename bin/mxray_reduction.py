@@ -107,7 +107,8 @@ if __name__=='__main__':
     argv_io_string = io.StringIO(sys.argv[1])
     json_variables = json.load(argv_io_string)
     qparcutstext = json_variables['qparcuts']
-    avgpix = int(float(json_variables['avgpix']))
+    qparavgstext = json_variables['avgpix']
+    #avgpix = int(float(json_variables['avgpix']))
     SampleDetectorDistance = float(json_variables['sd'])
     PixelSize = float(json_variables['pxs']) # number of points in p(r)
     XOrigin = float(json_variables['xorigin'])
@@ -156,6 +157,7 @@ if __name__=='__main__':
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
     qparCuts = ParseQcuts(qparcutstext,a.qz)
+    avgpix = ParseQcuts(qparavgstext,a.qz)
     # GenappPost.postarray([lowb,upb])
     # qparCutsList  = qparcutstext.split(',')
     # qparCuts = np.ndarray(len(qparCutsList))
