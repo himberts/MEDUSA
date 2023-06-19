@@ -81,8 +81,8 @@
 		  ,{
               "role"       : "input"
               ,"id"         : "avgpix"
-              ,"label"      : "q-cut avg parameter (comma separated (e.g. 0.3,0.35,...) or range (0.3-0.35))"
-              ,"default"    : "1,4"
+              ,"label"      : "q-cut avg parameter (comma separated (e.g. 4,2,...))"
+              ,"default"    : "4,4"
               ,"type"       : "textarea"
               ,"help"       : "q-values for cropping and fitting the data"
           }

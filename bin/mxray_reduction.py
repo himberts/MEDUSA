@@ -163,7 +163,8 @@ if __name__=='__main__':
     # qparCuts = np.ndarray(len(qparCutsList))
     # for k in range(len(qparCutsList)):
     #     qparCuts[k] = float(qparCutsList[k])
-
+    GenappPost.postarray(avgpix)
+    
     a.plottiff(show=0)
     GenappPost = GenappCom()
     GenappPost.postupdate("2D Graphics created ...\n",0.2)
