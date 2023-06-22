@@ -76,9 +76,11 @@ class GenappCom:
         self.sock.sendto(doc_string.encode(),(self.UDP_IP,self.UDP_PORT))
 
 
-def ParseQcuts(qparcutstext,AvailableQPar):
+def ParseQcuts(qparcutstext,qparcutsAvgtext,AvailableQPar):
     qparCutsList  = qparcutstext.split(',')
+    qparCutsAvgList  = qparcutsAvgtext.split(',')
     qparCuts = np.ndarray(1)
+    qparCutsAvg = np.ndarray(1)
 
     for idx, qparCut in enumerate(qparCutsList):
         # print(qparCut)
@@ -92,11 +94,13 @@ def ParseQcuts(qparcutstext,AvailableQPar):
             ToAddList = AvailableQPar[LowBoundVec:UpperBoundVec+1]
             for ListItem in ToAddList:
                 qparCuts = np.append(qparCuts, [ListItem])
+                qparCutsAvg = np.append(qparCutsAvg,qparCutsList[idx])
         else:
             qparCuts = np.append(qparCuts, np.asarray([float(qparCut)]))
+            qparCutsAvg = np.append(qparCutsAvg,qparCutsList[idx])
 
     qparCuts = np.delete(qparCuts,0)
-    return qparCuts
+    return qparCuts, qparCutsAvg
 
 
 if __name__=='__main__':
@@ -156,8 +160,8 @@ if __name__=='__main__':
     GenappPost = GenappCom()
     GenappPost.postupdate("Data Loaded ...\n",0.1)
 
-    qparCuts = ParseQcuts(qparcutstext,a.qz)
-    avgpix = ParseQcuts(qparavgstext,a.qz)
+    qparCuts,avgpix = ParseQcuts(qparcutstext,qparavgstext,a.qz)
+    #avgpix = ParseQcuts(qparavgstext,a.qz)
     # GenappPost.postarray([lowb,upb])
     # qparCutsList  = qparcutstext.split(',')
     # qparCuts = np.ndarray(len(qparCutsList))
