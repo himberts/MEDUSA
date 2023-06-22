@@ -94,12 +94,13 @@ def ParseQcuts(qparcutstext,qparcutsAvgtext,AvailableQPar):
             ToAddList = AvailableQPar[LowBoundVec:UpperBoundVec+1]
             for ListItem in ToAddList:
                 qparCuts = np.append(qparCuts, [ListItem])
-                qparCutsAvg = np.append(qparCutsAvg,qparCutsList[idx])
+                qparCutsAvg = np.append(qparCutsAvg,qparCutsAvgList[idx])
         else:
             qparCuts = np.append(qparCuts, np.asarray([float(qparCut)]))
-            qparCutsAvg = np.append(qparCutsAvg,qparCutsList[idx])
+            qparCutsAvg = np.append(qparCutsAvg,qparCutsAvgList[idx])
 
     qparCuts = np.delete(qparCuts,0)
+    qparCutsAvg = np.delete(qparCutsAvg,0)
     return qparCuts, qparCutsAvg
 
 
