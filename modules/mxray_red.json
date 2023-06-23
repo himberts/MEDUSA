@@ -52,7 +52,7 @@
             ,"label"      : "Are the data on Log scale"
             ,"type"       : "checkbox"
             ,"checked"    : "false"
-            ,"help"       : "Are data on a Logarithmic scale?"
+            ,"help"       : "Are data stored on a Logarithmic scale?"
         }
         ,{
             "role"       : "input"
