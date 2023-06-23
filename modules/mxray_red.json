@@ -49,7 +49,7 @@
         ,{
             "role"       : "input"
             ,"id"         : "datalog"
-            ,"label"      : "Are the data on Log scale"
+            ,"label"      : "Are the data stored on Log scale"
             ,"type"       : "checkbox"
             ,"checked"    : "false"
             ,"help"       : "Are data been stored on a Logarithmic scale?"
