@@ -173,17 +173,33 @@ class xray:
         self.xdim = self.imgarr.shape[1]
         self.ydim = self.imgarr.shape[0]
 
+        self.imgarr = self.imgarr
+        negValues = np.where(self.imgarr < 1)
+        self.imgarr[negValues] = 1
+
         if self.DataLog:
             self.imgarr = self.imgarr / np.max(self.imgarr)
             self.imgarr = 10 * self.imgarr
             self.imgarr = np.exp(self.imgarr)
         if self.AdjHist:
-            self.imgarrAdj = self.imgarr
-            posValues = np.where(self.imgarrAdj > 0)
-            LowBoundHistogram = np.min(self.imgarrAdj[posValues])
-            self.imgarrAdj[posValues] = self.imgarrAdj[posValues] - LowBoundHistogram + 1
-            negValues = np.where(self.imgarrAdj <= 0)
-            self.imgarrAdj[negValues] = 0
+            hist, bin_edges = np.histogram(np.log(self.imgarr), bins=1000)
+            HistIndices = np.where(hist[1:-1] != 0)
+            HistValues = bin_edges[HistIndices]
+            self.histmin = HistValues[0]
+            self.histmax = HistValues[-1]
+            print(self.histmin)
+            print(self.histmax)
+            # print(bin_edges)
+            # print(hist)
+            plt.figure()
+            plt.plot(hist)
+            plt.show()
+            # self.imgarrAdj = self.imgarr
+            # posValues = np.where(self.imgarrAdj > 0)
+            # LowBoundHistogram = np.min(self.imgarrAdj[posValues])
+            # self.imgarrAdj[posValues] = self.imgarrAdj[posValues] - LowBoundHistogram + 1
+            # negValues = np.where(self.imgarrAdj <= 0)
+            # self.imgarrAdj[negValues] = 0
 
 
         # # Calculates the x coordinate of the origin
@@ -207,13 +223,17 @@ class xray:
         plt.xlabel("Q_||")
         plt.ylabel("Q_z")
 
-        if self.AdjHist == True:
-            # print("log")
-            plt.imshow((self.imgarr + 1), extent=e)
-        else:
-            # print("nolog")
-            plt.imshow(np.log(self.imgarr + 1), extent=e)
-            plt.colorbar()
+        plt.imshow(np.log(self.imgarr + 1), extent=e)
+        # plt.clim(20.8, 20.9)
+        plt.colorbar()
+
+        # if self.AdjHist == True:
+        #     # print("log")
+        #     plt.imshow((self.imgarr + 1), extent=e)
+        # else:
+        #     # print("nolog")
+        #     plt.imshow(np.log(self.imgarr + 1), extent=e)
+        #     plt.colorbar()
 
         if os.path.isdir(os.getcwd() + "/outputs/"):
             plt.savefig(os.getcwd() + "/outputs/" + __tiffname__ + ".png")
@@ -254,7 +274,7 @@ class xray:
         rad2deg = 360 / (2 * m.pi)
 
         if distTheta:
-            print("Test")
+            # print("Test")
             self.thetaarr = np.arctan(self.yarr / self.sampledetectdist) * rad2deg
         else:
             self.thetaarr = (self.yarr / self.sampledetectdist) * rad2deg
@@ -262,7 +282,7 @@ class xray:
         print(self.thetaarr)
 
         if distChi:
-            print("Test")
+            # print("Test")
             self.chiarr = np.arctan(self.xarr / self.sampledetectdist) * rad2deg
         else:
             self.chiarr = (self.xarr / self.sampledetectdist) * rad2deg
