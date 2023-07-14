@@ -131,16 +131,18 @@ if __name__=='__main__':
         DistTheta=1
     else:
         DistTheta=0
+    
+    DataLog=0
+    AdjHist=0
+#    if 'datalog' in json_variables:
+ #       DataLog=1
+  #  else:
+   #     DataLog=0
 
-    if 'datalog' in json_variables:
-        DataLog=1
-    else:
-        DataLog=0
-
-    if 'adjhist' in json_variables:
-        AdjHist=1
-    else:
-        AdjHist=0
+ #   if 'adjhist' in json_variables:
+  #      AdjHist=1
+   # else:
+    #    AdjHist=0
 
     if 'subbg' in json_variables:
         SubBG=1
