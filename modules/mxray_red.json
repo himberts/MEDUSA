@@ -48,6 +48,22 @@
         }
         ,{
             "role"       : "input"
+            ,"id"         : "datalog"
+            ,"label"      : "Are the data stored on Log scale"
+            ,"type"       : "checkbox"
+            ,"checked"    : "false"
+            ,"help"       : "Are data been stored on a Logarithmic scale?"
+        }
+        ,{
+            "role"       : "input"
+            ,"id"         : "adjhist"
+            ,"label"      : "Does the data have poor contrast?"
+            ,"type"       : "checkbox"
+            ,"checked"    : "false"
+            ,"help"       : "Should the histogram be automatically adjusted?"
+        }
+        ,{
+            "role"       : "input"
             ,"id"         : "subbg"
             ,"label"      : "Substract Background"
             ,"type"       : "checkbox"
