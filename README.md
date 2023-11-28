@@ -1,4 +1,6 @@
 # MEDUSA
+Access Medus at medusa.genapp.rocks
+
 # How To
 1. Reduction
 
