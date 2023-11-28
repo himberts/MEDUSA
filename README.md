@@ -1,5 +1,5 @@
 # MEDUSA
-Access MEDUSA at [Link text](medusa.genapp.rocks 'Link title') medusa.genapp.rocks
+Access MEDUSA at [medusa.genapp.rocks](medusa.genapp.rocks 'medusa.genapp.rocks')
 
 # How To
 1. Reduction
