@@ -1,5 +1,5 @@
 # MEDUSA
-Access MEDUSA at [medusa.genapp.rocks](medusa.genapp.rocks 'medusa.genapp.rocks')
+Access MEDUSA at <medusa.genapp.rocks>
 
 # How To
 1. Reduction
@@ -33,9 +33,9 @@ Dr. Maikel C. Rheinstädter (Department of Physics and Astronomy, McMaster Unive
 
 # Literature
 
-1.S. Himbert, Biophysics of Blood Membranes, PhD Thesis, McMaster University .  http://hdl.handle.net/11375/26995
+1.S. Himbert, Biophysics of Blood Membranes, PhD Thesis, McMaster University .  <http://hdl.handle.net/11375/26995>
 
-2.S. Himbert, A. D’Alessandro, S. M. Qadri, M. J. Majcher, T. Hoare, W. P. Sheffield, M. Nagao, J. F. Nagle, and M. C. Rheinstädter The Bending Rigidity of Red Blood Cell Membranes, PLOS ONE 17(8): e0269619. https://doi.org/10.1371/journal.pone.0269619
+2.S. Himbert, A. D’Alessandro, S. M. Qadri, M. J. Majcher, T. Hoare, W. P. Sheffield, M. Nagao, J. F. Nagle, and M. C. Rheinstädter The Bending Rigidity of Red Blood Cell Membranes, PLOS ONE 17(8): e0269619. <https://doi.org/10.1371/journal.pone.0269619>
 
 3. S. Himbert, A. D’Alessandro, S. M. Qadri,W. P. Sheffield, J. F. Nagle, and M. C. Rheinstädter. Storage of red blood cells leads to an increased membrane order and bending rigidity, PLOS ONE 16(11): e0259267. https://doi.org/10.1371/journal.pone.0259267
 
