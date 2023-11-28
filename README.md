@@ -1,5 +1,5 @@
 # MEDUSA
-Access MEDUSA at <medusa.genapp.rocks>
+Access MEDUSA at http://medusa.genapp.rocks
 
 # How To
 1. Reduction
